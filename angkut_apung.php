@@ -141,42 +141,41 @@ require 'controller/koneksi.php';
                                                         <h4 class="modal-title">Update Stok Barang</h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" required>
+                                                        <br>
+                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" required>
+                                                        <br>
+                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" required>
+                                                        <br>
+                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" required>
+                                                        <br>
+                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" required>
+                                                        <br>
+                                                        <input type="hidden" name="idb" value="<?= $idb; ?>">
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" name="updatebarang">Simpan</button>
+                                                    </div>
                                                 </form>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" required>
-                                                    <br>
-                                                    <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" required>
-                                                    <br>
-                                                    <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" required>
-                                                    <br>
-                                                    <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" required>
-                                                    <br>
-                                                    <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" required>
-                                                    <br>
-                                                    <input type="hidden" name="idb" value="<?= $idb; ?>">
-                                                </div>
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" name="updatebarang">Simpan</button>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Delete Modal -->
                                     <div class="modal fade" id="delete<?= $idb; ?>">
                                         <div class="modal-dialog">
-                                            <div class="modal-content bg-white" >
+                                            <div class="modal-content bg-white">
                                                 <!-- Modal Header -->
                                                 <form method="post">
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Delete Stok Barang</h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
-                                                </form>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <!-- <input type="text" name="namabarang" value="<?= $namabarang ?>" class="form-control form-control-lg" required>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <!-- <input type="text" name="namabarang" value="<?= $namabarang ?>" class="form-control form-control-lg" required>
                                                     <br>
                                                     <input type="number" name="jumlah" value="<?= $jumlah ?>" class="form-control form-control-lg" required>
                                                     <br>
@@ -186,13 +185,14 @@ require 'controller/koneksi.php';
                                                     <br>
                                                     <input type="text" name="keterangan" value="<?= $keterangan ?>" class="form-control form-control-lg" required>
                                                     <br> -->
-                                                    apakah anda yakin ingin menghapus satu kolom ini?
-                                                    <input type="hidden" name="idb" value="<?= $idb; ?>">
-                                                </div>
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" name="hapusbarang">Hapus</button>
-                                                </div>
+                                                        apakah anda yakin ingin menghapus satu kolom ini?
+                                                        <input type="hidden" name="idb" value="<?= $idb; ?>">
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" name="hapusbarang">Hapus</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -240,4 +240,5 @@ require 'controller/koneksi.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
 </html>
