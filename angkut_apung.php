@@ -163,10 +163,10 @@ if (isset($_GET['cari'])) {
                                                         <h4 class="modal-title">Delete Stok Barang</h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
-
-                                                    <!-- Modal body -->
-                                                    <div class="modal-body">
-                                                        <!-- <input type="text" name="namabarang" value="<?= $namabarang ?>" class="form-control form-control-lg">
+                                                </form>
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <!-- <input type="text" name="namabarang" value="<?= $namabarang ?>" class="form-control form-control-lg" required>
                                                     <br>
                                                     <input type="number" name="jumlah" value="<?= $jumlah ?>" class="form-control form-control-lg">
                                                     <br>
@@ -234,6 +234,4 @@ if (isset($_GET['cari'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-</body>
-
 </html>

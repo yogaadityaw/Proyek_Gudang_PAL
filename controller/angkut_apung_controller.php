@@ -68,20 +68,23 @@ if (isset($_POST['updatebarang'])) {
             echo 'Gagal menyimpan data: ';
         };
         return;
+    } 
+    
+    //delete barang 
+    
+    if(isset($_POST['hapusbarang'])){
+        $idb = $_POST['idb'];
+        $hapus = mysqli_query($conn, "delete from barang_angkut_apung where idbarang ='$idb'");
+        
+        if($hapus){
+            header('location:angkut_apung.php');
+            session_write_close();
+        }else{
+            echo 'Gagal menyimpan data: ';
+            
+    
+        };
+        return;
     }
-}
-
-//delete barang 
-
-if (isset($_POST['hapusbarang'])) {
-    $idb = $_POST['idb'];
-    $hapus = mysqli_query($conn, "delete from barang_angkut_apung where idbarang ='$idb'");
-
-    if ($hapus) {
-        header('location: angkut_apung.php');
-        session_write_close();
-    } else {
-        echo 'Gagal menyimpan data: ';
-    };
-    return;
-}
+    
+?>
