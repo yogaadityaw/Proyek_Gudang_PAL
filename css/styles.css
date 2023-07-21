@@ -91,6 +91,12 @@
   }
 }
 
+.btn-white {
+  background-color: #ffffff; /* Warna latar belakang putih */
+  color: #000000; /* Warna teks hitam */
+  /* Tambahkan gaya lain sesuai kebutuhan seperti padding, border, dan sebagainya */
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

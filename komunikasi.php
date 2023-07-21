@@ -64,6 +64,8 @@ require 'controller/koneksi.php';
                                 <a class="nav-link" href="komunikasi.php">Alat Komunikasi/(HT)</a>
                                 <a class="nav-link" href="konsumable.php">Daftar Barang Konsumable</a>
                                 <a class="nav-link" href="angkut_apung.php">Daftar angkat angkut dan alat apung</a>
+                                <a class="nav-link" href="transaksional.php">Form Transaksional Barang</a>
+                                <a class="nav-link" href="mutasibarang.php">List Daftar Mutasi Barang</a>
                             </nav>
                         </div>
                     </div>
@@ -71,7 +73,6 @@ require 'controller/koneksi.php';
             </nav>
         </div>
     </div>
-    <br>
     <br>
     <main>
         <div class="container-fluid px-4">
@@ -84,7 +85,7 @@ require 'controller/koneksi.php';
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                     Tambah Stok
                 </button>
-
+                <a href="export_komunikasi.php" class="btn btn-info">Export Data</a>
                 <br>
                 <br>
                 <div class="card-body">
