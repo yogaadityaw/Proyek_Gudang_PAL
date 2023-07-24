@@ -8,14 +8,13 @@ session_start();
     if(isset($_POST['addnewbarangkomunikasi'])){
         $namabarang = $_POST['namabarang'];
         $noseri = $_POST['noseri'];
-        $namapengebon = $_POST['namapengebon'];
         $jumlah = $_POST['jumlah'];
         $barangbaik = $_POST['barangbaik'];
         $barangrusak = $_POST['barangrusak'];
         $keterangan = $_POST['keterangan'];
         
     if($jumlah>=$barangbaik+$barangrusak){ // dungsi untuk cek inputan
-        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, namapengebon, jumlah, baik, rusak, keterangan) VALUES ('$namabarang', '$noseri', '$namapengebon',  '$jumlah', '$barangbaik', '$barangrusak', '$keterangan')");
+        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, jumlah, baik, rusak, keterangan) VALUES ('$namabarang', '$noseri', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan')");
     }
     else{ // fungsi untuk cek inputan
         session_write_close();
@@ -36,14 +35,13 @@ session_start();
 if(isset($_POST['updatebarang'])){
     $namabarang = $_POST['namabarang'];
     $noseri = $_POST['noseri'];
-    $namapengebon = $_POST['namapengebon'];
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
     $keterangan = $_POST['keterangan'];
     $idb = $_POST['idb'];
     
-    $update = mysqli_query($conn,"update komunikasi set namabarang='$namabarang', noseri='$noseri', namapengebon='$namapengebon', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', keterangan='$keterangan' where idbarang = '$idb' ");
+    $update = mysqli_query($conn,"update komunikasi set namabarang='$namabarang', noseri='$noseri', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', keterangan='$keterangan' where idbarang = '$idb' ");
     
     if($update){
         header('location:komunikasi.php');

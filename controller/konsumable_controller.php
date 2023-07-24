@@ -2,19 +2,20 @@
 require 'controller/koneksi.php';
 
 
-session_start();
+
 
 //membuat koneksi ke database
-
+session_start();
 
 // menambah barang baru
 
     if(isset($_POST['addnewbarangkonsumable'])){
         $namabarang = $_POST['namabarang'];
+        $kodebarang = $_POST['kodebarang'];
         $jumlah = $_POST['jumlah'];
         $keterangan = $_POST['keterangan'];
     
-        $addtotable = mysqli_query($conn,"INSERT INTO barang_konsumable (namabarang, jumlah, keterangan) VALUES ('$namabarang', '$jumlah', '$keterangan')");
+        $addtotable = mysqli_query($conn,"INSERT INTO barang_konsumable (namabarang, kodebarang, jumlah, keterangan) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$keterangan')");
         if($addtotable){
             header('location: konsumable.php');
             session_write_close();
@@ -33,10 +34,11 @@ session_start();
 if(isset($_POST['updatebarang'])){
     $idb= $_POST['idb'];
     $namabarang = $_POST['namabarang'];
+    $kodebarang = $_POST['kodebarang'];
     $jumlah = $_POST['jumlah'];
     $keterangan = $_POST['keterangan'];
     
-    $update = mysqli_query($conn,"update barang_konsumable SET namabarang='$namabarang', jumlah='$jumlah', keterangan='$keterangan' WHERE idbarang = '$idb' ");
+    $update = mysqli_query($conn,"update barang_konsumable SET namabarang='$namabarang', kodebarang='$kodebarang', jumlah='$jumlah', keterangan='$keterangan' WHERE idbarang = '$idb' ");
     
     if($update){
         header('location:konsumable.php');

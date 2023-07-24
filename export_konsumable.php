@@ -2,6 +2,9 @@
 //import koneksi ke database
 require 'cek.php';
 require 'controller/koneksi.php';
+
+
+
 ?>
 <html>
 
@@ -29,6 +32,7 @@ require 'controller/koneksi.php';
                     <tr>
                         <th>No</th>
                         <th>Nama Barang / Alat</th>
+                        <th>Kode Barang</th>
                         <th>Jumlah</th>
                         <th>keterangan</th>
                         
@@ -41,6 +45,7 @@ require 'controller/koneksi.php';
                     $ambilsemuadatabarang = mysqli_query($conn, "SELECT * FROM barang_konsumable");
                     while ($data = mysqli_fetch_array($ambilsemuadatabarang)) {
                         $namabarang = $data['namabarang'];
+                        $kodebarang = $data['kodebarang'];
                         $jumlah = $data['jumlah'];
                         $keterangan = $data['keterangan'];
                         $idb = $data['idbarang'];
@@ -48,6 +53,7 @@ require 'controller/koneksi.php';
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?php echo $namabarang ?></td>
+                            <td><?php echo $kodebarang ?></td>
                             <td><?php echo $jumlah ?></td>
                             <td><?php echo $keterangan ?></td>
                         </tr>

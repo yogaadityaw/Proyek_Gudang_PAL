@@ -30,6 +30,7 @@ require 'controller/koneksi.php';
                     <tr>
                         <th>No</th>
                         <th>Nama Barang / Alat</th>
+                        <th>Kode Barang</th>
                         <th>Jumlah</th>
                         <th>Kondisi Barang Baik</th>
                         <th>Kondisi Barang Rusak</th>
@@ -44,6 +45,7 @@ require 'controller/koneksi.php';
                     $ambilsemuadatabarang = mysqli_query($conn, "SELECT * FROM barang_angkut_apung");
                     while ($data = mysqli_fetch_array($ambilsemuadatabarang)) {
                         $namabarang = $data['namabarang'];
+                        $kodebarang = $data['kodebarang'];
                         $jumlah = $data['jumlah'];
                         $barangbaik = $data['baik'];
                         $barangrusak = $data['rusak'];
@@ -53,6 +55,7 @@ require 'controller/koneksi.php';
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?php echo $namabarang ?></td>
+                            <td><?php echo $kodebarang ?></td>
                             <td><?php echo $jumlah ?></td>
                             <td><?php echo $barangbaik ?></td>
                             <td><?php echo $barangrusak ?></td>

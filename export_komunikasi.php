@@ -31,7 +31,6 @@ require 'controller/koneksi.php';
                         <th>No</th>
                         <th>Nama Barang / Alat</th>
                         <th>No. Seri</th>
-                        <th>Nama Pengebon</th>
                         <th>Jumlah</th>
                         <th>Kondisi Barang Baik</th>
                         <th>Kondisi Barang Rusak</th>
@@ -48,7 +47,6 @@ require 'controller/koneksi.php';
 
                         $namabarang = $data['namabarang'];
                         $noseri = $data['noseri'];
-                        $namapengebon = $data['namapengebon'];
                         $jumlah = $data['jumlah'];
                         $barangbaik = $data['baik'];
                         $barangrusak = $data['rusak'];
@@ -59,7 +57,6 @@ require 'controller/koneksi.php';
                             <td><?= $i++ ?></td>
                             <td><?php echo $namabarang; ?></td>
                             <td><?php echo $noseri; ?></td>
-                            <td><?php echo $namapengebon; ?></td>
                             <td><?php echo $jumlah; ?></td>
                             <td><?php echo $barangbaik; ?></td>
                             <td><?php echo $barangrusak; ?></td>

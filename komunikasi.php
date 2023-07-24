@@ -3,6 +3,17 @@ require 'controller/komunikasi_controller.php';
 require 'cek.php';
 require 'controller/koneksi.php';
 
+$query = "SELECT * FROM komunikasi";
+
+if (isset($_GET['cari'])) {
+    $keyword = $_GET['cari'];
+    // Anda sebaiknya membersihkan input untuk mencegah injeksi SQL
+    // $keyword = mysqli_real_escape_string($conn, $keyword);
+
+    // Ubah query SQL untuk menyertakan filter pencarian
+    $query = "SELECT * FROM komunikasi WHERE namabarang LIKE '%$keyword%' OR noseri LIKE '%$keyword%'";
+};
+
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +85,7 @@ require 'controller/koneksi.php';
         </div>
     </div>
     <br>
+    <br>
     <main>
         <div class="container-fluid px-4">
             <h3 class="mt-4 text-center">DAFTAR ALAT KOMUNIKASI / (HT) DIVISI HARKAN 2023</h3>
@@ -88,6 +100,15 @@ require 'controller/koneksi.php';
                 <a href="export_komunikasi.php" class="btn btn-info">Export Data</a>
                 <br>
                 <br>
+                <form action="komunikasi.php" method="GET">
+                    <div class="input-group mb-3">
+                        <!-- Search bar using Bootstrap -->
+                        <input type="text" value="" class="form-control" placeholder="Cari" name="cari">
+                        <br>
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </div>
+                </form>
+                <br>
                 <div class="card-body">
                     <div class="table table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
@@ -96,7 +117,6 @@ require 'controller/koneksi.php';
                                     <th>No</th>
                                     <th>Nama Barang / Alat</th>
                                     <th>No. Seri</th>
-                                    <th>Nama Pengebon</th>
                                     <th>Jumlah</th>
                                     <th>Kondisi Barang Baik</th>
                                     <th>Kondisi Barang Rusak</th>
@@ -108,12 +128,11 @@ require 'controller/koneksi.php';
 
                                 <?php
                                 $i = 1;
-                                $ambilsemuadatabarang = mysqli_query($conn, "SELECT * FROM komunikasi");
+                                $ambilsemuadatabarang = mysqli_query($conn,$query);
                                 while ($data = mysqli_fetch_array($ambilsemuadatabarang)) {
 
                                     $namabarang = $data['namabarang'];
                                     $noseri = $data['noseri'];
-                                    $namapengebon = $data['namapengebon'];
                                     $jumlah = $data['jumlah'];
                                     $barangbaik = $data['baik'];
                                     $barangrusak = $data['rusak'];
@@ -124,7 +143,6 @@ require 'controller/koneksi.php';
                                         <td><?= $i++ ?></td>
                                         <td><?= $namabarang ?></td>
                                         <td><?= $noseri ?></td>
-                                        <td><?= $namapengebon ?></td>
                                         <td><?= $jumlah ?></td>
                                         <td><?= $barangbaik ?></td>
                                         <td><?= $barangrusak ?></td>
@@ -155,8 +173,6 @@ require 'controller/koneksi.php';
                                                         <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" required>
                                                         <br>
                                                         <input type="text" name="noseri" value="<?= $noseri; ?>" class="form-control form-control-lg" required>
-                                                        <br>
-                                                        <input type="text" name="namapengebon" value="<?= $namapengebon; ?>" class="form-control form-control-lg" required>
                                                         <br>
                                                         <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" required>
                                                         <br>
@@ -237,8 +253,6 @@ require 'controller/koneksi.php';
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang" required>
                         <br>
                         <input type="text" class="form-control form-control-lg" placeholder="Nomor Seri" name="noseri" required>
-                        <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="Nama Pengebon" name="namapengebon" required>
                         <br>
                         <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
                         <br>

@@ -95,12 +95,10 @@ require 'controller/koneksi.php';
                                     <th>Tanggal</th>
                                     <th>Nama Barang</th>
                                     <th>Kode Barang </th>
-                                    <th>Peminjaman</th>
-                                    <th>Unit</th>
-                                    <th>Ketrangan Peminjaman</th>
-                                    <th>Pengembalian</th>
-                                    <th>Unit</th>
-                                    <th>Ketrangan Pengembalian</th>
+                                    <th>Data Peminjam</th>
+                                    <th>Jumlah/Unit</th>
+                                    <th>keadaan barang baik</th>
+                                    <th>Keadaan barang rusak</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>

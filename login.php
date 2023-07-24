@@ -28,6 +28,19 @@ if ((!isset($_SESSION['log']))) {
     header('Location: index.php');
     exit();
 }
+
+if (!$conn) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
+}
+
+//jika belum login
+//session_start();
+if(isset($_SESSION['log'])){
+    
+}else {
+    header('location:login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
