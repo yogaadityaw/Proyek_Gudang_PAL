@@ -2,6 +2,7 @@
 // require 'controller/konsumable_controller.php';
 require 'controller/koneksi.php';
 require 'cek.php';
+require 'controller/transaksi_pinjam_controller.php';
 
 // require 'controller/update_controller.php';
 
@@ -91,7 +92,7 @@ require 'cek.php';
                             <h3 class="text-center font-weight-light my-4">Form Peminjaman</h3>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>NIP Pegawai</label>
@@ -100,7 +101,7 @@ require 'cek.php';
                                 </div>
                                 <div class="form-row">
                                     <label>Pilih Jenis Barang</label>
-                                    <select class="form-control" name="jenisbarang" id="jenisbarang" onchange="loadNamaBarang()">
+                                    <select class="form-control" name="jenisbarang" id="jenisbarang" onchange="loadNamaBarangpinjam()">
                                         <option value="" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === '' ? 'selected' : ''; ?>></option>
                                         <option value="Peralatan Pendukung Produksi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Peralatan Pendukung Produksi" ? 'selected' : ''; ?>>Peralatan Pendukung Produksi</option>
                                         <option value="Alat Komunikasi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Alat Komunikasi' ? 'selected' : ''; ?>>Alat Komunikasi</option>
@@ -142,7 +143,7 @@ require 'cek.php';
                                             </div> -->
                                             <div class="form-group col-md-4">
                                                 <label>Kode Peminjaman</label>
-                                                <input type="text" class="form-control" id="kodepinjam">
+                                                <input type="text" class="form-control" id="kodepinjam" name="kodepinjam">
                                             </div>
                                         </div>
                                         <br>
@@ -154,6 +155,7 @@ require 'cek.php';
             </div>
         </div>
         <br>
+        <!--form pengembalian-->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -162,55 +164,62 @@ require 'cek.php';
                             <h3 class="text-center font-weight-light my-4">Form Pengembalian</h3>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="transaksi_pinjam_controller.php" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Nama Peminjam</label>
-                                        <input type="text" class="form-control" id="namapengebon" placeholder="Nama Peminjam">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>NIP</label>
-                                        <input type="number" class="form-control" id="nip" placeholder="NIP">
+                                        <label>NIP Pegawai</label>
+                                        <input type="number" class="form-control" name="nip" id="nip" placeholder="NIP">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-row">
+                                    <label>Pilih Jenis Barang</label>
+                                    <!-- <select class="form-control" name="jenisbarang_kembali" id="jenisbarang_kembali" onchange="loadNamaBarangkembali()">
+                                        <option value="" <?php echo isset($_POST['jenisbarang_kembali']) && $_POST['jenisbarang_kembali'] === '' ? 'selected' : ''; ?>></option>
+                                        <option value="Peralatan Pendukung Produksi" <?php echo isset($_POST['jenisbarang_kembali']) && $_POST['jenisbarang_kembali'] === "Peralatan Pendukung Produksi" ? 'selected' : ''; ?>>Peralatan Pendukung Produksi</option>
+                                        <option value="Alat Komunikasi" <?php echo isset($_POST['jenisbarang_kembali']) && $_POST['jenisbarang_kembali'] === 'Alat Komunikasi' ? 'selected' : ''; ?>>Alat Komunikasi</option>
+                                        <option value="Barang Konsumable" <?php echo isset($_POST['jenisbarang_kembali']) && $_POST['jenisbarang_kembali'] === 'Barang Konsumable' ? 'selected' : ''; ?>>Barang Konsumable</option>
+                                        <option value="Angkat, Angkut, Alat Apung" <?php echo isset($_POST['jenisbarang_kembali']) && $_POST['jenisbarang_kembali'] === 'Angkat, Angkut, Alat Apung' ? 'selected' : ''; ?>>Angkat, Angkut, Alat Apung</option>
+                                    </select> -->
+                                </div>
+                                <div class="form-row">
                                     <label>Nama Barang</label>
-                                    <input type="text" class="form-control" id="namabarang" placeholder="Nama Barang">
+                                    <select class="form-control" name="namabarang" id="namabarang">
+                                        <!-- Opsi pilihan nama barang akan diisi secara dinamis oleh JavaScript -->
+                                    </select>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-row">
+                                    <label>Nama Barang</label>
+                                    <input type="text" class="form-control" name="namabarang" id="namabarang" placeholder="Nama Barang">
+                                </div> -->
+                                <div class="form-row">
                                     <label>Kode Barang</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Kode Barang">
+                                    <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Jumlah Barang</label>
-                                        <input type="number" class="form-control" id="jumlah" placeholder="Jumlah Barang">
+                                        <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Divisi/PT</label>
-                                            <input type="text" class="form-control" id="divisi" placeholder="Divisi/PT">
-                                        </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label>Tanggal</label>
-                                                <input type="date" class="form-control" id="tanggal" placeholder="Tanggal">
+                                                <label>Tanggal Peminjaman</label>
+                                                <input type="date" class="form-control" name="tanggalpinjam" id="tanggal" placeholder="Tanggal">
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <!-- <div class="form-group col-md-4">
                                                 <label for="inputState">Kondisi Barang</label>
                                                 <select id="inputState" class="form-control">
                                                     <option>Baik</option>
                                                     <option>Buruk</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group col-md-4">
                                                 <label>Kode Peminjaman</label>
                                                 <input type="text" class="form-control" id="kodepinjam">
                                             </div>
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
-
+                                        <button type="submit" class="btn btn-primary" name="pinjam">Pengembalian</button>
                             </form>
                         </div>
                     </div>
@@ -219,15 +228,13 @@ require 'cek.php';
         </div>
     </main>
 </body>
-
-</form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 
 <script>
-    function loadNamaBarang() {
+    function loadNamaBarangpinjam() {
         var jenisbarang = $("#jenisbarang").val();
-
+        // untuk peralatan produksi 
         if (jenisbarang === "Peralatan Pendukung Produksi") {
             // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
             $.ajax({
@@ -252,8 +259,9 @@ require 'cek.php';
                     console.error(error);
                 },
             });
+            //untuk alat komunikasi
         } else if (jenisbarang == "Alat Komunikasi") {
-            // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
+            // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
                 url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
@@ -277,6 +285,56 @@ require 'cek.php';
                 },
             });
 
+        } else if (jenisbarang == "Barang Konsumable") {
+            // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
+            $.ajax({
+                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                method: "POST",
+                data: {
+                    jenisbarang: jenisbarang
+                },
+                success: function(response) {
+                    // Proses respons dari server
+                    var data = JSON.parse(response);
+                    var dropdownNamaBarang = $("#namabarang");
+                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
+
+                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
+                    for (var i = 0; i < data.length; i++) {
+                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Tangani kesalahan jika ada
+                    console.error(error);
+                },
+            });
+
+        } else if (jenisbarang == "Angkat, Angkut, Alat Apung") {
+            // Jika kategori "Angkat, Apung, Alat Apung" dipilih, lakukan permintaan AJAX
+            $.ajax({
+                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                method: "POST",
+                data: {
+                    jenisbarang: jenisbarang
+                },
+                success: function(response) {
+                    // Proses respons dari server
+                    var data = JSON.parse(response);
+                    var dropdownNamaBarang = $("#namabarang");
+                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
+
+                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
+                    for (var i = 0; i < data.length; i++) {
+                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Tangani kesalahan jika ada
+                    console.error(error);
+                },
+            });
+
         } else {
             // Jika kategori lain dipilih, hapus opsi dari dropdown "namabarang"
             var dropdownNamaBarang = $("#namabarang");
@@ -284,6 +342,118 @@ require 'cek.php';
         }
     }
 </script>
+
+<!-- <script>
+    function loadNamaBarangkembali() {
+        var jenisbarang = $("#jenisbarang_kembali").val();
+        // untuk peralatan produksi 
+        if (jenisbarang === "Peralatan Pendukung Produksi") {
+            // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
+            $.ajax({
+                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                method: "POST",
+                data: {
+                    jenisbarang: jenisbarang
+                },
+                success: function(response) {
+                    // Proses respons dari server
+                    var data = JSON.parse(response);
+                    var dropdownNamaBarang = $("#namabarang_kembali");
+                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
+
+                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
+                    for (var i = 0; i < data.length; i++) {
+                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' Kode: ' + data[i].kodebarang));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Tangani kesalahan jika ada
+                    console.error(error);
+                },
+            });
+            //untuk alat komunikasi
+        } else if (jenisbarang == "Alat Komunikasi") {
+            // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
+            $.ajax({
+                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                method: "POST",
+                data: {
+                    jenisbarang: jenisbarang
+                },
+                success: function(response) {
+                    // Proses respons dari server
+                    var data = JSON.parse(response);
+                    var dropdownNamaBarang = $("#namabarang_kembali");
+                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
+
+                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
+                    for (var i = 0; i < data.length; i++) {
+                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' Seri: ' + data[i].noseri));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Tangani kesalahan jika ada
+                    console.error(error);
+                },
+            });
+
+        } else if (jenisbarang == "Barang Konsumable") {
+            // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
+            $.ajax({
+                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                method: "POST",
+                data: {
+                    jenisbarang: jenisbarang
+                },
+                success: function(response) {
+                    // Proses respons dari server
+                    var data = JSON.parse(response);
+                    var dropdownNamaBarang = $("#namabarang_kembali");
+                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
+
+                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
+                    for (var i = 0; i < data.length; i++) {
+                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Tangani kesalahan jika ada
+                    console.error(error);
+                },
+            });
+
+        } else if (jenisbarang == "Angkat, Angkut, Alat Apung") {
+            // Jika kategori "Angkat, Apung, Alat Apung" dipilih, lakukan permintaan AJAX
+            $.ajax({
+                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                method: "POST",
+                data: {
+                    jenisbarang: jenisbarang
+                },
+                success: function(response) {
+                    // Proses respons dari server
+                    var data = JSON.parse(response);
+                    var dropdownNamaBarang = $("#namabarang_kembali");
+                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
+
+                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
+                    for (var i = 0; i < data.length; i++) {
+                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Tangani kesalahan jika ada
+                    console.error(error);
+                },
+            });
+
+        } else {
+            // Jika kategori lain dipilih, hapus opsi dari dropdown "namabarang"
+            var dropdownNamaBarang = $("#namabarang");
+            dropdownNamaBarang.empty();
+        }
+    }
+</script>  -->
 
 </html>
 

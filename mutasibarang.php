@@ -91,13 +91,12 @@ require 'controller/koneksi.php';
                         <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th>kode transaksi</th>
                                     <th>Tanggal</th>
-                                    <th>Nama Barang</th>
-                                    <th>Kode Barang </th>
-                                    <th>Data Peminjam</th>
-                                    <th>Jumlah/Unit</th>
-                                    <th>keadaan barang baik</th>
+                                    <th>Nama Barang & Kode Barang</th>
+                                    <th>Data Pegawai</th>
+                                    <th>Jumlah/Unit Pinjam</th>
+                                    <th>Jumlah barang Kembali</th>
                                     <th>Keadaan barang rusak</th>
                                     <th>Status</th>
                                 </tr>
@@ -111,4 +110,4 @@ require 'controller/koneksi.php';
     <script src="js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-</html>
+</html> 

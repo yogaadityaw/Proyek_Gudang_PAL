@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2023 at 05:01 PM
+-- Generation Time: Jul 26, 2023 at 05:16 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -67,7 +67,7 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `
 (31, 'Jack Hollow 100 Ton', 'JHL100', 1, 1, 0, '-', 1),
 (32, 'Jack Enerpac Manual ', 'JEPMT', 2, 2, 0, '-', 1),
 (33, 'Pompa Enerpac P39 700 bar', 'PEP397', 6, 1, 5, '-', 1),
-(34, 'Pompa Enerpac P80 1500 bar', 'PEP8015', 4, 0, 4, '-', 1),
+(34, 'Pompa Enerpac P80 1500 bar', 'PEP8015', 5, 5, 4, '-', 1),
 (35, 'Pompa Enerparc HPT 1500', 'HPT15', 2, 0, 2, '-', 1),
 (36, 'Pompa SKF', 'PSKF', 2, 1, 1, '-', 1),
 (37, 'Pompa SKF 1500 bar', 'PSKF15', 1, 1, 0, '-', 1),
@@ -172,6 +172,28 @@ CREATE TABLE `keluar_masuk_barang` (
   `jumlahrusak` int(11) NOT NULL,
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `keluar_masuk_barang`
+--
+
+INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `tanggal`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `status`) VALUES
+(1, '0000-00-00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(2, '0000-00-00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(3, '0000-00-00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(4, '0000-00-00', 'HT I COM V80 Seri: 602733378-1', 'DRL01', 1, 2, 2, 'good'),
+(5, '0000-00-00', 'Sabuk 2 Ton Kode: BLT2T', 'BLT2T', 1, 2, 2, 'good'),
+(6, '0000-00-00', 'Sabuk 1 Ton Kode: BLT1T', 'BLT1T', 1, 2, 2, 'good'),
+(7, '0000-00-00', 'Forklift 3 ton kode: FK3T', 'FK3T', 1, 2, 2, 'good'),
+(8, '2023-07-26', 'Forklift 5 Ton kode: FK5T', 'FK5T', 1, 2, 2, 'good'),
+(9, '2023-07-26', 'Lifttruck kode: LFT', 'LFT', 1, 2, 2, 'good'),
+(10, '2023-07-26', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'tes', 1, 2, 2, 'good'),
+(11, '2023-07-26', 'Sabuk 1 Ton Kode: BLT1T', 'BLT1T', 1, 2, 2, 'good'),
+(12, '2023-07-26', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(13, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good'),
+(14, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good'),
+(15, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 2, 2, 2, 'good'),
+(16, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good');
 
 -- --------------------------------------------------------
 
@@ -327,7 +349,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`
