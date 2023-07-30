@@ -2,7 +2,7 @@
 // require 'controller/konsumable_controller.php';
 require 'controller/koneksi.php';
 require 'cek.php';
-require 'controller/transaksi_pinjam_controller.php';
+require 'controller/transaksi_kembali_controller.php';
 
 // require 'controller/update_controller.php';
 
@@ -23,7 +23,7 @@ require 'controller/transaksi_pinjam_controller.php';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body class="sb-nav-fixed bg-primary">
+<body class="sb-nav-fixed bg-danger">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.php">Divisi Harkan</a>
@@ -82,7 +82,7 @@ require 'controller/transaksi_pinjam_controller.php';
     <br>
     <main>
         <div class="container-fluid px-4">
-            <h3 class="mt-4 text-center" style="color: white;">Formulir Peminjaman Barang / Alat</h3>
+            <h3 class="mt-4 text-center" style="color: white;">Formulir Pengembalian Barang / Alat</h3>
         </div>
         <!--form peminjaman-->
         <div class="container">
@@ -90,7 +90,7 @@ require 'controller/transaksi_pinjam_controller.php';
                 <div class="col-lg-7">
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
-                            <h3 class="text-center font-weight-light my-4">Form Peminjaman</h3>
+                            <h3 class="text-center font-weight-light my-4">Form Pengembalian</h3>
                         </div>
                         <div class="card-body">
                             <form method="post">
@@ -126,29 +126,42 @@ require 'controller/transaksi_pinjam_controller.php';
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label>Jumlah Barang</label>
+                                        <label>Jumlah Barang Kembali</label>
                                         <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
                                     </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Jumlah Barang baik</label>
+                                        <input type="number" class="form-control" name="jumlahbaik" id="jumlahbaik" placeholder="Jumlah Barang baik">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Jumlah Barang rusak</label>
+                                        <input type="number" class="form-control" name="jumlahrusak" id="jumlahrusak" placeholder="Jumlah Barang Rusak">
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-row">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Tanggal Peminjaman</label>
-                                                <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
-                                            </div>
-                                            <!-- <div class="form-group col-md-4">
+                                        <div class="form-group col-md-6">
+                                            <label>Tanggal Peminjaman</label>
+                                            <input type="date" class="form-control" name="tanggalkembali" id="tanggalkembali " placeholder="Tanggal">
+                                        </div>
+                                        <!-- <div class="form-group col-md-4">
                                                 <label for="inputState">Kondisi Barang</label>
                                                 <select id="inputState" class="form-control">
                                                     <option>Baik</option>
                                                     <option>Buruk</option>
                                                 </select>
                                             </div> -->
-                                            <div class="form-group col-md-4">
-                                                <label>Kode Peminjaman</label>
-                                                <input type="text" class="form-control" id="kodepinjam" name="kodepinjam">
-                                            </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Kode Peminjaman</label>
+                                            <input type="text" class="form-control" id="kodepinjam" name="kodepinjam">
                                         </div>
-                                        <br>
-                                        <button type="submit" class="btn btn-primary" name="pinjam">Pinjam</button>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary" name="kembali">Kembalikan</button>
                             </form>
                         </div>
                     </div>
@@ -156,11 +169,13 @@ require 'controller/transaksi_pinjam_controller.php';
             </div>
         </div>
         <br>
-        
+
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
+
+
 
 <script>
     function loadNamaBarangpinjam() {
@@ -273,6 +288,11 @@ require 'controller/transaksi_pinjam_controller.php';
         }
     }
 </script>
+
+
+
+
+
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2023 at 05:16 PM
+-- Generation Time: Jul 30, 2023 at 06:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,7 +52,7 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `
 (16, 'Sabuk 1 Ton', 'BLT1T', 2, 2, 0, '-', 1),
 (17, 'Sabuk 2 Ton', 'BLT2T', 2, 2, 0, '-', 1),
 (18, 'Sabuk 3 Ton', 'BLT3T', 6, 6, 0, '-', 1),
-(19, 'Sabuk 5 Ton', 'BLT5T', 11, 11, 0, '-', 1),
+(19, 'Sabuk 5 Ton', 'BLT5T', 11, 10, 1, '-', 1),
 (20, 'Sabuk 10 Ton', 'BLT10T', 4, 4, 0, '-', 1),
 (21, 'Gerinda 4 inch (Makita)', 'GRD4', 9, 9, 0, '-', 1),
 (22, 'Gerinda 4 inch (Nitori)', 'GRD4', 1, 1, 0, '-', 1),
@@ -67,7 +67,7 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `
 (31, 'Jack Hollow 100 Ton', 'JHL100', 1, 1, 0, '-', 1),
 (32, 'Jack Enerpac Manual ', 'JEPMT', 2, 2, 0, '-', 1),
 (33, 'Pompa Enerpac P39 700 bar', 'PEP397', 6, 1, 5, '-', 1),
-(34, 'Pompa Enerpac P80 1500 bar', 'PEP8015', 5, 5, 4, '-', 1),
+(34, 'Pompa Enerpac P80 1500 bar', 'PEP8015', 2, 2, 4, '-', 1),
 (35, 'Pompa Enerparc HPT 1500', 'HPT15', 2, 0, 2, '-', 1),
 (36, 'Pompa SKF', 'PSKF', 2, 1, 1, '-', 1),
 (37, 'Pompa SKF 1500 bar', 'PSKF15', 1, 1, 0, '-', 1),
@@ -105,7 +105,7 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 (13, 'Forklift 3 ton', 'FK3T', 1, 1, 0, '-', 4),
 (14, 'Forklift 5 Ton', 'FK5T', 1, 1, 0, '-', 4),
 (15, 'Lifttruck', 'LFT', 1, 0, 1, '-', 4),
-(16, 'Telescopic', 'TLSC', 2, 1, 1, '-', 4),
+(16, 'Telescopic', 'TLSC', 1, 0, 1, '-', 4),
 (17, 'TD Muria', 'TDMURIA', 1, 0, 1, '-', 4),
 (18, 'RB Jepang 50 Ton', 'RBJ50T', 1, 0, 1, '-', 4),
 (19, 'RB Rusia 50 Ton', 'RBR50T', 1, 0, 1, '-', 4),
@@ -165,6 +165,7 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 CREATE TABLE `keluar_masuk_barang` (
   `idtransaksi` int(11) NOT NULL,
   `tanggal` date NOT NULL DEFAULT current_timestamp(),
+  `tanggal kembali` date NOT NULL DEFAULT current_timestamp(),
   `namabarang` varchar(200) NOT NULL,
   `kodebarang` varchar(200) NOT NULL,
   `jumlahpinjam` int(11) NOT NULL,
@@ -177,23 +178,54 @@ CREATE TABLE `keluar_masuk_barang` (
 -- Dumping data for table `keluar_masuk_barang`
 --
 
-INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `tanggal`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `status`) VALUES
-(1, '0000-00-00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(2, '0000-00-00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(3, '0000-00-00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(4, '0000-00-00', 'HT I COM V80 Seri: 602733378-1', 'DRL01', 1, 2, 2, 'good'),
-(5, '0000-00-00', 'Sabuk 2 Ton Kode: BLT2T', 'BLT2T', 1, 2, 2, 'good'),
-(6, '0000-00-00', 'Sabuk 1 Ton Kode: BLT1T', 'BLT1T', 1, 2, 2, 'good'),
-(7, '0000-00-00', 'Forklift 3 ton kode: FK3T', 'FK3T', 1, 2, 2, 'good'),
-(8, '2023-07-26', 'Forklift 5 Ton kode: FK5T', 'FK5T', 1, 2, 2, 'good'),
-(9, '2023-07-26', 'Lifttruck kode: LFT', 'LFT', 1, 2, 2, 'good'),
-(10, '2023-07-26', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'tes', 1, 2, 2, 'good'),
-(11, '2023-07-26', 'Sabuk 1 Ton Kode: BLT1T', 'BLT1T', 1, 2, 2, 'good'),
-(12, '2023-07-26', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(13, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good'),
-(14, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good'),
-(15, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 2, 2, 2, 'good'),
-(16, '2023-07-26', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good');
+INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `tanggal`, `tanggal kembali`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `status`) VALUES
+(1, '0000-00-00', '2023-07-27', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(2, '0000-00-00', '2023-07-27', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(3, '0000-00-00', '2023-07-27', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(4, '0000-00-00', '2023-07-27', 'HT I COM V80 Seri: 602733378-1', 'DRL01', 1, 2, 2, 'good'),
+(5, '0000-00-00', '2023-07-27', 'Sabuk 2 Ton Kode: BLT2T', 'BLT2T', 1, 2, 2, 'good'),
+(6, '0000-00-00', '2023-07-27', 'Sabuk 1 Ton Kode: BLT1T', 'BLT1T', 1, 2, 2, 'good'),
+(7, '0000-00-00', '2023-07-27', 'Forklift 3 ton kode: FK3T', 'FK3T', 1, 2, 2, 'good'),
+(8, '2023-07-26', '2023-07-27', 'Forklift 5 Ton kode: FK5T', 'FK5T', 1, 2, 2, 'good'),
+(9, '2023-07-26', '2023-07-27', 'Lifttruck kode: LFT', 'LFT', 1, 2, 2, 'good'),
+(10, '2023-07-26', '2023-07-27', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'tes', 1, 2, 2, 'good'),
+(11, '2023-07-26', '2023-07-27', 'Sabuk 1 Ton Kode: BLT1T', 'BLT1T', 1, 2, 2, 'good'),
+(12, '2023-07-26', '2023-07-27', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(13, '2023-07-26', '2023-07-27', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good'),
+(14, '2023-07-26', '2023-07-27', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good'),
+(15, '2023-07-26', '2023-07-27', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 2, 2, 2, 'good'),
+(16, '2023-07-26', '2023-07-27', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 5, 2, 2, 'good'),
+(18, '2023-07-27', '2023-07-27', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
+(19, '2023-07-27', '2023-07-27', 'Telescopic kode: TLSC', 'TLSC', 1, 2, 2, 'good'),
+(20, '2023-07-27', '2023-07-27', 'Pompa Enerpac P80 1500 bar Kode: PEP8015', 'PEP8015', 3, 2, 2, 'good'),
+(21, '2023-07-27', '2023-07-27', 'Sabuk 5 Ton Kode: BLT5T', 'BLT5T', 1, 2, 2, 'good'),
+(22, '2023-07-27', '2023-07-27', 'Sabuk 5 Ton Kode: BLT5T', 'BLT5T', 1, 0, 1, ''),
+(23, '2023-07-27', '2023-07-27', 'Sabuk 5 Ton Kode: BLT5T', 'BLT5T', 1, 0, 1, ''),
+(24, '2023-07-27', '2023-07-27', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(25, '2023-07-27', '2023-07-27', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 0, 1, ''),
+(26, '2023-07-27', '2023-07-27', 'HT I COM V80 Seri: 602733378-1', '602733347-1', 1, 2, 2, 'good'),
+(27, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(28, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
+(29, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
+(30, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(31, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 1, ''),
+(32, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 1, ''),
+(33, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 1, ''),
+(34, '2023-07-27', '2023-07-27', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 2, ''),
+(35, '2023-07-28', '2023-07-28', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 0, 1, ''),
+(36, '2023-07-28', '2023-07-28', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(37, '2023-07-28', '2023-07-28', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(38, '2023-07-28', '2023-07-28', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
+(39, '2023-07-28', '2023-07-28', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 1, ''),
+(40, '2023-07-28', '2023-07-28', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 0, 0, ''),
+(41, '2023-07-28', '2023-07-28', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(42, '2023-07-28', '2023-07-28', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(43, '2023-07-28', '2023-07-28', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(44, '2023-07-28', '2023-07-28', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(45, '2023-07-28', '2023-07-28', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 0, 0, ''),
+(46, '2023-07-28', '2023-07-28', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
+(47, '2023-07-28', '2023-07-28', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
+(48, '2023-07-28', '2023-07-28', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good');
 
 -- --------------------------------------------------------
 
@@ -218,7 +250,7 @@ CREATE TABLE `komunikasi` (
 
 INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, `rusak`, `keterangan`, `kategori_id`) VALUES
 (8, 'HT I COM V80', '602733378-1', 1, 1, 0, '-', 2),
-(9, 'HT I COM V80', '602733347-1', 1, 1, 0, '-', 2);
+(9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2);
 
 -- --------------------------------------------------------
 
@@ -349,7 +381,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`

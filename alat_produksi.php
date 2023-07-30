@@ -75,7 +75,8 @@ if (isset($_GET['cari'])) {
                                 <a class="nav-link" href="komunikasi.php">Alat Komunikasi/(HT)</a>
                                 <a class="nav-link" href="konsumable.php">Daftar Barang Konsumable</a>
                                 <a class="nav-link" href="angkut_apung.php">Daftar angkat angkut dan alat apung</a>
-                                <a class="nav-link" href="transaksional.php">Form Transaksional Barang</a>
+                                <a class="nav-link" href="transaksional.php">Form Peminjaman Barang</a>
+                                <a class="nav-link" href="transaksional_kembali.php">Form Pengembalian Barang</a>
                                 <a class="nav-link" href="mutasibarang.php">List Daftar Mutasi Barang</a>
                             </nav>
                         </div>
