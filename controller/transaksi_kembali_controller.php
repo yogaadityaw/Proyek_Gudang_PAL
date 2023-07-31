@@ -19,10 +19,10 @@ if (isset($_POST['kembali']) != null) {
     $kodepinjam = $_POST['kodepinjam'];
 
 
-    //INI DUMMY
-    $jumlahkembali = 2;
-    $jumlahrusak = 2;
-    $status = "good";
+    // //INI DUMMY
+    // $jumlahkembali = 2;
+    // $jumlahrusak = 2;
+    // $status = "good";
 
 
     // // !Tambahkan validasi untuk data yang kosong
@@ -175,8 +175,8 @@ if (isset($_POST['kembali']) != null) {
 }
 
 
-
-    $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (tanggal, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$tanggalpinjam', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
+    $tanggalkembali=$_POST['tanggalkembali'];
+    $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (tanggalkembali, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
     if ($addtotable) {
         header('location: mutasibarang.php');
         session_write_close();

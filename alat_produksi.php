@@ -108,12 +108,10 @@ if (isset($_GET['cari'])) {
                     <div class="input-group mb-3">
                         <!-- Search bar using Bootstrap -->
                         <input type="text" value="" class="form-control" placeholder="Cari" name="cari">
-                        <br>
                         <button typ="submit" class="btn btn-primary" >Cari</button>
                     </div>
                 </form>
 
-                <br>
                 <br>
                 <div class="card-body">
                     <div class="table table-responsive">
@@ -148,6 +146,7 @@ if (isset($_GET['cari'])) {
                                     $barangrusak = $data['rusak'];
                                     $keterangan = $data['keterangan'];
                                     $idb = $data['idbarang'];
+                                    // $kategori_id = $kategori_id['kategori_id'];
                                 ?>
                                     <tr>
                                         <td><?= $i++ ?></td>
@@ -193,6 +192,7 @@ if (isset($_GET['cari'])) {
                                                         <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" required>
                                                         <br>
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
+                                                       
                                                     </div>
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">

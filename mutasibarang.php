@@ -82,32 +82,34 @@ require 'controller/koneksi.php';
         </div>
 
         <div class="container -fluid">
-        <a href="export_mutasibarang.php" class="btn btn-info">Export Data</a>
+            <a href="export_mutasibarang.php" class="btn btn-info">Export Data</a>
 
 
-                <br>
-                <br>
-                <div class="card-body">
-                    <div class="table table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>kode transaksi</th>
-                                    <th>Tanggal</th>
-                                    <th>Nama Barang & Kode Barang</th>
-                                    <th>Data Pegawai</th>
-                                    <th>Jumlah/Unit Pinjam</th>
-                                    <th>Jumlah barang Kembali</th>
-                                    <th>Keadaan barang rusak</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        </table>
+            <br>
+            <br>
+            <div class="card-body">
+                <div class="table table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>kode transaksi</th>
+                                <th>Nama Barang & Kode Barang</th>
+                                <th>NIP Pegawai</th>
+                                <th>Nama Pegawai</th>
+                                <th>Biro/Bengkel</th>
+                                <th>Jumlah/Unit Pinjam</th>
+                                <th>Jumlah barang Kembali</th>
+                                <th>Jumlah barang rusak</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    </table>
 
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-</html> 
+</html>

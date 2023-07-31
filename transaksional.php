@@ -132,7 +132,7 @@ require 'controller/transaksi_pinjam_controller.php';
                                     <div class="form-row">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label>Tanggal Peminjaman</label>
+                                                <label for=tanggal>Tanggal Peminjaman</label>
                                                 <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
                                             </div>
                                             <!-- <div class="form-group col-md-4">

@@ -1,20 +1,19 @@
 <?php
 require 'controller/koneksi.php';
-
+require 'get_kategori.php';
 //start session
-session_start();
+
 // menambah barang baru
 
     if(isset($_POST['addnewbarangproduksi'])){
         $namabarang = $_POST['namabarang'];
         $kodebarang = $_POST['kodebarang'];
-        $bengkel = $_POST['bengkel'];
         $jumlah = $_POST['jumlah'];
         $barangbaik = $_POST['barangbaik'];
         $barangrusak = $_POST['barangrusak'];
         $keterangan = $_POST['keterangan'];
 
-        $addtotable = mysqli_query($conn,"INSERT INTO alat_produksi (namabarang, kodebarang, bengkel, jumlah, baik, rusak, keterangan) VALUES ('$namabarang', '$kodebarang', '$bengkel', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan')");
+        $addtotable = mysqli_query($conn,"INSERT INTO alat_produksi (namabarang, kodebarang, jumlah, baik, rusak, keterangan,) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan')");
 
             if($addtotable){
             header('Location: alat_produksi.php');
