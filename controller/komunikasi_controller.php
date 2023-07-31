@@ -14,7 +14,7 @@ session_start();
         $keterangan = $_POST['keterangan'];
         
     if($jumlah>=$barangbaik+$barangrusak){ // dungsi untuk cek inputan
-        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, jumlah, baik, rusak, keterangan) VALUES ('$namabarang', '$noseri', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan')");
+        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, jumlah, baik, rusak, keterangan, kategori_id) VALUES ('$namabarang', '$noseri', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan', 2)");
     }
     else{ // fungsi untuk cek inputan
         session_write_close();

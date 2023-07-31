@@ -1,7 +1,7 @@
 <?php
 // untuk peminjaman barang
 // Ambil data nama barang berdasarkan kategori "Peralatan Pendukung Produksi"
-require 'controller/koneksi.php';
+require '../controller/koneksi.php';
 
 // Jenis Barang Peralatan Pendukung Produksi
 if (isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Peralatan Pendukung Produksi") {

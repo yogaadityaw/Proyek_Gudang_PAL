@@ -11,7 +11,7 @@ if (isset($_POST['addnewbarangangkut'])) {
     $keterangan = $_POST['keterangan'];
     
 
-    $addtotable = mysqli_query($conn, "INSERT INTO barang_angkut_apung (namabarang, kodebarang, jumlah, baik, rusak, keterangan) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan')");
+    $addtotable = mysqli_query($conn, "INSERT INTO barang_angkut_apung (namabarang, kodebarang, jumlah, baik, rusak, keterangan, kategori_id) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan', 4)");
     if ($addtotable) {
         header('location: angkut_apung.php');
         session_write_close();

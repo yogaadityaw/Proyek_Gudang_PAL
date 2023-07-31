@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 02:10 PM
+-- Generation Time: Jul 31, 2023 at 05:53 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `alat_produksi` (
 --
 
 INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `keterangan`, `kategori_id`) VALUES
-(10, 'Bor Magnet', 'DRL01', 5, 4, 1, '-', 1),
+(10, 'Bor Magnet', 'DRL01', 1, 0, 1, '-', 1),
 (12, 'Hand Bor (Makita)', 'HDRL02', 2, 2, 0, '-', 1),
 (13, 'Vacum Test', 'VT01', 1, 1, 0, '-', 1),
 (14, 'Load Cell 5 Ton', 'LC5T', 2, 1, 1, '-', 1),
@@ -77,7 +77,8 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `
 (42, 'Tackal 1 Ton (Chain Block)', 'TCK1T', 3, 3, 0, '-', 1),
 (43, 'Tackal 3 Ton (Chain Block)', 'TCK3T', 19, 19, 0, '-', 1),
 (44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', 22, 22, 0, '-', 1),
-(45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', 7, 7, 0, '-', 1);
+(45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', 7, 7, 0, '-', 1),
+(49, 'ceki ', 'cekiceki', 1, 1, 0, '-', 1);
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,8 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 (19, 'RB Rusia 50 Ton', 'RBR50T', 1, 0, 1, '-', 4),
 (20, 'Tongkang 04', 'TKG04', 2, 1, 3, '-', 4),
 (21, 'Tongkang 205', 'TKG205', 1, 0, 1, '-', 4),
-(22, 'Kapal LCM V', 'KLCM5', 1, 0, 1, '-', 4);
+(22, 'Kapal LCM V', 'KLCM5', 1, 0, 1, '-', 4),
+(23, 'cek', 'cekk1', 1, 1, 0, '-', 4);
 
 -- --------------------------------------------------------
 
@@ -132,7 +134,8 @@ CREATE TABLE `barang_konsumable` (
 --
 
 INSERT INTO `barang_konsumable` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `keterangan`, `kategori_id`) VALUES
-(48, 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 2, '-', 3);
+(48, 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 2, '-', 3),
+(50, 'cek', 'cekk', 1, '-', 3);
 
 -- --------------------------------------------------------
 
@@ -163,6 +166,7 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 
 CREATE TABLE `keluar_masuk_barang` (
   `idtransaksi` int(11) NOT NULL,
+  `kodetransaksi` varchar(200) NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp(),
   `tanggalkembali` timestamp NOT NULL DEFAULT current_timestamp(),
   `namabarang` varchar(200) NOT NULL,
@@ -177,35 +181,42 @@ CREATE TABLE `keluar_masuk_barang` (
 -- Dumping data for table `keluar_masuk_barang`
 --
 
-INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `tanggal`, `tanggalkembali`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `status`) VALUES
-(27, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
-(28, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
-(29, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
-(30, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
-(31, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 1, ''),
-(32, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 1, ''),
-(33, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 1, ''),
-(34, '2023-07-26 17:00:00', '2023-07-26 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 2, ''),
-(35, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 0, 1, ''),
-(36, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
-(37, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
-(38, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
-(39, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 1, ''),
-(40, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 0, 0, ''),
-(41, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
-(42, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
-(43, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
-(44, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
-(45, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 0, 0, ''),
-(46, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
-(47, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
-(48, '2023-07-27 17:00:00', '2023-07-27 17:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
-(49, '2023-07-29 17:00:00', '2023-07-29 17:00:00', 'Tongkang 04 kode: TKG04', 'TKG04', 1, 2, 2, 'good'),
-(50, '2023-07-30 17:00:00', '2023-07-30 17:00:00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(55, '2023-07-31 05:58:26', '2023-07-30 17:00:00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(56, '2023-07-31 06:02:19', '2023-07-30 17:00:00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(57, '2023-07-30 17:00:00', '2023-07-31 07:03:24', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
-(58, '2023-07-31 07:04:52', '2023-07-30 17:00:00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 0, 1, '');
+INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `status`) VALUES
+(27, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(28, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
+(29, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
+(30, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(31, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 1, ''),
+(32, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 1, ''),
+(33, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 1, ''),
+(34, '0', '2023-07-26 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 2, 0, 2, ''),
+(35, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 0, 1, ''),
+(36, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(37, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 2, 2, 'good'),
+(38, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 0, ''),
+(39, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'Load Cell 5 Ton Kode: LC5T', 'LC5T', 1, 0, 1, ''),
+(40, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 0, 0, ''),
+(41, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(42, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(43, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(44, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 2, 2, 'good'),
+(45, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'HT I COM V80 Seri: 602733347-1', '602733347-1', 1, 0, 0, ''),
+(46, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
+(47, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
+(48, '0', '2023-07-27 17:00:00', '0000-00-00 00:00:00', 'MCCB 630A MERK SCHNEIDER kode: MCCB630A', 'MCCB630A', 1, 2, 2, 'good'),
+(49, '0', '2023-07-29 17:00:00', '0000-00-00 00:00:00', 'Tongkang 04 kode: TKG04', 'TKG04', 1, 2, 2, 'good'),
+(50, '0', '2023-07-30 17:00:00', '0000-00-00 00:00:00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 2, 2, 'good'),
+(60, '0', '2023-07-31 13:24:29', '0000-00-00 00:00:00', 'Bor Magnet Kode: DRL01', 'DRL01', 1, 0, 0, ''),
+(61, '0', '2023-07-30 17:00:00', '2023-07-31 14:32:13', 'Forklift 5 Ton', 'FK5T', 1, 2, 2, 'good'),
+(62, '0', '2023-07-30 17:00:00', '2023-07-31 14:37:38', 'Forklift 5 Ton', 'FK5T', 1, 2, 2, 'good'),
+(63, '0', '2023-07-30 17:00:00', '0000-00-00 00:00:00', 'Forklift 5 Ton', 'FK5T', 1, 0, 0, 'good'),
+(64, '0', '2023-07-30 17:00:00', '0000-00-00 00:00:00', 'Forklift 5 Ton', 'FK5T', 1, 0, 0, 'good'),
+(65, '0', '2023-07-31 14:52:02', '0000-00-00 00:00:00', 'Forklift 5 Ton', 'FK5T', 1, 0, 0, 'good'),
+(66, '', '2023-07-31 15:20:16', '0000-00-00 00:00:00', 'Forklift 5 Ton', 'FK5T', 1, 0, 0, 'Belum kembali'),
+(67, '', '2023-07-31 15:24:18', '0000-00-00 00:00:00', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Belum kembali'),
+(68, '0', '2023-07-31 15:27:06', '0000-00-00 00:00:00', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Belum kembali'),
+(69, '0', '2023-07-31 15:47:04', '0000-00-00 00:00:00', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Belum kembali'),
+(70, 'PJ1', '2023-07-31 15:49:36', '0000-00-00 00:00:00', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Belum kembali');
 
 -- --------------------------------------------------------
 
@@ -229,8 +240,9 @@ CREATE TABLE `komunikasi` (
 --
 
 INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, `rusak`, `keterangan`, `kategori_id`) VALUES
-(8, 'HT I COM V80', '602733378-1', 1, 1, 0, '-', 2),
-(9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2);
+(8, 'HT I COM V80', '602733378-1', 3, 3, 0, '-', 2),
+(9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2),
+(12, 'ceki', 'cekcek', 1, 1, 0, '-', 2);
 
 -- --------------------------------------------------------
 
@@ -338,19 +350,19 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `alat_produksi`
 --
 ALTER TABLE `alat_produksi`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `barang_angkut_apung`
 --
 ALTER TABLE `barang_angkut_apung`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `barang_konsumable`
 --
 ALTER TABLE `barang_konsumable`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -362,13 +374,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`
 --
 ALTER TABLE `komunikasi`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `login`

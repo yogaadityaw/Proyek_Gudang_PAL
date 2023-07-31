@@ -184,7 +184,7 @@ require 'controller/transaksi_kembali_controller.php';
         if (jenisbarang === "Peralatan Pendukung Produksi") {
             // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -209,7 +209,7 @@ require 'controller/transaksi_kembali_controller.php';
         } else if (jenisbarang == "Alat Komunikasi") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -234,7 +234,7 @@ require 'controller/transaksi_kembali_controller.php';
         } else if (jenisbarang == "Barang Konsumable") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -259,7 +259,7 @@ require 'controller/transaksi_kembali_controller.php';
         } else if (jenisbarang == "Angkat, Angkut, Alat Apung") {
             // Jika kategori "Angkat, Apung, Alat Apung" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang

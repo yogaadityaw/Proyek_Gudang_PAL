@@ -17,6 +17,7 @@ require 'cek.php';
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="/assets/img/logo_pal.png">
 </head>
 
 <body class="sb-nav-fixed">
@@ -93,12 +94,11 @@ require 'cek.php';
         </div>
     </div>
     </div>
-    <div class="sb-sidenav-footer">
-        <div class="small">Login Sebagai:</div>
-        Harkan
-    </div>
+
     </nav>
     </div>
+    <br>
+    <br>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">

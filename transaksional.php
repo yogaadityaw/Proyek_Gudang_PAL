@@ -121,8 +121,8 @@ require 'controller/transaksi_pinjam_controller.php';
                                     <input type="text" class="form-control" name="namabarang" id="namabarang" placeholder="Nama Barang">
                                 </div> -->
                                 <div class="form-row">
-                                    <label>Kode Barang</label>
-                                    <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang">
+                                    <label for="disabledTextInput">Kode Barang</label>
+                                    <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang" readonly style="background-color: #e9ecef;">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -130,25 +130,25 @@ require 'controller/transaksi_pinjam_controller.php';
                                         <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-row">
+                                        <!-- <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for=tanggal>Tanggal Peminjaman</label>
                                                 <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
-                                            </div>
-                                            <!-- <div class="form-group col-md-4">
+                                            </div> -->
+                                        <!-- <div class="form-group col-md-4">
                                                 <label for="inputState">Kondisi Barang</label>
                                                 <select id="inputState" class="form-control">
                                                     <option>Baik</option>
                                                     <option>Buruk</option>
                                                 </select>
                                             </div> -->
-                                            <div class="form-group col-md-4">
-                                                <label>Kode Peminjaman</label>
-                                                <input type="text" class="form-control" id="kodepinjam" name="kodepinjam">
-                                            </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Kode Peminjaman</label>
+                                            <input type="text" class="form-control" id="kodepinjam" name="kodepinjam" readonly style="background-color: #e9ecef;">
                                         </div>
-                                        <br>
-                                        <button type="submit" class="btn btn-primary" name="pinjam">Pinjam</button>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary" name="pinjam">Pinjam</button>
                             </form>
                         </div>
                     </div>
@@ -156,7 +156,7 @@ require 'controller/transaksi_pinjam_controller.php';
             </div>
         </div>
         <br>
-        
+
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -169,7 +169,7 @@ require 'controller/transaksi_pinjam_controller.php';
         if (jenisbarang === "Peralatan Pendukung Produksi") {
             // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -182,7 +182,7 @@ require 'controller/transaksi_pinjam_controller.php';
 
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' Kode: ' + data[i].kodebarang));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -194,7 +194,7 @@ require 'controller/transaksi_pinjam_controller.php';
         } else if (jenisbarang == "Alat Komunikasi") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -207,7 +207,7 @@ require 'controller/transaksi_pinjam_controller.php';
 
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' Seri: ' + data[i].noseri));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -219,7 +219,7 @@ require 'controller/transaksi_pinjam_controller.php';
         } else if (jenisbarang == "Barang Konsumable") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -232,7 +232,7 @@ require 'controller/transaksi_pinjam_controller.php';
 
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -244,7 +244,7 @@ require 'controller/transaksi_pinjam_controller.php';
         } else if (jenisbarang == "Angkat, Angkut, Alat Apung") {
             // Jika kategori "Angkat, Apung, Alat Apung" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -257,7 +257,7 @@ require 'controller/transaksi_pinjam_controller.php';
 
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -272,6 +272,59 @@ require 'controller/transaksi_pinjam_controller.php';
             dropdownNamaBarang.empty();
         }
     }
+
+    //readn only kode barang
+    function setKodeBarang() {
+        var jenisbarang = $("#jenisbarang").val();
+        var namabarang = $("#namabarang").val();
+
+        // Lakukan permintaan AJAX untuk mendapatkan kode barang berdasarkan jenis barang dan nama barang
+        $.ajax({
+            url: "utils/get_kodebarang.php", // Ganti dengan URL yang mengambil kode barang dari server berdasarkan jenis dan nama barang
+            method: "POST",
+            data: {
+                jenisbarang: jenisbarang,
+                namabarang: namabarang
+            },
+            success: function(response) {
+                // Proses respons dari server
+                var kodebarang = response; // Anggap respons dari server adalah kode barang yang sesuai
+                $("#kodebarang").val(kodebarang); // Isi nilai input kode barang dengan kode barang yang didapatkan
+                console.log(kodebarang);
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan jika ada
+                console.error(error);
+            },
+        });
+    }
+
+    // Panggil fungsi setKodeBarang() ketika pilihan nama barang berubah
+    $("#namabarang").on("change", function() {
+        setKodeBarang();
+    });
+
+    // *Get kode transaksi
+    function getNextKodeTransaksi() {
+        $.ajax({
+            url: "utils/get_kodetransaksi.php", // Ganti dengan URL yang mengambil nomor terakhir dari kolom kodetransaksi
+            method: "GET",
+            success: function(response) {
+                // Proses respons dari server (nomor berikutnya)
+                var nextKodeTransaksi = response; // Konversi menjadi angka
+                $("#kodepinjam").val(nextKodeTransaksi); // Isi nilai input kodepinjam dengan nomor berikutnya
+            },
+            error: function(xhr, status, error) {
+                // Tangani kesalahan jika ada
+                console.error(error);
+            },
+        });
+    }
+
+    // Panggil fungsi untuk mengisi input kodepinjam saat halaman dimuat
+    $(document).ready(function() {
+        getNextKodeTransaksi();
+    });
 </script>
 
 

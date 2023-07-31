@@ -15,7 +15,7 @@ session_start();
         $jumlah = $_POST['jumlah'];
         $keterangan = $_POST['keterangan'];
     
-        $addtotable = mysqli_query($conn,"INSERT INTO barang_konsumable (namabarang, kodebarang, jumlah, keterangan) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$keterangan')");
+        $addtotable = mysqli_query($conn,"INSERT INTO barang_konsumable (namabarang, kodebarang, jumlah, keterangan, kategori_id) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$keterangan', 3)");
         if($addtotable){
             header('location: konsumable.php');
             session_write_close();

@@ -12,14 +12,13 @@ if (isset($_POST['pinjam']) != null) {
     $noseri = $_POST['kodebarang'];
 
     $jumlah = $_POST['jumlah'];
-    $tanggalpinjam = date('Y-m-d');
+    $tanggalpinjam = date('Y-m-d H:i:s');
+    $tanggalkembali = NULL; 
     $kodepinjam = $_POST['kodepinjam'];
 
-
-    // INI DUMMY
-    $jumlahkembali = 2;
-    $jumlahrusak = 2;
-    $status = "good";
+    $jumlahkembali = 0;
+    $jumlahrusak = 0;
+    $status = "Belum kembali";
 
 
     // // // !Tambahkan validasi untuk data yang kosong
@@ -189,7 +188,7 @@ if (isset($_POST['pinjam']) != null) {
     }
 
 
-    $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (tanggal, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$tanggalpinjam', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
+    $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$kodepinjam', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
     if ($addtotable) {
         header('location: mutasibarang.php');
         session_write_close();

@@ -101,6 +101,7 @@ require 'controller/koneksi.php';
                                 <th>Jumlah/Unit Pinjam</th>
                                 <th>Jumlah barang Kembali</th>
                                 <th>Jumlah barang rusak</th>
+                                <th>Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>

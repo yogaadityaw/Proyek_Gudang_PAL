@@ -188,3 +188,8 @@ if (isset($_POST['kembali']) != null) {
 
 
 // pisahkan pinjam dan pengembalian
+
+
+// PEMINJAMAN -> ID_PINJAM = TANGGAL KAPAN DIPINJAM, TANGGAL KEMBALINE = 0
+
+// KEMBALI -> ID_PINJAM = QUERY: INSERT INTO TABEL_TRANSAKSI (TANGGAL KEMBALI) VALUES (AMBIL FUNGSI DATE{$tanggalpinjam = date('Y-m-d');}) WHERE IDPINJAM DI DATABASE = $IDPINJAM
