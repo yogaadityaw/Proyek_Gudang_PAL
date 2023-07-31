@@ -1,6 +1,4 @@
 <?php
-    
-session_start();
     $hostname = "localhost";
     $user = "root";
     $password = "";
@@ -9,7 +7,7 @@ session_start();
 
     $conn = mysqli_connect($hostname, $user, $password, $database);
 
-  
-    
-
+    if (!$conn) {
+        die("Koneksi database gagal: " . mysqli_connect_error());
+    }
 ?>

@@ -1,7 +1,7 @@
 <?php
 require 'controller/koneksi.php';
 require 'get_kategori.php';
-//start session
+session_start();
 
 // menambah barang baru
 

@@ -1,7 +1,7 @@
 <?php
 require 'controller/koneksi.php';
 require 'cek.php';
-require 'logout.php';
+// require 'logout.php';
 ?>
 
 <!DOCTYPE html>
