@@ -172,17 +172,23 @@ if (isset($_GET['cari'])) {
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" required>
+                                                        <label>Nama Barang</label>
+                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" placeholder="Nama Barang" required>
                                                         <br>
-                                                        <input type="text" name="kodebarang" value="<?= $kodebarang; ?>" class="form-control form-control-lg" required>
+                                                        <label>Kode Barang</label>
+                                                        <input type="text" name="kodebarang" value="<?= $kodebarang; ?>" class="form-control form-control-lg" placeholder="Kode Barang" required>
                                                         <br>
-                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" required>
+                                                        <label>Jumlah</label>
+                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah" required>
                                                         <br>
-                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" required>
+                                                        <label>Barang Kondisi Baik</label>
+                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" placeholder="Barang Kondisi Baik" required>
                                                         <br>
-                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" required>
+                                                        <label>Barang Kondisi Rusak</label>
+                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" placeholder="Barang Kondisi Rusak" required>
                                                         <br>
-                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" required>
+                                                        <label>Keterangan</label>
+                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" placeholder="Keterangan" required>
                                                         <br>
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
                                                     </div>

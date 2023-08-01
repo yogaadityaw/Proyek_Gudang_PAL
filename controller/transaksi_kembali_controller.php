@@ -176,6 +176,7 @@ if (isset($_POST['kembali']) != null) {
 
 
     $tanggalkembali=$_POST['tanggalkembali'];
+    echo `$tanggalkembali`;
     $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (tanggalkembali, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
     if ($addtotable) {
         header('location: mutasibarang.php');

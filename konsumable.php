@@ -170,13 +170,17 @@ if (isset($_GET['cari'])) {
                                                 <!-- Modal body -->
                                                 <form method="post">
                                                     <div class="modal-body">
-                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control from-control-lg" required>
+                                                        <label>Nama Barang</label>
+                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control from-control-lg" placeholder="Nama Barang" required>
                                                         <br>
-                                                        <input type="text" name="kodebarang" value="<?= $kodebarang; ?>" class="form-control from-control-lg" required>
+                                                        <label>Kode Barang</label>
+                                                        <input type="text" name="kodebarang" value="<?= $kodebarang; ?>" class="form-control from-control-lg" placeholder="Kode Barang" required>
                                                         <br>
-                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" required>
+                                                        <label>Jumlah</label>
+                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah" required>
                                                         <br>
-                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control from-control-lg" required>
+                                                        <label>Keterangan</label>
+                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control from-control-lg" placeholder="Keterangan" required>
                                                         <br>
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
                                                     </div>

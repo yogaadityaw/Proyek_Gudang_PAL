@@ -145,8 +145,8 @@ require 'controller/transaksi_kembali_controller.php';
                                 <div class="form-row">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for=tanggalkembali>Tanggal Pengembalian</label>
-                                            <input type="date" class="form-control" name="tanggalkembali" id="tanggalkembali " placeholder="Tanggal kembali">
+                                            <label for="tanggalkembali">Tanggal dan Jam Pengembalian</label>
+                                            <input type="datetime-local" class="form-control" name="tanggalkembali" id="tanggalkembali" placeholder="Tanggal dan Jam kembali">
                                         </div>
                                         <!-- <div class="form-group col-md-4">
                                                 <label for="inputState">Kondisi Barang</label>
