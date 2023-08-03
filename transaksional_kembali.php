@@ -121,12 +121,12 @@ require 'controller/transaksi_kembali_controller.php';
                                     <input type="text" class="form-control" name="namabarang" id="namabarang" placeholder="Nama Barang">
                                 </div> -->
                                 <div class="form-row">
-                                    <label>Kode Barang</label>
+                                    <label for="disabledTextInput">Kode Barang</label>
                                     <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label>Jumlah Barang Kembali</label>
+                                        <label>Jumlah Barang yang dipinjam</label>
                                         <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
                                     </div>
                                 </div>
@@ -155,7 +155,7 @@ require 'controller/transaksi_kembali_controller.php';
                                                     <option>Buruk</option>
                                                 </select>
                                             </div> -->
-                                        <div class="form-group col-md-4">
+                                            <div class="form-group col-md-4">
                                             <label>Kode Peminjaman</label>
                                             <input type="text" class="form-control" id="kodepinjam" name="kodepinjam">
                                         </div>
@@ -194,10 +194,9 @@ require 'controller/transaksi_kembali_controller.php';
                     var data = JSON.parse(response);
                     var dropdownNamaBarang = $("#namabarang");
                     dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
-
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' Kode: ' + data[i].kodebarang));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -222,7 +221,7 @@ require 'controller/transaksi_kembali_controller.php';
 
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' Seri: ' + data[i].noseri));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -247,7 +246,7 @@ require 'controller/transaksi_kembali_controller.php';
 
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -272,7 +271,7 @@ require 'controller/transaksi_kembali_controller.php';
 
                     // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
                     for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang + ' kode: ' + data[i].kodebarang));
+                        dropdownNamaBarang.append(new Option(data[i].namabarang));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -286,7 +285,11 @@ require 'controller/transaksi_kembali_controller.php';
             var dropdownNamaBarang = $("#namabarang");
             dropdownNamaBarang.empty();
         }
+
+        
     }
+
+    //readn only kode barang
 </script>
 
 

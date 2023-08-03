@@ -16,8 +16,8 @@ if (isset($_POST['pinjam']) != null) {
     $tanggalkembali = NULL; 
     $kodepinjam = $_POST['kodepinjam'];
 
-    $jumlahkembali = 0;
-    $jumlahrusak = 0;
+    // $jumlahkembali = 0;
+    // $jumlahrusak = 0;
     $status = "Belum kembali";
 
 
@@ -168,7 +168,7 @@ if (isset($_POST['pinjam']) != null) {
         //     return;
         // }
          if($jumlah > $barangBaik || $barangBaik == 0){
-            echo "<script>alert('Semua kolom harus diisi.');</script>";
+            echo "<script>alert('Stok tidak mencukupi.');</script>";
             return;
          }
 
