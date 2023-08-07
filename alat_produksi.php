@@ -17,7 +17,7 @@ if (isset($_GET['cari'])) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 
 <head>
     <meta charset="utf-8" />
@@ -198,7 +198,6 @@ if (isset($_GET['cari'])) {
                                                         <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" placeholder="Keterangan" required>
                                                         
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
-                                                       
                                                     </div>
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">

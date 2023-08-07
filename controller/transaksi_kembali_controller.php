@@ -173,7 +173,6 @@ if (isset($_POST['kembali']) != null) {
 
 
     $tanggalkembali=$_POST['tanggalkembali'];
-    echo `$tanggalkembali`;
     $addtotable = mysqli_query($conn, "UPDATE keluar_masuk_barang 
                                   SET tanggalkembali = '$tanggalkembali', 
                                       namabarang = '$namabarang', 

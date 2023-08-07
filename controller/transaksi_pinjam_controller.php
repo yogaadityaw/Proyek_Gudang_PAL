@@ -5,6 +5,7 @@ session_start();
 date_default_timezone_set('Asia/Jakarta');
 
 if (isset($_POST['pinjam']) != null) {
+
     $nip = $_POST['nip'];
     $jenisbarang = $_POST['jenisbarang'];
     $namabarang = $_POST['namabarang'];
@@ -13,12 +14,14 @@ if (isset($_POST['pinjam']) != null) {
 
     $jumlah = $_POST['jumlah'];
     $tanggalpinjam = date('Y-m-d H:i:s');
-    $tanggalkembali = NULL; 
+    $tanggalkembali = NULL;
     $kodepinjam = $_POST['kodepinjam'];
 
     // $jumlahkembali = 0;
     // $jumlahrusak = 0;
     $status = "Belum kembali";
+
+
 
 
     // // // !Tambahkan validasi untuk data yang kosong
@@ -47,10 +50,10 @@ if (isset($_POST['pinjam']) != null) {
         //     echo "Stok barang tidak mencukupi.";
         //     return;
         // }
-        if($jumlah > $barangBaik || $barangBaik == 0){
+        if ($jumlah > $barangBaik || $barangBaik == 0) {
             echo "<script>alert('barang tidak mencukupi.');</script>";
             return;
-         }
+        }
 
 
         // Kurangi stok barang dengan jumlah pinjaman
@@ -68,7 +71,7 @@ if (isset($_POST['pinjam']) != null) {
         }
     }
 
-     // ! Fungsi Update Stok Alat Konsumable
+    // ! Fungsi Update Stok Alat Konsumable
     if (isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Barang Konsumable") {
         // Ambil stok barang dari tabel barang berdasarkan kodebarang
         $queryStokBarang = "SELECT jumlah FROM barang_konsumable WHERE kodebarang = '$kodebarang'";
@@ -81,8 +84,8 @@ if (isset($_POST['pinjam']) != null) {
         }
 
         $stokBarang = $rowStokBarang['jumlah'];
-        
-    
+
+
 
         if ($stokBarang < $jumlah) {
             echo "<script>alert('barang tidak mencukupi.');</script>";
@@ -91,7 +94,7 @@ if (isset($_POST['pinjam']) != null) {
 
         // Kurangi stok barang dengan jumlah pinjaman
         $stokBaru = $stokBarang - $jumlah;
-        
+
         // $barangBaikBaru = $barangBaik - $jumlah;
 
         // Update tabel barang dengan stok yang baru
@@ -106,46 +109,46 @@ if (isset($_POST['pinjam']) != null) {
 
     // ! Fungsi Update Stok Alat Komunikasi
 
-    
+
     if (isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Alat Komunikasi") {
         // Ambil stok barang dari tabel barang berdasarkan kodebarang
         $queryStokBarang = "SELECT jumlah, baik FROM komunikasi WHERE noseri = '$noseri'";
         $resultStokBarang = mysqli_query($conn, $queryStokBarang);
         $rowStokBarang = mysqli_fetch_assoc($resultStokBarang);
-        
+
         if (!$rowStokBarang) {
             echo "Barang dengan kode $noseri tidak ditemukan.";
             return;
         }
-        
-            
-            $stokBarang = $rowStokBarang['jumlah'];
-            $barangBaik = $rowStokBarang['baik'];
-            // $barangBaik = $rowBarangBaik['baik'];
 
-            // if ($barangBaik <= $jumlah) {
-            //     echo "<script>alert('barang tidak mencukupi.');</script>";
-            //     return;
-            // }
-            if($jumlah > $barangBaik || $barangBaik == 0){
-                echo "<script>alert('barang tidak mencukupi.');</script>";
-                return;
-             }
 
-            // Kurangi stok barang dengan jumlah pinjaman
-            $stokBaru = $stokBarang - $jumlah;
-            $barangBaikBaru = $barangBaik - $jumlah;
-            // $barangBaikBaru = $barangBaik - $jumlah;
+        $stokBarang = $rowStokBarang['jumlah'];
+        $barangBaik = $rowStokBarang['baik'];
+        // $barangBaik = $rowBarangBaik['baik'];
 
-            // Update tabel barang dengan stok yang baru
-            $queryUpdateStok = "UPDATE komunikasi SET jumlah = '$stokBaru', baik = '$barangBaikBaru' WHERE noseri = '$noseri'";
-            $resultUpdateStok = mysqli_query($conn, $queryUpdateStok);
-
-            if (!$resultUpdateStok) {
-                echo "Gagal mengurangi stok barang.";
-                return;
-            }
+        // if ($barangBaik <= $jumlah) {
+        //     echo "<script>alert('barang tidak mencukupi.');</script>";
+        //     return;
+        // }
+        if ($jumlah > $barangBaik || $barangBaik == 0) {
+            echo "<script>alert('barang tidak mencukupi.');</script>";
+            return;
         }
+
+        // Kurangi stok barang dengan jumlah pinjaman
+        $stokBaru = $stokBarang - $jumlah;
+        $barangBaikBaru = $barangBaik - $jumlah;
+        // $barangBaikBaru = $barangBaik - $jumlah;
+
+        // Update tabel barang dengan stok yang baru
+        $queryUpdateStok = "UPDATE komunikasi SET jumlah = '$stokBaru', baik = '$barangBaikBaru' WHERE noseri = '$noseri'";
+        $resultUpdateStok = mysqli_query($conn, $queryUpdateStok);
+
+        if (!$resultUpdateStok) {
+            echo "Gagal mengurangi stok barang.";
+            return;
+        }
+    }
 
     // ! Fungsi Update Stok Angkat, Angkut, Alat Apung
     if (isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Angkat, Angkut, Alat Apung") {
@@ -167,10 +170,10 @@ if (isset($_POST['pinjam']) != null) {
         //     echo "Stok barang tidak mencukupi.";
         //     return;
         // }
-         if($jumlah > $barangBaik || $barangBaik == 0){
+        if ($jumlah > $barangBaik || $barangBaik == 0) {
             echo "<script>alert('Stok tidak mencukupi.');</script>";
             return;
-         }
+        }
 
         // Kurangi stok barang dengan jumlah pinjaman
         $stokBaru = $stokBarang - $jumlah;
@@ -188,7 +191,7 @@ if (isset($_POST['pinjam']) != null) {
     }
 
 
-    $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$kodepinjam', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
+    $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
     if ($addtotable) {
         header('location: mutasibarang.php');
         session_write_close();

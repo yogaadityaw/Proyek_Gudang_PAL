@@ -1,23 +1,21 @@
 <?php
 
 require 'cek.php';
-require 'controller/koneksi.php';
 
+require 'controller/koneksi.php';
 
 $query = "SELECT * FROM keluar_masuk_barang";
 
 if (isset($_GET['cari'])) {
     $keyword = $_GET['cari'];
     // Anda sebaiknya membersihkan input untuk mencegah injeksi SQL
-    $keyword = mysqli_real_escape_string($conn, $keyword);
+    // $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    // echo "Query: " . $query;
-    $query = "SELECT * FROM keluar_masuk_barang WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%' OR tanggal LIKE '%$keyword%' OR tanggalkembali LIKE '%$keyword%' OR kodetransaksi LIKE '%$keyword%' OR nip LIKE '%$keyword%' OR namapegawai LIKE '%$keyword%' ";
+    $query = "SELECT * FROM keluar_masuk_barang WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%'";
 }
-    // $result = mysqli_query($conn, $query);
 
-?>  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,7 +70,7 @@ if (isset($_GET['cari'])) {
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="pagesCollapseTabel" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav">    
+                            <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="alat_produksi.php">Peralatan Pendukung Produksi</a>
                                 <a class="nav-link" href="komunikasi.php">Alat Komunikasi/(HT)</a>
                                 <a class="nav-link" href="konsumable.php">Daftar Barang Konsumable</a>
@@ -93,21 +91,22 @@ if (isset($_GET['cari'])) {
     <main>
         <div class="container-fluid px-4">
             <h3 class="mt-4 text-center">List Daftar Mutasi Barang DIVISI HARKAN 2023</h3>
-            
+
         </div>
 
         <div class="container -fluid">
             <a href="export_mutasibarang.php" class="btn btn-info">Export Data</a>
             <br>
             <br>
+
             <form action="mutasibarang.php" method="GET">
                 <div class="input-group mb-3">
                     <!-- Search bar using Bootstrap -->
-                    <input type="text" value="<?= isset($_GET['cari']) ? $_GET['cari'] : ''; ?>" class="form-control" placeholder="Cari" name="cari">
-                    <button type="submit" class="btn btn-primary">Cari</button>
+                    <input type="text" value="" class="form-control" placeholder="Cari" name="cari">
+                    <button typ="submit" class="btn btn-primary">Cari</button>
                 </div>
             </form>
-            <br>
+
             <div class="card-body">
                 <div class="table table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
@@ -147,6 +146,29 @@ if (isset($_GET['cari'])) {
                                 $keterangan = $data['keterangan'];
                                 $status = $data['status'];
                                 $tanggalKembaliNull = "0000-00-00 00:00:00";
+
+                                // Ambil nama pegawai
+                                $query_pegawai = "SELECT pegawai.namapegawai
+                        FROM pegawai
+                        WHERE pegawai.nip = '$nip'";
+                                $result_pegawai = mysqli_query($conn, $query_pegawai);
+                                $namapegawai = "-";
+                                if ($result_pegawai) {
+                                    $row_pegawai = mysqli_fetch_assoc($result_pegawai);
+                                    $namapegawai = $row_pegawai['namapegawai'];
+                                }
+
+                                // Ambil nama divisi
+                                $query_divisi = "SELECT divisi.namadivisi
+                        FROM pegawai
+                        INNER JOIN divisi ON pegawai.divisi_id = divisi.iddivisi
+                        WHERE pegawai.nip = '$nip'";
+                                $result_divisi = mysqli_query($conn, $query_divisi);
+                                $namadivisi = "-";
+                                if ($result_divisi) {
+                                    $row_divisi = mysqli_fetch_assoc($result_divisi);
+                                    $namadivisi = $row_divisi['namadivisi'];
+                                }
                             ?>
                                 <tr>
                                     <td> <?= $tanggalpinjam; ?> </td>
@@ -154,7 +176,7 @@ if (isset($_GET['cari'])) {
                                     <td> <?= $kodetransaksi; ?> </td>
                                     <td> <?= $nip; ?> </td>
                                     <td> <?= $namapegawai; ?> </td>
-                                    <td> <?= $birobengkel; ?> </td>
+                                    <td> <?= $namadivisi; ?> </td>
                                     <td> <?= $namabarang; ?> </td>
                                     <td> <?= $kodebarang; ?> </td>
                                     <td> <?= $jumlahpinjam; ?> </td>
@@ -162,14 +184,14 @@ if (isset($_GET['cari'])) {
                                     <td> <?= $jumlahrusak; ?> </td>
                                     <td> <?= $keterangan; ?> </td>
                                     <td> <?php
-                                            if ($tanggalkembali === $tanggalKembaliNull) { 
+                                            if ($tanggalkembali === $tanggalKembaliNull) {
                                                 echo '<span class="badge text-bg-danger">Belum kembali</span>';
-                                            } else if($jumlahrusak > 0){
+                                            } else if ($jumlahrusak > 0) {
                                                 echo '<span class="badge text-bg-warning">Barang rusak/kurang lengkap</span>';
                                             } else {
                                                 echo '<span class="badge text-bg-success">Sudah kembali</span>';
                                             }
-                                            ?></td> 
+                                            ?></td>
                                 </tr>
                             <?php
                             };
@@ -179,6 +201,8 @@ if (isset($_GET['cari'])) {
                     <!-- untuk query menampilkan tabel -->
 
     </main>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

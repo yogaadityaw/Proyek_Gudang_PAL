@@ -95,9 +95,9 @@ require 'controller/transaksi_pinjam_controller.php';
                         <div class="card-body">
                             <form method="post">
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>NIP Pegawai</label>
-                                        <input type="number" class="form-control" name="nip" id="nip" placeholder="NIP">
+                                    <div class="mb-3">
+                                        <label for="nip" class="form-label">NIP Pegawai</label>
+                                        <input type="text" class="form-control" id="nip" name="nip" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -325,7 +325,62 @@ require 'controller/transaksi_pinjam_controller.php';
     $(document).ready(function() {
         getNextKodeTransaksi();
     });
+
+    // untuk memanggil nip dan juga nama pegawai
+
+    function loadnip() {
+        $(document).ready(function() {
+            $("#nip").on("input", function() {
+                const nip = $(this).val();
+                if (nip !== "") {
+                    $.ajax({
+                        url: "utils/get_pegawai.php", // Ganti dengan URL yang sesuai untuk mengambil data nama pegawai
+                        method: "POST",
+                        data: {
+                            nip: nip
+                        },
+                        success: function(response) {
+                            $("#namapegawai").val(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching employee name:", error);
+                        },
+                    });
+                } else {
+                    $("#namapegawai").val("");
+                }
+            });
+        });
+    }
 </script>
+<!-- untuk menyimpan dan menampikan data nip dan nama pegawai -->
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const nipInput = document.getElementById("nip");
+        const namaPegawaiInput = document.getElementById("namapegawai");
+
+        nipInput.addEventListener("input", function() {
+            const nip = nipInput.value.trim();
+            if (nip !== "") {
+                fetch("get_employee_name.php?nip=" + nip)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            namaPegawaiInput.value = data.nama_pegawai;
+                        } else {
+                            namaPegawaiInput.value = "";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching employee name:", error);
+                    });
+            } else {
+                namaPegawaiInput.value = "";
+            }
+        });
+    });
+</script> -->
+
 
 
 
