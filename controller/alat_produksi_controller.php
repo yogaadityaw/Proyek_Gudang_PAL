@@ -13,8 +13,11 @@ session_start();
         $barangrusak = $_POST['barangrusak'];
         $keterangan = $_POST['keterangan'];
 
+        if($barangbaik + $barangrusak > $jumlah || $barangbaik +  $barangrusak < $jumlah){
+            
+        }
         $addtotable = mysqli_query($conn,"INSERT INTO alat_produksi (namabarang, kodebarang, jumlah, baik, rusak, keterangan, kategori_id) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan', 1)");
-
+        
             if($addtotable){
             header('Location: alat_produksi.php');
             session_write_close();
