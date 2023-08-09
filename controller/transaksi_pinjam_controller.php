@@ -190,14 +190,21 @@ if (isset($_POST['pinjam']) != null) {
         }
     }
 
+    $queryNip = "SELECT nip FROM pegawai WHERE nip = '$nip'";
+    $resultNip = mysqli_query($conn, $queryNip);
 
-    $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, jumlahkembali, jumlahrusak, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$jumlahkembali', '$jumlahrusak', '$status')");
-    if ($addtotable) {
-        header('location: mutasibarang.php');
-        session_write_close();
+    if ($resultNip->num_rows == 0) {
+        echo "<script>alert('NIP tidak ditemukan.');</script>";
+        return;
     } else {
-        echo 'Gagal menyimpan data: ';
-    };
+        $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$status')");
+        if ($addtotable) {
+            header('location: mutasibarang.php');
+            session_write_close();
+        } else {
+            echo 'Gagal menyimpan data: ';
+        };
+    }
     return;
 }
 

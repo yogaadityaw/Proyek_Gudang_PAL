@@ -11253,3 +11253,10 @@ body {
   opacity: 1;
 }
 
+#main-content {
+  transition: margin-left 0.3s;
+}
+
+.main-with-sidebar {
+  margin-left: 250px;
+}
