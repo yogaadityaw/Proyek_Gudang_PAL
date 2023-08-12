@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2023 at 02:51 AM
+-- Generation Time: Aug 12, 2023 at 08:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `alat_produksi` (
 --
 
 INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `keterangan`, `kategori_id`) VALUES
-(10, 'Bor Magnet', 'DRL01', 189, 189, 0, '-', 1),
+(10, 'Bor Magnet', 'DRL01', 188, 188, 0, '-', 1),
 (12, 'Hand Bor (Makita)', 'HDRL02', 5, 5, 0, '-', 1),
 (13, 'Vacum Test', 'VT01', 1, 1, 0, '-', 1),
 (14, 'Load Cell 5 Ton', 'LC5T', 1, 0, 1, '-', 1),
@@ -253,15 +253,16 @@ CREATE TABLE `login` (
   `NIP` int(11) NOT NULL,
   `divisi` varchar(200) NOT NULL,
   `Password` varchar(200) NOT NULL,
-  `role` varchar(10) NOT NULL
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`ID_User`, `NIP`, `divisi`, `Password`, `role`) VALUES
-(1, 12345, '', 'admin', '');
+INSERT INTO `login` (`ID_User`, `NIP`, `divisi`, `Password`, `role_id`) VALUES
+(7, 22106757, '', '$2y$10$TwpvC6BOsOT48.3AYZk3TuEpZ6dsZnm2QXwNjv7tV1HJhjjhjUyOm', 2),
+(12, 12345, '', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1);
 
 -- --------------------------------------------------------
 
@@ -343,7 +344,8 @@ ALTER TABLE `komunikasi`
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`ID_User`);
+  ADD PRIMARY KEY (`ID_User`),
+  ADD UNIQUE KEY `NIP` (`NIP`);
 
 --
 -- Indexes for table `pegawai`
@@ -403,7 +405,7 @@ ALTER TABLE `komunikasi`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pegawai`

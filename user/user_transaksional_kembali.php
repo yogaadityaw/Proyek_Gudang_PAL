@@ -18,11 +18,11 @@ require 'controller/transaksi_kembali_controller.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Transaksional</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<?php include 'sidebar.php' ?>
+<?php include 'user_sidebar.php' ?>
 <br>
 <br>
 
