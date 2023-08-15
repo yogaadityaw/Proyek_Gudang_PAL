@@ -31,7 +31,7 @@ if (isset($_GET['cari'])) {
 </head>
 <?php include 'sidebar.php' ?>
 
-<body>
+<body> class="table-info text-center align-middle"
     <br>
     <br>
     <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
@@ -67,12 +67,12 @@ if (isset($_GET['cari'])) {
                         <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Nama Barang / Alat</th>
-                                    <th>Kode Barang</th>
-                                    <th>Jumlah</th>
-                                    <th>keterangan</th>
-                                    <th>Actions</th>
+                                    <th class="table-info text-center align-middle">No</th>
+                                    <th class="table-info text-center align-middle">Nama Barang / Alat</th>
+                                    <th class="table-info text-center align-middle">Kode Barang</th>
+                                    <th class="table-info text-center align-middle">Jumlah</th>
+                                    <th class="table-info text-center align-middle">keterangan</th>
+                                    <th class="table-info text-center align-middle">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -88,12 +88,12 @@ if (isset($_GET['cari'])) {
                                     $idb = $data['idbarang'];
                                 ?>
                                     <tr>
-                                        <td><?= $i++ ?></td>
-                                        <td><?= $namabarang ?></td>
-                                        <td><?= $kodebarang ?></td>
-                                        <td><?= $jumlah ?></td>
-                                        <td><?= $keterangan ?></td>
-                                        <td>
+                                        <td style="text-align: center;"><?= $i++ ?></td>
+                                        <td style="text-align: center;"><?= $namabarang ?></td>
+                                        <td style="text-align: center;"><?= $kodebarang ?></td>
+                                        <td style="text-align: center;"><?= $jumlah ?></td>
+                                        <td style="text-align: center;"><?= $keterangan ?></td>
+                                        <td style="text-align: center;">
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
                                                 Update
                                             </button>

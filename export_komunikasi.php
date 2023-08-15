@@ -28,13 +28,13 @@ require 'controller/koneksi.php';
             <table class="table table-bordered" id="mauexport" width="100" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama Barang / Alat</th>
-                        <th>No. Seri</th>
-                        <th>Jumlah</th>
-                        <th>Kondisi Barang Baik</th>
-                        <th>Kondisi Barang Rusak</th>
-                        <th>keterangan</th>
+                        <th class="table-info text-center align-middle">No</th>
+                        <th class="table-info text-center align-middle">Nama Barang / Alat</th>
+                        <th class="table-info text-center align-middle">No. Seri</th>
+                        <th class="table-info text-center align-middle">Jumlah</th>
+                        <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
+                        <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
+                        <th class="table-info text-center align-middle">keterangan</th>
                         
                     </tr>
                 </thead>
@@ -54,13 +54,13 @@ require 'controller/koneksi.php';
                         $idb = $data['idbarang'];
                     ?>
                         <tr>
-                            <td><?= $i++ ?></td>
-                            <td><?php echo $namabarang; ?></td>
-                            <td><?php echo $noseri; ?></td>
-                            <td><?php echo $jumlah; ?></td>
-                            <td><?php echo $barangbaik; ?></td>
-                            <td><?php echo $barangrusak; ?></td>
-                            <td><?php echo $keterangan; ?></td>
+                            <td style="text-align: center;"><?= $i++ ?></td>
+                            <td style="text-align: center;"><?php echo $namabarang; ?></td>
+                            <td style="text-align: center;"><?php echo $noseri; ?></td>
+                            <td style="text-align: center;"><?php echo $jumlah; ?></td>
+                            <td style="text-align: center;"><?php echo $barangbaik; ?></td>
+                            <td style="text-align: center;"><?php echo $barangrusak; ?></td>
+                            <td style="text-align: center;"><?php echo $keterangan; ?></td>
                         </tr>
 
                     <?php

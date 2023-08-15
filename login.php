@@ -22,8 +22,12 @@ if (isset($_POST['login'])) {
                     exit();
                 } else if ($role == 2) {
                     $_SESSION['log'] = 'True';
-                    $_SESSION['role'] = "admin2";
+                    $_SESSION['role'] = "user";
                     header('location: user/user_dashboard.php');
+                } else if($role == 3){
+                    $_SESSION['log'] = 'True';
+                    $_SESSION['role'] = "atasan";
+                    header('location: atasan/atasan_mutasibarang.php');
                 } else {
                     $loginError = "User tidak tersedia.";
                 }

@@ -63,14 +63,14 @@ if (isset($_GET['cari'])) {
                         <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Nama Barang / Alat</th>
-                                    <th>No. Seri</th>
-                                    <th>Jumlah</th>
-                                    <th>Kondisi Barang Baik</th>
-                                    <th>Kondisi Barang Rusak</th>
-                                    <th>keterangan</th>
-                                    <th>action</th>
+                                    <th class="table-info text-center align-middle">No</th>
+                                    <th class="table-info text-center align-middle">Nama Barang / Alat</th>
+                                    <th class="table-info text-center align-middle">No. Seri</th>
+                                    <th class="table-info text-center align-middle">Jumlah</th>
+                                    <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
+                                    <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
+                                    <th class="table-info text-center align-middle">keterangan</th>
+                                    <th class="table-info text-center align-middle">action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,14 +89,14 @@ if (isset($_GET['cari'])) {
                                     $idb = $data['idbarang'];
                                 ?>
                                     <tr>
-                                        <td><?= $i++ ?></td>
-                                        <td><?= $namabarang ?></td>
-                                        <td><?= $noseri ?></td>
-                                        <td><?= $jumlah ?></td>
-                                        <td><?= $barangbaik ?></td>
-                                        <td><?= $barangrusak ?></td>
-                                        <td><?= $keterangan ?></td>
-                                        <td>
+                                        <td style="text-align: center;"><?= $i++ ?></td>
+                                        <td style="text-align: center;"><?= $namabarang ?></td>
+                                        <td style="text-align: center;"><?= $noseri ?></td>
+                                        <td style="text-align: center;"><?= $jumlah ?></td>
+                                        <td style="text-align: center;"><?= $barangbaik ?></td>
+                                        <td style="text-align: center;"><?= $barangrusak ?></td>
+                                        <td style="text-align: center;"><?= $keterangan ?></td>
+                                        <td style="text-align: center;">
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
                                                 Update
                                             </button>
@@ -149,7 +149,7 @@ if (isset($_GET['cari'])) {
                                     </div>
                                     <!-- Delete Modal -->
                                     <div class="modal fade" id="Delete<?= $idb; ?>">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dia class="table-info text-center align-middle"">
                                             <div class="modal-content bg-white">
 
                                                 <!-- Modal Header -->

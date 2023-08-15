@@ -14,10 +14,9 @@ require 'cek.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Divisi Harkan</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="/assets/img/logo_pal.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/img/pal.svg">
 </head>
 
 <?php include 'sidebar.php' ?>

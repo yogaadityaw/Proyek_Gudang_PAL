@@ -45,37 +45,50 @@ require 'controller/user_manajemen_controller.php';
                         <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>NIP</th>
-                                    <th>Aksi</th>
+                                    <th class="table-info text-center align-middle">No</th>
+                                    <th class="table-info text-center align-middle">NIP</th>
+                                    <th class="table-info text-center align-middle">Role</th>
+                                    <th class="table-info text-center align-middle">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $query = "SELECT NIP FROM login";
+                                require 'controller/koneksi.php';
+                                $query = "SELECT NIP, role_id FROM login";
                                 $i = 1;
                                 $ambilSemuaUser = mysqli_query($conn, $query);
                                 while ($data = mysqli_fetch_array($ambilSemuaUser)) {
                                     $nip = $data['NIP'];
-
+                                    $role = $data['role_id'];
                                 ?>
                                     <tr>
-                                        <td><?= $i++ ?></td>
-                                        <td><?= $nip ?></td>
+                                        <td style="text-align: center;"><?= $i++ ?></td>
+                                        <td style="text-align: center;"><?= $nip ?></td>
+                                        <td style="text-align: center;"><?php
+                                            if ($role == 1) {
+                                                echo "Admin";
+                                            } else if ($role == 2) {
+                                                echo "User";
+                                            } else if ($role == 3) {
+                                                echo "Atasan";
+                                            } else {
+                                                echo "User tidak diketahui";
+                                            }
+                                            ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?= $idb; ?>">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?= $nip; ?>">
                                                 Delete
                                             </button>
                                         </td>
                                     </tr>
                                     <!-- Delete Modal -->
-                                    <div class="modal fade" id="delete<?= $idb; ?>">
+                                    <div class="modal fade" id="delete<?= $nip; ?>">
                                         <div class="modal-dialog">
                                             <div class="modal-content bg-white">
                                                 <!-- Modal Header -->
                                                 <form method="post">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Hapus Stok Barang</h4>
+                                                        <h4 class="modal-title">Hapus Akun</h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                     </div>
 
@@ -96,11 +109,11 @@ require 'controller/user_manajemen_controller.php';
                                                     <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" required>
                                                     <br> -->
                                                         apakah anda yakin ingin menghapus satu kolom ini?
-                                                        <input type="hidden" name="idb" value="<?= $idb; ?>">
+                                                        <input type="hidden" name="nip" value="<?= $nip; ?>">
                                                     </div>
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-danger" name="hapusbarang">Hapus</button>
+                                                        <button type="submit" class="btn btn-danger" name="hapusakun">Hapus</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -111,7 +124,6 @@ require 'controller/user_manajemen_controller.php';
                                 ?>
                             </tbody>
                         </table>
-
     </main>
     <!-- The Modal -->
     <form method="POST">
@@ -131,6 +143,12 @@ require 'controller/user_manajemen_controller.php';
                             <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" required>
                             <br>
                             <input type="password" class="form-control form-control-lg" placeholder="Masukkan password kembali" name="password2" required>
+                            <br>
+                            <select class="form-select" name="role" required>
+                                <option value="" selected disabled>Pilih Role</option>
+                                <option value="2">User</option>
+                                <option value="3">Atasan</option>
+                            </select>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">

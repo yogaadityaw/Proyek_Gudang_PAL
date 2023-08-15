@@ -1,7 +1,6 @@
 <?php
 //import koneksi ke database
-require 'cek.php';
-require 'controller/koneksi.php';
+require '../controller/koneksi.php';
 ?>
 <html>
 
@@ -16,21 +15,19 @@ require 'controller/koneksi.php';
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
-
-<body> 
+<body style="margin: 0;">
     <div class="container">
         <br>
         <h2 class="mt-4 text-center">List Daftar Mutasi Barang DIVISI HARKAN 2023</h2>
         <br>
         <div class="data-tables datatable-dark">
 
-
             <!-- Masukkan table nya disini, dimulai dari tag TABLE -->
-            <table class="table table-bordered" id="mauexport" width="100" cellspacing="0">
+            <table class="table table-bordered" id="mauexport" cellspacing="0" style="width:100%;">
                 <thead>
                     <tr>
 
-                        <th class="table-info text-center align-middle">Tanggal Pinjam</th>
+                        <th class="table-info text-center align-middle" class="table-info text-center align-middle">Tanggal Pinjam</th>
                         <th class="table-info text-center align-middle">Tanggal Kembali</th>
                         <th class="table-info text-center align-middle">kode transaksi</th>
                         <th class="table-info text-center align-middle">NIP Pegawai</th>
@@ -98,7 +95,7 @@ require 'controller/koneksi.php';
                     ?>
                 </tbody>
             </table>
-            <a href="mutasibarang.php" class="btn btn-danger">kembali</a>
+            <a href="atasan_mutasibarang.php" class="btn btn-danger">kembali</a>
 
         </div>
     </div>

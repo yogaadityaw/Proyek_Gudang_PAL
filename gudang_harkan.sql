@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 08:58 PM
+-- Generation Time: Aug 15, 2023 at 10:30 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -78,8 +78,7 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `
 (43, 'Tackal 3 Ton (Chain Block)', 'TCK3T', 19, 19, 0, '-', 1),
 (44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', 22, 22, 0, '-', 1),
 (45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', 7, 7, 0, '-', 1),
-(51, 'Bor Magnet', 'DRL09', 1, 1, 0, '-', 1),
-(53, 'kapal baru', 'KB', 2, 1, 1, '-', 1);
+(51, 'Bor Magnet', 'DRL09', 1, 1, 0, '-', 1);
 
 -- --------------------------------------------------------
 
@@ -250,7 +249,7 @@ INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, 
 
 CREATE TABLE `login` (
   `ID_User` int(11) NOT NULL,
-  `NIP` int(11) NOT NULL,
+  `NIP` varchar(256) NOT NULL,
   `divisi` varchar(200) NOT NULL,
   `Password` varchar(200) NOT NULL,
   `role_id` int(11) NOT NULL
@@ -261,8 +260,12 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`ID_User`, `NIP`, `divisi`, `Password`, `role_id`) VALUES
-(7, 22106757, '', '$2y$10$TwpvC6BOsOT48.3AYZk3TuEpZ6dsZnm2QXwNjv7tV1HJhjjhjUyOm', 2),
-(12, 12345, '', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1);
+(7, '22106757', '', '$2y$10$TwpvC6BOsOT48.3AYZk3TuEpZ6dsZnm2QXwNjv7tV1HJhjjhjUyOm', 2),
+(12, '12345', '', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1),
+(14, '12345678', '', '$2y$10$sS0CL15myw8l8vsAlCvPj.MkD799grRLvw2O5vMU5kTXdCBZml9WW', 0),
+(22, '017095870', '', '$2y$10$NtksZj5ioWjCYoiMfHRJY.EXpfEBEE1s6m8NqBrPzd6.UI5nNcMhq', 3),
+(23, '14200139', '', '$2y$10$Qv5zIZKhiZWAx99XnuAMjO8VRYhOHIPUnqTARaZfQytQ7KD22SPfK', 2),
+(24, '14200140', '', '$2y$10$9G.QjE7yCHf5fRjPWJo5fOyeJ0Mr/cAFJpsZ3BJqI6wP30coPOq4O', 3);
 
 -- --------------------------------------------------------
 
@@ -405,7 +408,7 @@ ALTER TABLE `komunikasi`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
