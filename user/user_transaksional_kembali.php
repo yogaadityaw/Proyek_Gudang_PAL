@@ -1,8 +1,9 @@
 <?php
 // require 'controller/konsumable_controller.php';
-require 'controller/koneksi.php';
-require 'cek.php';
-require 'controller/transaksi_kembali_controller.php';
+require '../controller/koneksi.php';
+require '../controller/transaksi_kembali_controller.php';
+require '../middleware/auth_middleware.php';
+checkRole("user", '../middleware/auth_prohibit.php');
 
 // require 'controller/update_controller.php';
 
@@ -120,7 +121,7 @@ require 'controller/transaksi_kembali_controller.php';
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
+<script src="../js/scripts.js"></script>
 
 
 
@@ -131,7 +132,7 @@ require 'controller/transaksi_kembali_controller.php';
         if (jenisbarang === "Peralatan Pendukung Produksi") {
             // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -155,7 +156,7 @@ require 'controller/transaksi_kembali_controller.php';
         } else if (jenisbarang == "Alat Komunikasi") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -180,7 +181,7 @@ require 'controller/transaksi_kembali_controller.php';
         } else if (jenisbarang == "Barang Konsumable") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -205,7 +206,7 @@ require 'controller/transaksi_kembali_controller.php';
         } else if (jenisbarang == "Angkat, Angkut, Alat Apung") {
             // Jika kategori "Angkat, Apung, Alat Apung" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang

@@ -1,5 +1,5 @@
 <?php
-require 'controller/koneksi.php';
+require 'koneksi.php';
 //membuat koneksi ke database
 session_start();
 date_default_timezone_set('Asia/Jakarta');
@@ -103,7 +103,7 @@ if (isset($_POST['kembali']) != null) {
         }
     }
 
-     // ! Fungsi Update Stok Barang konsumable
+    // ! Fungsi Update Stok Barang konsumable
     if (isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Barang Konsumable") {
         // Ambil stok barang dari tabel barang berdasarkan kodebarang
         $queryStokBarang = "SELECT jumlah FROM barang_konsumable WHERE kodebarang = '$kodebarang'";
@@ -135,44 +135,44 @@ if (isset($_POST['kembali']) != null) {
         }
     }
 
-   // ! Fungsi Update Stok Alat Produksi
-   if (isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Angkat, Angkut, Alat Apung") {
-    // Ambil stok barang dari tabel barang berdasarkan kodebarang
-    $queryStokBarang = "SELECT jumlah, baik, rusak FROM barang_angkut_apung WHERE kodebarang = '$kodebarang'";
-    $resultStokBarang = mysqli_query($conn, $queryStokBarang);
-    $rowStokBarang = mysqli_fetch_assoc($resultStokBarang);
+    // ! Fungsi Update Stok Alat Produksi
+    if (isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Angkat, Angkut, Alat Apung") {
+        // Ambil stok barang dari tabel barang berdasarkan kodebarang
+        $queryStokBarang = "SELECT jumlah, baik, rusak FROM barang_angkut_apung WHERE kodebarang = '$kodebarang'";
+        $resultStokBarang = mysqli_query($conn, $queryStokBarang);
+        $rowStokBarang = mysqli_fetch_assoc($resultStokBarang);
 
-    if (!$rowStokBarang) {
-        echo "Barang dengan kode $kodebarang tidak ditemukan.";
-        return;
+        if (!$rowStokBarang) {
+            echo "Barang dengan kode $kodebarang tidak ditemukan.";
+            return;
+        }
+
+        $stokBarang = $rowStokBarang['jumlah'];
+        $barangBaik = $rowStokBarang['baik'];
+        $barangrusak = $rowStokBarang['rusak'];
+
+        if ($stokBarang < $jumlah) {
+            echo "Stok barang tidak mencukupi.";
+            return;
+        }
+
+        // Kurangi stok barang dengan jumlah pinjaman
+        $stokBaru = $stokBarang + $jumlah;
+        $barangBaikBaru = $barangBaik + $jumlahbaik;
+        $barangrusakbaru = $barangrusak + $jumlahrusak;
+
+        // Update tabel barang dengan stok yang baru
+        $queryUpdateStok = "UPDATE barang_angkut_apung SET jumlah = '$stokBaru', baik = '$barangBaikBaru', rusak='$barangrusakbaru' WHERE kodebarang = '$kodebarang'";
+        $resultUpdateStok = mysqli_query($conn, $queryUpdateStok);
+
+        if (!$resultUpdateStok) {
+            echo "Gagal mengurangi stok barang.";
+            return;
+        }
     }
 
-    $stokBarang = $rowStokBarang['jumlah'];
-    $barangBaik = $rowStokBarang['baik'];
-    $barangrusak = $rowStokBarang['rusak'];
 
-    if ($stokBarang < $jumlah) {
-        echo "Stok barang tidak mencukupi.";
-        return;
-    }
-
-    // Kurangi stok barang dengan jumlah pinjaman
-    $stokBaru = $stokBarang + $jumlah;
-    $barangBaikBaru = $barangBaik + $jumlahbaik;
-    $barangrusakbaru = $barangrusak + $jumlahrusak;
-
-    // Update tabel barang dengan stok yang baru
-    $queryUpdateStok = "UPDATE barang_angkut_apung SET jumlah = '$stokBaru', baik = '$barangBaikBaru', rusak='$barangrusakbaru' WHERE kodebarang = '$kodebarang'";
-    $resultUpdateStok = mysqli_query($conn, $queryUpdateStok);
-
-    if (!$resultUpdateStok) {
-        echo "Gagal mengurangi stok barang.";
-        return;
-    }
-}
-
-
-    $tanggalkembali=$_POST['tanggalkembali'];
+    $tanggalkembali = $_POST['tanggalkembali'];
     $addtotable = mysqli_query($conn, "UPDATE keluar_masuk_barang 
                                   SET tanggalkembali = '$tanggalkembali', 
                                       namabarang = '$namabarang', 
@@ -183,7 +183,12 @@ if (isset($_POST['kembali']) != null) {
                                       status = '$status' 
                                   WHERE kodetransaksi = '$kodepinjam'");
     if ($addtotable) {
-        header('location: mutasibarang.php');
+        if ($_SESSION['role'] == "admin") {
+            header('location: mutasibarang.php');
+            exit();
+        } elseif ($_SESSION['role'] == "user") {
+            header('location: user_mutasibarang.php');
+        }
         session_write_close();
     } else {
         echo 'Gagal menyimpan data: ';

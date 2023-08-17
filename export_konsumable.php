@@ -62,7 +62,7 @@ require 'controller/koneksi.php';
                     ?>
                 </tbody>
             </table>
-            <a href="konsumable.php" class="btn btn-danger">kembali</a>
+            <a href="javascript:history.back()" class="btn btn-danger">kembali</a>
 
         </div>
     </div>

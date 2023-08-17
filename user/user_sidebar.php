@@ -1,7 +1,7 @@
 <div class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.php">Divisi Harkan</a>
+        <a class="navbar-brand ps-3" href="user_dashboard.php">Divisi Harkan</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -11,7 +11,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -31,8 +31,13 @@
                         </a>
                         <div class="collapse" id="pagesCollapseTabel" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="user_alat_produksi.php">Peralatan Pendukung Produksi</a>
+                                <a class="nav-link" href="user_komunikasi.php">Alat Komunikasi/(HT)</a>
+                                <a class="nav-link" href="user_konsumable.php">Daftar Barang Konsumable</a>
+                                <a class="nav-link" href="user_angkut_apung.php">Daftar angkat angkut dan alat apung</a>
                                 <a class="nav-link" href="user_transaksional.php">Form Peminjaman Barang</a>
                                 <a class="nav-link" href="user_transaksional_kembali.php">Form Pengembalian Barang</a>
+                                <a class="nav-link" href="user_mutasibarang.php">List Daftar Mutasi Barang</a>
                             </nav>
                         </div>
                     </div>

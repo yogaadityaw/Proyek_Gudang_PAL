@@ -1,8 +1,9 @@
 <?php
 // require 'controller/konsumable_controller.php';
-require 'controller/koneksi.php';
-require 'cek.php';
-require 'controller/transaksi_pinjam_controller.php';
+require '../controller/koneksi.php';
+require '../controller/transaksi_pinjam_controller.php';
+require '../middleware/auth_middleware.php';
+checkRole("user", '../middleware/auth_prohibit.php');
 
 // require 'controller/update_controller.php';
 
@@ -107,7 +108,7 @@ require 'controller/transaksi_pinjam_controller.php';
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
+<script src="../js/scripts.js"></script>
 
 <script>
     function loadNamaBarangpinjam() {
@@ -116,7 +117,7 @@ require 'controller/transaksi_pinjam_controller.php';
         if (jenisbarang === "Peralatan Pendukung Produksi") {
             // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -141,7 +142,7 @@ require 'controller/transaksi_pinjam_controller.php';
         } else if (jenisbarang == "Alat Komunikasi") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -166,7 +167,7 @@ require 'controller/transaksi_pinjam_controller.php';
         } else if (jenisbarang == "Barang Konsumable") {
             // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -191,7 +192,7 @@ require 'controller/transaksi_pinjam_controller.php';
         } else if (jenisbarang == "Angkat, Angkut, Alat Apung") {
             // Jika kategori "Angkat, Apung, Alat Apung" dipilih, lakukan permintaan AJAX
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
+                url: "../utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
                 method: "POST",
                 data: {
                     jenisbarang: jenisbarang
@@ -227,7 +228,7 @@ require 'controller/transaksi_pinjam_controller.php';
 
         // Lakukan permintaan AJAX untuk mendapatkan kode barang berdasarkan jenis barang dan nama barang
         $.ajax({
-            url: "utils/get_kodebarang.php", // Ganti dengan URL yang mengambil kode barang dari server berdasarkan jenis dan nama barang
+            url: "../utils/get_kodebarang.php", // Ganti dengan URL yang mengambil kode barang dari server berdasarkan jenis dan nama barang
             method: "POST",
             data: {
                 jenisbarang: jenisbarang,
@@ -254,7 +255,7 @@ require 'controller/transaksi_pinjam_controller.php';
     // *Get kode transaksi
     function getNextKodeTransaksi() {
         $.ajax({
-            url: "utils/get_kodetransaksi.php", // Ganti dengan URL yang mengambil nomor terakhir dari kolom kodetransaksi
+            url: "../utils/get_kodetransaksi.php", // Ganti dengan URL yang mengambil nomor terakhir dari kolom kodetransaksi
             method: "GET",
             success: function(response) {
                 // Proses respons dari server (nomor berikutnya)
@@ -281,7 +282,7 @@ require 'controller/transaksi_pinjam_controller.php';
                 const nip = $(this).val();
                 if (nip !== "") {
                     $.ajax({
-                        url: "utils/get_pegawai.php", // Ganti dengan URL yang sesuai untuk mengambil data nama pegawai
+                        url: "../utils/get_pegawai.php", // Ganti dengan URL yang sesuai untuk mengambil data nama pegawai
                         method: "POST",
                         data: {
                             nip: nip

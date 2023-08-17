@@ -2,6 +2,9 @@
 require 'controller/alat_produksi_controller.php';
 require 'cek.php';
 require 'controller/koneksi.php';
+require 'middleware/auth_middleware.php';
+
+checkRole("admin", 'middleware/auth_prohibit.php');
 
 $query = "SELECT * FROM alat_produksi";
 
@@ -236,7 +239,7 @@ if (isset($_GET['cari'])) {
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
 
 </body>
 

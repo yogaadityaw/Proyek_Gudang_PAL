@@ -2,7 +2,9 @@
 require 'cek.php';
 require 'controller/koneksi.php';
 require 'controller/user_manajemen_controller.php';
+require 'middleware/auth_middleware.php';
 
+checkRole("admin", 'middleware/auth_prohibit.php');
 
 ?>
 <!DOCTYPE html>

@@ -1,7 +1,9 @@
 <?php
 require 'controller/koneksi.php';
 require 'cek.php';
-// require 'logout.php';
+require 'middleware/auth_middleware.php';
+
+checkRole("admin", 'middleware/auth_prohibit.php');
 ?>
 
 <!DOCTYPE html>

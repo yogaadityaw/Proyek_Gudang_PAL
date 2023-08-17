@@ -3,6 +3,9 @@
 require 'controller/koneksi.php';
 require 'cek.php';
 require 'controller/transaksi_kembali_controller.php';
+require 'middleware/auth_middleware.php';
+
+checkRole("admin", 'middleware/auth_prohibit.php');
 
 // require 'controller/update_controller.php';
 

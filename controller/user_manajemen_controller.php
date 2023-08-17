@@ -1,5 +1,5 @@
 <?php
-require 'controller/koneksi.php';
+require 'koneksi.php';
 
 if (isset($_POST['tambahUser'])) {
     $nip = addslashes(trim($_POST['nip']));

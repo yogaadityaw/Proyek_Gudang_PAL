@@ -2,6 +2,9 @@
 require 'controller/komunikasi_controller.php';
 require 'cek.php';
 require 'controller/koneksi.php';
+require 'middleware/auth_middleware.php';
+
+checkRole("admin", 'middleware/auth_prohibit.php');
 
 $query = "SELECT * FROM komunikasi";
 

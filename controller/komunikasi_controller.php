@@ -1,5 +1,5 @@
 <?php
-require 'controller/koneksi.php';
+require 'koneksi.php';
 
 //start session
 session_start();
@@ -20,7 +20,12 @@ session_start();
         session_write_close();
     };
         if($addtotable){
-            header('Location: komunikasi.php');
+            if ($_SESSION['role'] == "admin") {
+                header('location: komunikasi.php');
+                exit();
+            } else if ($_SESSION['role'] == "user") {
+                header('location: user_komunikasi.php');
+            }
             session_write_close();
             
         }else{
@@ -44,7 +49,12 @@ if(isset($_POST['updatebarang'])){
     $update = mysqli_query($conn,"update komunikasi set namabarang='$namabarang', noseri='$noseri', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', keterangan='$keterangan' where idbarang = '$idb' ");
     
     if($update){
-        header('location:komunikasi.php');
+        if ($_SESSION['role'] == "admin") {
+            header('location: komunikasi.php');
+            exit();
+        } else if ($_SESSION['role'] == "user") {
+            header('location: user_komunikasi.php');
+        }
         session_write_close();
     }else{
         echo 'Gagal menyimpan data: ';

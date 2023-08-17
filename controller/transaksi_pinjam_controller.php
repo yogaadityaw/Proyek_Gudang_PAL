@@ -1,5 +1,5 @@
 <?php
-require 'controller/koneksi.php';
+require 'koneksi.php';
 //membuat koneksi ke database
 session_start();
 date_default_timezone_set('Asia/Jakarta');
@@ -199,7 +199,12 @@ if (isset($_POST['pinjam']) != null) {
     } else {
         $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$status')");
         if ($addtotable) {
-            header('location: mutasibarang.php');
+            if ($_SESSION['role'] == "admin") {
+                header('location: mutasibarang.php');
+                exit();
+            } else if ($_SESSION['role'] == "user") {
+                header('location: user_mutasibarang.php');
+            }
             session_write_close();
         } else {
             echo 'Gagal menyimpan data: ';

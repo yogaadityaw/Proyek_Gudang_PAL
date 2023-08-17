@@ -1,10 +1,10 @@
 <?php
-require 'controller/angkut_apung_controller.php';
-require 'cek.php';
-require 'controller/koneksi.php';
-require 'middleware/auth_middleware.php';
+require '../controller/angkut_apung_controller.php';
 
-checkRole("admin", 'middleware/auth_prohibit.php');
+require '../controller/koneksi.php';
+require '../middleware/auth_middleware.php';
+
+checkRole("user", '../middleware/auth_prohibit.php');
 
 $query = "SELECT * FROM barang_angkut_apung";
 
@@ -30,11 +30,11 @@ if (isset($_GET['cari'])) {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Alat Produksi</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<?php include 'sidebar.php' ?>
+<?php include 'user_sidebar.php' ?>
 <br>
 <br>
 
@@ -50,11 +50,11 @@ if (isset($_GET['cari'])) {
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                     Tambah Stok
                 </button>
-                <a href="export_angkut_apung.php" class="btn btn-info">Export Data</a>
+                <a href="../export_angkut_apung.php" class="btn btn-info">Export Data</a>
                 <br>
                 <br>
 
-                <form action="angkut_apung.php" method="GET">
+                <form action="user_angkut_apung.php" method="GET">
                     <div class="input-group mb-3">
                         <!-- Search bar using Bootstrap -->
                         <input type="text" value="" class="form-control" placeholder="Cari" name="cari">
@@ -101,13 +101,8 @@ if (isset($_GET['cari'])) {
                                         <td style="text-align: center;"><?= $barangrusak ?></td>
                                         <td style="text-align: center;"><?= $keterangan ?></td>
                                         <td style="text-align: center;">
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
+                                            <button type="button" class="btn btn-warning text-light" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
                                                 Update
-                                            </button>
-                                            <!-- <input type="hidden" name="idbarangyangmaudihapus" value="<?= $idb; ?>"> -->
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?= $idb; ?>">
-                                                Delete
-                                            </button>
                                         </td>
                                     </tr>
                                     <!-- Update Modal -->
@@ -151,41 +146,6 @@ if (isset($_GET['cari'])) {
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Delete Modal -->
-                                    <div class="modal fade" id="delete<?= $idb; ?>">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content bg-white">
-                                                <!-- Modal Header -->
-                                                <form method="post">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Delete Stok Barang</h4>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                    </div>
-
-                                                    <!-- Modal body -->
-                                                    <div class="modal-body">
-                                                        <!-- <input type="text" name="namabarang" value="<?= $namabarang ?>" class="form-control form-control-lg" required>
-                                                    <br>
-                                                    <input type="number" name="jumlah" value="<?= $jumlah ?>" class="form-control form-control-lg" required>
-                                                    <br>
-                                                    <input type="number" name="barangbaik" value="<?= $barangbaik ?>" class="form-control form-control-lg" required>
-                                                    <br>
-                                                    <input type="number" name="barangrusak" value="<?= $barangrusak ?>" class="form-control form-control-lg" required>
-                                                    <br>
-                                                    <input type="text" name="keterangan" value="<?= $keterangan ?>" class="form-control form-control-lg" required>
-                                                    <br> -->
-                                                        apakah anda yakin ingin menghapus satu kolom ini?
-                                                        <input type="hidden" name="idb" value="<?= $idb; ?>">
-                                                    </div>
-                                                    <!-- Modal footer -->
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" name="hapusbarang">Hapus</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                        </div>
-                                    </div>
                                 <?php
                                 };
                                 ?>
@@ -193,7 +153,7 @@ if (isset($_GET['cari'])) {
                         </table>
     </main>
     <!-- The Modal -->
-    <form method="POST" action="angkut_apung.php">
+    <form method="POST" action="user_angkut_apung.php">
         <div class="modal" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -230,8 +190,7 @@ if (isset($_GET['cari'])) {
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 
 </html>

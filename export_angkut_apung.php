@@ -66,7 +66,7 @@ require 'controller/koneksi.php';
                     ?>
                 </tbody>
             </table>
-            <a href="angkut_apung.php" class="btn btn-Danger">Kembali</a>
+            <a href="javascript:history.back()" class="btn btn-Danger">Kembali</a>
         </div>
     </div>
     <script>

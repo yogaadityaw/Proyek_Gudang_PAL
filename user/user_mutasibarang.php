@@ -1,11 +1,9 @@
 <?php
+
 require '../controller/koneksi.php';
 require '../controller/mutasi_controller.php';
 require '../middleware/auth_middleware.php';
-checkRole("atasan", '../middleware/auth_prohibit.php');
-
-
-
+checkRole("user", '../middleware/auth_prohibit.php');
 
 $query = "SELECT * FROM keluar_masuk_barang";
 
@@ -22,6 +20,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,7 +32,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<?php include 'atasan_sidebar.php' ?>
+<?php include 'user_sidebar.php' ?>
 
 <body>
     <br>
@@ -44,11 +44,11 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
         </div>
 
         <div class="container -fluid">
-            <a href="atasan_export_mutasibarang.php" class="btn btn-info text-light">Export Data</a>
+            <a href="../export_mutasibarang.php" class="btn btn-info">Export Data</a>
             <br>
             <br>
 
-            <form action="atasan_mutasibarang.php" method="GET">
+            <form action="user_mutasibarang.php" method="GET">
                 <div class="input-group mb-3">
                     <!-- Search bar using Bootstrap -->
                     <input type="text" class="form-control" placeholder="Cari" name="cari" value="<?= $searchTerm ?>">
@@ -119,20 +119,20 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                         $namadivisi = $row_divisi['namadivisi'];
                                     }
 
-                                    echo '<tr>';
-                                    echo '<td>' . $tanggalpinjam . '</td>';
-                                    echo '<td>' . $tanggalkembali . '</td>';
-                                    echo '<td>' . $kodetransaksi . '</td>';
-                                    echo '<td>' . $nip . '</td>';
-                                    echo '<td>' . $namapegawai . '</td>';
-                                    echo '<td>' . $namadivisi . '</td>';
-                                    echo '<td>' . $namabarang . '</td>';
-                                    echo '<td>' . $kodebarang . '</td>';
-                                    echo '<td>' . $jumlahpinjam . '</td>';
-                                    echo '<td>' . $jumlahkembali . '</td>';
-                                    echo '<td>' . $jumlahrusak . '</td>';
-                                    echo '<td>' . $keterangan . '</td>';
-                                    echo '<td>';
+                                    echo '<tr class="centered-cell">';
+                                    echo '<td class="centered-cell">' . $tanggalpinjam . '</td>';
+                                    echo '<td class="centered-cell">' . $tanggalkembali . '</td>';
+                                    echo '<td class="centered-cell">' . $kodetransaksi . '</td>';
+                                    echo '<td class="centered-cell">' . $nip . '</td>';
+                                    echo '<td class="centered-cell">' . $namapegawai . '</td>';
+                                    echo '<td class="centered-cell">' . $namadivisi . '</td>';
+                                    echo '<td class="centered-cell">' . $namabarang . '</td>';
+                                    echo '<td class="centered-cell">' . $kodebarang . '</td>';
+                                    echo '<td class="centered-cell">' . $jumlahpinjam . '</td>';
+                                    echo '<td class="centered-cell">' . $jumlahkembali . '</td>';
+                                    echo '<td class="centered-cell">' . $jumlahrusak . '</td>';
+                                    echo '<td class="centered-cell">' . $keterangan . '</td>';
+                                    echo '<td class="centered-cell">';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
                                     } else if ($jumlahrusak > 0) {
@@ -185,19 +185,19 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     }
 
                                     echo '<tr>';
-                                    echo '<td style="text-align: center;">' . $tanggalpinjam . '</td>';
-                                    echo '<td style="text-align: center;">' . $tanggalkembali . '</td>';
-                                    echo '<td style="text-align: center;">' . $kodetransaksi . '</td>';
-                                    echo '<td style="text-align: center;">' . $nip . '</td>';
-                                    echo '<td style="text-align: center;">' . $namapegawai . '</td>';
-                                    echo '<td style="text-align: center;">' . $namadivisi . '</td>';
-                                    echo '<td style="text-align: center;">' . $namabarang . '</td>';
-                                    echo '<td style="text-align: center;">' . $kodebarang . '</td>';
-                                    echo '<td style="text-align: center;">' . $jumlahpinjam . '</td>';
-                                    echo '<td style="text-align: center;">' . $jumlahkembali . '</td>';
-                                    echo '<td style="text-align: center;">' . $jumlahrusak . '</td>';
-                                    echo '<td style="text-align: center;">' . $keterangan . '</td>';
-                                    echo '<td style="text-align: center;">';
+                                    echo '<td>' . $tanggalpinjam . '</td>';
+                                    echo '<td>' . $tanggalkembali . '</td>';
+                                    echo '<td>' . $kodetransaksi . '</td>';
+                                    echo '<td>' . $nip . '</td>';
+                                    echo '<td>' . $namapegawai . '</td>';
+                                    echo '<td>' . $namadivisi . '</td>';
+                                    echo '<td>' . $namabarang . '</td>';
+                                    echo '<td>' . $kodebarang . '</td>';
+                                    echo '<td>' . $jumlahpinjam . '</td>';
+                                    echo '<td>' . $jumlahkembali . '</td>';
+                                    echo '<td>' . $jumlahrusak . '</td>';
+                                    echo '<td>' . $keterangan . '</td>';
+                                    echo '<td>';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
                                     } else if ($jumlahrusak > 0) {
@@ -219,7 +219,6 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
-
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-require 'controller/koneksi.php';
+require 'koneksi.php';
 
 
 
@@ -17,7 +17,12 @@ session_start();
     
         $addtotable = mysqli_query($conn,"INSERT INTO barang_konsumable (namabarang, kodebarang, jumlah, keterangan, kategori_id) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$keterangan', 3)");
         if($addtotable){
-            header('location: konsumable.php');
+            if ($_SESSION['role'] == "admin") {
+                header('location: konsumable.php');
+                exit();
+            } else if ($_SESSION['role'] == "user") {
+                header('location: user_konsumable.php');
+            }
             session_write_close();
             
         }else{
@@ -41,7 +46,12 @@ if(isset($_POST['updatebarang'])){
     $update = mysqli_query($conn,"update barang_konsumable SET namabarang='$namabarang', kodebarang='$kodebarang', jumlah='$jumlah', keterangan='$keterangan' WHERE idbarang = '$idb' ");
     
     if($update){
-        header('location:konsumable.php');
+        if ($_SESSION['role'] == "admin") {
+            header('location: konsumable.php');
+            exit();
+        } else if ($_SESSION['role'] == "user") {
+            header('location: user_konsumable.php');
+        }
         session_write_close();
     }else{
         echo 'Gagal menyimpan data: ';
@@ -62,8 +72,6 @@ if(isset($_POST['hapusbarang'])){
         session_write_close();
     }else{
         echo 'Gagal menyimpan data: ';
-        
-
     };
     return;
 }
