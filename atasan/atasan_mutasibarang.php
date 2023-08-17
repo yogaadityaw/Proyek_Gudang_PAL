@@ -2,6 +2,9 @@
 require '../controller/koneksi.php';
 require '../controller/mutasi_controller.php';
 
+
+
+
 $query = "SELECT * FROM keluar_masuk_barang";
 
 if (isset($_GET['cari'])) {
@@ -214,7 +217,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
 </body>
 
 </html>

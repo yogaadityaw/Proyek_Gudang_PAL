@@ -54,10 +54,19 @@ if (isset($_POST['login'])) {
     // }
 }
 
-// if ((isset($_SESSION['log']))) {
-//     header('Location: index.php');
-//     exit();
-// }
+if (isset($_SESSION['log'])) {
+    if ($_SESSION['role'] == "admin") {
+        header('Location: index.php');
+        exit();
+    } elseif ($_SESSION['role'] == "user") {
+        header('Location: user/user_dashboard.php');
+        exit();
+    } elseif ($_SESSION['role'] == "atasan") {
+        header('Location: atasan/atasan_mutasibarang.php');
+        exit();
+    }
+}
+
 
 if (!$conn) {
     die("Koneksi database gagal: " . mysqli_connect_error());
