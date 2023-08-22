@@ -11,11 +11,11 @@ if (isset($_POST['addnewbarangproduksi'])) {
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
-    $keterangan = $_POST['keterangan'];
+    $lokasi = $_POST['lokasi'];
 
     if ($barangbaik + $barangrusak > $jumlah || $barangbaik +  $barangrusak < $jumlah) {
     }
-    $addtotable = mysqli_query($conn, "INSERT INTO alat_produksi (namabarang, kodebarang, jumlah, baik, rusak, keterangan, kategori_id) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan', 1)");
+    $addtotable = mysqli_query($conn, "INSERT INTO alat_produksi (namabarang, kodebarang, jumlah, baik, rusak, lokasi, kategori_id) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$barangbaik', '$barangrusak', '$lokasi', 1)");
 
     if ($addtotable) {
         if ($_SESSION['role'] == "admin") {
@@ -39,10 +39,10 @@ if (isset($_POST['updatebarang'])) {
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
-    $keterangan = $_POST['keterangan'];
+    $lokasi = $_POST['lokasi'];
     $idb = $_POST['idb'];
 
-    $update = mysqli_query($conn, "update alat_produksi set namabarang='$namabarang', kodebarang='$kodebarang', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', keterangan='$keterangan' where idbarang = '$idb' ");
+    $update = mysqli_query($conn, "update alat_produksi set namabarang='$namabarang', kodebarang='$kodebarang', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', lokasi='$lokasi' where idbarang = '$idb' ");
 
     if ($update) {
         if ($_SESSION['role'] == "admin") {

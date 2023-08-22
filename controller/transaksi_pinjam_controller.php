@@ -200,10 +200,14 @@ if (isset($_POST['pinjam']) != null) {
         $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$status')");
         if ($addtotable) {
             if ($_SESSION['role'] == "admin") {
+                echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";
                 header('location: mutasibarang.php');
                 exit();
             } else if ($_SESSION['role'] == "user") {
+                echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";
                 header('location: user_mutasibarang.php');
+            } else if($_SESSION['role'] == "peminjam"){
+                echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";
             }
             session_write_close();
         } else {

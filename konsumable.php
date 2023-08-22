@@ -73,7 +73,7 @@ if (isset($_GET['cari'])) {
                                     <th class="table-info text-center align-middle">Nama Barang / Alat</th>
                                     <th class="table-info text-center align-middle">Kode Barang</th>
                                     <th class="table-info text-center align-middle">Jumlah</th>
-                                    <th class="table-info text-center align-middle">keterangan</th>
+                                    <th class="table-info text-center align-middle">lokasi</th>
                                     <th class="table-info text-center align-middle">Actions</th>
                                 </tr>
                             </thead>
@@ -86,7 +86,7 @@ if (isset($_GET['cari'])) {
                                     $namabarang = $data['namabarang'];
                                     $kodebarang = $data['kodebarang'];
                                     $jumlah = $data['jumlah'];
-                                    $keterangan = $data['keterangan'];
+                                    $lokasi = $data['lokasi'];
                                     $idb = $data['idbarang'];
                                 ?>
                                     <tr>
@@ -94,7 +94,7 @@ if (isset($_GET['cari'])) {
                                         <td style="text-align: center;"><?= $namabarang ?></td>
                                         <td style="text-align: center;"><?= $kodebarang ?></td>
                                         <td style="text-align: center;"><?= $jumlah ?></td>
-                                        <td style="text-align: center;"><?= $keterangan ?></td>
+                                        <td style="text-align: center;"><?= $lokasi ?></td>
                                         <td style="text-align: center;">
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
                                                 Update
@@ -128,8 +128,8 @@ if (isset($_GET['cari'])) {
                                                         <label>Jumlah</label>
                                                         <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah" required>
                                                         <br>
-                                                        <label>Keterangan</label>
-                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control from-control-lg" placeholder="Keterangan" required>
+                                                        <label>lokasi</label>
+                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control from-control-lg" placeholder="lokasi" required>
                                                         <br>
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
                                                     </div>
@@ -159,7 +159,7 @@ if (isset($_GET['cari'])) {
                                                 <br>
                                                 <input type="number" class="form-control form-control-lg" placeholder="Jumlah" name="jumlah" required> 
                                                 <br>
-                                                <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control from-control-lg" required> -->
+                                                <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control from-control-lg" required> -->
                                                         Apakah Anda yakin ingin menghapus <?= $namabarang; ?> ?
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
                                                     </div>
@@ -200,7 +200,7 @@ if (isset($_GET['cari'])) {
                     <br>
                     <input type="number" class="form-control form-control-lg" placeholder="Jumlah" name="jumlah" required>
                     <br>
-                    <input type="text" class="form-control form-control-lg" placeholder="Keterangan" name="keterangan" required>
+                    <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi" required>
                 </div>
 
                 <!-- Modal footer -->

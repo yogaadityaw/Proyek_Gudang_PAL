@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2023 at 09:34 AM
+-- Generation Time: Aug 22, 2023 at 04:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,7 +34,7 @@ CREATE TABLE `alat_produksi` (
   `jumlah` int(11) NOT NULL,
   `baik` int(11) NOT NULL,
   `rusak` int(11) NOT NULL,
-  `keterangan` varchar(512) NOT NULL,
+  `lokasi` varchar(512) NOT NULL,
   `kategori_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -42,8 +42,8 @@ CREATE TABLE `alat_produksi` (
 -- Dumping data for table `alat_produksi`
 --
 
-INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `keterangan`, `kategori_id`) VALUES
-(10, 'Bor Magnet', 'DRL01', 188, 188, 0, '-', 1),
+INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
+(10, 'Bor Magnet', 'DRL01', 175, 174, 1, '-', 1),
 (12, 'Hand Bor (Makita)', 'HDRL02', 5, 5, 0, '-', 1),
 (13, 'Vacum Test', 'VT01', 1, 1, 0, '-', 1),
 (14, 'Load Cell 5 Ton', 'LC5T', 1, 0, 1, '-', 1),
@@ -78,7 +78,8 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `
 (43, 'Tackal 3 Ton (Chain Block)', 'TCK3T', 19, 19, 0, '-', 1),
 (44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', 22, 22, 0, '-', 1),
 (45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', 7, 7, 0, '-', 1),
-(51, 'Bor Magnet', 'DRL09', 1, 1, 0, '-', 1);
+(51, 'Bor Magnet', 'DRL09', 1, 1, 0, '-', 1),
+(54, 'coba', 'tes', 1, 0, 1, 'rusak', 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,7 @@ CREATE TABLE `barang_angkut_apung` (
   `jumlah` int(11) NOT NULL,
   `baik` int(11) NOT NULL,
   `rusak` int(11) NOT NULL,
-  `keterangan` varchar(512) NOT NULL,
+  `lokasi` varchar(512) NOT NULL,
   `kategori_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -101,7 +102,7 @@ CREATE TABLE `barang_angkut_apung` (
 -- Dumping data for table `barang_angkut_apung`
 --
 
-INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `keterangan`, `kategori_id`) VALUES
+INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
 (13, 'Forklift 3 ton', 'FK3T', 1, 1, 0, '-', 4),
 (14, 'Forklift 5 Ton', 'FK5T', 1, 1, 0, '-', 4),
 (15, 'Lifttruck', 'LFT', 1, 0, 1, '-', 4),
@@ -125,7 +126,7 @@ CREATE TABLE `barang_konsumable` (
   `namabarang` varchar(512) NOT NULL,
   `kodebarang` varchar(100) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `keterangan` varchar(512) NOT NULL,
+  `lokasi` varchar(512) NOT NULL,
   `kategori_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -133,9 +134,10 @@ CREATE TABLE `barang_konsumable` (
 -- Dumping data for table `barang_konsumable`
 --
 
-INSERT INTO `barang_konsumable` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `keterangan`, `kategori_id`) VALUES
+INSERT INTO `barang_konsumable` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `lokasi`, `kategori_id`) VALUES
 (48, 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 2, '-', 3),
-(50, 'cek', 'cekk', 1, '-', 3);
+(50, 'cek', 'cekk', 1, '-', 3),
+(51, 'coba', 'test', 1, 'rusak', 3);
 
 -- --------------------------------------------------------
 
@@ -199,6 +201,7 @@ CREATE TABLE `keluar_masuk_barang` (
   `jumlahkembali` int(11) NOT NULL,
   `jumlahrusak` int(11) NOT NULL,
   `keterangan` varchar(500) NOT NULL,
+  `isApproved` tinyint(1) NOT NULL,
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -206,14 +209,27 @@ CREATE TABLE `keluar_masuk_barang` (
 -- Dumping data for table `keluar_masuk_barang`
 --
 
-INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `nip`, `namapegawai`, `birobengkel`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `keterangan`, `status`) VALUES
-(106, 'PJ1', '2023-08-07 14:52:53', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 'Belum kembali'),
-(107, 'PJ2', '2023-08-07 14:59:53', '0000-00-00 00:00:00', 22106757, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 'Belum kembali'),
-(108, 'PJ3', '2023-08-07 15:00:05', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 'Belum kembali'),
-(109, 'PJ4', '2023-08-07 15:16:46', '2023-08-07 16:33:00', 14200138, '', '', 'Bor Magnet', 'DRL01', 1, 1, 0, '', 'Sudah kembali'),
-(110, 'PJ5', '2023-08-07 15:36:25', '0000-00-00 00:00:00', 14200139, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 'Belum kembali'),
-(111, 'PJ6', '2023-08-07 15:37:22', '2023-08-07 15:40:00', 14200141, '', '', 'Hand Bor (Makita)', 'HDRL02', 1, 1, 0, '', 'Sudah kembali'),
-(112, 'PJ7', '2023-08-08 01:06:14', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 'Belum kembali');
+INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `nip`, `namapegawai`, `birobengkel`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `keterangan`, `isApproved`, `status`) VALUES
+(106, 'PJ1', '2023-08-07 14:52:53', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(107, 'PJ2', '2023-08-07 14:59:53', '0000-00-00 00:00:00', 22106757, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(108, 'PJ3', '2023-08-07 15:00:05', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(109, 'PJ4', '2023-08-07 15:16:46', '2023-08-07 16:33:00', 14200138, '', '', 'Bor Magnet', 'DRL01', 1, 1, 0, '', 0, 'Sudah kembali'),
+(110, 'PJ5', '2023-08-07 15:36:25', '0000-00-00 00:00:00', 14200139, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(111, 'PJ6', '2023-08-07 15:37:22', '2023-08-07 15:40:00', 14200141, '', '', 'Hand Bor (Makita)', 'HDRL02', 1, 1, 0, '', 0, 'Sudah kembali'),
+(112, 'PJ7', '2023-08-08 01:06:14', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(113, 'PJ8', '2023-08-17 08:46:59', '0000-00-00 00:00:00', 14200138, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(114, 'PJ9', '2023-08-17 08:48:29', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(115, 'PJ10', '2023-08-17 08:50:50', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(116, 'PJ11', '2023-08-17 08:51:36', '2023-08-17 08:53:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 1, 0, '', 0, 'Sudah kembali'),
+(117, 'PJ12', '2023-08-17 08:54:32', '2023-08-17 08:55:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Sudah kembali'),
+(118, 'PJ13', '2023-08-22 14:10:03', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(119, 'PJ13', '2023-08-22 14:11:08', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(120, 'PJ14', '2023-08-22 14:11:19', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(121, 'PJ14', '2023-08-22 14:12:57', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(122, 'PJ15', '2023-08-22 14:13:10', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(123, 'PJ16', '2023-08-22 14:13:33', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(124, 'PJ17', '2023-08-22 14:40:27', '0000-00-00 00:00:00', 14000, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(125, 'PJ18', '2023-08-22 14:40:38', '0000-00-00 00:00:00', 14000, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali');
 
 -- --------------------------------------------------------
 
@@ -228,7 +244,7 @@ CREATE TABLE `komunikasi` (
   `jumlah` int(11) NOT NULL,
   `baik` int(11) NOT NULL,
   `rusak` int(11) NOT NULL,
-  `keterangan` varchar(512) NOT NULL,
+  `lokasi` varchar(512) NOT NULL,
   `kategori_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -236,7 +252,7 @@ CREATE TABLE `komunikasi` (
 -- Dumping data for table `komunikasi`
 --
 
-INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, `rusak`, `keterangan`, `kategori_id`) VALUES
+INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
 (8, 'HT I COM V80', '602733378-1', 3, 3, 0, '-', 2),
 (9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2),
 (12, 'ceki', 'cekcek', 1, 1, 0, '-', 2);
@@ -265,7 +281,9 @@ INSERT INTO `login` (`ID_User`, `NIP`, `divisi`, `Password`, `role_id`) VALUES
 (14, '12345678', '', '$2y$10$sS0CL15myw8l8vsAlCvPj.MkD799grRLvw2O5vMU5kTXdCBZml9WW', 0),
 (22, '017095870', '', '$2y$10$NtksZj5ioWjCYoiMfHRJY.EXpfEBEE1s6m8NqBrPzd6.UI5nNcMhq', 3),
 (23, '14200139', '', '$2y$10$Qv5zIZKhiZWAx99XnuAMjO8VRYhOHIPUnqTARaZfQytQ7KD22SPfK', 2),
-(24, '14200140', '', '$2y$10$9G.QjE7yCHf5fRjPWJo5fOyeJ0Mr/cAFJpsZ3BJqI6wP30coPOq4O', 3);
+(24, '14200140', '', '$2y$10$9G.QjE7yCHf5fRjPWJo5fOyeJ0Mr/cAFJpsZ3BJqI6wP30coPOq4O', 3),
+(25, '3120500028', '', '$2y$10$EIkYbZ1lUgE9kpwJNtC78.aR5bHCO1PEYNQwhHOdISPBlk866xtrK', 4),
+(26, '14000', '', '$2y$10$OemArRVnvnjziK52INyk8OnuhUZz31r/FLNPW0A.aNbLhYU68ahru', 4);
 
 -- --------------------------------------------------------
 
@@ -290,7 +308,8 @@ INSERT INTO `pegawai` (`idpegawai`, `nip`, `namapegawai`, `divisi_id`) VALUES
 (3, 14200138, 'coba', 2),
 (4, 14200139, 'Muhammad Royhan', 3),
 (5, 14200140, 'Muhammad Fathur', 3),
-(6, 14200141, 'Farah', 4);
+(6, 14200141, 'Farah', 4),
+(7, 14000, 'Testing', 1);
 
 --
 -- Indexes for dumped tables
@@ -366,7 +385,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `alat_produksi`
 --
 ALTER TABLE `alat_produksi`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `barang_angkut_apung`
@@ -378,7 +397,7 @@ ALTER TABLE `barang_angkut_apung`
 -- AUTO_INCREMENT for table `barang_konsumable`
 --
 ALTER TABLE `barang_konsumable`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `divisi`
@@ -396,7 +415,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `idtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`
@@ -408,13 +427,13 @@ ALTER TABLE `komunikasi`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `idpegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idpegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

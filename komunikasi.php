@@ -72,7 +72,7 @@ if (isset($_GET['cari'])) {
                                     <th class="table-info text-center align-middle">Jumlah</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
-                                    <th class="table-info text-center align-middle">keterangan</th>
+                                    <th class="table-info text-center align-middle">lokasi</th>
                                     <th class="table-info text-center align-middle">action</th>
                                 </tr>
                             </thead>
@@ -88,7 +88,7 @@ if (isset($_GET['cari'])) {
                                     $jumlah = $data['jumlah'];
                                     $barangbaik = $data['baik'];
                                     $barangrusak = $data['rusak'];
-                                    $keterangan = $data['keterangan'];
+                                    $lokasi = $data['lokasi'];
                                     $idb = $data['idbarang'];
                                 ?>
                                     <tr>
@@ -98,7 +98,7 @@ if (isset($_GET['cari'])) {
                                         <td style="text-align: center;"><?= $jumlah ?></td>
                                         <td style="text-align: center;"><?= $barangbaik ?></td>
                                         <td style="text-align: center;"><?= $barangrusak ?></td>
-                                        <td style="text-align: center;"><?= $keterangan ?></td>
+                                        <td style="text-align: center;"><?= $lokasi ?></td>
                                         <td style="text-align: center;">
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
                                                 Update
@@ -137,8 +137,8 @@ if (isset($_GET['cari'])) {
                                                         <label>Barang Kondisi Rusak</label>
                                                         <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" placeholder="Barang Kondisi Rusak" required>
 
-                                                        <label>Keterangan</label>
-                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" placeholder="Keterangan" required>
+                                                        <label>lokasi</label>
+                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg" placeholder="lokasi" required>
 
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
                                                     </div>
@@ -175,7 +175,7 @@ if (isset($_GET['cari'])) {
                                                         <br>
                                                         <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" required>
                                                         <br>
-                                                        <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" required>
+                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg" required>
                                                         <br> -->
                                                         apakah anda yakin ingin menghapus satu kolom ini ?
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
@@ -218,7 +218,7 @@ if (isset($_GET['cari'])) {
                         <br>
                         <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak" required>
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="Keterangan" name="keterangan" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi" required>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">

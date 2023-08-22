@@ -17,16 +17,24 @@ if (isset($_POST['login'])) {
                 if ($role == 1) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "admin";
+                    $_SESSION['nip'] = $nip;
                     header('location: index.php');
                     exit();
                 } else if ($role == 2) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "user";
+                    $_SESSION['nip'] = $nip;
                     header('location: user/user_dashboard.php');
-                } else if($role == 3){
+                } else if ($role == 3) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "atasan";
+                    $_SESSION['nip'] = $nip;
                     header('location: atasan/atasan_mutasibarang.php');
+                } else if ($role == 4) {
+                    $_SESSION['log'] = 'True';
+                    $_SESSION['role'] = "peminjam";
+                    $_SESSION['nip'] = $nip;
+                    header('location: peminjam/peminjam_dashboard.php');
                 } else {
                     $loginError = "User tidak tersedia.";
                 }

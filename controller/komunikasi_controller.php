@@ -11,10 +11,10 @@ session_start();
         $jumlah = $_POST['jumlah'];
         $barangbaik = $_POST['barangbaik'];
         $barangrusak = $_POST['barangrusak'];
-        $keterangan = $_POST['keterangan'];
+        $lokasi = $_POST['lokasi'];
         
     if($jumlah>=$barangbaik+$barangrusak){ // dungsi untuk cek inputan
-        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, jumlah, baik, rusak, keterangan, kategori_id) VALUES ('$namabarang', '$noseri', '$jumlah', '$barangbaik', '$barangrusak', '$keterangan', 2)");
+        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, jumlah, baik, rusak, lokasi, kategori_id) VALUES ('$namabarang', '$noseri', '$jumlah', '$barangbaik', '$barangrusak', '$lokasi', 2)");
     }
     else{ // fungsi untuk cek inputan
         session_write_close();
@@ -43,10 +43,10 @@ if(isset($_POST['updatebarang'])){
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
-    $keterangan = $_POST['keterangan'];
+    $lokasi = $_POST['lokasi'];
     $idb = $_POST['idb'];
     
-    $update = mysqli_query($conn,"update komunikasi set namabarang='$namabarang', noseri='$noseri', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', keterangan='$keterangan' where idbarang = '$idb' ");
+    $update = mysqli_query($conn,"update komunikasi set namabarang='$namabarang', noseri='$noseri', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', lokasi='$lokasi' where idbarang = '$idb' ");
     
     if($update){
         if ($_SESSION['role'] == "admin") {

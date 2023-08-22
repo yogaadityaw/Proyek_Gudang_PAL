@@ -73,7 +73,10 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                                 echo "User";
                                             } else if ($role == 3) {
                                                 echo "Atasan";
-                                            } else {
+                                            } else if ($role == 4){
+                                                echo "Peminjam";
+                                            } 
+                                            else {
                                                 echo "User tidak diketahui";
                                             }
                                             ?></td>
@@ -150,6 +153,7 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                 <option value="" selected disabled>Pilih Role</option>
                                 <option value="2">User</option>
                                 <option value="3">Atasan</option>
+                                <option value="4">Peminjam</option>
                             </select>
                         </div>
                         <!-- Modal footer -->
@@ -162,9 +166,7 @@ checkRole("admin", 'middleware/auth_prohibit.php');
         </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
+    <script src="js/scripts.js"></script>   
 </body>
 
 </html>

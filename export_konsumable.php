@@ -34,7 +34,7 @@ require 'controller/koneksi.php';
                         <th class="table-info text-center align-middle">Nama Barang / Alat</th>
                         <th class="table-info text-center align-middle">Kode Barang</th>
                         <th class="table-info text-center align-middle">Jumlah</th>
-                        <th class="table-info text-center align-middle">keterangan</th>
+                        <th class="table-info text-center align-middle">lokasi</th>
                         
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@ require 'controller/koneksi.php';
                         $namabarang = $data['namabarang'];
                         $kodebarang = $data['kodebarang'];
                         $jumlah = $data['jumlah'];
-                        $keterangan = $data['keterangan'];
+                        $lokasi = $data['lokasi'];
                         $idb = $data['idbarang'];
                     ?>
                         <tr>
@@ -55,7 +55,7 @@ require 'controller/koneksi.php';
                             <td style="text-align: center;"><?php echo $namabarang ?></td>
                             <td style="text-align: center;"><?php echo $kodebarang ?></td>
                             <td style="text-align: center;"><?php echo $jumlah ?></td>
-                            <td style="text-align: center;"><?php echo $keterangan ?></td>
+                            <td style="text-align: center;"><?php echo $lokasi ?></td>
                         </tr>
                     <?php
                     };
