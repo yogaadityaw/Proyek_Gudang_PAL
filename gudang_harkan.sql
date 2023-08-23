@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2023 at 04:56 PM
+-- Generation Time: Aug 23, 2023 at 05:48 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -155,10 +155,27 @@ CREATE TABLE `divisi` (
 --
 
 INSERT INTO `divisi` (`iddivisi`, `namadivisi`) VALUES
-(1, 'Maintenence I, Biro Analisa, Evaluasi, SDM & Transformasi Teknologi (5RB093)'),
-(2, 'Human Capital Management'),
-(3, 'Divisi Kapal Perang'),
-(4, 'Divisi Kapal Selam');
+(1, 'Div Harkan'),
+(2, 'Dep. Perencanaan & Pengendalian (5RB003)'),
+(3, 'Biro Perencana (5RB083)'),
+(4, 'Biro Rekayasa (5RB023)'),
+(5, 'Biro Analisa, Evaluasi, SDM & Transformasi Teknologi (5RB093)'),
+(6, 'Departemen Produksi (5RH000)'),
+(7, 'Biro Koord Pekerjaan (5RH023)'),
+(8, 'Bengkel Konstruksi (5RH072)'),
+(9, 'Bengkel Sistem Poros & Kemudi (5RH022)'),
+(10, 'Bengkel Sistem Bantu & Katup (5RH032)'),
+(11, 'Bengkel Mesin Perkakas (5RH042)'),
+(12, 'Bengkel Permesinan (5RH052)'),
+(13, 'Bengkel Listrik & Kontrol (5RH082)'),
+(14, 'Bengkel Blasting, Pengecatan, Scaffolding, & Interior (5RH092)'),
+(15, 'Departemen Dukungan Produksi (5RC003)'),
+(16, 'Biro Perencanaan & Persiapan Fasilitas Produksi (5RC053)'),
+(17, 'Bengkel Maintenance Fasilitas Produksi (5RC0A3)'),
+(18, 'Bengkel Dok Gali (5RC0B3)'),
+(19, 'Bengkel Dok Apung (5RC0C3)'),
+(20, 'Bengkel Dok Apung (5RC0C3)'),
+(21, 'Departemen Dok Apung (5RL000)');
 
 -- --------------------------------------------------------
 
@@ -193,14 +210,12 @@ CREATE TABLE `keluar_masuk_barang` (
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp(),
   `tanggalkembali` timestamp NOT NULL DEFAULT current_timestamp(),
   `nip` int(11) NOT NULL,
-  `namapegawai` varchar(200) NOT NULL,
-  `birobengkel` varchar(256) NOT NULL,
   `namabarang` varchar(200) NOT NULL,
   `kodebarang` varchar(200) NOT NULL,
   `jumlahpinjam` int(11) NOT NULL,
   `jumlahkembali` int(11) NOT NULL,
   `jumlahrusak` int(11) NOT NULL,
-  `keterangan` varchar(500) NOT NULL,
+  `lokasi` varchar(500) NOT NULL,
   `isApproved` tinyint(1) NOT NULL,
   `status` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -209,27 +224,25 @@ CREATE TABLE `keluar_masuk_barang` (
 -- Dumping data for table `keluar_masuk_barang`
 --
 
-INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `nip`, `namapegawai`, `birobengkel`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `keterangan`, `isApproved`, `status`) VALUES
-(106, 'PJ1', '2023-08-07 14:52:53', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(107, 'PJ2', '2023-08-07 14:59:53', '0000-00-00 00:00:00', 22106757, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(108, 'PJ3', '2023-08-07 15:00:05', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(109, 'PJ4', '2023-08-07 15:16:46', '2023-08-07 16:33:00', 14200138, '', '', 'Bor Magnet', 'DRL01', 1, 1, 0, '', 0, 'Sudah kembali'),
-(110, 'PJ5', '2023-08-07 15:36:25', '0000-00-00 00:00:00', 14200139, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(111, 'PJ6', '2023-08-07 15:37:22', '2023-08-07 15:40:00', 14200141, '', '', 'Hand Bor (Makita)', 'HDRL02', 1, 1, 0, '', 0, 'Sudah kembali'),
-(112, 'PJ7', '2023-08-08 01:06:14', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(113, 'PJ8', '2023-08-17 08:46:59', '0000-00-00 00:00:00', 14200138, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(114, 'PJ9', '2023-08-17 08:48:29', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(115, 'PJ10', '2023-08-17 08:50:50', '0000-00-00 00:00:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(116, 'PJ11', '2023-08-17 08:51:36', '2023-08-17 08:53:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 1, 0, '', 0, 'Sudah kembali'),
-(117, 'PJ12', '2023-08-17 08:54:32', '2023-08-17 08:55:00', 14200137, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Sudah kembali'),
-(118, 'PJ13', '2023-08-22 14:10:03', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(119, 'PJ13', '2023-08-22 14:11:08', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(120, 'PJ14', '2023-08-22 14:11:19', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(121, 'PJ14', '2023-08-22 14:12:57', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(122, 'PJ15', '2023-08-22 14:13:10', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(123, 'PJ16', '2023-08-22 14:13:33', '0000-00-00 00:00:00', 14200141, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(124, 'PJ17', '2023-08-22 14:40:27', '0000-00-00 00:00:00', 14000, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
-(125, 'PJ18', '2023-08-22 14:40:38', '0000-00-00 00:00:00', 14000, '', '', 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali');
+INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `nip`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `lokasi`, `isApproved`, `status`) VALUES
+(106, 'PJ1', '2023-08-07 14:52:53', '0000-00-00 00:00:00', 14200137, 'Bor Magnet', 'DRL01', 1, 0, 0, 'Mbenjeng', 0, 'Belum kembali'),
+(107, 'PJ2', '2023-08-07 14:59:53', '0000-00-00 00:00:00', 22106757, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(108, 'PJ3', '2023-08-07 15:00:05', '0000-00-00 00:00:00', 14200137, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(109, 'PJ4', '2023-08-07 15:16:46', '2023-08-07 16:33:00', 14200138, 'Bor Magnet', 'DRL01', 1, 1, 0, '', 0, 'Sudah kembali'),
+(110, 'PJ5', '2023-08-07 15:36:25', '0000-00-00 00:00:00', 14200139, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(111, 'PJ6', '2023-08-07 15:37:22', '2023-08-07 15:40:00', 14200141, 'Hand Bor (Makita)', 'HDRL02', 1, 1, 0, '', 0, 'Sudah kembali'),
+(112, 'PJ7', '2023-08-08 01:06:14', '0000-00-00 00:00:00', 14200137, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(113, 'PJ8', '2023-08-17 08:46:59', '0000-00-00 00:00:00', 14200138, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(114, 'PJ9', '2023-08-17 08:48:29', '0000-00-00 00:00:00', 14200137, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(115, 'PJ10', '2023-08-17 08:50:50', '0000-00-00 00:00:00', 14200137, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(116, 'PJ11', '2023-08-17 08:51:36', '2023-08-17 08:53:00', 14200137, 'Bor Magnet', 'DRL01', 1, 1, 0, '', 0, 'Sudah kembali'),
+(117, 'PJ12', '2023-08-17 08:54:32', '2023-08-17 08:55:00', 14200137, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Sudah kembali'),
+(118, 'PJ13', '2023-08-22 14:10:03', '0000-00-00 00:00:00', 14200141, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(119, 'PJ13', '2023-08-22 14:11:08', '0000-00-00 00:00:00', 14200141, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(120, 'PJ14', '2023-08-22 14:11:19', '0000-00-00 00:00:00', 14200141, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(121, 'PJ14', '2023-08-22 14:12:57', '0000-00-00 00:00:00', 14200141, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(122, 'PJ15', '2023-08-22 14:13:10', '0000-00-00 00:00:00', 14200141, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali'),
+(123, 'PJ16', '2023-08-22 14:13:33', '0000-00-00 00:00:00', 14200141, 'Bor Magnet', 'DRL01', 1, 0, 0, '', 0, 'Belum kembali');
 
 -- --------------------------------------------------------
 
@@ -260,56 +273,56 @@ INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Table structure for table `role`
 --
 
-CREATE TABLE `login` (
-  `ID_User` int(11) NOT NULL,
-  `NIP` varchar(256) NOT NULL,
-  `divisi` varchar(200) NOT NULL,
-  `Password` varchar(200) NOT NULL,
-  `role_id` int(11) NOT NULL
+CREATE TABLE `role` (
+  `id_role` int(11) NOT NULL,
+  `nama_role` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `role`
 --
 
-INSERT INTO `login` (`ID_User`, `NIP`, `divisi`, `Password`, `role_id`) VALUES
-(7, '22106757', '', '$2y$10$TwpvC6BOsOT48.3AYZk3TuEpZ6dsZnm2QXwNjv7tV1HJhjjhjUyOm', 2),
-(12, '12345', '', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1),
-(14, '12345678', '', '$2y$10$sS0CL15myw8l8vsAlCvPj.MkD799grRLvw2O5vMU5kTXdCBZml9WW', 0),
-(22, '017095870', '', '$2y$10$NtksZj5ioWjCYoiMfHRJY.EXpfEBEE1s6m8NqBrPzd6.UI5nNcMhq', 3),
-(23, '14200139', '', '$2y$10$Qv5zIZKhiZWAx99XnuAMjO8VRYhOHIPUnqTARaZfQytQ7KD22SPfK', 2),
-(24, '14200140', '', '$2y$10$9G.QjE7yCHf5fRjPWJo5fOyeJ0Mr/cAFJpsZ3BJqI6wP30coPOq4O', 3),
-(25, '3120500028', '', '$2y$10$EIkYbZ1lUgE9kpwJNtC78.aR5bHCO1PEYNQwhHOdISPBlk866xtrK', 4),
-(26, '14000', '', '$2y$10$OemArRVnvnjziK52INyk8OnuhUZz31r/FLNPW0A.aNbLhYU68ahru', 4);
+INSERT INTO `role` (`id_role`, `nama_role`) VALUES
+(1, 'Superadmin'),
+(2, 'User'),
+(3, 'Atasan'),
+(4, 'Peminjam');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawai`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `pegawai` (
-  `idpegawai` int(11) NOT NULL,
-  `nip` int(11) NOT NULL,
-  `namapegawai` varchar(256) NOT NULL,
-  `divisi_id` int(11) NOT NULL
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL,
+  `nip_user` varchar(512) NOT NULL,
+  `nama_user` varchar(512) NOT NULL,
+  `password_user` varchar(512) NOT NULL,
+  `divisi_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pegawai`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `pegawai` (`idpegawai`, `nip`, `namapegawai`, `divisi_id`) VALUES
-(1, 14200137, 'yoga', 1),
-(2, 22106757, 'Iffan Dedhy Christianto', 2),
-(3, 14200138, 'coba', 2),
-(4, 14200139, 'Muhammad Royhan', 3),
-(5, 14200140, 'Muhammad Fathur', 3),
-(6, 14200141, 'Farah', 4),
-(7, 14000, 'Testing', 1);
+INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `password_user`, `divisi_id`, `role_id`) VALUES
+(7, '22106757', 'Iffan Dedhy Christianto', '$2y$10$TwpvC6BOsOT48.3AYZk3TuEpZ6dsZnm2QXwNjv7tV1HJhjjhjUyOm', 1, 2),
+(12, '12345', 'admin', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1, 1),
+(22, '017095870', 'atasan', '$2y$10$NtksZj5ioWjCYoiMfHRJY.EXpfEBEE1s6m8NqBrPzd6.UI5nNcMhq', 2, 3),
+(23, '14200139', 'Muhammad Royhan', '$2y$10$Qv5zIZKhiZWAx99XnuAMjO8VRYhOHIPUnqTARaZfQytQ7KD22SPfK', 1, 2),
+(24, '14200140', 'Muhammad Fathur', '$2y$10$9G.QjE7yCHf5fRjPWJo5fOyeJ0Mr/cAFJpsZ3BJqI6wP30coPOq4O', 2, 3),
+(25, '3120500028', 'Ifku Syoba', '$2y$10$EIkYbZ1lUgE9kpwJNtC78.aR5bHCO1PEYNQwhHOdISPBlk866xtrK', 1, 4),
+(26, '14200141', 'Farah', '$2y$10$OemArRVnvnjziK52INyk8OnuhUZz31r/FLNPW0A.aNbLhYU68ahru', 2, 4),
+(27, '14200137', 'Yoga', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1, 1),
+(29, '14200138', 'Burhan', '$2y$10$SAOmW7P1RnSj6KI6xdZun.cST27PUqyILDhFPfvAA2E5YerSBwn4y', 1, 4),
+(30, '14200142', 'Agus', '$2y$10$gYuiFE8iA2t8mS8EBC0zVug1OV9MrGaSOEb8PK305bFEn/SOEGtGW', 1, 2),
+(31, '14200143', 'Bagus', '$2y$10$jbdL5KURcKLy2ly6ljy0Ke5id.YPEL1ewPTZ0wVA/0oQZJ0sN27mK', 1, 4),
+(33, '14200144', 'Rasda', '$2y$10$9Dx61GIAnEaQbV7JNEikK.kHbE.0GJu9pVWl0jFXyCzh.IIdc3kqa', 21, 4);
 
 --
 -- Indexes for dumped tables
@@ -363,19 +376,18 @@ ALTER TABLE `komunikasi`
   ADD KEY `kategori_id` (`kategori_id`);
 
 --
--- Indexes for table `login`
+-- Indexes for table `role`
 --
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`ID_User`),
-  ADD UNIQUE KEY `NIP` (`NIP`);
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id_role`);
 
 --
--- Indexes for table `pegawai`
+-- Indexes for table `users`
 --
-ALTER TABLE `pegawai`
-  ADD PRIMARY KEY (`idpegawai`),
-  ADD UNIQUE KEY `nip` (`nip`),
-  ADD KEY `divisi_id` (`divisi_id`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `divisi_id` (`divisi_id`),
+  ADD KEY `role_id` (`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -403,7 +415,7 @@ ALTER TABLE `barang_konsumable`
 -- AUTO_INCREMENT for table `divisi`
 --
 ALTER TABLE `divisi`
-  MODIFY `iddivisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `iddivisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -424,16 +436,10 @@ ALTER TABLE `komunikasi`
   MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `login`
-  MODIFY `ID_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `pegawai`
---
-ALTER TABLE `pegawai`
-  MODIFY `idpegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Constraints for dumped tables
@@ -474,6 +480,13 @@ ALTER TABLE `keluar_masuk_barang`
 --
 ALTER TABLE `komunikasi`
   ADD CONSTRAINT `komunikasi_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`divisi_id`) REFERENCES `divisi` (`iddivisi`),
+  ADD CONSTRAINT `users_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id_role`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

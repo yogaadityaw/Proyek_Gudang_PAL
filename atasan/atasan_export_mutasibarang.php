@@ -15,6 +15,7 @@ require '../controller/koneksi.php';
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
+
 <body style="margin: 0;">
     <div class="container">
         <br>
@@ -23,11 +24,11 @@ require '../controller/koneksi.php';
         <div class="data-tables datatable-dark">
 
             <!-- Masukkan table nya disini, dimulai dari tag TABLE -->
-            <table class="table table-bordered" id="mauexport" cellspacing="0" style="width:100%;">
+            <table class="table table-bordered" id="mauexport" width="100" cellspacing="0">
                 <thead>
                     <tr>
 
-                        <th class="table-info text-center align-middle" class="table-info text-center align-middle">Tanggal Pinjam</th>
+                        <th class="table-info text-center align-middle">Tanggal Pinjam</th>
                         <th class="table-info text-center align-middle">Tanggal Kembali</th>
                         <th class="table-info text-center align-middle">kode transaksi</th>
                         <th class="table-info text-center align-middle">NIP Pegawai</th>
@@ -38,29 +39,29 @@ require '../controller/koneksi.php';
                         <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                         <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                         <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                        <th class="table-info text-center align-middle">Keterangan</th>
+                        <th class="table-info text-center align-middle">Lokasi</th>
                         <th class="table-info text-center align-middle">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $ambilsemuadatastock = mysqli_query($conn, "SELECT k.*, p.namapegawai, d.namadivisi 
-                                                            FROM keluar_masuk_barang k 
-                                                            INNER JOIN pegawai p ON k.nip = p.nip
-                                                            INNER JOIN divisi d ON p.divisi_id = d.iddivisi");
+                    $ambilsemuadatastock = mysqli_query($conn, "SELECT k.*, u.nama_user, d.namadivisi 
+                    FROM keluar_masuk_barang k 
+                    INNER JOIN users u ON k.nip = u.nip_user
+                    INNER JOIN divisi d ON u.divisi_id = d.iddivisi");
                     while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                         $tanggalpinjam = $data['tanggal'];
                         $tanggalkembali = $data['tanggalkembali'];
                         $kodetransaksi = $data['kodetransaksi'];
                         $nip = $data['nip'];
-                        $namapegawai = $data['namapegawai'];
+                        $namapegawai = $data['nama_user'];
                         $namadivisi = $data['namadivisi'];
                         $namabarang = $data['namabarang'];
                         $kodebarang = $data['kodebarang'];
                         $jumlahpinjam = $data['jumlahpinjam'];
                         $jumlahkembali = $data['jumlahkembali'];
                         $jumlahrusak = $data['jumlahrusak'];
-                        $keterangan = $data['keterangan'];
+                        $lokasi = $data['lokasi'];
                         $status = $data['status'];
 
                     ?>
@@ -73,22 +74,21 @@ require '../controller/koneksi.php';
                             <td style="text-align: center;"> <?= $nip; ?> </td>
                             <td style="text-align: center;"> <?= $namapegawai; ?> </td>
                             <td style="text-align: center;"> <?= $namadivisi; ?> </td>
-
                             <td style="text-align: center;"> <?= $namabarang; ?> </td>
                             <td style="text-align: center;"> <?= $kodebarang; ?> </td>
                             <td style="text-align: center;"> <?= $jumlahpinjam; ?> </td>
                             <td style="text-align: center;"> <?= $jumlahkembali; ?> </td>
                             <td style="text-align: center;"> <?= $jumlahrusak; ?> </td>
-                            <td style="text-align: center;"> <?= $keterangan; ?> </td>
+                            <td style="text-align: center;"> <?= $lokasi; ?> </td>
                             <td style="text-align: center;"> <?php
-                                    if ($tanggalkembali === "0000-00-00 00:00:00") {
-                                        echo '<span class="badge text-bg-danger">Barang belum kembali</span>';
-                                    } else if ($jumlahrusak > 0) {
-                                        echo '<span class="badge text-bg-warning">Barang Rusak</span>';
-                                    } else {
-                                        echo '<span class="badge text-bg-primary">Selesai</span>';
-                                    }
-                                    ?></td>
+                                                                if ($tanggalkembali === "0000-00-00 00:00:00") {
+                                                                    echo '<span class="badge text-bg-danger">Barang belum kembali</span>';
+                                                                } else if ($jumlahrusak > 0) {
+                                                                    echo '<span class="badge text-bg-warning">Barang Rusak</span>';
+                                                                } else {
+                                                                    echo '<span class="badge text-bg-primary">Selesai</span>';
+                                                                }
+                                                                ?></td>
                         </tr>
                     <?php
                     };

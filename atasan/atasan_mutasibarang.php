@@ -59,7 +59,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
             <div class="card-body">
                 <div class="table table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
-                        <thead>
+                    <thead>
                             <tr>
                                 <th class="table-info text-center align-middle">Tanggal Pinjam</th>
                                 <th class="table-info text-center align-middle">Tanggal Kembali</th>
@@ -72,7 +72,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                 <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                                 <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                                 <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                                <th class="table-info text-center align-middle">Keterangan</th>
+                                <th class="table-info text-center align-middle">Lokasi</th>
                                 <th class="table-info text-center align-middle">Status</th>
                             </tr>
                         </thead>
@@ -85,33 +85,94 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $tanggalkembali = $data['tanggalkembali'];
                                     $kodetransaksi = $data['kodetransaksi'];
                                     $nip = $data['nip'];
-                                    $namapegawai = $data['namapegawai'];
-                                    $birobengkel = $data['birobengkel'];
                                     $namabarang = $data['namabarang'];
                                     $kodebarang = $data['kodebarang'];
                                     $jumlahpinjam = $data['jumlahpinjam'];
                                     $jumlahkembali = $data['jumlahkembali'];
                                     $jumlahrusak = $data['jumlahrusak'];
-                                    $keterangan = $data['keterangan'];
+                                    $lokasi = $data['lokasi'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = "0000-00-00 00:00:00";
 
                                     // Ambil nama pegawai
-                                    $query_pegawai = "SELECT pegawai.namapegawai
-                        FROM pegawai
-                        WHERE pegawai.nip = '$nip'";
+                                    $query_pegawai = "SELECT users.nama_user
+                        FROM users
+                        WHERE users.nip_user = '$nip'";
                                     $result_pegawai = mysqli_query($conn, $query_pegawai);
                                     $namapegawai = "-";
                                     if ($result_pegawai) {
                                         $row_pegawai = mysqli_fetch_assoc($result_pegawai);
-                                        $namapegawai = $row_pegawai['namapegawai'];
+                                        $namapegawai = $row_pegawai['nama_user'];
                                     }
 
                                     // Ambil nama divisi
                                     $query_divisi = "SELECT divisi.namadivisi
-                        FROM pegawai
-                        INNER JOIN divisi ON pegawai.divisi_id = divisi.iddivisi
-                        WHERE pegawai.nip = '$nip'";
+                        FROM users
+                        INNER JOIN divisi ON users.divisi_id = divisi.iddivisi
+                        WHERE users.nip_user = '$nip'";
+                                    $result_divisi = mysqli_query($conn, $query_divisi);
+                                    $namadivisi = "-";
+                                    if ($result_divisi) {
+                                        $row_divisi = mysqli_fetch_assoc($result_divisi);
+                                        $namadivisi = $row_divisi['namadivisi'];
+                                    }
+
+                                    echo '<tr class="centered-cell">';
+                                    echo '<td class="centered-cell">' . $tanggalpinjam . '</td>';
+                                    echo '<td class="centered-cell">' . $tanggalkembali . '</td>';
+                                    echo '<td class="centered-cell">' . $kodetransaksi . '</td>';
+                                    echo '<td class="centered-cell">' . $nip . '</td>';
+                                    echo '<td class="centered-cell">' . $namapegawai . '</td>';
+                                    echo '<td class="centered-cell">' . $namadivisi . '</td>';
+                                    echo '<td class="centered-cell">' . $namabarang . '</td>';
+                                    echo '<td class="centered-cell">' . $kodebarang . '</td>';
+                                    echo '<td class="centered-cell">' . $jumlahpinjam . '</td>';
+                                    echo '<td class="centered-cell">' . $jumlahkembali . '</td>';
+                                    echo '<td class="centered-cell">' . $jumlahrusak . '</td>';
+                                    echo '<td class="centered-cell">' . $lokasi . '</td>';
+                                    echo '<td class="centered-cell">';
+                                    if ($tanggalkembali === $tanggalKembaliNull) {
+                                        echo '<span class="badge text-bg-danger">Belum kembali</span>';
+                                    } else if ($jumlahrusak > 0) {
+                                        echo '<span class="badge text-bg-warning">Barang rusak/kurang lengkap</span>';
+                                    } else {
+                                        echo '<span class="badge text-bg-success">Sudah kembali</span>';
+                                    }
+                                    echo '</td>';
+                                    echo '</tr>';
+                                }
+                            } else {
+                                $ambilsemuadatastock = mysqli_query($conn, "select * from keluar_masuk_barang");
+                                while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
+                                    $tanggalpinjam = $data['tanggal'];
+                                    $tanggalkembali = $data['tanggalkembali'];
+                                    $kodetransaksi = $data['kodetransaksi'];
+                                    $nip = $data['nip'];
+                                    $namabarang = $data['namabarang'];
+                                    $kodebarang = $data['kodebarang'];
+                                    $jumlahpinjam = $data['jumlahpinjam'];
+                                    $jumlahkembali = $data['jumlahkembali'];
+                                    $jumlahrusak = $data['jumlahrusak'];
+                                    $lokasi = $data['lokasi'];
+                                    $status = $data['status'];
+                                    $tanggalKembaliNull = "0000-00-00 00:00:00";
+
+                                    // Ambil nama pegawai
+                                    $query_pegawai = "SELECT users.nama_user
+                        FROM users
+                        WHERE users.nip_user = '$nip'";
+                                    $result_pegawai = mysqli_query($conn, $query_pegawai);
+                                    $namapegawai = "-";
+                                    if ($result_pegawai) {
+                                        $row_pegawai = mysqli_fetch_assoc($result_pegawai);
+                                        $namapegawai = $row_pegawai['nama_user'];
+                                    }
+
+                                    // Ambil nama divisi
+                                    $query_divisi = "SELECT divisi.namadivisi
+                        FROM users
+                        INNER JOIN divisi ON users.divisi_id = divisi.iddivisi
+                        WHERE users.nip_user = '$nip'";
                                     $result_divisi = mysqli_query($conn, $query_divisi);
                                     $namadivisi = "-";
                                     if ($result_divisi) {
@@ -131,73 +192,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '<td>' . $jumlahpinjam . '</td>';
                                     echo '<td>' . $jumlahkembali . '</td>';
                                     echo '<td>' . $jumlahrusak . '</td>';
-                                    echo '<td>' . $keterangan . '</td>';
+                                    echo '<td>' . $lokasi . '</td>';
                                     echo '<td>';
-                                    if ($tanggalkembali === $tanggalKembaliNull) {
-                                        echo '<span class="badge text-bg-danger">Belum kembali</span>';
-                                    } else if ($jumlahrusak > 0) {
-                                        echo '<span class="badge text-bg-warning">Barang rusak/kurang lengkap</span>';
-                                    } else {
-                                        echo '<span class="badge text-bg-success">Sudah kembali</span>';
-                                    }
-                                    echo '</td>';
-                                    echo '</tr>';
-                                }
-                            } else {
-                                $ambilsemuadatastock = mysqli_query($conn, "select * from keluar_masuk_barang");
-                                while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
-                                    $tanggalpinjam = $data['tanggal'];
-                                    $tanggalkembali = $data['tanggalkembali'];
-                                    $kodetransaksi = $data['kodetransaksi'];
-                                    $nip = $data['nip'];
-                                    $namapegawai = $data['namapegawai'];
-                                    $birobengkel = $data['birobengkel'];
-                                    $namabarang = $data['namabarang'];
-                                    $kodebarang = $data['kodebarang'];
-                                    $jumlahpinjam = $data['jumlahpinjam'];
-                                    $jumlahkembali = $data['jumlahkembali'];
-                                    $jumlahrusak = $data['jumlahrusak'];
-                                    $keterangan = $data['keterangan'];
-                                    $status = $data['status'];
-                                    $tanggalKembaliNull = "0000-00-00 00:00:00";
-
-                                    // Ambil nama pegawai
-                                    $query_pegawai = "SELECT pegawai.namapegawai
-                        FROM pegawai
-                        WHERE pegawai.nip = '$nip'";
-                                    $result_pegawai = mysqli_query($conn, $query_pegawai);
-                                    $namapegawai = "-";
-                                    if ($result_pegawai) {
-                                        $row_pegawai = mysqli_fetch_assoc($result_pegawai);
-                                        $namapegawai = $row_pegawai['namapegawai'];
-                                    }
-
-                                    // Ambil nama divisi
-                                    $query_divisi = "SELECT divisi.namadivisi
-                        FROM pegawai
-                        INNER JOIN divisi ON pegawai.divisi_id = divisi.iddivisi
-                        WHERE pegawai.nip = '$nip'";
-                                    $result_divisi = mysqli_query($conn, $query_divisi);
-                                    $namadivisi = "-";
-                                    if ($result_divisi) {
-                                        $row_divisi = mysqli_fetch_assoc($result_divisi);
-                                        $namadivisi = $row_divisi['namadivisi'];
-                                    }
-
-                                    echo '<tr>';
-                                    echo '<td style="text-align: center;">' . $tanggalpinjam . '</td>';
-                                    echo '<td style="text-align: center;">' . $tanggalkembali . '</td>';
-                                    echo '<td style="text-align: center;">' . $kodetransaksi . '</td>';
-                                    echo '<td style="text-align: center;">' . $nip . '</td>';
-                                    echo '<td style="text-align: center;">' . $namapegawai . '</td>';
-                                    echo '<td style="text-align: center;">' . $namadivisi . '</td>';
-                                    echo '<td style="text-align: center;">' . $namabarang . '</td>';
-                                    echo '<td style="text-align: center;">' . $kodebarang . '</td>';
-                                    echo '<td style="text-align: center;">' . $jumlahpinjam . '</td>';
-                                    echo '<td style="text-align: center;">' . $jumlahkembali . '</td>';
-                                    echo '<td style="text-align: center;">' . $jumlahrusak . '</td>';
-                                    echo '<td style="text-align: center;">' . $keterangan . '</td>';
-                                    echo '<td style="text-align: center;">';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
                                     } else if ($jumlahrusak > 0) {

@@ -6,14 +6,12 @@ function searchMutasiBarang($conn, $searchTerm)
               WHERE tanggal LIKE '%$searchTerm%'
               OR kodetransaksi LIKE '%$searchTerm%'
               OR nip LIKE '%$searchTerm%'
-              OR namapegawai LIKE '%$searchTerm%'
-              OR birobengkel LIKE '%$searchTerm%'
               OR namabarang LIKE '%$searchTerm%'
               OR kodebarang LIKE '%$searchTerm%'
               OR jumlahpinjam LIKE '%$searchTerm%'
               OR jumlahkembali LIKE '%$searchTerm%'
               OR jumlahrusak LIKE '%$searchTerm%'
-              OR keterangan LIKE '%$searchTerm%'
+              OR lokasi LIKE '%$searchTerm%'
               OR status LIKE '%$searchTerm%'
               OR tanggalkembali LIKE '%$searchTerm%'";
 

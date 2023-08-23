@@ -19,7 +19,7 @@ require 'controller/koneksi.php';
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
 
-<body> 
+<body>
     <div class="container">
         <br>
         <h2 class="mt-4 text-center">List Daftar Mutasi Barang DIVISI HARKAN 2023</h2>
@@ -43,29 +43,29 @@ require 'controller/koneksi.php';
                         <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                         <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                         <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                        <th class="table-info text-center align-middle">Keterangan</th>
+                        <th class="table-info text-center align-middle">Lokasi</th>
                         <th class="table-info text-center align-middle">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $ambilsemuadatastock = mysqli_query($conn, "SELECT k.*, p.namapegawai, d.namadivisi 
-                                                            FROM keluar_masuk_barang k 
-                                                            INNER JOIN pegawai p ON k.nip = p.nip
-                                                            INNER JOIN divisi d ON p.divisi_id = d.iddivisi");
+                    $ambilsemuadatastock = mysqli_query($conn, "SELECT k.*, u.nama_user, d.namadivisi 
+                    FROM keluar_masuk_barang k 
+                    INNER JOIN users u ON k.nip = u.nip_user
+                    INNER JOIN divisi d ON u.divisi_id = d.iddivisi");
                     while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                         $tanggalpinjam = $data['tanggal'];
                         $tanggalkembali = $data['tanggalkembali'];
                         $kodetransaksi = $data['kodetransaksi'];
                         $nip = $data['nip'];
-                        $namapegawai = $data['namapegawai'];
+                        $namapegawai = $data['nama_user'];
                         $namadivisi = $data['namadivisi'];
                         $namabarang = $data['namabarang'];
                         $kodebarang = $data['kodebarang'];
                         $jumlahpinjam = $data['jumlahpinjam'];
                         $jumlahkembali = $data['jumlahkembali'];
                         $jumlahrusak = $data['jumlahrusak'];
-                        $keterangan = $data['keterangan'];
+                        $lokasi = $data['lokasi'];
                         $status = $data['status'];
 
                     ?>
@@ -84,16 +84,16 @@ require 'controller/koneksi.php';
                             <td style="text-align: center;"> <?= $jumlahpinjam; ?> </td>
                             <td style="text-align: center;"> <?= $jumlahkembali; ?> </td>
                             <td style="text-align: center;"> <?= $jumlahrusak; ?> </td>
-                            <td style="text-align: center;"> <?= $keterangan; ?> </td>
+                            <td style="text-align: center;"> <?= $lokasi; ?> </td>
                             <td style="text-align: center;"> <?php
-                                    if ($tanggalkembali === "0000-00-00 00:00:00") {
-                                        echo '<span class="badge text-bg-danger">Barang belum kembali</span>';
-                                    } else if ($jumlahrusak > 0) {
-                                        echo '<span class="badge text-bg-warning">Barang Rusak</span>';
-                                    } else {
-                                        echo '<span class="badge text-bg-primary">Selesai</span>';
-                                    }
-                                    ?></td>
+                                                                if ($tanggalkembali === "0000-00-00 00:00:00") {
+                                                                    echo '<span class="badge text-bg-danger">Barang belum kembali</span>';
+                                                                } else if ($jumlahrusak > 0) {
+                                                                    echo '<span class="badge text-bg-warning">Barang Rusak</span>';
+                                                                } else {
+                                                                    echo '<span class="badge text-bg-primary">Selesai</span>';
+                                                                }
+                                                                ?></td>
                         </tr>
                     <?php
                     };

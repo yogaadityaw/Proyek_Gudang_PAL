@@ -47,7 +47,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
         </div>
 
         <div class="container -fluid">
-            <a href="export_mutasibarang.php" class="btn btn-info">Export Data</a>
+            <a href="export_mutasibarang.php" class="btn btn-info text-light">Export Data</a>
             <br>
             <br>
 
@@ -75,7 +75,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                 <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                                 <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                                 <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                                <th class="table-info text-center align-middle">Keterangan</th>
+                                <th class="table-info text-center align-middle">Lokasi</th>
                                 <th class="table-info text-center align-middle">Status</th>
                             </tr>
                         </thead>
@@ -88,33 +88,31 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $tanggalkembali = $data['tanggalkembali'];
                                     $kodetransaksi = $data['kodetransaksi'];
                                     $nip = $data['nip'];
-                                    $namapegawai = $data['namapegawai'];
-                                    $birobengkel = $data['birobengkel'];
                                     $namabarang = $data['namabarang'];
                                     $kodebarang = $data['kodebarang'];
                                     $jumlahpinjam = $data['jumlahpinjam'];
                                     $jumlahkembali = $data['jumlahkembali'];
                                     $jumlahrusak = $data['jumlahrusak'];
-                                    $keterangan = $data['keterangan'];
+                                    $lokasi = $data['lokasi'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = "0000-00-00 00:00:00";
 
                                     // Ambil nama pegawai
-                                    $query_pegawai = "SELECT pegawai.namapegawai
-                        FROM pegawai
-                        WHERE pegawai.nip = '$nip'";
+                                    $query_pegawai = "SELECT users.nama_user
+                        FROM users
+                        WHERE users.nip_user = '$nip'";
                                     $result_pegawai = mysqli_query($conn, $query_pegawai);
                                     $namapegawai = "-";
                                     if ($result_pegawai) {
                                         $row_pegawai = mysqli_fetch_assoc($result_pegawai);
-                                        $namapegawai = $row_pegawai['namapegawai'];
+                                        $namapegawai = $row_pegawai['nama_user'];
                                     }
 
                                     // Ambil nama divisi
                                     $query_divisi = "SELECT divisi.namadivisi
-                        FROM pegawai
-                        INNER JOIN divisi ON pegawai.divisi_id = divisi.iddivisi
-                        WHERE pegawai.nip = '$nip'";
+                        FROM users
+                        INNER JOIN divisi ON users.divisi_id = divisi.iddivisi
+                        WHERE users.nip_user = '$nip'";
                                     $result_divisi = mysqli_query($conn, $query_divisi);
                                     $namadivisi = "-";
                                     if ($result_divisi) {
@@ -134,7 +132,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '<td class="centered-cell">' . $jumlahpinjam . '</td>';
                                     echo '<td class="centered-cell">' . $jumlahkembali . '</td>';
                                     echo '<td class="centered-cell">' . $jumlahrusak . '</td>';
-                                    echo '<td class="centered-cell">' . $keterangan . '</td>';
+                                    echo '<td class="centered-cell">' . $lokasi . '</td>';
                                     echo '<td class="centered-cell">';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
@@ -153,33 +151,31 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $tanggalkembali = $data['tanggalkembali'];
                                     $kodetransaksi = $data['kodetransaksi'];
                                     $nip = $data['nip'];
-                                    $namapegawai = $data['namapegawai'];
-                                    $birobengkel = $data['birobengkel'];
                                     $namabarang = $data['namabarang'];
                                     $kodebarang = $data['kodebarang'];
                                     $jumlahpinjam = $data['jumlahpinjam'];
                                     $jumlahkembali = $data['jumlahkembali'];
                                     $jumlahrusak = $data['jumlahrusak'];
-                                    $keterangan = $data['keterangan'];
+                                    $lokasi = $data['lokasi'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = "0000-00-00 00:00:00";
 
                                     // Ambil nama pegawai
-                                    $query_pegawai = "SELECT pegawai.namapegawai
-                        FROM pegawai
-                        WHERE pegawai.nip = '$nip'";
+                                    $query_pegawai = "SELECT users.nama_user
+                        FROM users
+                        WHERE users.nip_user = '$nip'";
                                     $result_pegawai = mysqli_query($conn, $query_pegawai);
                                     $namapegawai = "-";
                                     if ($result_pegawai) {
                                         $row_pegawai = mysqli_fetch_assoc($result_pegawai);
-                                        $namapegawai = $row_pegawai['namapegawai'];
+                                        $namapegawai = $row_pegawai['nama_user'];
                                     }
 
                                     // Ambil nama divisi
                                     $query_divisi = "SELECT divisi.namadivisi
-                        FROM pegawai
-                        INNER JOIN divisi ON pegawai.divisi_id = divisi.iddivisi
-                        WHERE pegawai.nip = '$nip'";
+                        FROM users
+                        INNER JOIN divisi ON users.divisi_id = divisi.iddivisi
+                        WHERE users.nip_user = '$nip'";
                                     $result_divisi = mysqli_query($conn, $query_divisi);
                                     $namadivisi = "-";
                                     if ($result_divisi) {
@@ -199,7 +195,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '<td>' . $jumlahpinjam . '</td>';
                                     echo '<td>' . $jumlahkembali . '</td>';
                                     echo '<td>' . $jumlahrusak . '</td>';
-                                    echo '<td>' . $keterangan . '</td>';
+                                    echo '<td>' . $lokasi . '</td>';
                                     echo '<td>';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';

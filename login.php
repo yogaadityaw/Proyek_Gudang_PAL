@@ -8,11 +8,11 @@ if (isset($_POST['login'])) {
     $errorOccurred = false;
 
     if (!empty($nip) || !empty($password)) {
-        $query = mysqli_query($conn, "SELECT * FROM login WHERE NIP = '$nip'");
+        $query = mysqli_query($conn, "SELECT * FROM users WHERE nip_user = '$nip'");
         $data = mysqli_fetch_array($query);
         $row = mysqli_num_rows($query);
         if ($row > 0) {
-            if (password_verify($password, $data['Password'])) {
+            if (password_verify($password, $data['password_user'])) {
                 $role = $data['role_id'];
                 if ($role == 1) {
                     $_SESSION['log'] = 'True';
