@@ -25,6 +25,14 @@ checkRole("admin", 'middleware/auth_prohibit.php');
             border-radius: 4px;
         }
     </style>
+
+    <style>
+    .text-center-td {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -104,8 +112,8 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                                 echo "Tidak ada data divisi";
                                             }
                                             ?></td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#delete<?= $nip; ?>">
+                                        <td class="text-center-td">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?= $nip; ?>">
                                                 Delete
                                             </button>
                                         </td>

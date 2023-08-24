@@ -43,7 +43,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 
         </div>
 
-        <div class="container -fluid">
+        <div class="container-fluid">
             <a href="atasan_export_mutasibarang.php" class="btn btn-info text-light">Export Data</a>
             <br>
             <br>

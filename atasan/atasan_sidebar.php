@@ -27,7 +27,7 @@
                         </a>
                         <div class="collapse" id="pagesCollapseTabel" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="mutasibarang.php">List Daftar Mutasi Barang</a>
+                                <a class="nav-link" href="atasan_mutasibarang.php">List Daftar Mutasi Barang</a>
                             </nav>
                         </div>
                     </div>

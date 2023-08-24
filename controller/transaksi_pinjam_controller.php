@@ -190,7 +190,7 @@ if (isset($_POST['pinjam']) != null) {
         }
     }
 
-    $queryNip = "SELECT nip FROM pegawai WHERE nip = '$nip'";
+    $queryNip = "SELECT nip_user FROM users WHERE nip_user = '$nip'";
     $resultNip = mysqli_query($conn, $queryNip);
 
     if ($resultNip->num_rows == 0) {

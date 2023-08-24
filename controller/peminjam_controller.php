@@ -5,8 +5,8 @@ if (isset($_SESSION['log'])) {
     $nip = $_SESSION['nip'];
     $query = "SELECT *
               FROM keluar_masuk_barang km
-              INNER JOIN pegawai p ON km.nip = p.nip
-              WHERE p.nip = '$nip';";
+              INNER JOIN users u ON km.nip = u.nip_user
+              WHERE u.nip_user = '$nip';";
 
     $result = mysqli_query($conn, $query);
     if ($result) {

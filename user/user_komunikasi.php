@@ -3,7 +3,7 @@ require '../controller/komunikasi_controller.php';
 require '../controller/koneksi.php';
 require '../middleware/auth_middleware.php';
 
-checkRole("admin", 'middleware/auth_prohibit.php');
+checkRole("user", 'middleware/auth_prohibit.php');
 
 $query = "SELECT * FROM komunikasi";
 
