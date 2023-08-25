@@ -57,7 +57,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     <div class="container -fluid">
         <br>
         <br>
-        <form action="peminjaman.php" method="GET">
+        <form action="user_peminjaman.php" method="GET">
             <div class="input-group mb-3">
                 <!-- Search bar using Bootstrap -->
                 <input type="text" class="form-control" placeholder="Cari" name="cari" value="<?= $searchTerm ?>">
@@ -140,7 +140,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     <td class="centered-cell"> <?= $jumlahrusak ?></td>
                                     <td class="centered-cell"> <?= $lokasi ?></td>
                                     <td class="centered-cell">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?= $idtransaksi ?>">Lihat Detail</button>';
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?= $idtransaksi ?>">Lihat Detail</button>
                                     </td>
                                 </tr>
                                 <!-- EDIT LAGI MODAL -->
@@ -158,7 +158,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                                 <div class="modal-body">
                                                     <div class="button-container">
                                                         <button type="submit" class="btn btn-success" name="approve">Approve</button>
-                                                        <button type="submit" class="btn btn-danger" name="approve">Tolak</button>
+                                                        <button type="submit" class="btn btn-danger" name="disaprove">Tolak</button>
                                                     </div>
                                                 </div>
                                                 <!-- Modal footer -->
@@ -244,7 +244,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                                 <div class="modal-body">
                                                     <div class="button-container">
                                                         <button type="submit" class="btn btn-success" name="approve">Approve</button>
-                                                        <button type="submit" class="btn btn-danger" name="approve">Tolak</button>
+                                                        <button type="submit" class="btn btn-danger" name="disaprove">Tolak</button>
                                                     </div>
                                                 </div>
                                                 <!-- Modal footer -->

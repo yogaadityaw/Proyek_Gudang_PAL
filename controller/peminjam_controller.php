@@ -27,4 +27,6 @@ if (isset($_SESSION['log'])) {
         echo "Error in query: " . mysqli_error($conn);
     }
 }
+
+
 ?>
