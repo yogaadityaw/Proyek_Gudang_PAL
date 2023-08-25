@@ -1,12 +1,12 @@
 <?php
 
-require 'cek.php';
 
-require 'controller/koneksi.php';
-require 'controller/mutasi_controller.php';
-require 'middleware/auth_middleware.php';
 
-checkRole("admin", 'middleware/auth_prohibit.php');
+require '../controller/koneksi.php';
+require '../controller/mutasi_controller.php';
+require '../middleware/auth_middleware.php';
+
+checkRole("user", 'middleware/auth_prohibit.php');
 
 $query = "SELECT * FROM keluar_masuk_barang";
 
@@ -26,12 +26,12 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Pengajuan Peminjaman</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <style>
@@ -47,7 +47,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     </style>
 
 </head>
-<?php include 'sidebar.php' ?>
+<?php include 'user_sidebar.php' ?>
 <br>
 <br>
 <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">

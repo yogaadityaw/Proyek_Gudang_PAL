@@ -40,6 +40,10 @@
                                 <a class="nav-link" href="user_mutasibarang.php">List Daftar Mutasi Barang</a>
                             </nav>
                         </div>
+                        <a class="nav-link" href="user_peminjaman.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                            Pengajuan Peminjaman
+                        </a>
                     </div>
                 </div>
             </nav>

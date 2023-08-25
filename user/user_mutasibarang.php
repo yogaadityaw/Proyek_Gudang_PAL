@@ -142,7 +142,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '</tr>';
                                 }
                             } else {
-                                $ambilsemuadatastock = mysqli_query($conn, "select * from keluar_masuk_barang");
+                                $ambilsemuadatastock = mysqli_query($conn, "SELECT * from keluar_masuk_barang WHERE isApproved = true");
                                 while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                     $tanggalpinjam = $data['tanggal'];
                                     $tanggalkembali = $data['tanggalkembali'];
