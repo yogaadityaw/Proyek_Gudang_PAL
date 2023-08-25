@@ -1,5 +1,5 @@
 <?php
-require 'controller/koneksi.php';
+require 'koneksi.php';
 
 //start session
 session_start();
@@ -8,20 +8,24 @@ session_start();
     if(isset($_POST['addnewbarangkomunikasi'])){
         $namabarang = $_POST['namabarang'];
         $noseri = $_POST['noseri'];
-        $namapengebon = $_POST['namapengebon'];
         $jumlah = $_POST['jumlah'];
         $barangbaik = $_POST['barangbaik'];
         $barangrusak = $_POST['barangrusak'];
-        $keterangan = $_POST['keterangan'];
+        $lokasi = $_POST['lokasi'];
         
     if($jumlah>=$barangbaik+$barangrusak){ // dungsi untuk cek inputan
-        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, namapengebon, jumlah, baik, rusak, keterangan) VALUES ('$namabarang', '$noseri', '$namapengebon',  '$jumlah', '$barangbaik', '$barangrusak', '$keterangan')");
+        $addtotable = mysqli_query($conn,"INSERT INTO komunikasi (namabarang, noseri, jumlah, baik, rusak, lokasi, kategori_id) VALUES ('$namabarang', '$noseri', '$jumlah', '$barangbaik', '$barangrusak', '$lokasi', 2)");
     }
     else{ // fungsi untuk cek inputan
         session_write_close();
     };
         if($addtotable){
-            header('Location: komunikasi.php');
+            if ($_SESSION['role'] == "admin") {
+                header('location: komunikasi.php');
+                exit();
+            } else if ($_SESSION['role'] == "user") {
+                header('location: user_komunikasi.php');
+            }
             session_write_close();
             
         }else{
@@ -36,17 +40,21 @@ session_start();
 if(isset($_POST['updatebarang'])){
     $namabarang = $_POST['namabarang'];
     $noseri = $_POST['noseri'];
-    $namapengebon = $_POST['namapengebon'];
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
-    $keterangan = $_POST['keterangan'];
+    $lokasi = $_POST['lokasi'];
     $idb = $_POST['idb'];
     
-    $update = mysqli_query($conn,"update komunikasi set namabarang='$namabarang', noseri='$noseri', namapengebon='$namapengebon', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', keterangan='$keterangan' where idbarang = '$idb' ");
+    $update = mysqli_query($conn,"update komunikasi set namabarang='$namabarang', noseri='$noseri', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', lokasi='$lokasi' where idbarang = '$idb' ");
     
     if($update){
-        header('location:komunikasi.php');
+        if ($_SESSION['role'] == "admin") {
+            header('location: komunikasi.php');
+            exit();
+        } else if ($_SESSION['role'] == "user") {
+            header('location: user_komunikasi.php');
+        }
         session_write_close();
     }else{
         echo 'Gagal menyimpan data: ';

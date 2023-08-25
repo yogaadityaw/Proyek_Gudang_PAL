@@ -1,22 +1,28 @@
 <?php
-require 'controller/koneksi.php';
+require 'koneksi.php';
 
 
-session_start();
+
 
 //membuat koneksi ke database
-
+session_start();
 
 // menambah barang baru
 
     if(isset($_POST['addnewbarangkonsumable'])){
         $namabarang = $_POST['namabarang'];
+        $kodebarang = $_POST['kodebarang'];
         $jumlah = $_POST['jumlah'];
-        $keterangan = $_POST['keterangan'];
+        $lokasi = $_POST['lokasi'];
     
-        $addtotable = mysqli_query($conn,"INSERT INTO barang_konsumable (namabarang, jumlah, keterangan) VALUES ('$namabarang', '$jumlah', '$keterangan')");
+        $addtotable = mysqli_query($conn,"INSERT INTO barang_konsumable (namabarang, kodebarang, jumlah, lokasi, kategori_id) VALUES ('$namabarang', '$kodebarang', '$jumlah', '$lokasi', 3)");
         if($addtotable){
-            header('location: konsumable.php');
+            if ($_SESSION['role'] == "admin") {
+                header('location: konsumable.php');
+                exit();
+            } else if ($_SESSION['role'] == "user") {
+                header('location: user_konsumable.php');
+            }
             session_write_close();
             
         }else{
@@ -33,13 +39,19 @@ session_start();
 if(isset($_POST['updatebarang'])){
     $idb= $_POST['idb'];
     $namabarang = $_POST['namabarang'];
+    $kodebarang = $_POST['kodebarang'];
     $jumlah = $_POST['jumlah'];
-    $keterangan = $_POST['keterangan'];
+    $lokasi = $_POST['lokasi'];
     
-    $update = mysqli_query($conn,"update barang_konsumable SET namabarang='$namabarang', jumlah='$jumlah', keterangan='$keterangan' WHERE idbarang = '$idb' ");
+    $update = mysqli_query($conn,"update barang_konsumable SET namabarang='$namabarang', kodebarang='$kodebarang', jumlah='$jumlah', lokasi='$lokasi' WHERE idbarang = '$idb' ");
     
     if($update){
-        header('location:konsumable.php');
+        if ($_SESSION['role'] == "admin") {
+            header('location: konsumable.php');
+            exit();
+        } else if ($_SESSION['role'] == "user") {
+            header('location: user_konsumable.php');
+        }
         session_write_close();
     }else{
         echo 'Gagal menyimpan data: ';
@@ -60,8 +72,6 @@ if(isset($_POST['hapusbarang'])){
         session_write_close();
     }else{
         echo 'Gagal menyimpan data: ';
-        
-
     };
     return;
 }

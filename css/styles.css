@@ -91,6 +91,12 @@
   }
 }
 
+.btn-white {
+  background-color: #ffffff; /* Warna latar belakang putih */
+  color: #000000; /* Warna teks hitam */
+  /* Tambahkan gaya lain sesuai kebutuhan seperti padding, border, dan sebagainya */
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -11240,4 +11246,17 @@ body {
   width: 20px !important;
   font-size: 0.75rem;
   border-radius: 0.375rem !important;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+#main-content {
+  transition: margin-left 0.3s;
+}
+
+.main-with-sidebar {
+  margin-left: 250px;
 }
