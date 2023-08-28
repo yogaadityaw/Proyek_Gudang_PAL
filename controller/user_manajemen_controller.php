@@ -83,5 +83,21 @@ if ($resultDivisi) {
 } else {
     echo "Error in fetching divisi data: " . mysqli_error($conn);
 }
+
+//kontroller untuk tabel user agar dapat menampilkan add to table dari database kedalam view
+function searchusermanajemen($conn, $searchTerm)
+{
+    $query = "SELECT * FROM users
+              WHERE tanggal LIKE '%$searchTerm%'
+              OR nip_user LIKE '%$searchTerm%'
+              OR nama_user LIKE '%$searchTerm%'
+              OR role_id LIKE '%$searchTerm%'
+              OR divisi_id LIKE '%$searchTerm%'";
+
+    $result = mysqli_query($conn, $query);
+
+    return $result;
+}
+
 ?>
 

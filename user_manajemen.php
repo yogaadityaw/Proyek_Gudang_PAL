@@ -6,6 +6,17 @@ require 'middleware/auth_middleware.php';
 
 checkRole("admin", 'middleware/auth_prohibit.php');
 
+
+// $query = "SELECT * FROM users";
+
+if (isset($_GET['cari'])) {
+    $keyword = $_GET['cari'];
+    $keyword = mysqli_real_escape_string($conn, $keyword);
+
+    $query = "SELECT * FROM users WHERE nama_user LIKE '%$keyword%' OR nip_user LIKE '%$keyword%'";
+   
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +27,7 @@ checkRole("admin", 'middleware/auth_prohibit.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Alat Produksi</title>
+    <title>Manajemen Users</title>
     <link href="css/styles.css" rel="stylesheet" />
     <style>
         .form-select {
@@ -56,6 +67,13 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                 </button>
                 <br>
                 <br>
+                <form action="user_manajemen.php" method="GET">
+                    <div class="input-group mb-3">
+                        <!-- Search bar using Bootstrap -->
+                        <input type="text" value="" class="form-control" placeholder="Cari" name="cari">
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </div>
+                </form>
                 <br>
                 <div class="card-body">
                     <div class="table table-responsive">
@@ -80,7 +98,7 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                     $nip = $data['nip_user'];
                                     $nama = $data['nama_user'];
                                     $role = $data['role_id'];
-                                ?>
+                                ?> 
                                     <tr>
                                         <td style="text-align: center;"><?= $i++ ?></td>
                                         <td style="text-align: center;"><?= $nip ?></td>

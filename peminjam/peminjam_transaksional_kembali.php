@@ -91,6 +91,12 @@ checkRole("peminjam", '../middleware/auth_prohibit.php');
                                     </div>
                                 </div>
                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Lokasi Barang yang dikembalikan</label>
+                                        <input type="text" class="form-control" name="lokasikembali" id="lokasikembali" placeholder="Lokasi Barang yang dikembalikan">
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="tanggalkembali">Tanggal dan Jam Pengembalian</label>

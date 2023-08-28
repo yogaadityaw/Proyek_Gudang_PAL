@@ -1,9 +1,8 @@
 <?php
 
-require 'cek.php';
-
 require 'controller/koneksi.php';
 require 'controller/mutasi_controller.php';
+require 'controller/peminjam_controller.php';
 require 'middleware/auth_middleware.php';
 
 checkRole("admin", 'middleware/auth_prohibit.php');
@@ -80,7 +79,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                             <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                             <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                             <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                            <th class="table-info text-center align-middle">Lokasi</th>
+                            <th class="table-info text-center align-middle">Lokasi Peminjaman</th>
                             <th class="table-info text-center align-middle">Status</th>
                         </tr>
                     </thead>
@@ -158,8 +157,9 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                                 <div class="modal-body">
                                                     <div class="button-container">
                                                         <button type="submit" class="btn btn-success" name="approve">Approve</button>
-                                                        <button type="submit" class="btn btn-danger" name="approve">Tolak</button>
+                                                        <button type="submit" class="btn btn-danger" name="tolak" onclick="return confirm('Apakah Anda yakin ingin menolak?')">Tolak</button>
                                                     </div>
+                                                    <input type="hidden" name="idtransaksi" value="<?= $idtransaksi ?>">
                                                 </div>
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
@@ -172,7 +172,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                             <?php
                             }
                         } else {
-                            $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = false");
+                            $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 0");
                             while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                 $idtransaksi = $data['idtransaksi'];
                                 $tanggalpinjam = $data['tanggal'];
@@ -244,12 +244,13 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                                 <div class="modal-body">
                                                     <div class="button-container">
                                                         <button type="submit" class="btn btn-success" name="approve">Approve</button>
-                                                        <button type="submit" class="btn btn-danger" name="approve">Tolak</button>
+                                                        <button type="submit" class="btn btn-danger" name="tolak" onclick="return confirm('Apakah Anda yakin ingin menolak?')">Tolak</button>
                                                     </div>
+                                                    <input type="hidden" name="idtransaksi" value="<?= $idtransaksi ?>">
                                                 </div>
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-warning" name="updatebarang">Simpan</button>
+                                                    <button type="submit" class="btn btn-warning" name="updatebarang">Kembali</button>
                                                 </div>
                                             </form>
                                         </div>

@@ -11,7 +11,7 @@ if (isset($_POST['pinjam']) != null) {
     $namabarang = $_POST['namabarang'];
     $kodebarang = $_POST['kodebarang'];
     $noseri = $_POST['kodebarang'];
-
+    $lokasipinjam = $_POST['lokasipinjam'];
     $jumlah = $_POST['jumlah'];
     $tanggalpinjam = date('Y-m-d H:i:s');
     $tanggalkembali = NULL;
@@ -197,17 +197,18 @@ if (isset($_POST['pinjam']) != null) {
         echo "<script>alert('NIP tidak ditemukan.');</script>";
         return;
     } else {
-        $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$status')");
+        $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, namabarang, kodebarang, jumlahpinjam, lokasi, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$namabarang', '$kodebarang', '$jumlah', '$lokasipinjam', '$status')");
         if ($addtotable) {
             if ($_SESSION['role'] == "admin") {
                 echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";
-                header('location: mutasibarang.php');
+                header('location: peminjaman.php');
                 exit();
             } else if ($_SESSION['role'] == "user") {
                 echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";
-                header('location: user_mutasibarang.php');
+                header('location: user_peminjaman.php');
             } else if($_SESSION['role'] == "peminjam"){
                 echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";
+                header('location: peminjam_history.php');
             }
             session_write_close();
         } else {

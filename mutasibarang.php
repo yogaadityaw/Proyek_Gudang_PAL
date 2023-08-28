@@ -75,7 +75,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                 <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                                 <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                                 <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                                <th class="table-info text-center align-middle">Lokasi</th>
+                                <th class="table-info text-center align-middle">Lokasi Peminjaman</th>
+                                <th class="table-info text-center align-middle">Lokasi Pengembalian</th>
                                 <th class="table-info text-center align-middle">Status</th>
                             </tr>
                         </thead>
@@ -94,6 +95,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $jumlahkembali = $data['jumlahkembali'];
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
+                                    $lokasikembali = $data['lokasi_kembali'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = "0000-00-00 00:00:00";
 
@@ -133,6 +135,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '<td class="centered-cell">' . $jumlahkembali . '</td>';
                                     echo '<td class="centered-cell">' . $jumlahrusak . '</td>';
                                     echo '<td class="centered-cell">' . $lokasi . '</td>';
+                                    echo '<td class="centered-cell">' . $lokasikembali . '</td>';
                                     echo '<td class="centered-cell">';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
@@ -145,7 +148,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '</tr>';
                                 }
                             } else {
-                                $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = true");
+                                $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 1");
                                 while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                     $tanggalpinjam = $data['tanggal'];
                                     $tanggalkembali = $data['tanggalkembali'];
@@ -157,6 +160,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $jumlahkembali = $data['jumlahkembali'];
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
+                                    $lokasikembali = $data['lokasi_kembali'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = "0000-00-00 00:00:00";
 
@@ -196,6 +200,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '<td>' . $jumlahkembali . '</td>';
                                     echo '<td>' . $jumlahrusak . '</td>';
                                     echo '<td>' . $lokasi . '</td>';
+                                    echo '<td>' . $lokasikembali . '</td>';
                                     echo '<td>';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';

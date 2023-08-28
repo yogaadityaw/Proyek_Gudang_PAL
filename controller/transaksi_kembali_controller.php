@@ -13,6 +13,7 @@ if (isset($_POST['kembali']) != null) {
     $jumlah = $_POST['jumlah'];
     $jumlahbaik = $_POST['jumlahbaik'];
     $jumlahrusak = $_POST['jumlahrusak'];
+    $lokasikembali = $_POST['lokasikembali'];
     $kodepinjam = $_POST['kodepinjam'];
     $status = "Sudah kembali";
 
@@ -180,6 +181,7 @@ if (isset($_POST['kembali']) != null) {
                                       jumlahpinjam = '$jumlah', 
                                       jumlahkembali = '$jumlahbaik', 
                                       jumlahrusak = '$jumlahrusak', 
+                                      lokasi_kembali = '$lokasikembali', 
                                       status = '$status' 
                                   WHERE kodetransaksi = '$kodepinjam'");
     if ($addtotable) {

@@ -43,7 +43,8 @@ require 'controller/koneksi.php';
                         <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                         <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                         <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                        <th class="table-info text-center align-middle">Lokasi</th>
+                        <th class="table-info text-center align-middle">Lokasi Peminjaman</th>
+                        <th class="table-info text-center align-middle">Lokasi Pengembalian</th>
                         <th class="table-info text-center align-middle">Status</th>
                     </tr>
                 </thead>
@@ -66,6 +67,7 @@ require 'controller/koneksi.php';
                         $jumlahkembali = $data['jumlahkembali'];
                         $jumlahrusak = $data['jumlahrusak'];
                         $lokasi = $data['lokasi'];
+                        $lokasikembali = $data['lokasi_kembali'];
                         $status = $data['status'];
 
                     ?>
@@ -85,6 +87,7 @@ require 'controller/koneksi.php';
                             <td style="text-align: center;"> <?= $jumlahkembali; ?> </td>
                             <td style="text-align: center;"> <?= $jumlahrusak; ?> </td>
                             <td style="text-align: center;"> <?= $lokasi; ?> </td>
+                            <td style="text-align: center;"> <?= $lokasikembali; ?> </td>
                             <td style="text-align: center;"> <?php
                                                                 if ($tanggalkembali === "0000-00-00 00:00:00") {
                                                                     echo '<span class="badge text-bg-danger">Barang belum kembali</span>';

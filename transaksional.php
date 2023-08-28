@@ -79,6 +79,13 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                         <label>Jumlah Barang</label>
                                         <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
                                     </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Lokasi Barang yang dipinjaman</label>
+                                        <input type="text" class="form-control" name="lokasipinjam" id="lokasipinjam" placeholder="Lokasi barang yang dipinjam">
+                                    </div>
+                                </div>
                                     <div class="form-row">
                                         <!-- <div class="form-row">
                                             <div class="form-group col-md-6">

@@ -58,7 +58,7 @@ if (isset($_GET['cari'])) {
                     <div class="input-group mb-3">
                         <!-- Search bar using Bootstrap -->
                         <input type="text" value="" class="form-control" placeholder="Cari" name="cari">
-                        <button typ="submit" class="btn btn-primary">Cari</button>
+                        <button type="submit" class="btn btn-primary">Cari</button>
                     </div>
                 </form>
 

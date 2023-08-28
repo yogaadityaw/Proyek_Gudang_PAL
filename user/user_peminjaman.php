@@ -80,7 +80,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                             <th class="table-info text-center align-middle">Jumlah/Unit Pinjam</th>
                             <th class="table-info text-center align-middle">Jumlah barang Kembali</th>
                             <th class="table-info text-center align-middle">Jumlah barang rusak</th>
-                            <th class="table-info text-center align-middle">Lokasi</th>
+                            <th class="table-info text-center align-middle">Lokasi Peminjaman</th>
                             <th class="table-info text-center align-middle">Status</th>
                         </tr>
                     </thead>

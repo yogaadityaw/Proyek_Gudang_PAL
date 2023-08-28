@@ -12,6 +12,7 @@ function searchMutasiBarang($conn, $searchTerm)
               OR jumlahkembali LIKE '%$searchTerm%'
               OR jumlahrusak LIKE '%$searchTerm%'
               OR lokasi LIKE '%$searchTerm%'
+              OR lokasi_kembali LIKE '%$searchTerm'
               OR status LIKE '%$searchTerm%'
               OR tanggalkembali LIKE '%$searchTerm%'";
 
