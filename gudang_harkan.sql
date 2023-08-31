@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2023 at 11:15 AM
+-- Generation Time: Aug 31, 2023 at 03:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,6 +31,7 @@ CREATE TABLE `alat_produksi` (
   `idbarang` int(11) NOT NULL,
   `namabarang` varchar(512) NOT NULL,
   `kodebarang` varchar(100) NOT NULL,
+  `kategoribarang` varchar(512) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `baik` int(11) NOT NULL,
   `rusak` int(11) NOT NULL,
@@ -42,44 +43,44 @@ CREATE TABLE `alat_produksi` (
 -- Dumping data for table `alat_produksi`
 --
 
-INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
-(10, 'Bor Magnet', 'DRL01', 169, 168, 1, '-', 1),
-(12, 'Hand Bor (Makita)', 'HDRL02', 5, 5, 0, '-', 1),
-(13, 'Vacum Test', 'VT01', 1, 1, 0, '-', 1),
-(14, 'Load Cell 5 Ton', 'LC5T', 1, 0, 1, '-', 1),
-(15, 'Load Cell 10 Ton', 'LC10T', 1, 0, 1, '-', 1),
-(16, 'Sabuk 1 Ton', 'BLT1T', 2, 2, 0, '-', 1),
-(17, 'Sabuk 2 Ton', 'BLT2T', 2, 2, 0, '-', 1),
-(18, 'Sabuk 3 Ton', 'BLT3T', 6, 6, 0, '-', 1),
-(19, 'Sabuk 5 Ton', 'BLT5T', 11, 10, 1, '-', 1),
-(20, 'Sabuk 10 Ton', 'BLT10T', 4, 4, 0, '-', 1),
-(21, 'Gerinda 4 inch (Makita)', 'GRD4', 9, 9, 0, '-', 1),
-(22, 'Gerinda 4 inch (Nitori)', 'GRD4', 1, 1, 0, '-', 1),
-(23, 'Gerinda 4 inch (Boss)', 'GRD4', 1, 1, 0, '-', 1),
-(24, 'Blower 10 inch', 'BLW10', 5, 5, 0, '-', 1),
-(25, 'Blower 12 inch', 'BLW12', 3, 3, 0, '-', 1),
-(26, 'Jack Hydraulic 20 Ton', 'JHD20T', 2, 2, 0, '-', 1),
-(27, 'Jack Hydraulic 30 Ton', 'JHD30T', 2, 0, 2, '-', 1),
-(28, 'Jack Hydraulic 50 Ton', 'JHD50T', 2, 1, 1, '-', 1),
-(29, 'Jack Hydraulic 100 Ton', 'JHD100', 5, 1, 4, '-', 1),
-(30, 'Jack Manual 100 Ton', 'JMT100', 6, 0, 6, '-', 1),
-(31, 'Jack Hollow 100 Ton', 'JHL100', 1, 1, 0, '-', 1),
-(32, 'Jack Enerpac Manual ', 'JEPMT', 2, 2, 0, '-', 1),
-(33, 'Pompa Enerpac P39 700 bar', 'PEP397', 6, 1, 5, '-', 1),
-(34, 'Pompa Enerpac P80 1500 bar', 'PEP8015', 2, 2, 4, '-', 1),
-(35, 'Pompa Enerparc HPT 1500', 'HPT15', 2, 0, 2, '-', 1),
-(36, 'Pompa SKF', 'PSKF', 2, 1, 1, '-', 1),
-(37, 'Pompa SKF 1500 bar', 'PSKF15', 1, 1, 0, '-', 1),
-(38, 'Pompa Pneumatic', 'PPM', 2, 2, 0, '-', 1),
-(39, 'Welding Touch Merk Huatong', 'WDGT', 10, 10, 0, '-', 1),
-(40, 'Box Panel Kosongan', 'BXP', 3, 3, 0, '-', 1),
-(41, 'Stang Block 3/4 inch', 'HBB34', 10, 10, 0, '-', 1),
-(42, 'Tackal 1 Ton (Chain Block)', 'TCK1T', 3, 3, 0, '-', 1),
-(43, 'Tackal 3 Ton (Chain Block)', 'TCK3T', 19, 19, 0, '-', 1),
-(44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', 22, 22, 0, '-', 1),
-(45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', 7, 7, 0, '-', 1),
-(51, 'Bor Magnet', 'DRL09', 1, 1, 0, '-', 1),
-(54, 'coba', 'tes', 1, 0, 1, 'rusak', 1);
+INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoribarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
+(10, 'Bor Magnet', 'DRL01', '0', 169, 168, 1, '-', 1),
+(12, 'Hand Bor (Makita)', 'HDRL02', '0', 5, 5, 0, '-', 1),
+(13, 'Vacum Test', 'VT01', '0', 1, 1, 0, '-', 1),
+(14, 'Load Cell 5 Ton', 'LC5T', '0', 1, 0, 1, '-', 1),
+(15, 'Load Cell 10 Ton', 'LC10T', '0', 1, 0, 1, '-', 1),
+(16, 'Sabuk 1 Ton', 'BLT1T', '0', 2, 2, 0, '-', 1),
+(17, 'Sabuk 2 Ton', 'BLT2T', '0', 2, 2, 0, '-', 1),
+(18, 'Sabuk 3 Ton', 'BLT3T', '0', 6, 6, 0, '-', 1),
+(19, 'Sabuk 5 Ton', 'BLT5T', '0', 11, 10, 1, '-', 1),
+(20, 'Sabuk 10 Ton', 'BLT10T', '0', 4, 4, 0, '-', 1),
+(21, 'Gerinda 4 inch (Makita)', 'GRD4', '0', 9, 9, 0, '-', 1),
+(22, 'Gerinda 4 inch (Nitori)', 'GRD4', '0', 1, 1, 0, '-', 1),
+(23, 'Gerinda 4 inch (Boss)', 'GRD4', '0', 1, 1, 0, '-', 1),
+(24, 'Blower 10 inch', 'BLW10', '0', 5, 5, 0, '-', 1),
+(25, 'Blower 12 inch', 'BLW12', '0', 3, 3, 0, '-', 1),
+(26, 'Jack Hydraulic 20 Ton', 'JHD20T', '0', 2, 2, 0, '-', 1),
+(27, 'Jack Hydraulic 30 Ton', 'JHD30T', '0', 2, 0, 2, '-', 1),
+(28, 'Jack Hydraulic 50 Ton', 'JHD50T', '0', 2, 1, 1, '-', 1),
+(29, 'Jack Hydraulic 100 Ton', 'JHD100', '0', 5, 1, 4, '-', 1),
+(30, 'Jack Manual 100 Ton', 'JMT100', '0', 6, 0, 6, '-', 1),
+(31, 'Jack Hollow 100 Ton', 'JHL100', '0', 1, 1, 0, '-', 1),
+(32, 'Jack Enerpac Manual ', 'JEPMT', '0', 2, 2, 0, '-', 1),
+(33, 'Pompa Enerpac P39 700 bar', 'PEP397', '0', 6, 1, 5, '-', 1),
+(34, 'Pompa Enerpac P80 1500 bar', 'PEP8015', '0', 2, 2, 4, '-', 1),
+(35, 'Pompa Enerparc HPT 1500', 'HPT15', '0', 2, 0, 2, '-', 1),
+(36, 'Pompa SKF', 'PSKF', '0', 2, 1, 1, '-', 1),
+(37, 'Pompa SKF 1500 bar', 'PSKF15', '0', 1, 1, 0, '-', 1),
+(38, 'Pompa Pneumatic', 'PPM', '0', 2, 2, 0, '-', 1),
+(39, 'Welding Touch Merk Huatong', 'WDGT', '0', 10, 10, 0, '-', 1),
+(40, 'Box Panel Kosongan', 'BXP', '0', 3, 3, 0, '-', 1),
+(41, 'Stang Block 3/4 inch', 'HBB34', '0', 10, 10, 0, '-', 1),
+(42, 'Tackal 1 Ton (Chain Block)', 'TCK1T', 'Lifting Tools', 3, 3, 0, '-', 1),
+(43, 'Tackal 3 Ton (Chain Block)', 'TCK3T', '0', 19, 19, 0, '-', 1),
+(44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', '0', 22, 22, 0, '-', 1),
+(45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', '0', 7, 7, 0, '-', 1),
+(51, 'Bor Magnet', 'DRL09', '0', 1, 1, 0, '-', 1),
+(54, 'coba', 'tes', '0', 1, 0, 1, 'rusak', 1);
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,29 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 (21, 'Tongkang 205', 'TKG205', 1, 0, 1, '-', 4),
 (22, 'Kapal LCM V', 'KLCM5', 1, 0, 1, '-', 4),
 (23, 'cek', 'cekk1', 1, 1, 0, '-', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barang_asset`
+--
+
+CREATE TABLE `barang_asset` (
+  `idbarang` int(11) NOT NULL,
+  `namabarang` varchar(512) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `baik` int(11) NOT NULL,
+  `rusak` int(11) NOT NULL,
+  `lokasi` varchar(512) NOT NULL,
+  `keterangan` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `barang_asset`
+--
+
+INSERT INTO `barang_asset` (`idbarang`, `namabarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `keterangan`) VALUES
+(1, 'Laptop,Ruang Biro Analisa, Evaluasi, SDM dan Transformasi Teknologi', 1, 1, 0, 'Kabiro. Ana, Eva, SDM', 'Keluar');
 
 -- --------------------------------------------------------
 
@@ -235,7 +259,7 @@ INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `t
 (112, 'PJ7', '2023-08-08 01:06:14', '0000-00-00 00:00:00', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 2, 'Belum kembali'),
 (113, 'PJ8', '2023-08-17 08:46:59', '0000-00-00 00:00:00', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 2, 'Belum kembali'),
 (114, 'PJ9', '2023-08-17 08:48:29', '0000-00-00 00:00:00', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 1, 'Belum kembali'),
-(115, 'PJ10', '2023-08-17 08:50:50', '0000-00-00 00:00:00', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum kembali'),
+(115, 'PJ10', '2023-08-17 08:50:50', '0000-00-00 00:00:00', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 1, 'Belum kembali'),
 (116, 'PJ11', '2023-08-17 08:51:36', '2023-08-17 08:53:00', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '', 0, 'Sudah kembali'),
 (117, 'PJ12', '2023-08-17 08:54:32', '2023-08-17 08:55:00', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Sudah kembali'),
 (118, 'PJ13', '2023-08-22 14:10:03', '0000-00-00 00:00:00', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum kembali'),
@@ -272,7 +296,7 @@ CREATE TABLE `komunikasi` (
 --
 
 INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
-(8, 'HT I COM V80', '602733378-1', 3, 3, 0, '-', 2),
+(8, 'HT I COM V80', '602733378-1', 3, 3, 0, 'harkan', 2),
 (9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2),
 (12, 'ceki', 'cekcek', 1, 1, 0, '-', 2);
 
@@ -347,6 +371,12 @@ ALTER TABLE `barang_angkut_apung`
   ADD KEY `kategori_id` (`kategori_id`);
 
 --
+-- Indexes for table `barang_asset`
+--
+ALTER TABLE `barang_asset`
+  ADD PRIMARY KEY (`idbarang`);
+
+--
 -- Indexes for table `barang_konsumable`
 --
 ALTER TABLE `barang_konsumable`
@@ -409,6 +439,12 @@ ALTER TABLE `alat_produksi`
 --
 ALTER TABLE `barang_angkut_apung`
   MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `barang_asset`
+--
+ALTER TABLE `barang_asset`
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `barang_konsumable`

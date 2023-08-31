@@ -55,6 +55,7 @@
                                 <a class="nav-link" href="transaksional.php">Form Peminjaman Barang</a>
                                 <a class="nav-link" href="transaksional_kembali.php">Form Pengembalian Barang</a>
                                 <a class="nav-link" href="mutasibarang.php">List Daftar Mutasi Barang</a>
+                                <a class="nav-link" href="barang_asset.php">List Daftar Barang Asset</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="peminjaman.php">
