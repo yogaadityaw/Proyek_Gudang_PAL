@@ -60,7 +60,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
             <div class="card-body">
                 <div class="table table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
-                    <thead>
+                        <thead>
                             <tr>
                                 <th class="table-info text-center align-middle">Tanggal Pinjam</th>
                                 <th class="table-info text-center align-middle">Tanggal Kembali</th>
@@ -139,7 +139,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     if ($isApproved == 2) {
                                         echo '<span class="badge text-bg-danger text-light">Ditolak</span>';
                                     } else if ($isApproved == 0) {
-                                        echo '<span class="badge text-bg-warning text-light">Dalam Proses</span>';
+                                        echo '<span class="badge text-bg-warning text-light">Menunggu Approval</span>';
                                     } else {
                                         echo '<span class="badge text-bg-success text-light">Disetujui</span>';
                                     }
@@ -210,9 +210,11 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     if ($isApproved == 2) {
                                         echo '<span class="badge text-bg-danger text-light">Ditolak</span>';
                                     } else if ($isApproved == 0) {
-                                        echo '<span class="badge text-bg-warning text-light">Dalam Proses</span>';
+                                        echo '<span class="badge text-bg-warning text-light">Menunggu Approval</span>';
+                                    } else if ($isApproved == 3) {
+                                        echo '<span class="badge text-bg-success text-light">Barang Sudah Kembali</span>';
                                     } else {
-                                        echo '<span class="badge text-bg-success text-light">Disetujui</span>';
+                                        echo '<span class="badge text-bg-primary text-light">Disetujui/Barang Dipinjam</span>';
                                     }
                                     echo '</td>';
                                     echo '</tr>';
@@ -232,4 +234,3 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 </body>
 
 </html>
-

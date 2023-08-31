@@ -13,7 +13,7 @@ if (isset($_POST['pinjam']) != null) {
     $noseri = $_POST['kodebarang'];
     $lokasipinjam = $_POST['lokasipinjam'];
     $jumlah = $_POST['jumlah'];
-    $tanggalpinjam = date('Y-m-d H:i:s');
+    $tanggalpinjam = NULL;
     $tanggalkembali = NULL;
     $kodepinjam = $_POST['kodepinjam'];
 

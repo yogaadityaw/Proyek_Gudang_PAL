@@ -96,6 +96,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
                                     $lokasikembali = $data['lokasi_kembali'];
+                                    $isApproved = $data['isApproved'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = "0000-00-00 00:00:00";
 
@@ -148,7 +149,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '</tr>';
                                 }
                             } else {
-                                $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 1");
+                                $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 1 OR isApproved = 3");
                                 while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                     $tanggalpinjam = $data['tanggal'];
                                     $tanggalkembali = $data['tanggalkembali'];

@@ -1,9 +1,8 @@
 <?php
 
-
-
 require '../controller/koneksi.php';
 require '../controller/mutasi_controller.php';
+require '../controller/peminjam_controller.php';
 require '../middleware/auth_middleware.php';
 
 checkRole("user", 'middleware/auth_prohibit.php');
@@ -26,7 +25,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -140,7 +139,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     <td class="centered-cell"> <?= $jumlahrusak ?></td>
                                     <td class="centered-cell"> <?= $lokasi ?></td>
                                     <td class="centered-cell">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?= $idtransaksi ?>">Lihat Detail</button>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?= $idtransaksi ?>">Lihat Detail</button>';
                                     </td>
                                 </tr>
                                 <!-- EDIT LAGI MODAL -->
@@ -158,8 +157,9 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                                 <div class="modal-body">
                                                     <div class="button-container">
                                                         <button type="submit" class="btn btn-success" name="approve">Approve</button>
-                                                        <button type="submit" class="btn btn-danger" name="disaprove">Tolak</button>
+                                                        <button type="submit" class="btn btn-danger" name="tolak" onclick="return confirm('Apakah Anda yakin ingin menolak?')">Tolak</button>
                                                     </div>
+                                                    <input type="hidden" name="idtransaksi" value="<?= $idtransaksi ?>">
                                                 </div>
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
@@ -172,7 +172,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                             <?php
                             }
                         } else {
-                            $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = false");
+                            $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 0");
                             while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                 $idtransaksi = $data['idtransaksi'];
                                 $tanggalpinjam = $data['tanggal'];
@@ -244,12 +244,13 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                                 <div class="modal-body">
                                                     <div class="button-container">
                                                         <button type="submit" class="btn btn-success" name="approve">Approve</button>
-                                                        <button type="submit" class="btn btn-danger" name="disaprove">Tolak</button>
+                                                        <button type="submit" class="btn btn-danger" name="tolak" onclick="return confirm('Apakah Anda yakin ingin menolak?')">Tolak</button>
                                                     </div>
+                                                    <input type="hidden" name="idtransaksi" value="<?= $idtransaksi ?>">
                                                 </div>
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-warning" name="updatebarang">Simpan</button>
+                                                    <button type="submit" class="btn btn-warning" name="updatebarang">Kembali</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -265,7 +266,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
         </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
+<script src="../js/scripts.js"></script>
 </body>
 
 </html>

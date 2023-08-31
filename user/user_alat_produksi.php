@@ -69,6 +69,7 @@ if (isset($_GET['cari'])) {
                                 <tr>
                                     <th class="table-info text-center align-middle">No</th>
                                     <th class="table-info text-center align-middle">Nama Barang / Alat</th>
+                                    <th class="table-info text-center align-middle">Kategori Barang</th>
                                     <th class="table-info text-center align-middle">Kode Barang</th>
                                     <th class="table-info text-center align-middle">Jumlah</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
@@ -90,6 +91,7 @@ if (isset($_GET['cari'])) {
 
                                     $namabarang = $data['namabarang'];
                                     $kodebarang = $data['kodebarang'];
+                                    $kategoribarang = $data['kategoribarang'];
                                     $jumlah = $data['jumlah'];
                                     $barangbaik = $data['baik'];
                                     $barangrusak = $data['rusak'];
@@ -101,6 +103,7 @@ if (isset($_GET['cari'])) {
                                         <td style="text-align: center;"><?= $i++ ?></td>
                                         <td style="text-align: center;"><?= $namabarang ?></td>
                                         <td style="text-align: center;"><?= $kodebarang ?></td>
+                                        <td style="text-align: center;"><?= $kategoribarang ?></td>
                                         <td style="text-align: center;"><?= $jumlah ?></td>
                                         <td style="text-align: center;"><?= $barangbaik ?></td>
                                         <td style="text-align: center;"><?= $barangrusak ?></td>

@@ -1,13 +1,14 @@
 <?php
 require 'koneksi.php';
 session_start();
+$tanggalPinjam = date('Y-m-d H:i:s');
 if (isset($_POST['approve'])) {
     // Lakukan tindakan yang diperlukan saat tombol "Approve" ditekan
     // Misalnya, Anda dapat melakukan update status atau tindakan lainnya
     $idTransaksi = $_POST['idtransaksi'];
 
     // Contoh: Update status menjadi "Approved"
-    $updateQuery = "UPDATE keluar_masuk_barang SET isApproved = 1 WHERE idtransaksi = '$idTransaksi'";
+    $updateQuery = "UPDATE keluar_masuk_barang SET isApproved = 1, tanggal = '$tanggalPinjam' WHERE idtransaksi = '$idTransaksi'";
     mysqli_query($conn, $updateQuery);
 }
 
