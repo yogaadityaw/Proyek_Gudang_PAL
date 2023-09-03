@@ -1,14 +1,13 @@
 <?php
 // require 'controller/konsumable_controller.php';
 require 'controller/koneksi.php';
-require 'cek.php';
+// require 'cek.php';
 require 'controller/transaksi_kembali_controller.php';
 require 'middleware/auth_middleware.php';
 
 checkRole("admin", 'middleware/auth_prohibit.php');
 
 // require 'controller/update_controller.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -44,40 +43,27 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                         </div>
                         <div class="card-body">
                             <form method="post">
-                                <div class="form-row">
+                                <button type="button" class="btn btn-primary btn-md btn-block" name="kodepeminjaman" data-bs-toggle="modal" data-bs-target="#modalKodeTransaksi">
+                                    Masukkan Kode Transaksi
+                                </button>
+                                <div class="form-row mt-2">
                                     <div class="form-group col-md-6">
                                         <label>NIP Pegawai</label>
-                                        <input type="number" class="form-control" name="nip" id="nip" placeholder="NIP">
+                                        <input type="number" class="form-control" name="nip" id="nip" placeholder="NIP" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <label>Pilih Jenis Barang</label>
-                                    <select class="form-control" name="jenisbarang" id="jenisbarang" onchange="loadNamaBarangpinjam()">
-                                        <option value="" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === '' ? 'selected' : ''; ?>></option>
-                                        <option value="Peralatan Pendukung Produksi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Peralatan Pendukung Produksi" ? 'selected' : ''; ?>>Peralatan Pendukung Produksi</option>
-                                        <option value="Alat Komunikasi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Alat Komunikasi' ? 'selected' : ''; ?>>Alat Komunikasi</option>
-                                        <option value="Barang Konsumable" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Barang Konsumable' ? 'selected' : ''; ?>>Barang Konsumable</option>
-                                        <option value="Angkat, Angkut, Alat Apung" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Angkat, Angkut, Alat Apung' ? 'selected' : ''; ?>>Angkat, Angkut, Alat Apung</option>
-                                    </select>
+                                    <label for="disabledTextInput">Nama Barang</label>
+                                    <input type="text" class="form-control" name="namabarang" id="namabarang" placeholder="Nama Barang" readonly>
                                 </div>
-                                <div class="form-row">
-                                    <label>Nama Barang</label>
-                                    <select class="form-control" name="namabarang" id="namabarang">
-                                        <!-- Opsi pilihan nama barang akan diisi secara dinamis oleh JavaScript -->
-                                    </select>
-                                </div>
-                                <!-- <div class="form-row">
-                                    <label>Nama Barang</label>
-                                    <input type="text" class="form-control" name="namabarang" id="namabarang" placeholder="Nama Barang">
-                                </div> -->
                                 <div class="form-row">
                                     <label for="disabledTextInput">Kode Barang</label>
-                                    <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang">
+                                    <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang" readonly>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Jumlah Barang yang dipinjam</label>
-                                        <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
+                                        <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -104,16 +90,9 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                             <label for="tanggalkembali">Tanggal dan Jam Pengembalian</label>
                                             <input type="datetime-local" class="form-control" name="tanggalkembali" id="tanggalkembali" placeholder="Tanggal dan Jam kembali">
                                         </div>
-                                        <!-- <div class="form-group col-md-4">
-                                                <label for="inputState">Kondisi Barang</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option>Baik</option>
-                                                    <option>Buruk</option>
-                                                </select>
-                                            </div> -->
                                         <div class="form-group col-md-4">
                                             <label>Kode Peminjaman</label>
-                                            <input type="text" class="form-control" id="kodepinjam" name="kodepinjam">
+                                            <input type="text" class="form-control" id="kodepinjam" name="kodepinjam" readonly>
                                         </div>
                                     </div>
                                     <br>
@@ -125,136 +104,61 @@ checkRole("admin", 'middleware/auth_prohibit.php');
             </div>
         </div>
         <br>
-
     </main>
+    <div class="modal fade" id="modalKodeTransaksi" tabindex="-1" aria-labelledby="modalKodeTransaksiLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalKodeTransaksiLabel">Masukkan Kode Transaksi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control form-control-lg" placeholder="Kode Transaksi" name="kodeTransaksi" required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
-
-
-
 <script>
-    function loadNamaBarangpinjam() {
-        var jenisbarang = $("#jenisbarang").val();
-        // untuk peralatan produksi 
-        if (jenisbarang === "Peralatan Pendukung Produksi") {
-            // Jika kategori "Peralatan Pendukung Produksi" dipilih, lakukan permintaan AJAX
+    $(document).ready(function() {
+        // Event handler ketika tombol "Submit" pada modal kode transaksi ditekan
+        $("#modalKodeTransaksi button.btn-primary").click(function() {
+            var kodeTransaksi = $("input[name='kodeTransaksi']").val();
+
+            // Lakukan permintaan AJAX ke server untuk mendapatkan data
             $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
-                method: "POST",
+                type: "POST",
+                url: "utils/get_keluar_masuk_barang.php", // Ganti dengan URL yang sesuai
                 data: {
-                    jenisbarang: jenisbarang
+                    kodeTransaksi: kodeTransaksi
                 },
+                dataType: "json",
                 success: function(response) {
-                    // Proses respons dari server
-                    var data = JSON.parse(response);
-                    var dropdownNamaBarang = $("#namabarang");
-                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
-                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
-                    for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang));
+                    if (response.error) {
+                        alert(response.error); // Display error message
+                    } else {
+                        $("#nip").val(response.nip);
+                        $("#namabarang").val(response.namabarang);
+                        $("#kodebarang").val(response.kodebarang);
+                        $("#jumlah").val(response.jumlahpinjam);
+                        $("#lokasikembali").val(response.jumlahkembali);
+                        $("#kodepinjam").val(response.kodetransaksi);
+                        $("#modalKodeTransaksi").modal("hide");
                     }
                 },
-                error: function(xhr, status, error) {
-                    // Tangani kesalahan jika ada
-                    console.error(error);
-                },
+                error: function() {
+                    // Menampilkan pesan jika terjadi kesalahan
+                    alert("Terjadi kesalahan saat mengambil data.");
+                }
             });
-            //untuk alat komunikasi
-        } else if (jenisbarang == "Alat Komunikasi") {
-            // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
-            $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
-                method: "POST",
-                data: {
-                    jenisbarang: jenisbarang
-                },
-                success: function(response) {
-                    // Proses respons dari server
-                    var data = JSON.parse(response);
-                    var dropdownNamaBarang = $("#namabarang");
-                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
-
-                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
-                    for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang));
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Tangani kesalahan jika ada
-                    console.error(error);
-                },
-            });
-
-        } else if (jenisbarang == "Barang Konsumable") {
-            // Jika kategori "alat komunikasi" dipilih, lakukan permintaan AJAX
-            $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
-                method: "POST",
-                data: {
-                    jenisbarang: jenisbarang
-                },
-                success: function(response) {
-                    // Proses respons dari server
-                    var data = JSON.parse(response);
-                    var dropdownNamaBarang = $("#namabarang");
-                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
-
-                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
-                    for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang));
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Tangani kesalahan jika ada
-                    console.error(error);
-                },
-            });
-
-        } else if (jenisbarang == "Angkat, Angkut, Alat Apung") {
-            // Jika kategori "Angkat, Apung, Alat Apung" dipilih, lakukan permintaan AJAX
-            $.ajax({
-                url: "utils/get_kategori.php", // Ganti dengan URL yang mengambil data nama barang dari server
-                method: "POST",
-                data: {
-                    jenisbarang: jenisbarang
-                },
-                success: function(response) {
-                    // Proses respons dari server
-                    var data = JSON.parse(response);
-                    var dropdownNamaBarang = $("#namabarang");
-                    dropdownNamaBarang.empty(); // Hapus semua opsi sebelumnya
-
-                    // Tambahkan opsi nama barang ke dalam dropdown "namabarang"
-                    for (var i = 0; i < data.length; i++) {
-                        dropdownNamaBarang.append(new Option(data[i].namabarang));
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Tangani kesalahan jika ada
-                    console.error(error);
-                },
-            });
-
-        } else {
-            // Jika kategori lain dipilih, hapus opsi dari dropdown "namabarang"
-            var dropdownNamaBarang = $("#namabarang");
-            dropdownNamaBarang.empty();
-        }
-
-
-    }
-
-    //readn only kode barang
+        });
+    });
 </script>
 </body>
 
 </html>
-
-<!--jadi:
-1. input nip langsung ada namanya bisa read only
-2. nama barang bisa terlhat ketika kode barang di input seperti di model choose dibawah
-3. jumlah barang ditampilkan yang kondisi baik
-4. date dibikin setiap hari update
-5. masih kurang paham kode peminjaman saran 2 digit kode barang, inisial peminjam dan tanggal peminjaman
-6. disetiap tabel hilang nama pengebon kecuali di tabel pelaporan pencatatan rekap transaksi barang-->
