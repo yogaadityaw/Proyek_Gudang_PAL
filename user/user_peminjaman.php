@@ -56,7 +56,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     <div class="container -fluid">
         <br>
         <br>
-        <form action="user_peminjaman.php" method="GET">
+        <form action="peminjaman.php" method="GET">
             <div class="input-group mb-3">
                 <!-- Search bar using Bootstrap -->
                 <input type="text" class="form-control" placeholder="Cari" name="cari" value="<?= $searchTerm ?>">
