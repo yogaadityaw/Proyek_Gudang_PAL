@@ -23,7 +23,7 @@ checkRole("peminjam", '../middleware/auth_prohibit.php');
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<?php include 'peminjams_sidebar.php' ?>
+<?php include 'peminjam_sidebar.php' ?>
 <br>
 <br>
 
