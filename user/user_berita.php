@@ -3,9 +3,8 @@
 require '../controller/koneksi.php';
 require '../controller/transaksi_pinjam_controller.php';
 require '../middleware/auth_middleware.php';
-checkRole("peminjam", '../middleware/auth_prohibit.php');
+checkRole("user", '../middleware/auth_prohibit.php');
 
-$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 // require 'controller/update_controller.php';
 
 ?>
@@ -24,7 +23,7 @@ $isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<?php include 'peminjam_sidebar.php' ?>
+<?php include 'user_sidebar.php' ?>
 
 <body class="bg-primary">
     <br>
@@ -46,7 +45,7 @@ $isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
                                 <div class="form-row">
                                     <div class="mb-3">
                                         <label for="nip" class="form-label">NIP Pegawai</label>
-                                        <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $_SESSION['nip']; ?>" <?php if (!$isAdmin) echo 'readonly'; ?>
+                                        <input type="text" class="form-control" id="nip" name="nip" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -85,26 +84,26 @@ $isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
                                         <input type="text" class="form-control" name="lokasipinjam" id="lokasipinjam" placeholder="Lokasi barang yang dipinjam">
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <!-- <div class="form-row">
+                                    <div class="form-row">
+                                        <!-- <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for=tanggal>Tanggal Peminjaman</label>
                                                 <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
                                             </div> -->
-                                    <!-- <div class="form-group col-md-4">
+                                        <!-- <div class="form-group col-md-4">
                                                 <label for="inputState">Kondisi Barang</label>
                                                 <select id="inputState" class="form-control">
                                                     <option>Baik</option>
                                                     <option>Buruk</option>
                                                 </select>
                                             </div> -->
-                                    <div class="form-group col-md-4">
-                                        <label>Kode Peminjaman</label>
-                                        <input type="text" class="form-control" id="kodepinjam" name="kodepinjam" readonly style="background-color: #e9ecef;">
+                                        <div class="form-group col-md-4">
+                                            <label>Kode Peminjaman</label>
+                                            <input type="text" class="form-control" id="kodepinjam" name="kodepinjam" readonly style="background-color: #e9ecef;">
+                                        </div>
                                     </div>
-                                </div>
-                                <br>
-                                <button type="submit" class="btn btn-primary" name="pinjam">Pinjam</button>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary" name="pinjam">Pinjam</button>
                             </form>
                         </div>
                     </div>

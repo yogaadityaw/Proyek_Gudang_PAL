@@ -49,7 +49,6 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                         <label for="nip" class="form-label">NIP Pegawai</label>
                                         <input type="text" class="form-control" id="nip" name="nip" required>
                                     </div>
-                                </div>
                                 <div class="form-row">
                                     <label>Pilih Jenis Barang</label>
                                     <select class="form-control" name="jenisbarang" id="jenisbarang" onchange="loadNamaBarangpinjam()">
@@ -310,33 +309,9 @@ checkRole("admin", 'middleware/auth_prohibit.php');
         });
     }
 </script>
-<!-- untuk menyimpan dan menampikan data nip dan nama pegawai -->
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const nipInput = document.getElementById("nip");
-        const namaPegawaiInput = document.getElementById("namapegawai");
 
-        nipInput.addEventListener("input", function() {
-            const nip = nipInput.value.trim();
-            if (nip !== "") {
-                fetch("get_employee_name.php?nip=" + nip)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            namaPegawaiInput.value = data.nama_pegawai;
-                        } else {
-                            namaPegawaiInput.value = "";
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error fetching employee name:", error);
-                    });
-            } else {
-                namaPegawaiInput.value = "";
-            }
-        });
-    });
-</script> -->
+<!-- Get nama pegawai -->
+
 
 
 

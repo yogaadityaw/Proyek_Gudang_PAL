@@ -1947,6 +1947,23 @@ progress {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+  .main-with-sidebar {
+        grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
+    }
+
+    .sidebar {
+        display: none; /* Menyembunyikan sidebar */
+    }
+
+    .announcement-card {
+        max-width: 100%; /* Kartu pengumuman mengambil seluruh lebar layar */
+        margin: 0; /* Menghilangkan margin */
+    }
+    
+    #prevBtn,
+    #nextBtn {
+        width: 100%; /* Melebar kan tombol */
+    }
 }
 @media (max-width: 991.98px) {
   .table-responsive-lg {
@@ -4240,6 +4257,10 @@ textarea.form-control-lg {
 
 .card-text:last-child {
   margin-bottom: 0;
+}
+
+.card-text {
+  text-align: justify;
 }
 
 .card-link + .card-link {
@@ -11259,4 +11280,11 @@ body {
 
 .main-with-sidebar {
   margin-left: 250px;
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center; /* Mengatur carousel di tengah horizontal */
+  align-items: center; /* Mengatur carousel di tengah vertikal */
+  height: 50vh; /* Membuat carousel mengisi seluruh tinggi viewport */
 }

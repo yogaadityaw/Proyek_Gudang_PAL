@@ -44,6 +44,13 @@
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
                             Pengajuan Peminjaman
                         </a>
+                        <a class="nav-link" href="user_berita.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                            Update Berita
+                        </a>
+                    </div>
+                    </div>
+                        
                     </div>
                 </div>
             </nav>
