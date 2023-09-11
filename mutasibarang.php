@@ -98,7 +98,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $lokasikembali = $data['lokasi_kembali'];
                                     $isApproved = $data['isApproved'];
                                     $status = $data['status'];
-                                    $tanggalKembaliNull = "0000-00-00 00:00:00";
+                                    $tanggalKembaliNull = null;
 
                                     // Ambil nama pegawai
                                     $query_pegawai = "SELECT users.nama_user
@@ -163,7 +163,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $lokasi = $data['lokasi'];
                                     $lokasikembali = $data['lokasi_kembali'];
                                     $status = $data['status'];
-                                    $tanggalKembaliNull = "0000-00-00 00:00:00";
+                                    $tanggalKembaliNull = null;
 
                                     // Ambil nama pegawai
                                     $query_pegawai = "SELECT users.nama_user

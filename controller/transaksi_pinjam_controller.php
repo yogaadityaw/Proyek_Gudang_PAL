@@ -13,22 +13,12 @@ if (isset($_POST['pinjam']) != null) {
     $noseri = $_POST['kodebarang'];
     $lokasipinjam = $_POST['lokasipinjam'];
     $jumlah = $_POST['jumlah'];
-    $tanggalpinjam = NULL;
-    $tanggalkembali = NULL;
+    // $tanggalpinjam = NULL;
+    // $tanggalkembali = NULL;
     $kodepinjam = $_POST['kodepinjam'];
-
-    // $jumlahkembali = 0;
-    // $jumlahrusak = 0;
     $status = "Belum kembali";
 
-
-
-
-    // // // !Tambahkan validasi untuk data yang kosong
-    // if (empty($nip) || empty($jenisbarang) || empty($namabarang) || empty($kodebarang) || empty($noseri) || empty($jumlah) || empty($kodepinjam)) {
-    //     echo "<script>alert('Semua kolom harus diisi.');</script>";
-    //     return;
-    // }
+    // die(var_dump("Nip: " . $nip . " Jenis Barang: " . $jenisbarang . " Nama Barang: " . $namabarang . " Kode Barang: " . $kodebarang . " No Seri: " . $noseri . " Lokasi Pinjam: " . $lokasipinjam . " Jumlah: " . $jumlah . " Tanggal Pinjam: " . $tanggalpinjam . " Tanggal Kembali: " . $tanggalkembali . " Kode Pinjam: " . $kodepinjam . " Status: " . $status));
 
     $queryNip = "SELECT nip_user FROM users WHERE nip_user = '$nip'";
     $resultNip = mysqli_query($conn, $queryNip);
@@ -37,7 +27,8 @@ if (isset($_POST['pinjam']) != null) {
         echo "<script>alert('NIP tidak ditemukan.');</script>";
         return;
     } else {
-        $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, jenisbarang, namabarang, kodebarang, jumlahpinjam, lokasi, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$jenisbarang', '$namabarang', '$kodebarang', '$jumlah', '$lokasipinjam', '$status')");
+        // $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, jenisbarang, namabarang, kodebarang, jumlahpinjam, lokasi, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$jenisbarang', '$namabarang', '$kodebarang', '$jumlah', '$lokasipinjam', '$status')");
+        $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, jenisbarang, namabarang, kodebarang, jumlahpinjam, lokasi, status) VALUES ('$kodepinjam', '$nip', '$jenisbarang', '$namabarang', '$kodebarang', '$jumlah', '$lokasipinjam', '$status')");
         if ($addtotable) {
             if ($_SESSION['role'] == "admin") {
                 echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";
@@ -57,6 +48,3 @@ if (isset($_POST['pinjam']) != null) {
     }
     return;
 }
-
-
-// pisahkan pinjam dan pengembalian
