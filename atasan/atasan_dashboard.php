@@ -3,7 +3,7 @@ require '../controller/koneksi.php';
 require '../middleware/auth_middleware.php';
 require '../controller/berita_controller.php';
 
-checkRole("peminjam", 'middleware/auth_prohibit.php');
+checkRole("atasan", 'middleware/auth_prohibit.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +22,6 @@ checkRole("peminjam", 'middleware/auth_prohibit.php');
             text-align: justify;
         }
 
-        .card-text {
-            text-align: justify;
-        }
-
         .announcement-card {
             max-width: 1500px;
             max-height: 400px;
@@ -39,75 +35,14 @@ checkRole("peminjam", 'middleware/auth_prohibit.php');
 
 </head>
 
-<?php include 'peminjam_sidebar.php' ?>
+<?php include 'atasan_sidebar.php' ?>
 <br>
 <br>
 
 <body>
     <div id="layoutSidenav_content">
         <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">Dashboard</h1>
-                <br>
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Ajukan Peminjaman</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="peminjam_transaksional.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">Riwayat Peminjaman</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="peminjam_history.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Form Peminjaman Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="transaksional.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">Form Pengembalian Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="transaksional_kembali.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">List Daftar Mutasi Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="mutasibarang.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Manajemen Akun & Data Personil</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="user_manajemen.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid px-4 carousel-container mt-4">
+            <div class="container-fluid px-4 carousel-container mt-5">
                 <div class="card text-center announcement-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">

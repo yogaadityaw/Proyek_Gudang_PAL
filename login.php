@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "atasan";
                     $_SESSION['nip'] = $nip;
-                    header('location: atasan/atasan_mutasibarang.php');
+                    header('location: atasan/atasan_dashboard.php');
                 } else if ($role == 4) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "peminjam";
@@ -69,7 +69,7 @@ if (isset($_SESSION['log'])) {
         header('Location: user/user_dashboard.php');
         exit();
     } elseif ($_SESSION['role'] == "atasan") {
-        header('Location: atasan/atasan_mutasibarang.php');
+        header('Location: atasan/atasan_dashboard.php');
         exit();
     }
 }

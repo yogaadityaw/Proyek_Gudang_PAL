@@ -49,7 +49,8 @@ require '../controller/koneksi.php';
                     $ambilsemuadatastock = mysqli_query($conn, "SELECT k.*, u.nama_user, d.namadivisi 
                     FROM keluar_masuk_barang k 
                     INNER JOIN users u ON k.nip = u.nip_user
-                    INNER JOIN divisi d ON u.divisi_id = d.iddivisi");
+                    INNER JOIN divisi d ON u.divisi_id = d.iddivisi
+                    WHERE isApproved = 1 OR isApproved = 3");
                     while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                         $tanggalpinjam = $data['tanggal'];
                         $tanggalkembali = $data['tanggalkembali'];

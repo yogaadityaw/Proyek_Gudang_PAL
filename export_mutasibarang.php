@@ -53,7 +53,8 @@ require 'controller/koneksi.php';
                     $ambilsemuadatastock = mysqli_query($conn, "SELECT k.*, u.nama_user, d.namadivisi 
                     FROM keluar_masuk_barang k 
                     INNER JOIN users u ON k.nip = u.nip_user
-                    INNER JOIN divisi d ON u.divisi_id = d.iddivisi");
+                    INNER JOIN divisi d ON u.divisi_id = d.iddivisi
+                    WHERE isApproved = 1 OR isApproved = 3");
                     while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                         $tanggalpinjam = $data['tanggal'];
                         $tanggalkembali = $data['tanggalkembali'];
@@ -89,7 +90,7 @@ require 'controller/koneksi.php';
                             <td style="text-align: center;"> <?= $lokasi; ?> </td>
                             <td style="text-align: center;"> <?= $lokasikembali; ?> </td>
                             <td style="text-align: center;"> <?php
-                                                                if ($tanggalkembali === "0000-00-00 00:00:00") {
+                                                                if ($tanggalkembali === null) {
                                                                     echo '<span class="badge text-bg-danger">Barang belum kembali</span>';
                                                                 } else if ($jumlahrusak > 0) {
                                                                     echo '<span class="badge text-bg-warning">Barang Rusak</span>';
