@@ -92,6 +92,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $jumlahkembali = $data['jumlahkembali'];
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
+                                    $lokasikembali = $data['lokasi_kembali'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = null;
 

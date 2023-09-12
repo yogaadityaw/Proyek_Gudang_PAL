@@ -1,10 +1,10 @@
 <?php
 // require 'controller/konsumable_controller.php';
-require '../controller/koneksi.php';
-require '../controller/transaksi_pinjam_controller.php';
-require '../controller/berita_controller.php';
-require '../middleware/auth_middleware.php';
-checkRole("user", '../middleware/auth_prohibit.php');
+require 'controller/koneksi.php';
+require 'controller/transaksi_pinjam_controller.php';
+require 'middleware/auth_middleware.php';
+require 'controller/berita_controller.php';
+checkRole("admin", '../middleware/auth_prohibit.php');
 
 // require 'controller/update_controller.php';
 
@@ -20,11 +20,11 @@ checkRole("user", '../middleware/auth_prohibit.php');
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Upload Berita</title>
-    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<?php include 'user_sidebar.php' ?>
+<?php include 'sidebar.php' ?>
 
 <body class="bg-primary">
     <br>
@@ -55,7 +55,7 @@ checkRole("user", '../middleware/auth_prohibit.php');
                                     <p><span id="characterCount">0</span></p>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary" name="post">Post</button>
+                                    <button type="submit" class="btn btn-primary" name="post">Posting</button>
                                 </div>
                             </form>
                         </div>

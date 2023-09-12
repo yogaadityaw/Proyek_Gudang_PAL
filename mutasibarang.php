@@ -96,7 +96,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
                                     $lokasikembali = $data['lokasi_kembali'];
-                                    $isApproved = $data['isApproved'];
+                                    // $isApproved = $data['isApproved'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = null;
 
