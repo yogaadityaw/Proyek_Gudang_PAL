@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 11, 2023 at 12:01 AM
+-- Generation Time: Sep 14, 2023 at 03:18 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alat_produksi` (
   `idbarang` int NOT NULL,
-  `namabarang` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `kodebarang` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `kategoribarang` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kodebarang` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kategoribarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
   `baik` int NOT NULL,
   `rusak` int NOT NULL,
-  `lokasi` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `lokasi` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `kategori_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -90,12 +90,12 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoriba
 
 CREATE TABLE `barang_angkut_apung` (
   `idbarang` int NOT NULL,
-  `namabarang` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `kodebarang` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kodebarang` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
   `baik` int NOT NULL,
   `rusak` int NOT NULL,
-  `lokasi` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `lokasi` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `kategori_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -124,12 +124,12 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 
 CREATE TABLE `barang_asset` (
   `idbarang` int NOT NULL,
-  `namabarang` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
   `baik` int NOT NULL,
   `rusak` int NOT NULL,
-  `lokasi` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `keterangan` varchar(256) COLLATE utf8mb4_general_ci NOT NULL
+  `lokasi` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `keterangan` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -147,10 +147,10 @@ INSERT INTO `barang_asset` (`idbarang`, `namabarang`, `jumlah`, `baik`, `rusak`,
 
 CREATE TABLE `barang_konsumable` (
   `idbarang` int NOT NULL,
-  `namabarang` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `kodebarang` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kodebarang` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
-  `lokasi` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `lokasi` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `kategori_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -173,7 +173,7 @@ CREATE TABLE `berita` (
   `id_berita` int NOT NULL,
   `judul_berita` varchar(512) NOT NULL,
   `deskripsi_berita` varchar(2056) NOT NULL,
-  `created_at` timestamp NOT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -182,7 +182,11 @@ CREATE TABLE `berita` (
 
 INSERT INTO `berita` (`id_berita`, `judul_berita`, `deskripsi_berita`, `created_at`) VALUES
 (1, 'PT PAL (Persero) Tbk Membuka Pabrik Baru untuk Memperluas Produksi Kapal Perang', 'PT PAL (Persero) Tbk, perusahaan galangan kapal terkemuka di Indonesia, telah membuka pabrik produksi baru yang akan membantu meningkatkan kapasitas produksi kapal perang. Langkah ini bertujuan untuk mendukung pertahanan nasional dan industri maritim Indonesia yang berkembang pesat.\r\n\r\nPerusahaan ini juga baru-baru ini meraih penghargaan bergengsi dalam industri maritim berkat inovasi dan kualitas produknya. PT PAL (Persero) Tbk dikenal karena kapal selam canggih buatannya, yang telah diakui secara internasional.\r\n\r\nDengan dukungan dari PT PAL (Persero) Tbk, Indonesia semakin mengukuhkan dirinya sebagai pemain utama dalam industri maritim global. Perusahaan ini berperan penting dalam mendukung pembangunan infrastruktur maritim yang sangat dibutuhkan untuk pertumbuhan ekonomi dan keamanan nasional.\r\n\r\nSilakan gunakan informasi ini sebagai panduan untuk membuat berita lebih rinci tentang PT PAL (Persero) Tbk sesuai dengan kebutuhan Anda.', '2023-09-10 23:13:33'),
-(2, 'PT PAL Resmi Mengumumkan Kesepakatan Kerjasama Baru dalam Industri Maritim', 'JAKARTA - PT PAL (Persero), perusahaan pembangunan kapal terkemuka di Indonesia, mengumumkan kemitraan strategis baru dengan perusahaan maritim internasional terkemuka, sebuah langkah besar dalam mendorong pertumbuhan sektor maritim nasional.\r\n\r\nPada hari Rabu, PT PAL mengadakan konferensi pers di Jakarta untuk mengumumkan kesepakatan kolaborasi terbaru mereka. Menurut pernyataan resmi, perusahaan ini akan bekerja sama dengan perusahaan maritim internasional yang memiliki reputasi baik dalam pembangunan kapal komersial dan militer.\r\n\r\n\"Dalam upaya untuk menghadirkan teknologi dan inovasi terbaru ke Indonesia, kami sangat antusias mengumumkan kemitraan ini,\" kata CEO PT PAL dalam konferensi pers tersebut. \"Ini adalah langkah besar dalam memperkuat posisi PT PAL sebagai pemimpin dalam industri maritim.\"\r\n\r\nKemitraan ini diharapkan akan membawa manfaat besar bagi sektor maritim nasional. Ini akan menciptakan lapangan kerja baru, mendorong pertumbuhan ekonomi di daerah terdekat fasilitas PT PAL, dan memberikan akses ke teknologi terbaru dalam pembangunan kapal.\r\n\r\nSebelumnya, PT PAL telah berhasil menyelesaikan proyek-proyek besar seperti kapal perang, kapal komersial, dan kapal penumpang. Kemitraan ini akan membuka pintu bagi proyek-proyek yang lebih besar dan canggih di masa depan.\r\n\r\nIni adalah langkah yang sangat positif bagi PT PAL dan industri maritim Indonesia secara keseluruhan. Pemerintah Indonesia juga telah memberikan dukungan penuh untuk kemitraan ini, mengakui pentingnya industri maritim dalam mendukung pertumbuhan ekonomi negara tersebut.\r\n\r\nSemoga informasi ini bermanfaat dalam memberikan gambaran umum tentang berita terbaru mengenai PT PAL dan kemitraan strategis yang mereka bangun.', '2023-09-10 23:14:04');
+(2, 'PT PAL Resmi Mengumumkan Kesepakatan Kerjasama Baru dalam Industri Maritim', 'JAKARTA - PT PAL (Persero), perusahaan pembangunan kapal terkemuka di Indonesia, mengumumkan kemitraan strategis baru dengan perusahaan maritim internasional terkemuka, sebuah langkah besar dalam mendorong pertumbuhan sektor maritim nasional.\r\n\r\nPada hari Rabu, PT PAL mengadakan konferensi pers di Jakarta untuk mengumumkan kesepakatan kolaborasi terbaru mereka. Menurut pernyataan resmi, perusahaan ini akan bekerja sama dengan perusahaan maritim internasional yang memiliki reputasi baik dalam pembangunan kapal komersial dan militer.\r\n\r\n\"Dalam upaya untuk menghadirkan teknologi dan inovasi terbaru ke Indonesia, kami sangat antusias mengumumkan kemitraan ini,\" kata CEO PT PAL dalam konferensi pers tersebut. \"Ini adalah langkah besar dalam memperkuat posisi PT PAL sebagai pemimpin dalam industri maritim.\"\r\n\r\nKemitraan ini diharapkan akan membawa manfaat besar bagi sektor maritim nasional. Ini akan menciptakan lapangan kerja baru, mendorong pertumbuhan ekonomi di daerah terdekat fasilitas PT PAL, dan memberikan akses ke teknologi terbaru dalam pembangunan kapal.\r\n\r\nSebelumnya, PT PAL telah berhasil menyelesaikan proyek-proyek besar seperti kapal perang, kapal komersial, dan kapal penumpang. Kemitraan ini akan membuka pintu bagi proyek-proyek yang lebih besar dan canggih di masa depan.\r\n\r\nIni adalah langkah yang sangat positif bagi PT PAL dan industri maritim Indonesia secara keseluruhan. Pemerintah Indonesia juga telah memberikan dukungan penuh untuk kemitraan ini, mengakui pentingnya industri maritim dalam mendukung pertumbuhan ekonomi negara tersebut.\r\n\r\nSemoga informasi ini bermanfaat dalam memberikan gambaran umum tentang berita terbaru mengenai PT PAL dan kemitraan strategis yang mereka bangun.', '2023-09-10 23:14:04'),
+(3, 'coba', 'coba 1', '2023-09-12 04:30:37'),
+(4, 'coba', 'coba1', '2023-09-12 05:48:36'),
+(5, 'coba 3', 'coba 3', '2023-09-12 08:58:47'),
+(6, 'Kebakaran Melanda Desa Lebak Rejo, Kerugian Besar Terjadi', 'Pada tanggal 12 September 2023, sebuah bencana kebakaran hebat melanda Desa Lebak Rejo, mengakibatkan kerugian besar bagi warga dan lingkungan sekitar. Kebakaran ini pertama kali terdeteksi pada pukul 02.00 pagi dan dengan cepat meluas karena angin kencang yang memengaruhi perambatan api.\n\nSejumlah pemadam kebakaran dan relawan segera merespons kejadian tersebut, tetapi mereka menghadapi kesulitan dalam memadamkan api karena kondisi cuaca yang ekstrem. Banyak rumah dan bangunan penting, termasuk sekolah dan fasilitas kesehatan, hancur dalam bencana ini.\n\nTidak ada laporan tentang korban jiwa saat ini, tetapi sejumlah warga dilaporkan kehilangan tempat tinggal dan harta benda mereka. Otoritas setempat dan pihak berwenang terus bekerja keras untuk mengatasi kebakaran ini dan memberikan bantuan kepada mereka yang terkena dampak.\n\nKita semua berdoa agar situasi ini segera teratasi dan para korban dapat mendapatkan bantuan yang mereka perlukan. Lebak Rejo dan warganya membutuhkan dukungan dan solidaritas dari seluruh komunitas di sekitarnya.', '2023-09-14 15:12:52');
 
 -- --------------------------------------------------------
 
@@ -192,7 +196,7 @@ INSERT INTO `berita` (`id_berita`, `judul_berita`, `deskripsi_berita`, `created_
 
 CREATE TABLE `divisi` (
   `iddivisi` int NOT NULL,
-  `namadivisi` varchar(200) COLLATE utf8mb4_general_ci NOT NULL
+  `namadivisi` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -230,7 +234,7 @@ INSERT INTO `divisi` (`iddivisi`, `namadivisi`) VALUES
 
 CREATE TABLE `kategori` (
   `id_kategori` int NOT NULL,
-  `nama_kategori` varchar(256) COLLATE utf8mb4_general_ci NOT NULL
+  `nama_kategori` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -251,20 +255,20 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 
 CREATE TABLE `keluar_masuk_barang` (
   `idtransaksi` int NOT NULL,
-  `kodetransaksi` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `kodetransaksi` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `tanggal` timestamp NULL DEFAULT NULL,
   `tanggalkembali` timestamp NULL DEFAULT NULL,
-  `jenisbarang` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
-  `nip` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `namabarang` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `kodebarang` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `jenisbarang` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nip` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `namabarang` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kodebarang` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jumlahpinjam` int NOT NULL,
   `jumlahkembali` int DEFAULT '0',
   `jumlahrusak` int DEFAULT '0',
-  `lokasi` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `lokasi` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `lokasi_kembali` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `isApproved` int DEFAULT '0',
-  `status` varchar(200) COLLATE utf8mb4_general_ci NOT NULL
+  `status` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -273,7 +277,7 @@ CREATE TABLE `keluar_masuk_barang` (
 
 INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `jenisbarang`, `nip`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `lokasi`, `lokasi_kembali`, `isApproved`, `status`) VALUES
 (106, 'PJ1', '2023-09-10 17:00:58', '2023-09-11 00:01:00', '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH01', 'PRODPROD', 3, 'Sudah kembali'),
-(107, 'PJ2', NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(107, 'PJ2', '2023-09-11 08:16:21', NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 1, 'Belum Kembali'),
 (108, 'PJ3', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
 (109, 'PJ4', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '', 0, 'Belum Kembali'),
 (110, 'PJ5', NULL, NULL, '', '14200139', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
@@ -309,12 +313,12 @@ INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `t
 
 CREATE TABLE `komunikasi` (
   `idbarang` int NOT NULL,
-  `namabarang` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `noseri` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `noseri` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
   `baik` int NOT NULL,
   `rusak` int NOT NULL,
-  `lokasi` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `lokasi` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `kategori_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -335,7 +339,7 @@ INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, 
 
 CREATE TABLE `role` (
   `id_role` int NOT NULL,
-  `nama_role` varchar(512) COLLATE utf8mb4_general_ci NOT NULL
+  `nama_role` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -356,9 +360,9 @@ INSERT INTO `role` (`id_role`, `nama_role`) VALUES
 
 CREATE TABLE `users` (
   `id_user` int NOT NULL,
-  `nip_user` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `nama_user` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
-  `password_user` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `nip_user` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_user` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password_user` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `divisi_id` int NOT NULL,
   `role_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -489,7 +493,7 @@ ALTER TABLE `barang_konsumable`
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `divisi`
@@ -544,29 +548,10 @@ ALTER TABLE `barang_konsumable`
   ADD CONSTRAINT `barang_konsumable_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`);
 
 --
--- Constraints for table `divisi`
---
-ALTER TABLE `divisi`
-  ADD CONSTRAINT `divisi_id` FOREIGN KEY (`iddivisi`) REFERENCES `pegawai` (`divisi_id`);
-
---
 -- Constraints for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
   ADD CONSTRAINT `nip_foreign` FOREIGN KEY (`nip`) REFERENCES `users` (`nip_user`);
-
---
--- Constraints for table `komunikasi`
---
-ALTER TABLE `komunikasi`
-  ADD CONSTRAINT `komunikasi_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`divisi_id`) REFERENCES `divisi` (`iddivisi`),
-  ADD CONSTRAINT `users_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id_role`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -24,6 +24,7 @@ checkRole("admin", 'middleware/auth_prohibit.php');
         }
 
         .announcement-card {
+
             max-width: 1500px;
             max-height: 400px;
             min-width: 300px;
@@ -32,11 +33,10 @@ checkRole("admin", 'middleware/auth_prohibit.php');
     </style>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="/assets/img/logo_pal.png">
+
 </head>
 
 <?php include 'sidebar.php' ?>
-<br>
-<br>
 
 <body>
     <div id="layoutSidenav_content">
@@ -137,7 +137,6 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                         <p class="text-dark tanggalberita"></p>
                     </div>
                 </div>
-            </div>
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
