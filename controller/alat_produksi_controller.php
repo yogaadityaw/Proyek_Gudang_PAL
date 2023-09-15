@@ -8,6 +8,7 @@ session_start();
 if (isset($_POST['addnewbarangproduksi'])) {
     $namabarang = $_POST['namabarang'];
     $kodebarang = $_POST['kodebarang'];
+    $kategoribarang =$_POST['kategoribarang'];
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];

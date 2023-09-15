@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 14, 2023 at 03:18 PM
+-- Generation Time: Sep 15, 2023 at 07:55 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,7 @@ CREATE TABLE `alat_produksi` (
 --
 
 INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoribarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
-(10, 'Bor Magnet', 'DRL01', '0', 168, 167, 1, '-', 1),
+(10, 'Bor Magnet', 'DRL01', '0', 167, 166, 1, '-', 1),
 (12, 'Hand Bor (Makita)', 'HDRL02', '0', 5, 5, 0, '-', 1),
 (13, 'Vacum Test', 'VT01', '0', 1, 1, 0, '-', 1),
 (14, 'Load Cell 5 Ton', 'LC5T', '0', 1, 0, 1, '-', 1),
@@ -80,7 +80,8 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoriba
 (44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', '0', 22, 22, 0, '-', 1),
 (45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', '0', 7, 7, 0, '-', 1),
 (51, 'Bor Magnet', 'DRL09', '0', 1, 1, 0, '-', 1),
-(54, 'coba', 'tes', '0', 1, 0, 1, 'rusak', 1);
+(54, 'coba', 'tes', '0', 1, 0, 1, 'rusak', 1),
+(56, 'user testing', 'testing', 'satu', 1, 1, 0, 'dukprod', 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +115,7 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 (20, 'Tongkang 04', 'TKG04', 2, 1, 3, '-', 4),
 (21, 'Tongkang 205', 'TKG205', 1, 0, 1, '-', 4),
 (22, 'Kapal LCM V', 'KLCM5', 1, 0, 1, '-', 4),
-(23, 'cek', 'cekk1', 1, 1, 0, '-', 4);
+(23, 'cek', 'cekk1', 1, 1, 0, 'dockapung', 4);
 
 -- --------------------------------------------------------
 
@@ -125,6 +126,7 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 CREATE TABLE `barang_asset` (
   `idbarang` int NOT NULL,
   `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kategoribarang` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
   `baik` int NOT NULL,
   `rusak` int NOT NULL,
@@ -136,8 +138,9 @@ CREATE TABLE `barang_asset` (
 -- Dumping data for table `barang_asset`
 --
 
-INSERT INTO `barang_asset` (`idbarang`, `namabarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `keterangan`) VALUES
-(1, 'Laptop,Ruang Biro Analisa, Evaluasi, SDM dan Transformasi Teknologi', 1, 1, 0, 'Kabiro. Ana, Eva, SDM', 'Keluar');
+INSERT INTO `barang_asset` (`idbarang`, `namabarang`, `kategoribarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `keterangan`) VALUES
+(1, 'Laptop,Ruang Biro Analisa, Evaluasi, SDM dan Transformasi Teknologi', 'laptop', 1, 1, 0, 'Kabiro. Ana, Eva, SDM', 'Keluar'),
+(2, 'cek', 'coba', 1, 1, 0, 'rendal', '-');
 
 -- --------------------------------------------------------
 
@@ -161,7 +164,8 @@ CREATE TABLE `barang_konsumable` (
 INSERT INTO `barang_konsumable` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `lokasi`, `kategori_id`) VALUES
 (48, 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 2, '-', 3),
 (50, 'cek', 'cekk', 1, '-', 3),
-(51, 'coba', 'test', 1, '-', 3);
+(51, 'coba', 'test', 1, '-', 3),
+(52, 'usertesing', 'testing', 1, 'Produksi', 3);
 
 -- --------------------------------------------------------
 
@@ -186,7 +190,8 @@ INSERT INTO `berita` (`id_berita`, `judul_berita`, `deskripsi_berita`, `created_
 (3, 'coba', 'coba 1', '2023-09-12 04:30:37'),
 (4, 'coba', 'coba1', '2023-09-12 05:48:36'),
 (5, 'coba 3', 'coba 3', '2023-09-12 08:58:47'),
-(6, 'Kebakaran Melanda Desa Lebak Rejo, Kerugian Besar Terjadi', 'Pada tanggal 12 September 2023, sebuah bencana kebakaran hebat melanda Desa Lebak Rejo, mengakibatkan kerugian besar bagi warga dan lingkungan sekitar. Kebakaran ini pertama kali terdeteksi pada pukul 02.00 pagi dan dengan cepat meluas karena angin kencang yang memengaruhi perambatan api.\n\nSejumlah pemadam kebakaran dan relawan segera merespons kejadian tersebut, tetapi mereka menghadapi kesulitan dalam memadamkan api karena kondisi cuaca yang ekstrem. Banyak rumah dan bangunan penting, termasuk sekolah dan fasilitas kesehatan, hancur dalam bencana ini.\n\nTidak ada laporan tentang korban jiwa saat ini, tetapi sejumlah warga dilaporkan kehilangan tempat tinggal dan harta benda mereka. Otoritas setempat dan pihak berwenang terus bekerja keras untuk mengatasi kebakaran ini dan memberikan bantuan kepada mereka yang terkena dampak.\n\nKita semua berdoa agar situasi ini segera teratasi dan para korban dapat mendapatkan bantuan yang mereka perlukan. Lebak Rejo dan warganya membutuhkan dukungan dan solidaritas dari seluruh komunitas di sekitarnya.', '2023-09-14 15:12:52');
+(6, 'Kebakaran Melanda Desa Lebak Rejo, Kerugian Besar Terjadi', 'Pada tanggal 12 September 2023, sebuah bencana kebakaran hebat melanda Desa Lebak Rejo, mengakibatkan kerugian besar bagi warga dan lingkungan sekitar. Kebakaran ini pertama kali terdeteksi pada pukul 02.00 pagi dan dengan cepat meluas karena angin kencang yang memengaruhi perambatan api.\n\nSejumlah pemadam kebakaran dan relawan segera merespons kejadian tersebut, tetapi mereka menghadapi kesulitan dalam memadamkan api karena kondisi cuaca yang ekstrem. Banyak rumah dan bangunan penting, termasuk sekolah dan fasilitas kesehatan, hancur dalam bencana ini.\n\nTidak ada laporan tentang korban jiwa saat ini, tetapi sejumlah warga dilaporkan kehilangan tempat tinggal dan harta benda mereka. Otoritas setempat dan pihak berwenang terus bekerja keras untuk mengatasi kebakaran ini dan memberikan bantuan kepada mereka yang terkena dampak.\n\nKita semua berdoa agar situasi ini segera teratasi dan para korban dapat mendapatkan bantuan yang mereka perlukan. Lebak Rejo dan warganya membutuhkan dukungan dan solidaritas dari seluruh komunitas di sekitarnya.', '2023-09-14 15:12:52'),
+(7, 'Berita Acara', 'acara hut pal colab hut kemerdekaan', '2023-09-15 01:02:41');
 
 -- --------------------------------------------------------
 
@@ -298,12 +303,14 @@ INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `t
 (128, 'PJ18', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
 (129, 'PJ19', NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
 (130, 'PJ20', NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH04', 'RH01', 0, 'Belum Kembali'),
-(131, 'PJ21', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Dock Surabaya', '', 0, 'Belum Kembali'),
+(131, 'PJ21', NULL, '2023-09-15 01:15:00', '', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, 'Dock Surabaya', 'dukprod', 3, 'Sudah kembali'),
 (132, 'PJ22', NULL, NULL, 'Peralatan Pendukung Produksi', '12345', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukprod', NULL, 0, 'Belum Kembali'),
 (133, 'PJ23', NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'ddudududududuk', NULL, 0, 'Belum Kembali'),
 (134, 'PJ24', NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukduk', NULL, 0, 'Belum Kembali'),
 (135, 'PJ25', NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukduk', NULL, 0, 'Belum Kembali'),
-(136, 'PJ26', NULL, NULL, 'Peralatan Pendukung Produksi', '12345', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukprod', NULL, 0, 'Belum Kembali');
+(136, 'PJ26', NULL, NULL, 'Peralatan Pendukung Produksi', '12345', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukprod', NULL, 0, 'Belum Kembali'),
+(137, 'PJ27', '2023-09-14 18:12:38', '2023-09-15 01:16:00', 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 1, 0, 'dukprod', '0', 3, 'Sudah kembali'),
+(138, 'PJ28', '2023-09-14 19:01:06', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Dock Surabaya', NULL, 1, 'Belum kembali');
 
 -- --------------------------------------------------------
 
@@ -329,7 +336,8 @@ CREATE TABLE `komunikasi` (
 INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
 (8, 'HT I COM V80', '602733378-1', 3, 3, 0, 'harkan', 2),
 (9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2),
-(12, 'ceki', 'cekcek', 1, 1, 0, '-', 2);
+(12, 'ceki', 'cekcek', 1, 1, 0, '-', 2),
+(13, 'user testing', 'testing', 1, 1, 0, 'LISTROL', 2);
 
 -- --------------------------------------------------------
 
@@ -469,7 +477,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alat_produksi`
 --
 ALTER TABLE `alat_produksi`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `barang_angkut_apung`
@@ -481,19 +489,19 @@ ALTER TABLE `barang_angkut_apung`
 -- AUTO_INCREMENT for table `barang_asset`
 --
 ALTER TABLE `barang_asset`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `barang_konsumable`
 --
 ALTER TABLE `barang_konsumable`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `divisi`
@@ -511,13 +519,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`
 --
 ALTER TABLE `komunikasi`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`

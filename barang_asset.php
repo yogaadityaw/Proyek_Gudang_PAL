@@ -13,7 +13,7 @@ if (isset($_GET['cari'])) {
     // $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM barang_asset WHERE namabarang LIKE '%$keyword%' OR kode Barang LIKE '%$keyword%' OR lokasi LIKE '%$keyword%'";
+    $query = "SELECT * FROM barang_asset WHERE namabarang LIKE '%$keyword%' OR kategoribarang LIKE '%$keyword%' OR lokasi LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'";
 };
 
 
@@ -69,6 +69,7 @@ if (isset($_GET['cari'])) {
                                 <tr>
                                     <th class="table-info text-center align-middle">No</th>
                                     <th class="table-info text-center align-middle">Nama Barang</th>
+                                    <th class="table-info text-center align-middle">Kategori Barang</th>
                                     <th class="table-info text-center align-middle">Jumlah</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
@@ -84,6 +85,7 @@ if (isset($_GET['cari'])) {
                                 $ambilsemuadatabarang = mysqli_query($conn, $query);
                                 while ($data = mysqli_fetch_array($ambilsemuadatabarang)) {
                                     $namabarang = $data['namabarang'];
+                                    $kategoribarang = $data['kategoribarang'];
                                     $jumlah = $data['jumlah'];
                                     $barangbaik = $data['baik'];
                                     $barangrusak = $data['rusak'];
@@ -94,6 +96,7 @@ if (isset($_GET['cari'])) {
                                     <tr>
                                         <td style="text-align: center;"><?= $i++ ?></td>
                                         <td style="text-align: center;"><?= $namabarang ?></td>
+                                        <td style="text-align: center;"><?= $kategoribarang ?></td>
                                         <td style="text-align: center;"><?= $jumlah ?></td>
                                         <td style="text-align: center;"><?= $barangbaik ?></td>
                                         <td style="text-align: center;"><?= $barangrusak ?></td>
@@ -124,6 +127,9 @@ if (isset($_GET['cari'])) {
                                                     <div class="modal-body">
                                                         <label>Nama Barang</label>
                                                         <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" placeholder="Nama Barang" required>
+                                                        <br>
+                                                        <label>Kategori Barang</label>
+                                                        <input type="text" name="kategoribarang" value="<?= $kategoribarang; ?>" class="form-control form-control-lg" placeholder="Kategori Barang" required>
                                                         <br>
                                                         <label>Jumlah</label>
                                                         <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah" required>
@@ -205,6 +211,8 @@ if (isset($_GET['cari'])) {
                     <!-- Modal body -->
                     <div class="modal-body">
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang" required>
+                        <br>
+                        <input type="text" class="form-control form-control-lg" placeholder="Kategori Barang" name="kategoribarang" required>
                         <br>
                         <input type="number" class="form-control form-control-lg" placeholder="Jumlah" name="jumlah" required>
                         <br>

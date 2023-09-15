@@ -67,13 +67,7 @@ if (isset($_GET['cari'])) {
                 </button>
                 <br>
                 <br>
-                <form action="user_manajemen.php" method="GET">
-                    <div class="input-group mb-3">
-                        <!-- Search bar using Bootstrap -->
-                        <input type="text" value="" class="form-control" placeholder="Cari" name="cari">
-                        <button type="submit" class="btn btn-primary">Cari</button>
-                    </div>
-                </form>
+                
                 <br>
                 <div class="card-body">
                     <div class="table table-responsive">

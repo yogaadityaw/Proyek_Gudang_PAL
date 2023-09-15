@@ -15,6 +15,7 @@ require 'controller/koneksi.php';
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
 </head>
 
 <body>
@@ -26,7 +27,7 @@ require 'controller/koneksi.php';
 
 
             <!-- Masukkan table nya disini, dimulai dari tag TABLE -->
-            <table class="table table-bordered" id="mauexport" width="100" cellspacing="0">
+            <table class="table table-bordered" id="mauexport" width="5" cellspacing="0">
                 <thead>
                     <tr>
                         <th class="table-info text-center align-middle">No</th>
