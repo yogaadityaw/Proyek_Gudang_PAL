@@ -13,7 +13,7 @@ if (isset($_GET['cari'])) {
     // $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM komunikasi WHERE namabarang LIKE '%$keyword%' OR noseri LIKE '%$keyword%'";
+    $query = "SELECT * FROM komunikasi WHERE namabarang LIKE '%$keyword%' OR noseri LIKE '%$keyword%' OR lokasi LIKE '%$keyword%'";
 };
 
 ?>
@@ -72,7 +72,7 @@ if (isset($_GET['cari'])) {
                                     <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
                                     <th class="table-info text-center align-middle">lokasi</th>
-                                    <th class="table-info text-center align-middle">Action</th>
+                                    <th class="table-info text-center align-middle">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -28,7 +28,6 @@
                         <div class="collapse" id="pagesCollapseTabel" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="peminjam_transaksional.php">Ajukan Peminjaman</a>
-                                <a class="nav-link" href="peminjam_transaksional_kembali.php">Ajukan Pengembalian</a>
                                 <a class="nav-link" href="peminjam_history.php">Riwayat Peminjaman</a>
                             </nav>
                         </div>

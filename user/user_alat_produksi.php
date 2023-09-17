@@ -13,7 +13,7 @@ if (isset($_GET['cari'])) {
     // $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM alat_produksi WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%'";
+    $query = "SELECT * FROM alat_produksi WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%' OR kategoribarang LIKE '%$keyword%' OR lokasi LIKE '%$keyword%'";
 }
 
 
@@ -69,8 +69,8 @@ if (isset($_GET['cari'])) {
                                 <tr>
                                     <th class="table-info text-center align-middle">No</th>
                                     <th class="table-info text-center align-middle">Nama Barang / Alat</th>
-                                    <th class="table-info text-center align-middle">Kategori Barang</th>
                                     <th class="table-info text-center align-middle">Kode Barang</th>
+                                    <th class="table-info text-center align-middle">Kategori Barang</th>
                                     <th class="table-info text-center align-middle">Jumlah</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
@@ -133,6 +133,10 @@ if (isset($_GET['cari'])) {
                                                         <label>Kode Barang</label>
                                                         <input type="text" name="kodebarang" value="<?= $kodebarang; ?>" class="form-control form-control-lg" placeholder="Kode barang" required>
 
+                                                        <label>Kategori Barang</label>
+                                                        <input type="text" name="kategoribarang" value="<?= $kategoribarang; ?>" class="form-control form-control-lg" placeholder="Kategori barang" required>
+
+
                                                         <label>Jumlah</label>
                                                         <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah" required>
 
@@ -178,6 +182,8 @@ if (isset($_GET['cari'])) {
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang" required>
                         <br>
                         <input type="text" class="form-control form-control-lg" placeholder="kode Barang" name="kodebarang" required>
+                        <br>
+                        <input type="text" class="form-control form-control-lg" placeholder="kategori Barang" name="kategoribarang" required>
                         <br>
                         <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
                         <br>

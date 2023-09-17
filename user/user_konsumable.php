@@ -14,7 +14,7 @@ if (isset($_GET['cari'])) {
     // $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM barang_konsumable WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%'";
+    $query = "SELECT * FROM barang_konsumable WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%' OR lokasi LIKE '%$keyword%'";
 }
 ?>
 

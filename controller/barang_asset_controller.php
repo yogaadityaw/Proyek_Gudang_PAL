@@ -45,7 +45,7 @@ if (isset($_POST['addnewbarangasset'])) {
                 header('location: barang_asset.php');
                 exit();
             } else if ($_SESSION['role'] == "user") {
-                header('location: user_angkut_apung.php');
+                header('location: user_barang_asset.php');
             }
             session_write_close();
         }else{

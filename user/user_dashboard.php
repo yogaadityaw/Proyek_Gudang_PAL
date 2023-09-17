@@ -50,7 +50,7 @@
                             <div class="card bg-warning text-white mb-4">
                                 <div class="card-body">Peralatan Pendukung Produksi</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="alat_produksi.php">Lihat Detail</a>
+                                    <a class="small text-white stretched-link" href="user_alat_produksi.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                             <div class="card bg-warning text-white mb-4">
                                 <div class="card-body">Alat Komunikasi/(HT)</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="komunikasi.php">Lihat Detail</a>
+                                    <a class="small text-white stretched-link" href="user_komunikasi.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">Daftar Angkat Angkut dan Alat Apung</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="angkut_apung.php">Lihat Detail</a>
+                                    <a class="small text-white stretched-link" href="user_angkut_apung.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                             <div class="card bg-danger text-white mb-4">
                                 <div class="card-body">Daftar Barang Konsumable</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="konsumable.php">Lihat Detail</a>
+                                    <a class="small text-white stretched-link" href="user_konsumable.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Form Peminjaman Barang</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="transaksional.php">Lihat Detail</a>
+                                    <a class="small text-white stretched-link" href="user_transaksional.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                             <div class="card bg-danger text-white mb-4">
                                 <div class="card-body">Form Pengembalian Barang</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="transaksional_kembali.php">Lihat Detail</a>
+                                    <a class="small text-white stretched-link" href="user_transaksional_kembali.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -104,20 +104,12 @@
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">List Daftar Mutasi Barang</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="mutasibarang.php">Lihat Detail</a>
+                                    <a class="small text-white stretched-link" href="user_mutasibarang.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Manajemen Akun & Data Personil</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="user_manajemen.php">Lihat Detail</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="container-fluid px-4 carousel-container mt-4">

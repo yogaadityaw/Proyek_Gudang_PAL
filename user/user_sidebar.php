@@ -35,9 +35,11 @@
                                 <a class="nav-link" href="user_komunikasi.php">Alat Komunikasi/(HT)</a>
                                 <a class="nav-link" href="user_konsumable.php">Daftar Barang Konsumable</a>
                                 <a class="nav-link" href="user_angkut_apung.php">Daftar angkat angkut dan alat apung</a>
+                                <a class="nav-link" href="user_barang_asset.php">Daftar Barang Asset</a>
                                 <a class="nav-link" href="user_transaksional.php">Form Peminjaman Barang</a>
                                 <a class="nav-link" href="user_transaksional_kembali.php">Form Pengembalian Barang</a>
                                 <a class="nav-link" href="user_mutasibarang.php">List Daftar Mutasi Barang</a>
+                                
                             </nav>
                         </div>
                         <a class="nav-link" href="user_peminjaman.php">

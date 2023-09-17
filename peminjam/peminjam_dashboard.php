@@ -68,46 +68,9 @@ checkRole("peminjam", 'middleware/auth_prohibit.php');
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Form Peminjaman Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="transaksional.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">Form Pengembalian Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="transaksional_kembali.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">List Daftar Mutasi Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="mutasibarang.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Manajemen Akun & Data Personil</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="user_manajemen.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="container-fluid px-4 carousel-container mt-4">
+            <div class="container-fluid px-4 carousel-container mt-4 ">
                 <div class="card text-center announcement-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -126,7 +89,9 @@ checkRole("peminjam", 'middleware/auth_prohibit.php');
                     </div>
                 </div>
             </div>
-        </main>
+    </div>
+
+    </main>
     </div>
     </div>
     </div>

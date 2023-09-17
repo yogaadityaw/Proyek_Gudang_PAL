@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 15, 2023 at 07:55 PM
+-- Generation Time: Sep 17, 2023 at 10:00 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -79,9 +79,10 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoriba
 (43, 'Tackal 3 Ton (Chain Block)', 'TCK3T', '0', 19, 19, 0, '-', 1),
 (44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', '0', 22, 22, 0, '-', 1),
 (45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', '0', 7, 7, 0, '-', 1),
-(51, 'Bor Magnet', 'DRL09', '0', 1, 1, 0, '-', 1),
-(54, 'coba', 'tes', '0', 1, 0, 1, 'rusak', 1),
-(56, 'user testing', 'testing', 'satu', 1, 1, 0, 'dukprod', 1);
+(51, 'Bor Magnet', 'DRL01', '', 1, 1, 0, '-', 1),
+(54, 'coba', 'tes', '0', 1, 0, 1, 'rendal', 1),
+(56, 'user testing', 'testing', 'lifting tools', 1, 1, 0, 'dukprod', 1),
+(57, 'coba from user', 'cobain', 'coba coba', 1, 1, 0, 'RH01', 1);
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,8 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 (20, 'Tongkang 04', 'TKG04', 2, 1, 3, '-', 4),
 (21, 'Tongkang 205', 'TKG205', 1, 0, 1, '-', 4),
 (22, 'Kapal LCM V', 'KLCM5', 1, 0, 1, '-', 4),
-(23, 'cek', 'cekk1', 1, 1, 0, 'dockapung', 4);
+(23, 'cek', 'cekk1', 1, 1, 0, 'dockapung', 4),
+(24, 'testing from user', 'mencoba', 1, 1, 0, 'produksi', 4);
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,7 @@ CREATE TABLE `barang_asset` (
 
 INSERT INTO `barang_asset` (`idbarang`, `namabarang`, `kategoribarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `keterangan`) VALUES
 (1, 'Laptop,Ruang Biro Analisa, Evaluasi, SDM dan Transformasi Teknologi', 'laptop', 1, 1, 0, 'Kabiro. Ana, Eva, SDM', 'Keluar'),
-(2, 'cek', 'coba', 1, 1, 0, 'rendal', '-');
+(2, 'cek', 'coba', 1, 1, 0, 'rendal', 'masuk');
 
 -- --------------------------------------------------------
 
@@ -164,7 +166,7 @@ CREATE TABLE `barang_konsumable` (
 INSERT INTO `barang_konsumable` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `lokasi`, `kategori_id`) VALUES
 (48, 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 2, '-', 3),
 (50, 'cek', 'cekk', 1, '-', 3),
-(51, 'coba', 'test', 1, '-', 3),
+(51, 'coba from user', 'test', 1, 'dock surabaya', 3),
 (52, 'usertesing', 'testing', 1, 'Produksi', 3);
 
 -- --------------------------------------------------------
@@ -281,7 +283,7 @@ CREATE TABLE `keluar_masuk_barang` (
 --
 
 INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `jenisbarang`, `nip`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `lokasi`, `lokasi_kembali`, `isApproved`, `status`) VALUES
-(106, 'PJ1', '2023-09-10 17:00:58', '2023-09-11 00:01:00', '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH01', 'PRODPROD', 3, 'Sudah kembali'),
+(106, 'PJ1', '2023-09-17 02:41:12', '2023-09-11 00:01:00', '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH01', 'PRODPROD', 1, 'Sudah kembali'),
 (107, 'PJ2', '2023-09-11 08:16:21', NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 1, 'Belum Kembali'),
 (108, 'PJ3', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
 (109, 'PJ4', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '', 0, 'Belum Kembali'),
@@ -337,7 +339,7 @@ INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, 
 (8, 'HT I COM V80', '602733378-1', 3, 3, 0, 'harkan', 2),
 (9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2),
 (12, 'ceki', 'cekcek', 1, 1, 0, '-', 2),
-(13, 'user testing', 'testing', 1, 1, 0, 'LISTROL', 2);
+(13, 'coba from user ', 'testing1', 1, 1, 0, 'K3LH', 2);
 
 -- --------------------------------------------------------
 
@@ -477,13 +479,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alat_produksi`
 --
 ALTER TABLE `alat_produksi`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `barang_angkut_apung`
 --
 ALTER TABLE `barang_angkut_apung`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `barang_asset`
