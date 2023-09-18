@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 17, 2023 at 10:00 AM
+-- Generation Time: Sep 18, 2023 at 04:51 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -264,6 +264,7 @@ CREATE TABLE `keluar_masuk_barang` (
   `idtransaksi` int NOT NULL,
   `kodetransaksi` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `tanggal` timestamp NULL DEFAULT NULL,
+  `tanggal_pengajuan` timestamp NULL DEFAULT NULL,
   `tanggalkembali` timestamp NULL DEFAULT NULL,
   `jenisbarang` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `nip` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -282,37 +283,39 @@ CREATE TABLE `keluar_masuk_barang` (
 -- Dumping data for table `keluar_masuk_barang`
 --
 
-INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggalkembali`, `jenisbarang`, `nip`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `lokasi`, `lokasi_kembali`, `isApproved`, `status`) VALUES
-(106, 'PJ1', '2023-09-17 02:41:12', '2023-09-11 00:01:00', '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH01', 'PRODPROD', 1, 'Sudah kembali'),
-(107, 'PJ2', '2023-09-11 08:16:21', NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 1, 'Belum Kembali'),
-(108, 'PJ3', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(109, 'PJ4', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '', 0, 'Belum Kembali'),
-(110, 'PJ5', NULL, NULL, '', '14200139', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(111, 'PJ6', NULL, NULL, '', '14200141', 'Hand Bor (Makita)', 'HDRL02', 1, 1, 0, '', '', 0, 'Belum Kembali'),
-(112, 'PJ7', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(113, 'PJ8', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(114, 'PJ9', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(115, 'PJ10', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '0', 0, 'Belum Kembali'),
-(116, 'PJ11', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '1', 0, 'Belum Kembali'),
-(117, 'PJ12', NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(118, 'PJ13', NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(119, 'PJ13', NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(120, 'PJ14', NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(121, 'PJ14', NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(122, 'PJ15', NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(123, 'PJ16', NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(127, 'PJ17', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(128, 'PJ18', NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(129, 'PJ19', NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
-(130, 'PJ20', NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH04', 'RH01', 0, 'Belum Kembali'),
-(131, 'PJ21', NULL, '2023-09-15 01:15:00', '', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, 'Dock Surabaya', 'dukprod', 3, 'Sudah kembali'),
-(132, 'PJ22', NULL, NULL, 'Peralatan Pendukung Produksi', '12345', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukprod', NULL, 0, 'Belum Kembali'),
-(133, 'PJ23', NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'ddudududududuk', NULL, 0, 'Belum Kembali'),
-(134, 'PJ24', NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukduk', NULL, 0, 'Belum Kembali'),
-(135, 'PJ25', NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukduk', NULL, 0, 'Belum Kembali'),
-(136, 'PJ26', NULL, NULL, 'Peralatan Pendukung Produksi', '12345', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukprod', NULL, 0, 'Belum Kembali'),
-(137, 'PJ27', '2023-09-14 18:12:38', '2023-09-15 01:16:00', 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 1, 0, 'dukprod', '0', 3, 'Sudah kembali'),
-(138, 'PJ28', '2023-09-14 19:01:06', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Dock Surabaya', NULL, 1, 'Belum kembali');
+INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `tanggal_pengajuan`, `tanggalkembali`, `jenisbarang`, `nip`, `namabarang`, `kodebarang`, `jumlahpinjam`, `jumlahkembali`, `jumlahrusak`, `lokasi`, `lokasi_kembali`, `isApproved`, `status`) VALUES
+(106, 'PJ1', '2023-09-17 02:41:12', NULL, '2023-09-11 00:01:00', '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH01', 'PRODPROD', 1, 'Sudah kembali'),
+(107, 'PJ2', '2023-09-11 08:16:21', NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 1, 'Belum Kembali'),
+(108, 'PJ3', NULL, NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(109, 'PJ4', NULL, NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '', 0, 'Belum Kembali'),
+(110, 'PJ5', NULL, NULL, NULL, '', '14200139', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(111, 'PJ6', NULL, NULL, NULL, '', '14200141', 'Hand Bor (Makita)', 'HDRL02', 1, 1, 0, '', '', 0, 'Belum Kembali'),
+(112, 'PJ7', NULL, NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(113, 'PJ8', NULL, NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(114, 'PJ9', NULL, NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(115, 'PJ10', NULL, NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '0', 0, 'Belum Kembali'),
+(116, 'PJ11', NULL, NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 1, 0, '', '1', 0, 'Belum Kembali'),
+(117, 'PJ12', NULL, NULL, NULL, '', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(118, 'PJ13', NULL, NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(119, 'PJ13', NULL, NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(120, 'PJ14', NULL, NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(121, 'PJ14', NULL, NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(122, 'PJ15', NULL, NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(123, 'PJ16', NULL, NULL, NULL, '', '14200141', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(127, 'PJ17', NULL, NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(128, 'PJ18', NULL, NULL, NULL, '', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(129, 'PJ19', NULL, NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 0, 0, '', '', 0, 'Belum Kembali'),
+(130, 'PJ20', NULL, NULL, NULL, '', '22106757', 'Bor Magnet', 'DRL01', 1, 1, 0, 'RH04', 'RH01', 0, 'Belum Kembali'),
+(131, 'PJ21', NULL, NULL, '2023-09-15 01:15:00', '', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, 'Dock Surabaya', 'dukprod', 3, 'Sudah kembali'),
+(132, 'PJ22', NULL, NULL, NULL, 'Peralatan Pendukung Produksi', '12345', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukprod', NULL, 0, 'Belum Kembali'),
+(133, 'PJ23', NULL, NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'ddudududududuk', NULL, 0, 'Belum Kembali'),
+(134, 'PJ24', NULL, NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukduk', NULL, 0, 'Belum Kembali'),
+(135, 'PJ25', NULL, NULL, NULL, 'Peralatan Pendukung Produksi', '14200137', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukduk', NULL, 0, 'Belum Kembali'),
+(136, 'PJ26', NULL, NULL, NULL, 'Peralatan Pendukung Produksi', '12345', 'Bor Magnet', 'DRL01', 1, 0, 0, 'dukprod', NULL, 0, 'Belum Kembali'),
+(137, 'PJ27', '2023-09-14 18:12:38', NULL, '2023-09-15 01:16:00', 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 1, 0, 'dukprod', '0', 3, 'Sudah kembali'),
+(138, 'PJ28', '2023-09-14 19:01:06', NULL, NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Dock Surabaya', NULL, 1, 'Belum kembali'),
+(139, 'PJ29', NULL, NULL, NULL, 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, 'akkaka', NULL, 0, 'Belum kembali'),
+(140, 'PJ30', NULL, '2023-09-18 14:38:16', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, '0', NULL, 0, 'Belum kembali');
 
 -- --------------------------------------------------------
 
@@ -521,7 +524,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`

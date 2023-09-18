@@ -12,6 +12,7 @@ if (isset($_POST['pinjam']) != null) {
     $kodebarang = $_POST['kodebarang'];
     $noseri = $_POST['kodebarang'];
     $lokasipinjam = $_POST['lokasipinjam'];
+    $tanggalpengajuan = date('Y-m-d H:i:s');
     $jumlah = $_POST['jumlah'];
     // $tanggalpinjam = NULL;
     // $tanggalkembali = NULL;
@@ -28,7 +29,7 @@ if (isset($_POST['pinjam']) != null) {
         return;
     } else {
         // $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal, tanggalkembali, jenisbarang, namabarang, kodebarang, jumlahpinjam, lokasi, status) VALUES ('$kodepinjam', '$nip', '$tanggalpinjam', '$tanggalkembali', '$jenisbarang', '$namabarang', '$kodebarang', '$jumlah', '$lokasipinjam', '$status')");
-        $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, jenisbarang, namabarang, kodebarang, jumlahpinjam, lokasi, status) VALUES ('$kodepinjam', '$nip', '$jenisbarang', '$namabarang', '$kodebarang', '$jumlah', '$lokasipinjam', '$status')");
+        $addtotable = mysqli_query($conn, "INSERT INTO keluar_masuk_barang (kodetransaksi, nip, tanggal_pengajuan, jenisbarang, namabarang, kodebarang, jumlahpinjam, lokasi, status) VALUES ('$kodepinjam', '$nip', '$tanggalpengajuan', '$jenisbarang', '$namabarang', '$kodebarang', '$jumlah', '$lokasipinjam', '$status')");
         if ($addtotable) {
             if ($_SESSION['role'] == "admin") {
                 echo "<script>alert('Peminjaman berhasil diajukan!.');</script>";

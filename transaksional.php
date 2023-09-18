@@ -4,6 +4,7 @@ require 'controller/koneksi.php';
 require 'cek.php';
 require 'controller/transaksi_pinjam_controller.php';
 require 'middleware/auth_middleware.php';
+require 'utils/get_user_nip.php';
 
 checkRole("admin", 'middleware/auth_prohibit.php');
 
@@ -47,44 +48,51 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                 <div class="form-row">
                                     <div class="mb-3">
                                         <label for="nip" class="form-label">NIP Pegawai</label>
-                                        <input type="text" class="form-control" id="nip" name="nip" required>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="nip" name="nip" required>
+                                            <!-- <button class="btn btn-primary" id="ceknip" type="ceknip" name="ceknip">Cek NIP</button> -->
+                                        </div>
                                     </div>
-                                <div class="form-row">
-                                    <label>Pilih Jenis Barang</label>
-                                    <select class="form-control" name="jenisbarang" id="jenisbarang" onchange="loadNamaBarangpinjam()">
-                                        <option value="" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === '' ? 'selected' : ''; ?>></option>
-                                        <option value="Peralatan Pendukung Produksi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Peralatan Pendukung Produksi" ? 'selected' : ''; ?>>Peralatan Pendukung Produksi</option>
-                                        <option value="Alat Komunikasi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Alat Komunikasi' ? 'selected' : ''; ?>>Alat Komunikasi</option>
-                                        <option value="Barang Konsumable" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Barang Konsumable' ? 'selected' : ''; ?>>Barang Konsumable</option>
-                                        <option value="Angkat, Angkut, Alat Apung" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Angkat, Angkut, Alat Apung' ? 'selected' : ''; ?>>Angkat, Angkut, Alat Apung</option>
-                                    </select>
-                                </div>
-                                <div class="form-row">
-                                    <label>Nama Barang</label>
-                                    <select class="form-control" name="namabarang" id="namabarang">
-                                        <!-- Opsi pilihan nama barang akan diisi secara dinamis oleh JavaScript -->
-                                    </select>
-                                </div>
-                                <!-- <div class="form-row">
+                                    <!-- <div class="mb-3">
+                                        <label for="namapegawai" class="form-label">Nama Pegawai</label>
+                                        <input type="text" class="form-control" id="namapegawai" name="namapegawai" required readonly>
+                                    </div> -->
+                                    <div class="form-row">
+                                        <label>Pilih Jenis Barang</label>
+                                        <select class="form-control" name="jenisbarang" id="jenisbarang" onchange="loadNamaBarangpinjam()">
+                                            <option value="" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === '' ? 'selected' : ''; ?>></option>
+                                            <option value="Peralatan Pendukung Produksi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === "Peralatan Pendukung Produksi" ? 'selected' : ''; ?>>Peralatan Pendukung Produksi</option>
+                                            <option value="Alat Komunikasi" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Alat Komunikasi' ? 'selected' : ''; ?>>Alat Komunikasi</option>
+                                            <option value="Barang Konsumable" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Barang Konsumable' ? 'selected' : ''; ?>>Barang Konsumable</option>
+                                            <option value="Angkat, Angkut, Alat Apung" <?php echo isset($_POST['jenisbarang']) && $_POST['jenisbarang'] === 'Angkat, Angkut, Alat Apung' ? 'selected' : ''; ?>>Angkat, Angkut, Alat Apung</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Nama Barang</label>
+                                        <select class="form-control" name="namabarang" id="namabarang">
+                                            <!-- Opsi pilihan nama barang akan diisi secara dinamis oleh JavaScript -->
+                                        </select>
+                                    </div>
+                                    <!-- <div class="form-row">
                                     <label>Nama Barang</label>
                                     <input type="text" class="form-control" name="namabarang" id="namabarang" placeholder="Nama Barang">
                                 </div> -->
-                                <div class="form-row">
-                                    <label for="disabledTextInput">Kode Barang</label>
-                                    <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang" readonly style="background-color: #e9ecef;">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Jumlah Barang</label>
-                                        <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
+                                    <div class="form-row">
+                                        <label for="disabledTextInput">Kode Barang</label>
+                                        <input type="text" class="form-control" name="kodebarang" id="kodebarang" placeholder="Kode Barang" readonly style="background-color: #e9ecef;">
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Lokasi Barang yang dipinjaman</label>
-                                        <input type="text" class="form-control" name="lokasipinjam" id="lokasipinjam" placeholder="Lokasi barang yang dipinjam">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Jumlah Barang</label>
+                                            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Barang">
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Lokasi Barang yang dipinjaman</label>
+                                            <input type="text" class="form-control" name="lokasipinjam" id="lokasipinjam" placeholder="Lokasi barang yang dipinjam">
+                                        </div>
+                                    </div>
                                     <div class="form-row">
                                         <!-- <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -112,7 +120,6 @@ checkRole("admin", 'middleware/auth_prohibit.php');
             </div>
         </div>
         <br>
-
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -281,36 +288,36 @@ checkRole("admin", 'middleware/auth_prohibit.php');
     $(document).ready(function() {
         getNextKodeTransaksi();
     });
+</script>
 
-    // untuk memanggil nip dan juga nama pegawai
+<!-- <script>
+    $(document).ready(function() {
+        // Event handler ketika tombol "Submit" pada modal kode transaksi ditekan
+        $("#ceknip").click(function() {
+            var nip = $("input[name='nip']").val();
 
-    function loadnip() {
-        $(document).ready(function() {
-            $("#nip").on("input", function() {
-                const nip = $(this).val();
-                if (nip !== "") {
-                    $.ajax({
-                        url: "utils/get_pegawai.php", // Ganti dengan URL yang sesuai untuk mengambil data nama pegawai
-                        method: "POST",
-                        data: {
-                            nip: nip
-                        },
-                        success: function(response) {
-                            $("#namapegawai").val(response);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error("Error fetching employee name:", error);
-                        },
-                    });
-                } else {
-                    $("#namapegawai").val("");
+            // Lakukan permintaan AJAX ke server untuk mendapatkan data
+            $.ajax({
+                type: "POST",
+                url: "utils/get_user_nip.php", // Ganti dengan URL yang sesuai
+                data: {
+                    nip: nip
+                },
+                dataType: "json",
+                success: function(response) {
+                    if (response.error) {
+                        alert(response.error); // Display error message
+                    } else {
+                        $("#namapegawai").val(response.nama_user);
+                    }
+                },
+                error: function() {
+                    alert("Terjadi kesalahan saat mengambil data.");
                 }
             });
         });
-    }
-</script>
-
-<!-- Get nama pegawai -->
+    });
+</script> -->
 
 
 
