@@ -85,6 +85,12 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                     </div>
                                 </div>
                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Keterangan</label>
+                                        <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan">
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="tanggalkembali">Tanggal dan Jam Pengembalian</label>

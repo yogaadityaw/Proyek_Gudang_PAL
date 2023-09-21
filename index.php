@@ -41,6 +41,8 @@ checkRole("admin", 'middleware/auth_prohibit.php');
 <body>
     <div id="layoutSidenav_content">
         <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
+        <br>
+        <br>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Dashboard</h1>
                 <br>

@@ -13,6 +13,7 @@ if (isset($_POST['kembali'])) {
     $jumlahbaik = $_POST['jumlahbaik'];
     $jumlahrusak = $_POST['jumlahrusak'];
     $lokasikembali = $_POST['lokasikembali'];
+    $keterangan = $_POST['keterangan'];
     $kodepinjam = $_POST['kodepinjam'];
     $status = "Sudah kembali";
     $tanggalkembali = $_POST['tanggalkembali'];
@@ -154,7 +155,7 @@ if (isset($_POST['kembali'])) {
         $barangrusakbaru = $barangrusak + $jumlahrusak;
 
         // Update tabel barang dengan stok yang baru
-        $queryUpdateStok = "UPDATE barang_angkut_apung SET jumlah = '$stokBaru', baik = '$barangBaikBaru', rusak='$barangrusakbaru' WHERE kodebarang = '$kodebarang'";
+        $queryUpdateStok = "UPDATE barang_angkut_apung SET jumlah = '$stokBaru', baik = '$barangBaikBaru', rusak='$barangrusakbaru', keterangan='$keterangan' WHERE kodebarang = '$kodebarang'";
         $resultUpdateStok = mysqli_query($conn, $queryUpdateStok);
 
         if (!$resultUpdateStok) {
@@ -172,6 +173,7 @@ if (isset($_POST['kembali'])) {
                                       jumlahkembali = '$jumlahbaik', 
                                       jumlahrusak = '$jumlahrusak', 
                                       lokasi_kembali = '$lokasikembali',
+                                      keterangan='$keterangan',
                                       isApproved = '3', 
                                       status = '$status' 
                                   WHERE kodetransaksi = '$kodepinjam'");

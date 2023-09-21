@@ -16,7 +16,7 @@ if (isset($_GET['cari'])) {
     $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM keluar_masuk_barang WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%'";
+    $query = "SELECT * FROM keluar_masuk_barang WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'";
 }
 $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 ?>
@@ -77,6 +77,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                 <th class="table-info text-center align-middle">Jumlah barang rusak</th>
                                 <th class="table-info text-center align-middle">Lokasi Peminjaman</th>
                                 <th class="table-info text-center align-middle">Lokasi Pengembalian</th>
+                                <th class="table-info text-center align-middle">Keterangan</th>
                                 <th class="table-info text-center align-middle">Status</th>
                             </tr>
                         </thead>
@@ -96,6 +97,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
                                     $lokasikembali = $data['lokasi_kembali'];
+                                    $keterangan = $data['keterangan'];
                                     // $isApproved = $data['isApproved'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = null;
@@ -137,6 +139,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '<td class="centered-cell">' . $jumlahrusak . '</td>';
                                     echo '<td class="centered-cell">' . $lokasi . '</td>';
                                     echo '<td class="centered-cell">' . $lokasikembali . '</td>';
+                                    echo '<td class="centered-cell">' . $keterangan . '</td>';
                                     echo '<td class="centered-cell">';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
@@ -162,6 +165,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
                                     $lokasikembali = $data['lokasi_kembali'];
+                                    $keterangan = $data['keterangan'];
                                     $status = $data['status'];
                                     $tanggalKembaliNull = null;
 
@@ -202,6 +206,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '<td>' . $jumlahrusak . '</td>';
                                     echo '<td>' . $lokasi . '</td>';
                                     echo '<td>' . $lokasikembali . '</td>';
+                                    echo '<td>' . $keterangan . '</td>';
                                     echo '<td>';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
