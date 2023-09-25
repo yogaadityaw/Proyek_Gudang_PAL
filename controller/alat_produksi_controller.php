@@ -1,6 +1,6 @@
 <?php
 require 'koneksi.php';
-// require 'get_kategori.php';
+require 'middleware/Validation/AlatProduksiValidation.php';
 session_start();
 
 // menambah barang baru
@@ -8,29 +8,33 @@ session_start();
 if (isset($_POST['addnewbarangproduksi'])) {
     $namabarang = $_POST['namabarang'];
     $kodebarang = $_POST['kodebarang'];
-    $kategoribarang =$_POST['kategoribarang'];
+    $kategoribarang = $_POST['kategoribarang'];
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
     $lokasi = $_POST['lokasi'];
 
-    if ($barangbaik + $barangrusak > $jumlah || $barangbaik +  $barangrusak < $jumlah) {
-    }
-    $addtotable = mysqli_query($conn, "INSERT INTO alat_produksi (namabarang, kodebarang, kategoribarang, jumlah, baik, rusak, lokasi, kategori_id) VALUES ('$namabarang', '$kodebarang', '$kategoribarang', '$jumlah', '$barangbaik', '$barangrusak', '$lokasi', 1)");
-
-    if ($addtotable) {
-        if ($_SESSION['role'] == "admin") {
-            header('location: alat_produksi.php');
-            exit();
-        } else if ($_SESSION['role'] == "user") {
-            header('location: user_alat_produksi.php');
-        }
-        session_write_close();
+    if (!AlatProduksiValidation::validate($namabarang, $kodebarang, $kategoribarang, $jumlah, $barangbaik, $barangrusak, $lokasi)) {
+        // die("Input tidak valid");
+        // return;
     } else {
-        echo 'Gagal menyimpan data: ';
+        $addtotable = mysqli_query($conn, "INSERT INTO alat_produksi (namabarang, kodebarang, kategoribarang, jumlah, baik, rusak, lokasi, kategori_id) VALUES ('$namabarang', '$kodebarang', '$kategoribarang', '$jumlah', '$barangbaik', '$barangrusak', '$lokasi', 1)");
+        if ($addtotable) {
+            if ($_SESSION['role'] == "admin") {
+                header('location: alat_produksi.php');
+                exit();
+            } else if ($_SESSION['role'] == "user") {
+                header('location: user_alat_produksi.php');
+            }
+            session_write_close();
+        } else {
+            echo 'Gagal menyimpan data: ';
+        };
+        return;
     };
-    return;
-};
+}
+
+
 //dari addto table
 
 // update barang

@@ -27,8 +27,8 @@
                                                 <label for="inputEmail">NIP</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.php">Kembali ke menu login</a>
-                                                <a class="btn btn-primary" href="login.php">Reset Password</a>
+                                                <a class="small" href="index.php">Kembali ke menu login</a>
+                                                <a class="btn btn-primary" href="index.php">Reset Password</a>
                                             </div>
                                         </form>
                                     </div>

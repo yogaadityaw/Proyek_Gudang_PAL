@@ -1,12 +1,84 @@
 <?php
 require 'controller/koneksi.php';
-require 'cek.php';
-require 'middleware/auth_middleware.php';
-require 'controller/berita_controller.php';
+session_start();
+// cek login
+if (isset($_POST['login'])) {
+    $nip = $_POST['nip'];
+    $password = $_POST['password'];
+    $errorOccurred = false;
 
-checkRole("admin", 'middleware/auth_prohibit.php');
+    if (!empty($nip) || !empty($password)) {
+        $query = mysqli_query($conn, "SELECT * FROM users WHERE nip_user = '$nip'");
+        $data = mysqli_fetch_array($query);
+        $row = mysqli_num_rows($query);
+        if ($row > 0) {
+            if (password_verify($password, $data['password_user'])) {
+                $role = $data['role_id'];
+                if ($role == 1) {
+                    $_SESSION['log'] = 'True';
+                    $_SESSION['role'] = "admin";
+                    $_SESSION['nip'] = $nip;
+                    header('location: dashboard.php');
+                    exit();
+                } else if ($role == 2) {
+                    $_SESSION['log'] = 'True';
+                    $_SESSION['role'] = "user";
+                    $_SESSION['nip'] = $nip;
+                    header('location: user/user_dashboard.php');
+                } else if ($role == 3) {
+                    $_SESSION['log'] = 'True';
+                    $_SESSION['role'] = "atasan";
+                    $_SESSION['nip'] = $nip;
+                    header('location: atasan/atasan_dashboard.php');
+                } else if ($role == 4) {
+                    $_SESSION['log'] = 'True';
+                    $_SESSION['role'] = "peminjam";
+                    $_SESSION['nip'] = $nip;
+                    header('location: peminjam/peminjam_dashboard.php');
+                } else {
+                    $loginError = "User tidak tersedia.";
+                }
+            } else {
+                $errorOccurred = true;
+                $loginError = "NIP atau password salah. Silakan coba lagi.";
+            }
+        }
+    }
+
+    // $cekdatabase = mysqli_query($conn, "SELECT * FROM login WHERE NIP = '$nip' AND Password = '$password'");
+
+    // //hitung jumlah data 
+    // $hitung = mysqli_num_rows($cekdatabase);
+
+
+    // if ($hitung > 0) {
+    //     $_SESSION['log'] = 'True';
+    //     header('location: dashboard.php');
+    //     exit();
+    // } else {
+    //     $errorOccurred = true;
+    //     $loginError = "NIP atau password salah. Silakan coba lagi.";
+    // }
+}
+
+if (isset($_SESSION['log'])) {
+    if ($_SESSION['role'] == "admin") {
+        header('Location: dashboard.php');
+        exit();
+    } elseif ($_SESSION['role'] == "user") {
+        header('Location: user/user_dashboard.php');
+        exit();
+    } elseif ($_SESSION['role'] == "atasan") {
+        header('Location: atasan/atasan_dashboard.php');
+        exit();
+    }
+}
+
+
+if (!$conn) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,214 +88,76 @@ checkRole("admin", 'middleware/auth_prohibit.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Divisi Harkan</title>
+    <title>Gudang Harkan</title>
     <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        .card-text {
-            text-align: justify;
-        }
-
-        .announcement-card {
-
-            max-width: 1500px;
-            max-height: 400px;
-            min-width: 300px;
-            margin: 0 auto;
-        }
-    </style>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="/assets/img/logo_pal.png">
-
 </head>
 
-<?php include 'sidebar.php' ?>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Login</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post">
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputNIP">NIP</label>
+                                            <input class="form-control py-4" name="nip" id="inputNIP" type="number" placeholder="NIP" />
 
-<body>
-    <div id="layoutSidenav_content">
-        <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
-        <br>
-        <br>
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">Dashboard</h1>
-                <br>
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Peralatan Pendukung Produksi</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="alat_produksi.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Alat Komunikasi/(HT)</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="komunikasi.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">Daftar Angkat Angkut dan Alat Apung</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="angkut_apung.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">Daftar Barang Konsumable</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="konsumable.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Form Peminjaman Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="transaksional.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">Form Pengembalian Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="transaksional_kembali.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">List Daftar Mutasi Barang</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="mutasibarang.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Manajemen Akun & Data Personil</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="user_manajemen.php">Lihat Detail</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for=inputPassword>Password</label>
+                                            <input class="form-control py-4" name="password" id="inputPassword" type="password" placeholder="Password" />
+
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <button class="btn btn-primary w-100" name="login">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid px-4 carousel-container mt-4">
-                <div class="card text-center announcement-card">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <button id="prevBtn" class="btn btn-primary"><i class="fas fa-chevron-left"></i></button>
-                            <h2>PENGUMUMAN</h2>
-                            <button id="nextBtn" class="btn btn-primary"><i class="fas fa-chevron-right"></i></button>
+
+                <div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="modal-error-label" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-error-label">Login Error</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <?php if ($loginError) echo $loginError; ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kembali</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text mt-4"></p>
-                    </div>
-                    <!-- <div class="card-footer text-muted"> -->
-                    <div class="card-footer mt-3">
-                        <p class="text-dark tanggalberita"></p>
-                    </div>
                 </div>
-        </main>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            </footer>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script>
-        const nextButton = document.getElementById("nextBtn");
-        const prevButton = document.getElementById("prevBtn");
-        let currentIndex = 0;
-        let autoSlideInterval;
-        const dataBerita = <?= $jsonDataBerita ?>;
-
-        // Format tanggal
-        function formatDate(dateString) {
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            };
-            const date = new Date(dateString);
-            return date.toLocaleDateString('id-ID', options);
-        }
-
-        // Menampilkan berita
-        function displayBerita(index) {
-            const berita = dataBerita[index];
-            if (berita) {
-                document.querySelector(".card-title").textContent = berita.judul_berita;
-                document.querySelector(".card-text").textContent = berita.deskripsi_berita;
-                const formattedDate = formatDate(berita.created_at)
-                document.querySelector(".tanggalberita").textContent = formattedDate;
-            } else {
-                document.querySelector(".card-title").textContent = "Tidak ada berita";
-                document.querySelector(".card-text").textContent = "Tidak ada berita";
-                document.querySelector(".tanggalberita").textContent = "Tidak ada berita";
-            }
-        }
-
-        // Fungsi next ketika tombol next ditekan
-        function showNextBerita() {
-            currentIndex++;
-            if (currentIndex < dataBerita.length) {
-                displayBerita(currentIndex);
-            } else {
-                nextBtn.disabled = true;
-            }
-            prevBtn.disabled = false;
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        };
-
-        // Fungsi previous ketika tombol previous ditekan
-        function showPrevBerita() {
-            currentIndex--;
-            if (currentIndex >= 0) {
-                displayBerita(currentIndex);
-            } else {
-                prevBtn.disabled = true;
-            }
-            nextBtn.disabled = false;
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-
-        // Auto slide card
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                showNextBerita();
-            }, 5000);
-        }
-
-        prevBtn.addEventListener("click", showPrevBerita);
-        nextBtn.addEventListener("click", showNextBerita);
-        window.addEventListener('load', () => {
-            startAutoSlide();
-        });
-
-        displayBerita(currentIndex);
-
-        if (currentIndex === 0) {
-            prevBtn.disabled = true;
-        }
-        if (currentIndex === 5) {
-            nextBtn.disabled = true;
-        }
+        <?php if ($errorOccurred) { ?>
+            document.addEventListener("DOMContentLoaded", function() {
+                var myModal = new bootstrap.Modal(document.getElementById("modal-error"));
+                myModal.show();
+            });
+        <?php } ?>
     </script>
 </body>
 

@@ -223,19 +223,19 @@ if (isset($_GET['cari'])) {
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="kode Barang" name="kodebarang" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="kode Barang" name="kodebarang">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="Kategori Barang" name="kategoribarang" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="Kategori Barang" name="kategoribarang">
                         <br>
-                        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
+                        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah">
                         <br>
-                        <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik" required>
+                        <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik">
                         <br>
-                        <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak" required>
+                        <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
