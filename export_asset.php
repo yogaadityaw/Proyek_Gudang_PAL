@@ -15,15 +15,17 @@ require 'controller/koneksi.php';
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 
 <body>
-    
+
     <div class="container">
         <h2 class="mt-4 text-center">Daftar Barang Asset Divisi Harkan</h2>
-        
+
         <div class="data-tables datatable-dark">
-        <br>
+            <br>
             <!-- Masukkan table nya disini, dimulai dari tag TABLE -->
             <table class="table table-bordered" id="mauexport" width="100" cellspacing="0">
                 <thead>
@@ -35,7 +37,7 @@ require 'controller/koneksi.php';
                         <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
                         <th class="table-info text-center align-middle">lokasi</th>
                         <th class="table-info text-center align-middle">Keterangan</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>

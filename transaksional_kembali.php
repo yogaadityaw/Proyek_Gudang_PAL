@@ -23,6 +23,8 @@ checkRole("admin", 'middleware/auth_prohibit.php');
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 <?php include 'sidebar.php' ?>
 <br>

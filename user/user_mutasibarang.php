@@ -31,6 +31,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     <title>Mutasi Barang</title>
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 <?php include 'user_sidebar.php' ?>
 
@@ -59,7 +61,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
             <div class="card-body">
                 <div class="table table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
-                    <thead>
+                        <thead>
                             <tr>
                                 <th class="table-info text-center align-middle">Tanggal Pinjam</th>
                                 <th class="table-info text-center align-middle">Tanggal Kembali</th>

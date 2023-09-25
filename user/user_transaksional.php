@@ -22,6 +22,8 @@ checkRole("user", '../middleware/auth_prohibit.php');
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 <?php include 'user_sidebar.php' ?>
 
@@ -84,26 +86,26 @@ checkRole("user", '../middleware/auth_prohibit.php');
                                         <input type="text" class="form-control" name="lokasipinjam" id="lokasipinjam" placeholder="Lokasi barang yang dipinjam">
                                     </div>
                                 </div>
-                                    <div class="form-row">
-                                        <!-- <div class="form-row">
+                                <div class="form-row">
+                                    <!-- <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for=tanggal>Tanggal Peminjaman</label>
                                                 <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
                                             </div> -->
-                                        <!-- <div class="form-group col-md-4">
+                                    <!-- <div class="form-group col-md-4">
                                                 <label for="inputState">Kondisi Barang</label>
                                                 <select id="inputState" class="form-control">
                                                     <option>Baik</option>
                                                     <option>Buruk</option>
                                                 </select>
                                             </div> -->
-                                        <div class="form-group col-md-4">
-                                            <label>Kode Peminjaman</label>
-                                            <input type="text" class="form-control" id="kodepinjam" name="kodepinjam" readonly style="background-color: #e9ecef;">
-                                        </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Kode Peminjaman</label>
+                                        <input type="text" class="form-control" id="kodepinjam" name="kodepinjam" readonly style="background-color: #e9ecef;">
                                     </div>
-                                    <br>
-                                    <button type="submit" class="btn btn-primary" name="pinjam">Pinjam</button>
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-primary" name="pinjam">Pinjam</button>
                             </form>
                         </div>
                     </div>

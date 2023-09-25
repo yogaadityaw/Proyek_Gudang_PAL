@@ -91,7 +91,8 @@ if (!$conn) {
     <title>Gudang Harkan</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="/assets/img/logo_pal.png">
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 
 <body class="bg-primary">

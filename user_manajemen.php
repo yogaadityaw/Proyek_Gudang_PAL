@@ -14,7 +14,6 @@ if (isset($_GET['cari'])) {
     $keyword = mysqli_real_escape_string($conn, $keyword);
 
     $query = "SELECT * FROM users WHERE nama_user LIKE '%$keyword%' OR nip_user LIKE '%$keyword%'";
-   
 }
 
 ?>
@@ -38,13 +37,15 @@ if (isset($_GET['cari'])) {
     </style>
 
     <style>
-    .text-center-td {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
+        .text-center-td {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 
 <?php include 'sidebar.php' ?>
@@ -67,7 +68,7 @@ if (isset($_GET['cari'])) {
                 </button>
                 <br>
                 <br>
-                
+
                 <br>
                 <div class="card-body">
                     <div class="table table-responsive">
@@ -92,7 +93,7 @@ if (isset($_GET['cari'])) {
                                     $nip = $data['nip_user'];
                                     $nama = $data['nama_user'];
                                     $role = $data['role_id'];
-                                ?> 
+                                ?>
                                     <tr>
                                         <td style="text-align: center;"><?= $i++ ?></td>
                                         <td style="text-align: center;"><?= $nip ?></td>
@@ -143,19 +144,19 @@ if (isset($_GET['cari'])) {
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <!-- <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" required>
+                                                        <!-- <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg">
                                                     <br>
-                                                    <input type="text" name="namapengebon" value="<?= $namapengebon; ?>" class="form-control form-control-lg" required>
+                                                    <input type="text" name="namapengebon" value="<?= $namapengebon; ?>" class="form-control form-control-lg">
                                                     <br>
-                                                    <input type="text" name="bengkel" value="<?= $bengkel; ?>" class="form-control form-control-lg" required>
+                                                    <input type="text" name="bengkel" value="<?= $bengkel; ?>" class="form-control form-control-lg">
                                                     <br>
-                                                    <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" required>
+                                                    <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control">
                                                     <br>
-                                                    <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" required>
+                                                    <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control">
                                                     <br>
-                                                    <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" required>
+                                                    <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control">
                                                     <br>
-                                                    <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg" required>
+                                                    <input type="text" name="keterangan" value="<?= $keterangan; ?>" class="form-control form-control-lg">
                                                     <br> -->
                                                         apakah anda yakin ingin menghapus satu kolom ini?
                                                         <input type="hidden" name="nip" value="<?= $nip; ?>">
@@ -187,22 +188,22 @@ if (isset($_GET['cari'])) {
                     <!-- Modal body -->
                     <form method="post">
                         <div class="modal-body">
-                            <input type="text" class="form-control form-control-lg" placeholder="NIP" name="nip" required>
+                            <input type="text" class="form-control form-control-lg" placeholder="NIP" name="nip">
                             <br>
-                            <input type="text" class="form-control form-control-lg" placeholder="Nama" name="nama" required>
+                            <input type="text" class="form-control form-control-lg" placeholder="Nama" name="nama">
                             <br>
-                            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" required>
+                            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
                             <br>
-                            <input type="password" class="form-control form-control-lg" placeholder="Masukkan password kembali" name="password2" required>
+                            <input type="password" class="form-control form-control-lg" placeholder="Masukkan password kembali" name="password2">
                             <br>
-                            <select class="form-select" name="role" required>
+                            <select class="form-select" name="role">
                                 <option value="" selected disabled>Pilih Role</option>
                                 <option value="2">User</option>
                                 <option value="3">Atasan</option>
                                 <option value="4">Peminjam</option>
                             </select>
                             <br>
-                            <select class="form-select" name="divisi" id="divisi" required>
+                            <select class="form-select" name="divisi" id="divisi">
                                 <?php echo $divisiOptions; ?>
                             </select>
                         </div>

@@ -30,6 +30,8 @@ if (isset($_GET['cari'])) {
     <title>Alat Produksi</title>
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 
 <?php include 'user_sidebar.php' ?>
@@ -43,7 +45,6 @@ if (isset($_GET['cari'])) {
             <h3 class="mt-4 text-center">DAFTAR PERALATAN PENDUKUNG PRODUKSI DIVISI HARKAN 2023</h3>
         </div>
         <br>
-
         <div class="container -fluid">
             <div class="card-mb-4">
                 <!-- button buat open modal-->
@@ -107,7 +108,7 @@ if (isset($_GET['cari'])) {
                                         <td style="text-align: center;"><?= $jumlah ?></td>
                                         <td style="text-align: center;"><?= $barangbaik ?></td>
                                         <td style="text-align: center;"><?= $barangrusak ?></td>
-                                        <td style="text-align: center;"><?= $lokasi ?></td> 
+                                        <td style="text-align: center;"><?= $lokasi ?></td>
                                         <td style="text-align: center;">
                                             <button type="button" class="btn btn-warning text-light" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
                                                 Update
@@ -128,26 +129,26 @@ if (isset($_GET['cari'])) {
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <label>Nama Barang</label>
-                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" placeholder="Nama barang" require>
+                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" placeholder="Nama barang">
 
                                                         <label>Kode Barang</label>
-                                                        <input type="text" name="kodebarang" value="<?= $kodebarang; ?>" class="form-control form-control-lg" placeholder="Kode barang" required>
+                                                        <input type="text" name="kodebarang" value="<?= $kodebarang; ?>" class="form-control form-control-lg" placeholder="Kode barang">
 
                                                         <label>Kategori Barang</label>
-                                                        <input type="text" name="kategoribarang" value="<?= $kategoribarang; ?>" class="form-control form-control-lg" placeholder="Kategori barang" required>
+                                                        <input type="text" name="kategoribarang" value="<?= $kategoribarang; ?>" class="form-control form-control-lg" placeholder="Kategori barang">
 
 
                                                         <label>Jumlah</label>
-                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah" required>
+                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah">
 
                                                         <label>Barang Kondisi Baik</label>
-                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" placeholder="Barang Kondisi Baik" required>
+                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" placeholder="Barang Kondisi Baik">
 
                                                         <label>Barang Kondisi Rusak</label>
-                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" placeholder="Kondisi Barang Rusak" required>
+                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" placeholder="Kondisi Barang Rusak">
 
                                                         <label>lokasi</label>
-                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg" placeholder="lokasi" required>
+                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg" placeholder="lokasi">
 
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
                                                     </div>
@@ -179,32 +180,57 @@ if (isset($_GET['cari'])) {
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="kode Barang" name="kodebarang" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="kode Barang" name="kodebarang">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="kategori Barang" name="kategoribarang" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="kategori Barang" name="kategoribarang">
                         <br>
-                        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
+                        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah">
                         <br>
-                        <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik" required>
+                        <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik">
                         <br>
-                        <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak" required>
+                        <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" name="addnewbarangproduksi">Tambahkan</button>
                     </div>
-
                 </div>
             </div>
         </div>
     </form>
+
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p id="errorMessage">Error Message Goes Here</p>
+        </div>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
 
 </body>
+
+<script>
+    function showErrorModal(errorMessage) {
+        var modal = document.getElementById("errorModal");
+        var errorMessageElement = document.getElementById("errorMessage");
+        errorMessageElement.innerHTML = errorMessage;
+        modal.style.display = "block";
+
+        var closeModalButton = document.getElementById("closeModal");
+        closeModalButton.onclick = function() {
+            modal.style.display = "none"
+        }
+
+        setTimeout(function() {
+            modal.style.display = "none"
+        }, 5000);
+    }
+</script>
 
 </html>

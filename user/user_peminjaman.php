@@ -32,7 +32,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     <title>Pengajuan Peminjaman</title>
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
     <style>
         .button-container {
             display: flex;

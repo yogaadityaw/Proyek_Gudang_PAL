@@ -31,6 +31,8 @@ if (isset($_GET['cari'])) {
     <title>Alat Produksi</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 
 <?php include 'sidebar.php' ?>
@@ -123,22 +125,22 @@ if (isset($_GET['cari'])) {
                                                 <form method=post>
                                                     <div class="modal-body">
                                                         <label>Nama Barang</label>
-                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" placeholder="Nama Barang" required>
+                                                        <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" placeholder="Nama Barang">
 
                                                         <label>Nomor Seri</label>
-                                                        <input type="text" name="noseri" value="<?= $noseri; ?>" class="form-control form-control-lg" placeholder="Nomor Seri" required>
+                                                        <input type="text" name="noseri" value="<?= $noseri; ?>" class="form-control form-control-lg" placeholder="Nomor Seri">
 
                                                         <label>Jumlah</label>
-                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah" required>
+                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah">
 
                                                         <label>Barang Kondisi Baik</label>
-                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" placeholder="Barang Kondisi Baik" required>
+                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" placeholder="Barang Kondisi Baik">
 
                                                         <label>Barang Kondisi Rusak</label>
-                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" placeholder="Barang Kondisi Rusak" required>
+                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" placeholder="Barang Kondisi Rusak">
 
                                                         <label>lokasi</label>
-                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg" placeholder="lokasi" required>
+                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg" placeholder="lokasi">
 
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
                                                     </div>
@@ -152,7 +154,7 @@ if (isset($_GET['cari'])) {
                                     </div>
                                     <!-- Delete Modal -->
                                     <div class="modal fade" id="Delete<?= $idb; ?>">
-                                        <div class="modal-dia class="table-info text-center align-middle"">
+                                        <div class="modal-dia class=" table-info text-center align-middle"">
                                             <div class="modal-content bg-white">
 
                                                 <!-- Modal Header -->
@@ -163,19 +165,19 @@ if (isset($_GET['cari'])) {
                                                 <!-- Modal body -->
                                                 <form method=post>
                                                     <div class="modal-body">
-                                                        <!-- <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg" required>
+                                                        <!-- <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg">
                                                         <br>
-                                                        <input type="text" name="noseri" value="<?= $noseri; ?>" class="form-control form-control-lg" required>
+                                                        <input type="text" name="noseri" value="<?= $noseri; ?>" class="form-control form-control-lg">
                                                         <br>
-                                                        <input type="text" name="namapengebon" value="<?= $namapengebon; ?>" class="form-control form-control-lg" required>
+                                                        <input type="text" name="namapengebon" value="<?= $namapengebon; ?>" class="form-control form-control-lg">
                                                         <br>
-                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" required>
+                                                        <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control">
                                                         <br>
-                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control" required>
+                                                        <input type="number" name="barangbaik" value="<?= $barangbaik; ?>" class="form-control">
                                                         <br>
-                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control" required>
+                                                        <input type="number" name="barangrusak" value="<?= $barangrusak; ?>" class="form-control">
                                                         <br>
-                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg" required>
+                                                        <input type="text" name="lokasi" value="<?= $lokasi; ?>" class="form-control form-control-lg">
                                                         <br> -->
                                                         apakah anda yakin ingin menghapus satu kolom ini ?
                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">
@@ -208,17 +210,17 @@ if (isset($_GET['cari'])) {
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="Nomor Seri" name="noseri" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="Nomor Seri" name="noseri">
                         <br>
-                        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
+                        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah">
                         <br>
-                        <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik" required>
+                        <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik">
                         <br>
-                        <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak" required>
+                        <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak">
                         <br>
-                        <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi" required>
+                        <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">

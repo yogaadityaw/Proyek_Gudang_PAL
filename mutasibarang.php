@@ -34,6 +34,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     <title>Mutasi Barang</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 <?php include 'sidebar.php' ?>
 
@@ -55,7 +57,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                 <div class="input-group mb-3">
                     <!-- Search bar using Bootstrap -->
                     <input type="text" class="form-control" placeholder="Cari" name="cari" value="<?= $searchTerm ?>">
-                    <button type="submit" class="btn btn-primary">Cari</button> 
+                    <button type="submit" class="btn btn-primary">Cari</button>
                 </div>
             </form>
 

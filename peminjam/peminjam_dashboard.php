@@ -34,9 +34,8 @@ checkRole("peminjam", 'middleware/auth_prohibit.php');
         }
     </style>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/svg+xml" href="/assets/img/pal.svg">
-
-
+    <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
 </head>
 
 <?php include 'peminjam_sidebar.php' ?>

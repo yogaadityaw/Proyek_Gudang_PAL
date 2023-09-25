@@ -1,7 +1,12 @@
 <?php
 require 'koneksi.php';
-require 'middleware/Validation/AlatProduksiValidation.php';
 session_start();
+
+if ($_SESSION['role'] == "admin") {
+    require 'middleware/Validation/Validation.php';
+} else {
+    require '../middleware/Validation/Validation.php';
+}
 
 // menambah barang baru
 
@@ -14,9 +19,12 @@ if (isset($_POST['addnewbarangproduksi'])) {
     $barangrusak = $_POST['barangrusak'];
     $lokasi = $_POST['lokasi'];
 
-    if (!AlatProduksiValidation::validate($namabarang, $kodebarang, $kategoribarang, $jumlah, $barangbaik, $barangrusak, $lokasi)) {
-        // die("Input tidak valid");
-        // return;
+    $validateResult = Validation::validateAlatProduksi($namabarang, $kodebarang, $kategoribarang, $jumlah, $barangbaik, $barangrusak, $lokasi);
+    $is_valid = $validateResult['is_valid'];
+    $error_message = $validateResult['error_message'];
+    if (!$is_valid) {
+        echo '<script type="text/javascript">alert("' . $error_message . '");</script>';
+        return;
     } else {
         $addtotable = mysqli_query($conn, "INSERT INTO alat_produksi (namabarang, kodebarang, kategoribarang, jumlah, baik, rusak, lokasi, kategori_id) VALUES ('$namabarang', '$kodebarang', '$kategoribarang', '$jumlah', '$barangbaik', '$barangrusak', '$lokasi', 1)");
         if ($addtotable) {
@@ -48,20 +56,30 @@ if (isset($_POST['updatebarang'])) {
     $lokasi = $_POST['lokasi'];
     $idb = $_POST['idb'];
 
-    $update = mysqli_query($conn, "update alat_produksi set namabarang='$namabarang', kodebarang='$kodebarang', kategoribarang = '$kategoribarang', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', lokasi='$lokasi' where idbarang = '$idb' ");
 
-    if ($update) {
-        if ($_SESSION['role'] == "admin") {
-            header('location: alat_produksi.php');
-            exit();
-        } else if ($_SESSION['role'] == "user") {
-            header('location: user_alat_produksi.php');
-        }
-        session_write_close();
+
+    $validateResult = Validation::validateAlatProduksi($namabarang, $kodebarang, $kategoribarang, $jumlah, $barangbaik, $barangrusak, $lokasi);
+    $is_valid = $validateResult['is_valid'];
+    $error_message = $validateResult['error_message'];
+    if (!$is_valid) {
+        echo '<script type="text/javascript">alert("' . $error_message . '");</script>';
+        return;
     } else {
-        echo 'Gagal menyimpan data: ';
-    };
-    return;
+        $update = mysqli_query($conn, "update alat_produksi set namabarang='$namabarang', kodebarang='$kodebarang', kategoribarang = '$kategoribarang', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', lokasi='$lokasi' where idbarang = '$idb' ");
+
+        if ($update) {
+            if ($_SESSION['role'] == "admin") {
+                header('location: alat_produksi.php');
+                exit();
+            } else if ($_SESSION['role'] == "user") {
+                header('location: user_alat_produksi.php');
+            }
+            session_write_close();
+        } else {
+            echo 'Gagal menyimpan data: ';
+        };
+        return;
+    }
 }
 
 //delete barang 
