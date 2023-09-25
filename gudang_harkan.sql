@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 21, 2023 at 05:04 PM
+-- Generation Time: Sep 25, 2023 at 07:15 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -82,7 +82,11 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoriba
 (51, 'Bor Magnet', 'DRL01', '', 169, 166, 3, '-', 1),
 (54, 'coba', 'tes', '0', 1, 0, 1, 'rendal', 1),
 (56, 'user testing', 'testing', 'lifting tools', 1, 1, 0, 'dukprod', 1),
-(57, 'coba from user', 'cobain', 'coba coba', 1, 1, 0, 'RH01', 1);
+(57, 'coba from user', 'cobain', 'coba coba', 1, 1, 0, 'RH01', 1),
+(59, 'aaa', 'aaa', 'aaa', 1, 1, 0, 'aaa', 1),
+(60, 'aaa', 'aaa', 'aaaa', 2, 2, 0, 'aaaa', 1),
+(61, 'aaa', 'aaa', 'aaa', 1, 1, 0, 'aaa', 1),
+(62, 'Data ada', 'Data ada', 'Data ada', 2, 1, 1, 'Data ada', 1);
 
 -- --------------------------------------------------------
 
@@ -128,7 +132,7 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 CREATE TABLE `barang_asset` (
   `idbarang` int NOT NULL,
   `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `kategoribarang` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `kategoribarang` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
   `baik` int NOT NULL,
   `rusak` int NOT NULL,
@@ -164,7 +168,7 @@ CREATE TABLE `barang_konsumable` (
 --
 
 INSERT INTO `barang_konsumable` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `lokasi`, `kategori_id`) VALUES
-(48, 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 2, '-', 3),
+(48, 'MCCB 630A MERK SCHNEIDER', 'aaa', 2, '-', 3),
 (50, 'cek', 'cekk', 1, '-', 3),
 (51, 'coba from user', 'test', 1, 'dock surabaya', 3),
 (52, 'usertesing', 'testing', 1, 'Produksi', 3);
@@ -189,11 +193,11 @@ CREATE TABLE `berita` (
 INSERT INTO `berita` (`id_berita`, `judul_berita`, `deskripsi_berita`, `created_at`) VALUES
 (1, 'PT PAL (Persero) Tbk Membuka Pabrik Baru untuk Memperluas Produksi Kapal Perang', 'PT PAL (Persero) Tbk, perusahaan galangan kapal terkemuka di Indonesia, telah membuka pabrik produksi baru yang akan membantu meningkatkan kapasitas produksi kapal perang. Langkah ini bertujuan untuk mendukung pertahanan nasional dan industri maritim Indonesia yang berkembang pesat.\r\n\r\nPerusahaan ini juga baru-baru ini meraih penghargaan bergengsi dalam industri maritim berkat inovasi dan kualitas produknya. PT PAL (Persero) Tbk dikenal karena kapal selam canggih buatannya, yang telah diakui secara internasional.\r\n\r\nDengan dukungan dari PT PAL (Persero) Tbk, Indonesia semakin mengukuhkan dirinya sebagai pemain utama dalam industri maritim global. Perusahaan ini berperan penting dalam mendukung pembangunan infrastruktur maritim yang sangat dibutuhkan untuk pertumbuhan ekonomi dan keamanan nasional.\r\n\r\nSilakan gunakan informasi ini sebagai panduan untuk membuat berita lebih rinci tentang PT PAL (Persero) Tbk sesuai dengan kebutuhan Anda.', '2023-09-10 23:13:33'),
 (2, 'PT PAL Resmi Mengumumkan Kesepakatan Kerjasama Baru dalam Industri Maritim', 'JAKARTA - PT PAL (Persero), perusahaan pembangunan kapal terkemuka di Indonesia, mengumumkan kemitraan strategis baru dengan perusahaan maritim internasional terkemuka, sebuah langkah besar dalam mendorong pertumbuhan sektor maritim nasional.\r\n\r\nPada hari Rabu, PT PAL mengadakan konferensi pers di Jakarta untuk mengumumkan kesepakatan kolaborasi terbaru mereka. Menurut pernyataan resmi, perusahaan ini akan bekerja sama dengan perusahaan maritim internasional yang memiliki reputasi baik dalam pembangunan kapal komersial dan militer.\r\n\r\n\"Dalam upaya untuk menghadirkan teknologi dan inovasi terbaru ke Indonesia, kami sangat antusias mengumumkan kemitraan ini,\" kata CEO PT PAL dalam konferensi pers tersebut. \"Ini adalah langkah besar dalam memperkuat posisi PT PAL sebagai pemimpin dalam industri maritim.\"\r\n\r\nKemitraan ini diharapkan akan membawa manfaat besar bagi sektor maritim nasional. Ini akan menciptakan lapangan kerja baru, mendorong pertumbuhan ekonomi di daerah terdekat fasilitas PT PAL, dan memberikan akses ke teknologi terbaru dalam pembangunan kapal.\r\n\r\nSebelumnya, PT PAL telah berhasil menyelesaikan proyek-proyek besar seperti kapal perang, kapal komersial, dan kapal penumpang. Kemitraan ini akan membuka pintu bagi proyek-proyek yang lebih besar dan canggih di masa depan.\r\n\r\nIni adalah langkah yang sangat positif bagi PT PAL dan industri maritim Indonesia secara keseluruhan. Pemerintah Indonesia juga telah memberikan dukungan penuh untuk kemitraan ini, mengakui pentingnya industri maritim dalam mendukung pertumbuhan ekonomi negara tersebut.\r\n\r\nSemoga informasi ini bermanfaat dalam memberikan gambaran umum tentang berita terbaru mengenai PT PAL dan kemitraan strategis yang mereka bangun.', '2023-09-10 23:14:04'),
-(3, 'coba', 'coba 1', '2023-09-12 04:30:37'),
-(4, 'coba', 'coba1', '2023-09-12 05:48:36'),
-(5, 'coba 3', 'coba 3', '2023-09-12 08:58:47'),
+(3, 'PT PAL Indonesia (Persero): Pemimpin Global dalam Industri Galangan Kapal', 'Surabaya, 25 September 2023 - PT PAL Indonesia (Persero), sebuah perusahaan yang berbasis di Surabaya, telah lama menjadi pemimpin global dalam industri galangan kapal. Sebagai perusahaan negara yang didirikan pada tahun 1980, PT PAL Indonesia telah berkomitmen untuk mengembangkan kemampuan dalam pembuatan kapal dan perbaikan kapal, serta memproduksi berbagai produk pertahanan dan peralatan maritim berkualitas tinggi.', '2023-09-12 04:30:37'),
+(4, 'PT PAL Indonesia: Pusat Kemahiran dalam Industri Maritim', 'PT PAL Indonesia (Persero) adalah sebuah perusahaan konstruksi kapal yang beroperasi di Indonesia. Dikenal sebagai salah satu perusahaan terkemuka dalam industri maritim di Asia Tenggara, PT PAL telah membangun sejarah yang cemerlang selama lebih dari setengah abad.\n\nSejarah yang Dimulai dari Pertanian Hingga Maritim\n\nBerawal sebagai usaha pertanian di tahun 1939, PT PAL Indonesia berubah haluan menjadi perusahaan perkapalan pada tahun 1971. Sejak saat itu, perusahaan ini telah mengalami pertumbuhan yang luar biasa dalam menghadirkan berbagai jenis kapal, mulai dari kapal penumpang hingga kapal perang yang canggih.', '2023-09-12 05:48:36'),
+(5, 'PT PAL Indonesia: Leader in Maritime Excellence', 'PT PAL Indonesia: Leader in Maritime Excellence\n\nPT PAL Indonesia, also known as Persero PT PAL, stands as a beacon of maritime excellence in Southeast Asia. Founded in 1980, this state-owned enterprise has become synonymous with shipbuilding and engineering prowess, playing a pivotal role in Indonesia\'s naval and maritime development.\n\nA Rich Legacy of Shipbuilding\n\nWith a history that spans over four decades, PT PAL has earned a reputation for its world-class shipbuilding capabilities. The company has consistently delivered vessels that meet the highest international standards, from naval ships and commercial vessels to offshore platforms.', '2023-09-12 08:58:47'),
 (6, 'Kebakaran Melanda Desa Lebak Rejo, Kerugian Besar Terjadi', 'Pada tanggal 12 September 2023, sebuah bencana kebakaran hebat melanda Desa Lebak Rejo, mengakibatkan kerugian besar bagi warga dan lingkungan sekitar. Kebakaran ini pertama kali terdeteksi pada pukul 02.00 pagi dan dengan cepat meluas karena angin kencang yang memengaruhi perambatan api.\n\nSejumlah pemadam kebakaran dan relawan segera merespons kejadian tersebut, tetapi mereka menghadapi kesulitan dalam memadamkan api karena kondisi cuaca yang ekstrem. Banyak rumah dan bangunan penting, termasuk sekolah dan fasilitas kesehatan, hancur dalam bencana ini.\n\nTidak ada laporan tentang korban jiwa saat ini, tetapi sejumlah warga dilaporkan kehilangan tempat tinggal dan harta benda mereka. Otoritas setempat dan pihak berwenang terus bekerja keras untuk mengatasi kebakaran ini dan memberikan bantuan kepada mereka yang terkena dampak.\n\nKita semua berdoa agar situasi ini segera teratasi dan para korban dapat mendapatkan bantuan yang mereka perlukan. Lebak Rejo dan warganya membutuhkan dukungan dan solidaritas dari seluruh komunitas di sekitarnya.', '2023-09-14 15:12:52'),
-(7, 'Berita Acara', 'acara hut pal colab hut kemerdekaan', '2023-09-15 01:02:41');
+(7, 'PT PAL Indonesia: Sebuah Kilas Balik dan Masa Depan yang Cerah', 'PT PAL Indonesia (Persero) adalah perusahaan pembangunan kapal terkemuka di Indonesia yang telah berdiri selama lebih dari setengah abad. Sejak didirikan pada tahun 1971, perusahaan ini telah menjadi salah satu tonggak penting dalam industri maritim nasional. Mari kita lihat lebih dekat sejarah, pencapaian, serta masa depan cerah PT PAL Indonesia.\n\nSejarah yang Gemilang\n\nPT PAL Indonesia didirikan sebagai produsen kapal pertama di Indonesia pada tahun 1971. Pada awalnya, perusahaan ini memiliki fasilitas yang terbatas, tetapi dengan tekad kuat dan visi yang jelas, mereka berhasil tumbuh dan berkembang pesat.\n\nSelama beberapa dekade, PT PAL Indonesia telah berhasil membangun berbagai jenis kapal, termasuk kapal perang, kapal komersial, kapal penumpang, dan kapal penjelajah antariksa. Pencapaian besar pertama mereka adalah pembangunan kapal selam pertama Indonesia, KRI Cakra, yang diluncurkan pada tahun 1981.', '2023-09-15 01:02:41');
 
 -- --------------------------------------------------------
 
@@ -275,7 +279,7 @@ CREATE TABLE `keluar_masuk_barang` (
   `jumlahrusak` int DEFAULT '0',
   `lokasi` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `lokasi_kembali` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `keterangan` varchar(256) COLLATE utf8mb4_general_ci NOT NULL,
+  `keterangan` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `isApproved` int DEFAULT '0',
   `status` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -397,8 +401,7 @@ INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `password_user`, `divis
 (26, '14200141', 'Farah', '$2y$10$OemArRVnvnjziK52INyk8OnuhUZz31r/FLNPW0A.aNbLhYU68ahru', 2, 4),
 (27, '14200137', 'Yoga', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1, 1),
 (29, '14200138', 'Burhan', '$2y$10$SAOmW7P1RnSj6KI6xdZun.cST27PUqyILDhFPfvAA2E5YerSBwn4y', 1, 4),
-(30, '14200142', 'Agus', '$2y$10$gYuiFE8iA2t8mS8EBC0zVug1OV9MrGaSOEb8PK305bFEn/SOEGtGW', 1, 2),
-(34, '190919', 'Istriku', '$2y$10$rmtBq8Iqrjb2mDmlAAFvD..VZWhgRUKBtkxTHroJRfOmNbUzoRqEi', 1, 3);
+(30, '14200142', 'Agus', '$2y$10$gYuiFE8iA2t8mS8EBC0zVug1OV9MrGaSOEb8PK305bFEn/SOEGtGW', 1, 2);
 
 --
 -- Indexes for dumped tables
@@ -486,7 +489,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alat_produksi`
 --
 ALTER TABLE `alat_produksi`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `barang_angkut_apung`
