@@ -42,7 +42,7 @@ if (isset($_GET['cari'])) {
 <body>
     <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
         <div class="container-fluid px-4">
-            <h3 class="mt-4 text-center">DAFTAR PERALATAN PENDUKUNG PRODUKSI DIVISI HARKAN 2023</h3>
+            <h3 class="mt-4 text-center">DAFTAR PERALATAN PENDUKUNG PRODUKSI DIVISI HARKAN</h3>
         </div>
         <br>
         <div class="container -fluid">

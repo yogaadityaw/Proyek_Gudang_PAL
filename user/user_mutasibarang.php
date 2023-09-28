@@ -41,7 +41,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
     <br>
     <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
         <div class="container-fluid px-4">
-            <h3 class="mt-4 text-center">List Daftar Mutasi Barang DIVISI HARKAN 2023</h3>
+            <h3 class="mt-4 text-center">List Daftar Mutasi Barang DIVISI HARKAN</h3>
 
         </div>
 

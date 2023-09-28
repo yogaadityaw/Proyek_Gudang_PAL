@@ -188,22 +188,22 @@ if (isset($_GET['cari'])) {
                     <!-- Modal body -->
                     <form method="post">
                         <div class="modal-body">
-                            <input type="text" class="form-control form-control-lg" placeholder="NIP" name="nip">
+                            <input type="text" class="form-control form-control-lg" placeholder="NIP" name="nip" required>
                             <br>
-                            <input type="text" class="form-control form-control-lg" placeholder="Nama" name="nama">
+                            <input type="text" class="form-control form-control-lg" placeholder="Nama" name="nama" required>
                             <br>
-                            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
+                            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" required>
                             <br>
-                            <input type="password" class="form-control form-control-lg" placeholder="Masukkan password kembali" name="password2">
+                            <input type="password" class="form-control form-control-lg" placeholder="Masukkan password kembali" name="password2" required>
                             <br>
-                            <select class="form-select" name="role">
+                            <select class="form-select" name="role" required>
                                 <option value="" selected disabled>Pilih Role</option>
                                 <option value="2">User</option>
                                 <option value="3">Atasan</option>
                                 <option value="4">Peminjam</option>
                             </select>
                             <br>
-                            <select class="form-select" name="divisi" id="divisi">
+                            <select class="form-select" name="divisi" id="divisi" required>
                                 <?php echo $divisiOptions; ?>
                             </select>
                         </div>

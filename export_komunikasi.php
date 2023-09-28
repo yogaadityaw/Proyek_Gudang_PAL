@@ -6,7 +6,7 @@ require 'controller/koneksi.php';
 <html>
 
 <head>
-    <title>DAFTAR ALAT KOMUNIKASI / (HT) DIVISI HARKAN 2023</title>
+    <title>DAFTAR ALAT KOMUNIKASI / (HT) DIVISI HARKAN</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -22,7 +22,7 @@ require 'controller/koneksi.php';
 <body>
     <div class="container">
 
-        <h2 class="mt-4 text-center">DAFTAR ALAT KOMUNIKASI / (HT) DIVISI HARKAN 2023</h2>
+        <h2 class="mt-4 text-center">DAFTAR ALAT KOMUNIKASI / (HT) DIVISI HARKAN</h2>
 
         <div class="data-tables datatable-dark">
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 25, 2023 at 07:15 PM
+-- Generation Time: Sep 28, 2023 at 01:39 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -86,7 +86,7 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoriba
 (59, 'aaa', 'aaa', 'aaa', 1, 1, 0, 'aaa', 1),
 (60, 'aaa', 'aaa', 'aaaa', 2, 2, 0, 'aaaa', 1),
 (61, 'aaa', 'aaa', 'aaa', 1, 1, 0, 'aaa', 1),
-(62, 'Data ada', 'Data ada', 'Data ada', 2, 1, 1, 'Data ada', 1);
+(62, 'Data ada', 'Data ada', 'Data ada', 2, 1, 1, 'Data tidak ada', 1);
 
 -- --------------------------------------------------------
 
@@ -279,7 +279,7 @@ CREATE TABLE `keluar_masuk_barang` (
   `jumlahrusak` int DEFAULT '0',
   `lokasi` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `lokasi_kembali` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `keterangan` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `keterangan` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `isApproved` int DEFAULT '0',
   `status` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -322,7 +322,9 @@ INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `t
 (139, 'PJ29', NULL, NULL, NULL, 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, 'akkaka', NULL, '', 0, 'Belum kembali'),
 (140, 'PJ30', '2023-09-21 09:00:39', '2023-09-18 14:38:16', '2023-09-21 16:04:00', 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, '0', 'Rumah Farah', '', 3, 'Sudah kembali'),
 (141, 'PJ31', NULL, '2023-09-21 15:47:49', NULL, 'Barang Konsumable', '12345', 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 1, 0, 0, 'Dock Surabaya', NULL, '', 0, 'Belum kembali'),
-(142, 'PJ32', NULL, '2023-09-21 15:49:32', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'PAL', NULL, '', 0, 'Belum kembali');
+(142, 'PJ32', NULL, '2023-09-21 15:49:32', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'PAL', NULL, '', 0, 'Belum kembali'),
+(143, 'PJ33', NULL, '2023-09-28 13:30:45', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, 'ipan dedi', NULL, NULL, 0, 'Belum kembali'),
+(144, 'PJ34', '2023-09-28 08:33:18', '2023-09-28 13:31:15', '2023-09-28 13:33:00', 'Alat Komunikasi', '14200138', 'nyoba', 'testing', 1, 1, 0, 'ipan', 'ipan', 'echo', 3, 'Sudah kembali');
 
 -- --------------------------------------------------------
 
@@ -349,7 +351,8 @@ INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, 
 (8, 'HT I COM V80', '602733378-1', 3, 3, 0, 'harkan', 2),
 (9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2),
 (12, 'ceki', 'cekcek', 1, 1, 0, '-', 2),
-(13, 'coba from user ', 'testing1', 1, 1, 0, 'K3LH', 2);
+(13, 'coba from user ', 'testing1', 1, 1, 0, 'K3LH', 2),
+(14, 'nyoba', 'testing', 2, 2, 0, 'rendal', 2);
 
 -- --------------------------------------------------------
 
@@ -401,7 +404,8 @@ INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `password_user`, `divis
 (26, '14200141', 'Farah', '$2y$10$OemArRVnvnjziK52INyk8OnuhUZz31r/FLNPW0A.aNbLhYU68ahru', 2, 4),
 (27, '14200137', 'Yoga', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1, 1),
 (29, '14200138', 'Burhan', '$2y$10$SAOmW7P1RnSj6KI6xdZun.cST27PUqyILDhFPfvAA2E5YerSBwn4y', 1, 4),
-(30, '14200142', 'Agus', '$2y$10$gYuiFE8iA2t8mS8EBC0zVug1OV9MrGaSOEb8PK305bFEn/SOEGtGW', 1, 2);
+(30, '14200142', 'Agus', '$2y$10$gYuiFE8iA2t8mS8EBC0zVug1OV9MrGaSOEb8PK305bFEn/SOEGtGW', 1, 2),
+(35, '123123', 'John Doe', '$2y$10$MIaJZn/dgZMjsQQZmQk5TO3ytbBtcKgB2rW2cMmF4ZraVfhGMRoDO', 3, 2);
 
 --
 -- Indexes for dumped tables
@@ -531,19 +535,19 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`
 --
 ALTER TABLE `komunikasi`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables

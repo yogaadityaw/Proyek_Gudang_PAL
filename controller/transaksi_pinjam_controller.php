@@ -19,8 +19,6 @@ if (isset($_POST['pinjam']) != null) {
     $kodepinjam = $_POST['kodepinjam'];
     $status = "Belum kembali";
 
-    // die(var_dump("Nip: " . $nip . " Jenis Barang: " . $jenisbarang . " Nama Barang: " . $namabarang . " Kode Barang: " . $kodebarang . " No Seri: " . $noseri . " Lokasi Pinjam: " . $lokasipinjam . " Jumlah: " . $jumlah . " Tanggal Pinjam: " . $tanggalpinjam . " Tanggal Kembali: " . $tanggalkembali . " Kode Pinjam: " . $kodepinjam . " Status: " . $status));
-
     $queryNip = "SELECT nip_user FROM users WHERE nip_user = '$nip'";
     $resultNip = mysqli_query($conn, $queryNip);
 

@@ -1,6 +1,8 @@
 <?php
 require 'koneksi.php';
 
+session_start();
+
 if (isset($_POST['tambahUser'])) {
     $nip = addslashes(trim($_POST['nip']));
     $nama = addslashes(trim($_POST['nama']));

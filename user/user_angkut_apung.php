@@ -29,7 +29,7 @@ if (isset($_GET['cari'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Alat Produksi</title>
+    <title>Alat Angkut Apung</title>
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="/assets/img/logo_pal.ico" type="image/x-icon">
@@ -43,7 +43,7 @@ if (isset($_GET['cari'])) {
 <body>
     <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
         <div class="container-fluid px-4">
-            <h3 class="mt-4 text-center">DAFTAR FASILITAS ALAT ANGKAT, ANGKUT dan APUNG DIVISI HARKAN 2023</h3>
+            <h3 class="mt-4 text-center">DAFTAR FASILITAS ALAT ANGKAT, ANGKUT dan APUNG DIVISI HARKAN</h3>
         </div>
         <br>
         <div class="container -fluid">

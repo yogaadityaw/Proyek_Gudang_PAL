@@ -7,7 +7,7 @@ session_start();
 <html>
 
 <head>
-    <title>Export History Peminjaman </title>
+    <title>History Peminjaman </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -105,11 +105,11 @@ session_start();
                             echo '<td class="centered-cell">' . $lokasikembali . '</td>';
                             echo '<td class="centered-cell">';
                             if ($isApproved == 2) {
-                                echo '<span class="badge text-bg-danger text-light">Ditolak</span>';
+                                echo '<span class="badge text-bg-danger text-dark">Ditolak</span>';
                             } else if ($isApproved == 0) {
-                                echo '<span class="badge text-bg-warning text-light">Menunggu Approval</span>';
+                                echo '<span class="badge text-bg-warning text-dark">Menunggu Approval</span>';
                             } else {
-                                echo '<span class="badge text-bg-success text-light">Disetujui</span>';
+                                echo '<span class="badge text-bg-success text-dark">Disetujui</span>';
                             }
                             echo '</td>';
                             echo '</tr>';
@@ -176,13 +176,13 @@ session_start();
                             echo '<td>' . $lokasikembali . '</td>';
                             echo '<td>';
                             if ($isApproved == 2) {
-                                echo '<span class="badge text-bg-danger text-light">Ditolak</span>';
+                                echo '<span class="badge text-bg-danger text-dark">Ditolak</span>';
                             } else if ($isApproved == 0) {
-                                echo '<span class="badge text-bg-warning text-light">Menunggu Approval</span>';
+                                echo '<span class="badge text-bg-warning text-dark">Menunggu Approval</span>';
                             } else if ($isApproved == 3) {
-                                echo '<span class="badge text-bg-success text-light">Barang Sudah Kembali</span>';
+                                echo '<span class="badge text-bg-success text-dark">Barang Sudah Kembali</span>';
                             } else {
-                                echo '<span class="badge text-bg-primary text-light">Disetujui/Barang Dipinjam</span>';
+                                echo '<span class="badge text-bg-primary text-dark">Disetujui/Barang Dipinjam</span>';
                             }
                             echo '</td>';
                             echo '</tr>';

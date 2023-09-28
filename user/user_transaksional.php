@@ -18,7 +18,7 @@ checkRole("user", '../middleware/auth_prohibit.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Transaksional</title>
+    <title>Pengajuan Peminjaman</title>
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -32,7 +32,7 @@ checkRole("user", '../middleware/auth_prohibit.php');
     <br>
     <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
         <div class="container-fluid px-4">
-            <h3 class="mt-4 text-center" style="color: white;">Formulir Peminjaman Barang / Alat</h3>
+            <h3 class="mt-4 text-center" style="color: white;">Formulir Pengajuan Peminjaman Barang / Alat</h3>
         </div>
         <!--form peminjaman-->
         <div class="container">
@@ -40,7 +40,7 @@ checkRole("user", '../middleware/auth_prohibit.php');
                 <div class="col-lg-7">
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
-                            <h3 class="text-center font-weight-light my-4">Form Peminjaman</h3>
+                            <h3 class="text-center font-weight-light my-4">Form Pengajuan Peminjaman</h3>
                         </div>
                         <div class="card-body">
                             <form method="post">
