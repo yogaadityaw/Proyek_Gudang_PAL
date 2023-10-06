@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 28, 2023 at 01:39 PM
+-- Generation Time: Oct 06, 2023 at 02:12 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -44,10 +44,10 @@ CREATE TABLE `alat_produksi` (
 --
 
 INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoribarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
-(10, 'Bor Magnet', 'DRL01', '0', 169, 166, 3, '-', 1),
-(12, 'Hand Bor (Makita)', 'HDRL02', '0', 5, 5, 0, '-', 1),
-(13, 'Vacum Test', 'VT01', '0', 1, 1, 0, '-', 1),
-(14, 'Load Cell 5 Ton', 'LC5T', '0', 1, 0, 1, '-', 1),
+(10, 'Bor Magnet', 'DRL01', 'Rotating Tools', 164, 161, 3, 'dukprod', 1),
+(12, 'Hand Bor (Makita)', 'HDRL02', '0', 0, 0, 0, '-', 1),
+(13, 'Vacum Test', 'VT01', 'alat produksi', 0, 0, 0, '-', 1),
+(14, 'Load Cell 5 Ton', 'LC5T', '0', 0, 0, 0, '-', 1),
 (15, 'Load Cell 10 Ton', 'LC10T', '0', 1, 0, 1, '-', 1),
 (16, 'Sabuk 1 Ton', 'BLT1T', '0', 2, 2, 0, '-', 1),
 (17, 'Sabuk 2 Ton', 'BLT2T', '0', 2, 2, 0, '-', 1),
@@ -79,14 +79,13 @@ INSERT INTO `alat_produksi` (`idbarang`, `namabarang`, `kodebarang`, `kategoriba
 (43, 'Tackal 3 Ton (Chain Block)', 'TCK3T', '0', 19, 19, 0, '-', 1),
 (44, 'Tackal 5 Ton (Chain Block)', 'TCK5T', '0', 22, 22, 0, '-', 1),
 (45, 'Tackal 10 Ton (Chain Block)', 'TCK10T', '0', 7, 7, 0, '-', 1),
-(51, 'Bor Magnet', 'DRL01', '', 169, 166, 3, '-', 1),
+(51, 'Bor Magnet', 'DRL01', '', 164, 161, 3, '-', 1),
 (54, 'coba', 'tes', '0', 1, 0, 1, 'rendal', 1),
 (56, 'user testing', 'testing', 'lifting tools', 1, 1, 0, 'dukprod', 1),
 (57, 'coba from user', 'cobain', 'coba coba', 1, 1, 0, 'RH01', 1),
 (59, 'aaa', 'aaa', 'aaa', 1, 1, 0, 'aaa', 1),
-(60, 'aaa', 'aaa', 'aaaa', 2, 2, 0, 'aaaa', 1),
-(61, 'aaa', 'aaa', 'aaa', 1, 1, 0, 'aaa', 1),
-(62, 'Data ada', 'Data ada', 'Data ada', 2, 1, 1, 'Data tidak ada', 1);
+(62, 'Data ada', 'Data ada', 'Data ada', 2, 1, 1, 'Data tidak ada', 1),
+(63, 'Percobaan', '001', 'nyoba', 1, 1, 0, 'oke', 1);
 
 -- --------------------------------------------------------
 
@@ -110,8 +109,8 @@ CREATE TABLE `barang_angkut_apung` (
 --
 
 INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
-(13, 'Forklift 3 ton', 'FK3T', 1, 1, 0, '-', 4),
-(14, 'Forklift 5 Ton', 'FK5T', 1, 1, 0, '-', 4),
+(13, 'Forklift 3 ton', 'FK3T', 0, 0, 0, '-', 4),
+(14, 'Forklift 5 Ton', 'FK5T', 1, 1, 0, 'Gudang', 4),
 (15, 'Lifttruck', 'LFT', 1, 0, 1, '-', 4),
 (16, 'Telescopic', 'TLSC', 1, 0, 1, '-', 4),
 (17, 'TD Muria', 'TDMURIA', 1, 0, 1, '-', 4),
@@ -121,7 +120,8 @@ INSERT INTO `barang_angkut_apung` (`idbarang`, `namabarang`, `kodebarang`, `juml
 (21, 'Tongkang 205', 'TKG205', 1, 0, 1, '-', 4),
 (22, 'Kapal LCM V', 'KLCM5', 1, 0, 1, '-', 4),
 (23, 'cek', 'cekk1', 1, 1, 0, 'dockapung', 4),
-(24, 'testing from user', 'mencoba', 1, 1, 0, 'produksi', 4);
+(24, 'testing from user', 'mencoba', 1, 1, 0, 'produksi', 4),
+(25, 'percobaan', 'mencoba', 1, 1, 0, 'Gudang', 4);
 
 -- --------------------------------------------------------
 
@@ -133,6 +133,7 @@ CREATE TABLE `barang_asset` (
   `idbarang` int NOT NULL,
   `namabarang` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `kategoribarang` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `spesifikasi` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
   `jumlah` int NOT NULL,
   `baik` int NOT NULL,
   `rusak` int NOT NULL,
@@ -144,9 +145,10 @@ CREATE TABLE `barang_asset` (
 -- Dumping data for table `barang_asset`
 --
 
-INSERT INTO `barang_asset` (`idbarang`, `namabarang`, `kategoribarang`, `jumlah`, `baik`, `rusak`, `lokasi`, `keterangan`) VALUES
-(1, 'Laptop,Ruang Biro Analisa, Evaluasi, SDM dan Transformasi Teknologi', 'laptop', 1, 1, 0, 'Kabiro. Ana, Eva, SDM', 'Keluar'),
-(2, 'cek', 'coba', 1, 1, 0, 'rendal', 'masuk');
+INSERT INTO `barang_asset` (`idbarang`, `namabarang`, `kategoribarang`, `spesifikasi`, `jumlah`, `baik`, `rusak`, `lokasi`, `keterangan`) VALUES
+(1, 'laptop', 'laptop bos', 'bagus', 2, 2, 0, 'Kabiro. Ana, Eva, SDM', 'Petra'),
+(2, 'cek', 'coba', '', 1, 1, 0, 'rendal', 'masuk'),
+(3, 'percobaan', 'mencoba', '07', 1, 1, 0, 'rendal sdm', '');
 
 -- --------------------------------------------------------
 
@@ -168,10 +170,11 @@ CREATE TABLE `barang_konsumable` (
 --
 
 INSERT INTO `barang_konsumable` (`idbarang`, `namabarang`, `kodebarang`, `jumlah`, `lokasi`, `kategori_id`) VALUES
-(48, 'MCCB 630A MERK SCHNEIDER', 'aaa', 2, '-', 3),
+(48, 'MCCB 630A MERK SCHNEIDER', 'aaa', 0, '-', 3),
 (50, 'cek', 'cekk', 1, '-', 3),
 (51, 'coba from user', 'test', 1, 'dock surabaya', 3),
-(52, 'usertesing', 'testing', 1, 'Produksi', 3);
+(52, 'usertesing', 'testing', 1, 'Produksi', 3),
+(53, 'percobaan ', 'mencoba', 1, 'dukprod', 3);
 
 -- --------------------------------------------------------
 
@@ -197,7 +200,8 @@ INSERT INTO `berita` (`id_berita`, `judul_berita`, `deskripsi_berita`, `created_
 (4, 'PT PAL Indonesia: Pusat Kemahiran dalam Industri Maritim', 'PT PAL Indonesia (Persero) adalah sebuah perusahaan konstruksi kapal yang beroperasi di Indonesia. Dikenal sebagai salah satu perusahaan terkemuka dalam industri maritim di Asia Tenggara, PT PAL telah membangun sejarah yang cemerlang selama lebih dari setengah abad.\n\nSejarah yang Dimulai dari Pertanian Hingga Maritim\n\nBerawal sebagai usaha pertanian di tahun 1939, PT PAL Indonesia berubah haluan menjadi perusahaan perkapalan pada tahun 1971. Sejak saat itu, perusahaan ini telah mengalami pertumbuhan yang luar biasa dalam menghadirkan berbagai jenis kapal, mulai dari kapal penumpang hingga kapal perang yang canggih.', '2023-09-12 05:48:36'),
 (5, 'PT PAL Indonesia: Leader in Maritime Excellence', 'PT PAL Indonesia: Leader in Maritime Excellence\n\nPT PAL Indonesia, also known as Persero PT PAL, stands as a beacon of maritime excellence in Southeast Asia. Founded in 1980, this state-owned enterprise has become synonymous with shipbuilding and engineering prowess, playing a pivotal role in Indonesia\'s naval and maritime development.\n\nA Rich Legacy of Shipbuilding\n\nWith a history that spans over four decades, PT PAL has earned a reputation for its world-class shipbuilding capabilities. The company has consistently delivered vessels that meet the highest international standards, from naval ships and commercial vessels to offshore platforms.', '2023-09-12 08:58:47'),
 (6, 'Kebakaran Melanda Desa Lebak Rejo, Kerugian Besar Terjadi', 'Pada tanggal 12 September 2023, sebuah bencana kebakaran hebat melanda Desa Lebak Rejo, mengakibatkan kerugian besar bagi warga dan lingkungan sekitar. Kebakaran ini pertama kali terdeteksi pada pukul 02.00 pagi dan dengan cepat meluas karena angin kencang yang memengaruhi perambatan api.\n\nSejumlah pemadam kebakaran dan relawan segera merespons kejadian tersebut, tetapi mereka menghadapi kesulitan dalam memadamkan api karena kondisi cuaca yang ekstrem. Banyak rumah dan bangunan penting, termasuk sekolah dan fasilitas kesehatan, hancur dalam bencana ini.\n\nTidak ada laporan tentang korban jiwa saat ini, tetapi sejumlah warga dilaporkan kehilangan tempat tinggal dan harta benda mereka. Otoritas setempat dan pihak berwenang terus bekerja keras untuk mengatasi kebakaran ini dan memberikan bantuan kepada mereka yang terkena dampak.\n\nKita semua berdoa agar situasi ini segera teratasi dan para korban dapat mendapatkan bantuan yang mereka perlukan. Lebak Rejo dan warganya membutuhkan dukungan dan solidaritas dari seluruh komunitas di sekitarnya.', '2023-09-14 15:12:52'),
-(7, 'PT PAL Indonesia: Sebuah Kilas Balik dan Masa Depan yang Cerah', 'PT PAL Indonesia (Persero) adalah perusahaan pembangunan kapal terkemuka di Indonesia yang telah berdiri selama lebih dari setengah abad. Sejak didirikan pada tahun 1971, perusahaan ini telah menjadi salah satu tonggak penting dalam industri maritim nasional. Mari kita lihat lebih dekat sejarah, pencapaian, serta masa depan cerah PT PAL Indonesia.\n\nSejarah yang Gemilang\n\nPT PAL Indonesia didirikan sebagai produsen kapal pertama di Indonesia pada tahun 1971. Pada awalnya, perusahaan ini memiliki fasilitas yang terbatas, tetapi dengan tekad kuat dan visi yang jelas, mereka berhasil tumbuh dan berkembang pesat.\n\nSelama beberapa dekade, PT PAL Indonesia telah berhasil membangun berbagai jenis kapal, termasuk kapal perang, kapal komersial, kapal penumpang, dan kapal penjelajah antariksa. Pencapaian besar pertama mereka adalah pembangunan kapal selam pertama Indonesia, KRI Cakra, yang diluncurkan pada tahun 1981.', '2023-09-15 01:02:41');
+(7, 'PT PAL Indonesia: Sebuah Kilas Balik dan Masa Depan yang Cerah', 'PT PAL Indonesia (Persero) adalah perusahaan pembangunan kapal terkemuka di Indonesia yang telah berdiri selama lebih dari setengah abad. Sejak didirikan pada tahun 1971, perusahaan ini telah menjadi salah satu tonggak penting dalam industri maritim nasional. Mari kita lihat lebih dekat sejarah, pencapaian, serta masa depan cerah PT PAL Indonesia.\n\nSejarah yang Gemilang\n\nPT PAL Indonesia didirikan sebagai produsen kapal pertama di Indonesia pada tahun 1971. Pada awalnya, perusahaan ini memiliki fasilitas yang terbatas, tetapi dengan tekad kuat dan visi yang jelas, mereka berhasil tumbuh dan berkembang pesat.\n\nSelama beberapa dekade, PT PAL Indonesia telah berhasil membangun berbagai jenis kapal, termasuk kapal perang, kapal komersial, kapal penumpang, dan kapal penjelajah antariksa. Pencapaian besar pertama mereka adalah pembangunan kapal selam pertama Indonesia, KRI Cakra, yang diluncurkan pada tahun 1981.', '2023-09-15 01:02:41'),
+(8, 'Testing website', 'Berita hari ini dicoba untuk melakukan testing dan mencari bug dalam website sehingga dapat berjalan dengan normal dan dapat digunakan dan dikomersilkan', '2023-10-04 03:23:20');
 
 -- --------------------------------------------------------
 
@@ -323,8 +327,23 @@ INSERT INTO `keluar_masuk_barang` (`idtransaksi`, `kodetransaksi`, `tanggal`, `t
 (140, 'PJ30', '2023-09-21 09:00:39', '2023-09-18 14:38:16', '2023-09-21 16:04:00', 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, '0', 'Rumah Farah', '', 3, 'Sudah kembali'),
 (141, 'PJ31', NULL, '2023-09-21 15:47:49', NULL, 'Barang Konsumable', '12345', 'MCCB 630A MERK SCHNEIDER', 'MCCB630A', 1, 0, 0, 'Dock Surabaya', NULL, '', 0, 'Belum kembali'),
 (142, 'PJ32', NULL, '2023-09-21 15:49:32', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'PAL', NULL, '', 0, 'Belum kembali'),
-(143, 'PJ33', NULL, '2023-09-28 13:30:45', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 0, 0, 'ipan dedi', NULL, NULL, 0, 'Belum kembali'),
-(144, 'PJ34', '2023-09-28 08:33:18', '2023-09-28 13:31:15', '2023-09-28 13:33:00', 'Alat Komunikasi', '14200138', 'nyoba', 'testing', 1, 1, 0, 'ipan', 'ipan', 'echo', 3, 'Sudah kembali');
+(143, 'PJ33', '2023-10-02 02:39:57', '2023-09-28 13:30:45', '2023-10-02 07:44:00', 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 1, 1, 0, 'ipan dedi', 'dukprod', 'baik', 3, 'Sudah kembali'),
+(144, 'PJ34', '2023-09-28 08:33:18', '2023-09-28 13:31:15', '2023-09-28 13:33:00', 'Alat Komunikasi', '14200138', 'nyoba', 'testing', 1, 1, 0, 'ipan', 'ipan', 'echo', 3, 'Sudah kembali'),
+(145, 'PJ35', '2023-10-02 02:46:43', '2023-10-02 07:46:26', '2023-10-02 07:48:00', 'Peralatan Pendukung Produksi', '14200137', 'Hand Bor (Makita)', 'HDRL02', 1, 1, 0, 'RH02', 'gudang , cek test', 'baik', 3, 'Sudah kembali'),
+(146, 'PJ36', '2023-10-02 03:07:31', '2023-10-02 08:07:26', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Vacum Test', 'VT01', 1, 0, 0, 'surabaya', NULL, NULL, 1, 'Belum kembali'),
+(147, 'PJ37', '2023-10-02 03:08:09', '2023-10-02 08:07:59', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Vacum Test', 'VT01', 1, 0, 0, 'malang', NULL, NULL, 1, 'Belum kembali'),
+(148, 'PJ38', NULL, '2023-10-02 13:57:36', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Hand Bor (Makita)', 'HDRL02', 1, 0, 0, 'dukprod', NULL, NULL, 0, 'Belum kembali'),
+(149, 'PJ39', NULL, '2023-10-02 14:00:59', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 4, 0, 0, 'prod', NULL, NULL, 0, 'Belum kembali'),
+(150, 'PJ40', '2023-10-02 09:02:26', '2023-10-02 14:02:09', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Bor Magnet', 'DRL01', 4, 0, 0, 'prod', NULL, NULL, 1, 'Belum kembali'),
+(151, 'PJ41', NULL, '2023-10-02 16:21:39', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Hand Bor (Makita)', 'HDRL02', 2, 0, 0, '2', NULL, NULL, 0, 'Belum kembali'),
+(152, 'PJ42', NULL, '2023-10-02 16:22:02', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Hand Bor (Makita)', 'HDRL02', 2, 0, 0, '123', NULL, NULL, 0, 'Belum kembali'),
+(153, 'PJ43', '2023-10-03 22:23:44', '2023-10-02 16:22:38', NULL, 'Peralatan Pendukung Produksi', '14200138', 'Hand Bor (Makita)', 'HDRL02', 2, 0, 0, 'lqkwd', NULL, NULL, 1, 'Belum kembali'),
+(154, 'PJ44', NULL, '2023-10-04 03:24:39', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'surabaya', NULL, NULL, 2, 'Belum kembali'),
+(155, 'PJ45', NULL, '2023-10-04 03:28:56', NULL, 'Alat Komunikasi', '14200138', 'ceki', 'cekcek', 1, 0, 0, 'dukprod', NULL, NULL, 2, 'Belum kembali'),
+(156, 'PJ46', NULL, '2023-10-04 03:38:18', NULL, 'Barang Konsumable', '14200138', 'cek', 'cekk', 1, 0, 0, 'dukprod', NULL, NULL, 0, 'Belum kembali'),
+(157, 'PJ47', '2023-10-03 22:39:15', '2023-10-04 03:39:10', '2023-10-04 03:51:00', 'Angkat, Angkut, Alat Apung', '14200138', 'Forklift 5 Ton', 'FK5T', 1, 1, 0, 'semarang', 'Gudang', 'baik', 3, 'Sudah kembali'),
+(158, 'PJ48', '2023-10-04 00:36:19', '2023-10-04 05:35:03', '2023-10-04 05:37:00', 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 1, 0, 'mencoba', 'dukprod', 'baik', 3, 'Sudah kembali'),
+(159, 'PJ49', '2023-10-04 00:46:44', '2023-10-04 05:41:14', NULL, 'Peralatan Pendukung Produksi', '3120500028', 'Bor Magnet', 'DRL01', 1, 0, 0, 'Dock Surabaya', NULL, NULL, 1, 'Belum kembali');
 
 -- --------------------------------------------------------
 
@@ -348,7 +367,7 @@ CREATE TABLE `komunikasi` (
 --
 
 INSERT INTO `komunikasi` (`idbarang`, `namabarang`, `noseri`, `jumlah`, `baik`, `rusak`, `lokasi`, `kategori_id`) VALUES
-(8, 'HT I COM V80', '602733378-1', 3, 3, 0, 'harkan', 2),
+(8, 'HT I COM V80', '602733378-1', 0, 0, 0, 'harkan', 2),
 (9, 'HT I COM V80', '602733347-1', 2, 1, 1, '-', 2),
 (12, 'ceki', 'cekcek', 1, 1, 0, '-', 2),
 (13, 'coba from user ', 'testing1', 1, 1, 0, 'K3LH', 2),
@@ -405,7 +424,8 @@ INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `password_user`, `divis
 (27, '14200137', 'Yoga', '$2y$10$xfcW8Ql9iWbjM4pT2SU7QOnwiVjFfjDwij3mOBGktf.2MyIOC7TSm', 1, 1),
 (29, '14200138', 'Burhan', '$2y$10$SAOmW7P1RnSj6KI6xdZun.cST27PUqyILDhFPfvAA2E5YerSBwn4y', 1, 4),
 (30, '14200142', 'Agus', '$2y$10$gYuiFE8iA2t8mS8EBC0zVug1OV9MrGaSOEb8PK305bFEn/SOEGtGW', 1, 2),
-(35, '123123', 'John Doe', '$2y$10$MIaJZn/dgZMjsQQZmQk5TO3ytbBtcKgB2rW2cMmF4ZraVfhGMRoDO', 3, 2);
+(35, '123123', 'John Doe', '$2y$10$MIaJZn/dgZMjsQQZmQk5TO3ytbBtcKgB2rW2cMmF4ZraVfhGMRoDO', 3, 2),
+(36, '021056593', 'Hamed', '$2y$10$vjbqpXD3gN7yRujqgdOoCe/stcHemrCoxKQzjzXutSDkDGTLutKwK', 15, 2);
 
 --
 -- Indexes for dumped tables
@@ -493,31 +513,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alat_produksi`
 --
 ALTER TABLE `alat_produksi`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `barang_angkut_apung`
 --
 ALTER TABLE `barang_angkut_apung`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `barang_asset`
 --
 ALTER TABLE `barang_asset`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `barang_konsumable`
 --
 ALTER TABLE `barang_konsumable`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `divisi`
@@ -535,19 +555,19 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keluar_masuk_barang`
 --
 ALTER TABLE `keluar_masuk_barang`
-  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `idtransaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `komunikasi`
 --
 ALTER TABLE `komunikasi`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables

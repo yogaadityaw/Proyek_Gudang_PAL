@@ -13,7 +13,7 @@ if (isset($_GET['cari'])) {
     // $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM barang_asset WHERE namabarang LIKE '%$keyword%' OR kategoribarang LIKE '%$keyword%' OR lokasi LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'";
+    $query = "SELECT * FROM barang_asset WHERE namabarang LIKE '%$keyword%' OR kategoribarang LIKE '%$keyword%' OR spesifikasi LIKE '$keyword' OR lokasi LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'";
 };
 
 
@@ -212,18 +212,25 @@ if (isset($_GET['cari'])) {
 
                     <!-- Modal body -->
                     <div class="modal-body">
+                        <label>Nama Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
-                        <br>
+                        
+                        <label>Kategori Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Kategori Barang" name="kategoribarang">
-                        <br>
+                        
+                        <label>Jumlah</label>
                         <input type="number" class="form-control form-control-lg" placeholder="Jumlah" name="jumlah">
-                        <br>
+                        
+                        <label>Barang Kondisi Baik</label>
                         <input type="number" class="form-control form-control-lg" placeholder="Kondisi Barang Baik" name="barangbaik">
-                        <br>
+                        
+                        <label>Barang Kondisi Rusak</label>
                         <input type="number" class="form-control form-control-lg" placeholder="Kondisi Barang Rusak" name="barangrusak">
-                        <br>
+                        
+                        <label>Lokasi</label>
                         <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
-                        <br>
+                        
+                        <label>Keterangan</label>
                         <input type="text" class="form-control form-control-lg" placeholder="keterangan" name="keterangan">
                     </div>
 

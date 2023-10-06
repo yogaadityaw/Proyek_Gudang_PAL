@@ -1,29 +1,30 @@
 <?php
 require 'koneksi.php';
 session_start();
-if ($_SESSION['role'] == "admin") {
-    require 'middleware/Validation/Validation.php';
-} else {
-    require '../middleware/Validation/Validation.php';
-}
+// if ($_SESSION['role'] == "admin") {
+//     require 'middleware/Validation/Validation.php';
+// } else {
+//     require '../middleware/Validation/Validation.php';
+// }
 
 if (isset($_POST['addnewbarangasset'])) {
     $namabarang = $_POST['namabarang'];
     $kategoribarang = $_POST['kategoribarang'];
+    $spesifikasi = $_POST['spesifikasi'];
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
     $lokasi = $_POST['lokasi'];
     $keterangan = $_POST['keterangan'];
 
-    $validateResult = Validation::validateBarangAset($namabarang, $kategoribarang, $jumlah, $barangbaik, $barangrusak, $lokasi, $keterangan);
-    $is_valid = $validateResult['is_valid'];
-    $error_message = $validateResult['error_message'];
-    if (!$is_valid) {
-        echo '<script type="text/javascript">alert("' . $error_message . '");</script>';
-        return;
-    } else {
-        $addtotable = mysqli_query($conn, "INSERT INTO barang_asset (namabarang, kategoribarang, jumlah, baik, rusak, lokasi, keterangan) VALUES ('$namabarang', '$kategoribarang','$jumlah', '$barangbaik', '$barangrusak', '$lokasi', '$keterangan')");
+    // $validateResult = Validation::validateBarangAset($namabarang, $kategoribarang, $spesifikasi, $jumlah, $barangbaik, $barangrusak, $lokasi, $keterangan);
+    // $is_valid = $validateResult['is_valid'];
+    // $error_message = $validateResult['error_message'];
+    // if (!$is_valid) {
+    //     echo '<script type="text/javascript">alert("' . $error_message . '");</script>';
+    //     return;
+    // } else {
+        $addtotable = mysqli_query($conn, "INSERT INTO barang_asset (namabarang, kategoribarang, spesifikasi, jumlah, baik, rusak, lokasi, keterangan) VALUES ('$namabarang', '$kategoribarang', '$spesifikasi', '$jumlah', '$barangbaik', '$barangrusak', '$lokasi', '$keterangan')");
         if ($addtotable) {
             if ($_SESSION['role'] == "admin") {
                 header('location: barang_asset.php');
@@ -37,12 +38,13 @@ if (isset($_POST['addnewbarangasset'])) {
         }
         return;
     }
-}
+// }
 
 // update barang
 if (isset($_POST['updatebarang'])) {
     $namabarang = $_POST['namabarang'];
     $kategoribarang = $_POST['kategoribarang'];
+    $spesifikasi = $_POST['spesifikasi'];
     $jumlah = $_POST['jumlah'];
     $barangbaik = $_POST['barangbaik'];
     $barangrusak = $_POST['barangrusak'];
@@ -50,15 +52,14 @@ if (isset($_POST['updatebarang'])) {
     $keterangan = $_POST['keterangan'];
     $idb = $_POST['idb'];
 
-    $validateResult = Validation::validateBarangAset($namabarang, $kategoribarang, $jumlah, $barangbaik, $barangrusak, $lokasi, $keterangan);
-    $is_valid = $validateResult['is_valid'];
-    $error_message = $validateResult['error_message'];
-    if (!$is_valid) {
-        echo '<script type="text/javascript">alert("' . $error_message . '");</script>';
-        return;
-    } else {
-        $update = mysqli_query($conn, "update barang_asset set namabarang='$namabarang', kategoribarang='$kategoribarang', jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', lokasi='$lokasi', keterangan='$keterangan' where idbarang = '$idb' ");
-
+    // $validateResult = Validation::validateBarangAset($namabarang, $kategoribarang, $spesifikasi, $jumlah, $barangbaik, $barangrusak, $lokasi, $keterangan);
+    // $is_valid = $validateResult['is_valid'];
+    // $error_message = $validateResult['error_message'];
+    // if (!$is_valid) {
+    //     echo '<script type="text/javascript">alert("' . $error_message . '");</script>';
+    //     return;
+    // } else {
+        $update = mysqli_query($conn, "update barang_asset set namabarang='$namabarang', kategoribarang='$kategoribarang', spesifikasi='$spesifikasi',  jumlah='$jumlah', baik='$barangbaik', rusak='$barangrusak', lokasi='$lokasi', keterangan='$keterangan' where idbarang = '$idb' ");
         if ($update) {
             if ($_SESSION['role'] == "admin") {
                 header('location: barang_asset.php');
@@ -72,7 +73,7 @@ if (isset($_POST['updatebarang'])) {
         };
         return;
     }
-}
+// }
 
 //delete barang 
 

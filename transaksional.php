@@ -4,7 +4,7 @@ require 'controller/koneksi.php';
 require 'cek.php';
 require 'controller/transaksi_pinjam_controller.php';
 require 'middleware/auth_middleware.php';
-require 'utils/get_user_nip.php';
+// require 'utils/get_user_nip.php';
 
 checkRole("admin", 'middleware/auth_prohibit.php');
 
@@ -57,7 +57,7 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                     </div>
                                     <!-- <div class="mb-3">
                                         <label for="namapegawai" class="form-label">Nama Pegawai</label>
-                                        <input type="text" class="form-control" id="namapegawai" name="namapegawai" required readonly>
+                                        <input type="text" class="form-control" id="namapegawai" name="namapegawai" readonly>
                                     </div> -->
                                     <div class="form-row">
                                         <label>Pilih Jenis Barang</label>
@@ -96,18 +96,6 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <!-- <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for=tanggal>Tanggal Peminjaman</label>
-                                                <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
-                                            </div> -->
-                                        <!-- <div class="form-group col-md-4">
-                                                <label for="inputState">Kondisi Barang</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option>Baik</option>
-                                                    <option>Buruk</option>
-                                                </select>
-                                            </div> -->
                                         <div class="form-group col-md-4">
                                             <label>Kode Peminjaman</label>
                                             <input type="text" class="form-control" id="kodepinjam" name="kodepinjam" readonly style="background-color: #e9ecef;">
@@ -280,7 +268,6 @@ checkRole("admin", 'middleware/auth_prohibit.php');
                 $("#kodepinjam").val(nextKodeTransaksi); // Isi nilai input kodepinjam dengan nomor berikutnya
             },
             error: function(xhr, status, error) {
-                // Tangani kesalahan jika ada
                 console.error(error);
             },
         });

@@ -13,7 +13,7 @@ if (isset($_GET['cari'])) {
     // $keyword = mysqli_real_escape_string($conn, $keyword);
 
     // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM barang_asset WHERE namabarang LIKE '%$keyword%' OR kategoribarang LIKE '%$keyword%' OR lokasi LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'";
+    $query = "SELECT * FROM barang_asset WHERE namabarang LIKE '%$keyword%' OR kategoribarang LIKE '%$keyword%' OR spesifikasi LIKE '%$keyword%' OR lokasi LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'";
 };
 
 
@@ -72,6 +72,7 @@ if (isset($_GET['cari'])) {
                                     <th class="table-info text-center align-middle">No</th>
                                     <th class="table-info text-center align-middle">Nama Barang</th>
                                     <th class="table-info text-center align-middle">Kategori Barang</th>
+                                    <th class="table-info text-center align-middle">Spesifikasi</th>
                                     <th class="table-info text-center align-middle">Jumlah</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Baik</th>
                                     <th class="table-info text-center align-middle">Kondisi Barang Rusak</th>
@@ -88,6 +89,7 @@ if (isset($_GET['cari'])) {
                                 while ($data = mysqli_fetch_array($ambilsemuadatabarang)) {
                                     $namabarang = $data['namabarang'];
                                     $kategoribarang = $data['kategoribarang'];
+                                    $spesifikasi = $data['spesifikasi'];
                                     $jumlah = $data['jumlah'];
                                     $barangbaik = $data['baik'];
                                     $barangrusak = $data['rusak'];
@@ -99,6 +101,7 @@ if (isset($_GET['cari'])) {
                                         <td style="text-align: center;"><?= $i++ ?></td>
                                         <td style="text-align: center;"><?= $namabarang ?></td>
                                         <td style="text-align: center;"><?= $kategoribarang ?></td>
+                                        <td style="text-align: center;"><?= $spesifikasi ?></td>
                                         <td style="text-align: center;"><?= $jumlah ?></td>
                                         <td style="text-align: center;"><?= $barangbaik ?></td>
                                         <td style="text-align: center;"><?= $barangrusak ?></td>
@@ -132,6 +135,9 @@ if (isset($_GET['cari'])) {
                                                         <br>
                                                         <label>Kategori Barang</label>
                                                         <input type="text" name="kategoribarang" value="<?= $kategoribarang; ?>" class="form-control form-control-lg" placeholder="Kategori Barang">
+                                                        <br>
+                                                        <label>Spesifikasi</label>
+                                                        <input type="text" name="spesifikasi" value="<?= $spesifikasi; ?>" class="form-control form-control-lg" placeholder="Spesifikasi">
                                                         <br>
                                                         <label>Jumlah</label>
                                                         <input type="number" name="jumlah" value="<?= $jumlah; ?>" class="form-control" placeholder="Jumlah">
@@ -212,18 +218,28 @@ if (isset($_GET['cari'])) {
 
                     <!-- Modal body -->
                     <div class="modal-body">
+                        <label>Nama Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
-                        <br>
+                        
+                        <label>Kategori Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Kategori Barang" name="kategoribarang">
-                        <br>
+                        
+                        <label>Spesifikasi</label>
+                        <input type="text" class="form-control form-control-lg" placeholder="Spesifikasi" name="spesifikasi">
+                        
+                        <label>Jumlah</label>
                         <input type="number" class="form-control form-control-lg" placeholder="Jumlah" name="jumlah">
-                        <br>
+                        
+                        <label>Barang Kondisi Baik</label>
                         <input type="number" class="form-control form-control-lg" placeholder="Kondisi Barang Baik" name="barangbaik">
-                        <br>
+                        
+                        <label>Barang Kondisi Rusak</label>
                         <input type="number" class="form-control form-control-lg" placeholder="Kondisi Barang Rusak" name="barangrusak">
-                        <br>
+                        
+                        <label>Lokasi</label>
                         <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
-                        <br>
+                        
+                        <label>Keterangan</label>
                         <input type="text" class="form-control form-control-lg" placeholder="keterangan" name="keterangan">
                     </div>
 

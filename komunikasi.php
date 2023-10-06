@@ -153,17 +153,18 @@ if (isset($_GET['cari'])) {
                                         </div>
                                     </div>
                                     <!-- Delete Modal -->
-                                    <div class="modal fade" id="Delete<?= $idb; ?>">
-                                        <div class="modal-dia class=" table-info text-center align-middle>
+                                    <div class="modal fade" id="delete<?= $idb; ?>">
+                                        <div class="modal-dialog">
                                             <div class="modal-content bg-white">
 
                                                 <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus Stok Barang</h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <!-- Modal body -->
                                                 <form method=post>
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Hapus Stok Barang</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
+                                                    <!-- Modal body -->
+
                                                     <div class="modal-body">
                                                         <!-- <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control form-control-lg">
                                                         <br>
@@ -210,16 +211,17 @@ if (isset($_GET['cari'])) {
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
+                        <label>Nama Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
-                        <br>
+                        <label>Nomor Seri</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Nomor Seri" name="noseri">
-                        <br>
+                        <label>Jumlah</label>
                         <input type="number" class="form-control" placeholder="Jumlah" name="jumlah">
-                        <br>
+                        <label>Barang Kondisi Baik</label>
                         <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik">
-                        <br>
+                        <label>Barang Kondisi Rusak</label>
                         <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak">
-                        <br>
+                        <label>Lokasi</label>
                         <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
                     </div>
                     <!-- Modal footer -->

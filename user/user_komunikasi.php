@@ -206,16 +206,22 @@ if (isset($_GET['cari'])) {
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
+                        <label>Nama Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
-                        <br>
+                        
+                        <label>Nomor Seri</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Nomor Seri" name="noseri">
-                        <br>
+                        
+                        <label>Jumlah</label>
                         <input type="number" class="form-control" placeholder="Jumlah" name="jumlah">
-                        <br>
+                        
+                        <label>Barang Kondisi Baik</label>
                         <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik">
-                        <br>
+                        
+                        <label>Barang Kondisi Rusak</label>
                         <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak">
-                        <br>
+                        
+                        <label>Lokasi</label>
                         <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
                     </div>
                     <!-- Modal footer -->

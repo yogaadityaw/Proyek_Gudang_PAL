@@ -155,7 +155,7 @@ if (isset($_POST['kembali'])) {
         $barangrusakbaru = $barangrusak + $jumlahrusak;
 
         // Update tabel barang dengan stok yang baru
-        $queryUpdateStok = "UPDATE barang_angkut_apung SET jumlah = '$stokBaru', baik = '$barangBaikBaru', rusak='$barangrusakbaru', keterangan='$keterangan' WHERE kodebarang = '$kodebarang'";
+        $queryUpdateStok = "UPDATE barang_angkut_apung SET jumlah = '$stokBaru', baik = '$barangBaikBaru', rusak='$barangrusakbaru' WHERE kodebarang = '$kodebarang'";
         $resultUpdateStok = mysqli_query($conn, $queryUpdateStok);
 
         if (!$resultUpdateStok) {

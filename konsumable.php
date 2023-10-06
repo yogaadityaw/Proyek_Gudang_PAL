@@ -35,7 +35,7 @@ if (isset($_GET['cari'])) {
 </head>
 <?php include 'sidebar.php' ?>
 
-<body> class="table-info text-center align-middle"
+<body>
     <br>
     <br>
     <main id="main-content" class="<?= isset($_GET['sidebarClosed']) ? '' : 'main-with-sidebar' ?>">
@@ -137,7 +137,7 @@ if (isset($_GET['cari'])) {
                                                     </div>
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" name="updatebarang">Simpan</button>
+                                                        <button type="submit" class="btn btn-warning" name="updatebarang">Simpan</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -196,12 +196,16 @@ if (isset($_GET['cari'])) {
 
                 <!-- Modal body -->
                 <div class="modal-body">
+                    <label>Nama Barang</label>
                     <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
-                    <br>
+            
+                    <label>Kode Barang</label>
                     <input type="text" class="form-control form-control-lg" placeholder="Kode Barang" name="kodebarang">
-                    <br>
+                
+                    <label>Jumlah</label>
                     <input type="number" class="form-control form-control-lg" placeholder="Jumlah" name="jumlah">
-                    <br>
+                    
+                    <label>Lokasi</label>
                     <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
                 </div>
 

@@ -56,14 +56,6 @@ if (isset($_POST['approve'])) {
         $stokBarang = $rowStokBarang['jumlah'];
         $barangBaik = $rowStokBarang['baik'];
 
-
-
-        if ($jumlah > $barangBaik || $barangBaik == 0) {
-            echo "<script>alert('barang tidak mencukupi.');</script>";
-            return;
-        }
-
-
         // Kurangi stok barang dengan jumlah pinjaman
         $stokBaru = $stokBarang - $jumlah;
         $barangBaikBaru = $barangBaik - $jumlah;
@@ -170,10 +162,7 @@ if (isset($_POST['approve'])) {
         //     echo "<script>alert('barang tidak mencukupi.');</script>";
         //     return;
         // }
-        if ($jumlah > $barangBaik || $barangBaik == 0) {
-            echo "<script>alert('barang tidak mencukupi.');</script>";
-            return;
-        }
+        
 
         // Kurangi stok barang dengan jumlah pinjaman
         $stokBaru = $stokBarang - $jumlah;

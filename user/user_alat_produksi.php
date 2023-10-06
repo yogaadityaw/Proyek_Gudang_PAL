@@ -165,7 +165,7 @@ if (isset($_GET['cari'])) {
                                 ?>
                             </tbody>
                         </table>
-
+<!-- untuk tambah stok -->
     </main>
     <!-- The Modal -->
     <form method="POST" action="user_alat_produksi.php">
@@ -180,23 +180,30 @@ if (isset($_GET['cari'])) {
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
+                        <label>Nama Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="Nama Barang" name="namabarang">
-                        <br>
+                        
+                        <label>Kode Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="kode Barang" name="kodebarang">
-                        <br>
+                        
+                        <label>Kategori Barang</label>
                         <input type="text" class="form-control form-control-lg" placeholder="kategori Barang" name="kategoribarang">
-                        <br>
+                        
+                        <label>Jumlah</label>
                         <input type="number" class="form-control" placeholder="Jumlah" name="jumlah">
-                        <br>
+                        
+                        <label>Barang Kondisi Baik</label>
                         <input type="number" class="form-control" placeholder="Kondisi Barang Baik" name="barangbaik">
-                        <br>
+                        
+                        <label>Barang Kondisi Rusak</label>
                         <input type="number" class="form-control" placeholder="Kondisi Barang Rusak" name="barangrusak">
-                        <br>
+                        
+                        <label>Lokasi</label>
                         <input type="text" class="form-control form-control-lg" placeholder="lokasi" name="lokasi">
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" name="addnewbarangproduksi">Tambahkan</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="addnewbarangproduksi">Tambahkan</button>
                     </div>
                 </div>
             </div>

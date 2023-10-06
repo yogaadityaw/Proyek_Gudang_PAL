@@ -48,7 +48,7 @@ $isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
                                 <div class="form-row">
                                     <div class="mb-3">
                                         <label for="nip" class="form-label">NIP Pegawai</label>
-                                        <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $_SESSION['nip']; ?>" <?php if (!$isAdmin) echo 'readonly'; ?>?>
+                                        <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $_SESSION['nip']; ?>" <?php if (!$isAdmin); ?>? readonly style="background-color: #e9ecef;">
                                     </div>
                                 </div>
                                 <div class="form-row">
