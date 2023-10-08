@@ -173,7 +173,6 @@ class Validation extends ValidationAbstract
             $error_message = "Jenis barang tidak tersedia!";
         }
 
-
         return [
             'is_valid' => $is_valid,
             'error_message' => $error_message,

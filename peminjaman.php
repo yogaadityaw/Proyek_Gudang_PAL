@@ -7,17 +7,25 @@ require 'middleware/auth_middleware.php';
 
 checkRole("admin", 'middleware/auth_prohibit.php');
 
-$query = "SELECT * FROM keluar_masuk_barang";
+$queryJumlahData = "SELECT COUNT(*) as jumlah FROM keluar_masuk_barang WHERE isApproved = 0";
+$resultJumlahData = mysqli_query($conn, $queryJumlahData);
+$rowJumlahData = mysqli_fetch_assoc($resultJumlahData);
+$jumlahData = $rowJumlahData['jumlah'];
+$searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
+
+$jumlahDataPerHalaman = 10;
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+
+$halamanAktif = isset($_GET['halaman']) ? $_GET['halaman'] : 1;
+$batasAwal = ($halamanAktif - 1) * $jumlahDataPerHalaman;
+
+$query = "SELECT * FROM keluar_masuk_barang LIMIT $batasAwal, $jumlahDataPerHalaman";
 
 if (isset($_GET['cari'])) {
     $keyword = $_GET['cari'];
-    // Anda sebaiknya membersihkan input untuk mencegah injeksi SQL
     $keyword = mysqli_real_escape_string($conn, $keyword);
-
-    // Ubah query SQL untuk menyertakan filter pencarian
-    $query = "SELECT * FROM keluar_masuk_barang WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%'";
+    $query = "SELECT * FROM keluar_masuk_barang WHERE namabarang LIKE '%$keyword%' OR kodebarang LIKE '%$keyword%' LIMIT $batasAwal, $jumlahDataPerHalaman";
 }
-$searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -174,7 +182,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                             <?php
                             }
                         } else {
-                            $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 0");
+                            $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 0 ORDER BY idtransaksi DESC LIMIT $batasAwal, $jumlahDataPerHalaman");
                             while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                 $idtransaksi = $data['idtransaksi'];
                                 $tanggalpinjam = $data['tanggal'];
@@ -264,6 +272,14 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                         ?>
                     </tbody>
                 </table>
+                <!-- Pagination -->
+                <ul class="pagination justify-content-center">
+                    <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                        <li class="page-item <?= ($i == $halamanAktif) ? 'active' : ''; ?>">
+                            <a class="page-link" href="peminjaman.php?halaman=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                    <?php endfor; ?>
+                </ul>
             </div>
         </div>
 </main>

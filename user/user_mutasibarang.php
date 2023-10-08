@@ -5,7 +5,21 @@ require '../controller/mutasi_controller.php';
 require '../middleware/auth_middleware.php';
 checkRole("user", '../middleware/auth_prohibit.php');
 
-$query = "SELECT * FROM keluar_masuk_barang";
+$queryJumlahData = "SELECT COUNT(*) as jumlah FROM keluar_masuk_barang WHERE isApproved = 1 OR isApproved = 3";
+$resultJumlahData = mysqli_query($conn, $queryJumlahData);
+$rowJumlahData = mysqli_fetch_assoc($resultJumlahData);
+$jumlahData = $rowJumlahData['jumlah'];
+$searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
+
+$jumlahDataPerHalaman = 10;
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+
+$halamanAktif = isset($_GET['halaman']) ? $_GET['halaman'] : 1;
+$batasAwal = ($halamanAktif - 1) * $jumlahDataPerHalaman;
+
+$query = "SELECT * FROM keluar_masuk_barang LIMIT $batasAwal, $jumlahDataPerHalaman";
+
+
 
 if (isset($_GET['cari'])) {
     $keyword = $_GET['cari'];
@@ -150,7 +164,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     echo '</tr>';
                                 }
                             } else {
-                                $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 1 OR isApproved = 3");
+                                $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM keluar_masuk_barang WHERE isApproved = 1 OR isApproved = 3 ORDER BY idtransaksi DESC LIMIT $batasAwal, $jumlahDataPerHalaman");
                                 while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                     $tanggalpinjam = $data['tanggal'];
                                     $tanggalkembali = $data['tanggalkembali'];
@@ -220,7 +234,16 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                             ?>
                         </tbody>
                     </table>
-                    <!-- untuk query menampilkan tabel -->
+                    <!-- Pagination -->
+                    <ul class="pagination justify-content-center">
+                        <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                            <li class="page-item <?= ($i == $halamanAktif) ? 'active' : ''; ?>">
+                                <a class="page-link" href="user_mutasibarang.php?halaman=<?= $i ?>"><?= $i ?></a>
+                            </li>
+                        <?php endfor; ?>
+                    </ul>
+                </div>
+            </div>
 
     </main>
 

@@ -46,7 +46,7 @@
                     <br>
                     <div class="row">
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
+                            <div class="card bg-success text-white mb-4">
                                 <div class="card-body">Peralatan Pendukung Produksi</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="user_alat_produksi.php">Lihat Detail</a>
@@ -100,10 +100,37 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-success text-white mb-4">
-                                <div class="card-body">List Daftar Mutasi Barang</div>
+                            <div class="card bg-warning text-white mb-4">
+                                <div class="card-body">List Daftar Barang Asset</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="user_barang_asset.php">Lihat Detail</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-primary text-white mb-4">
+                                <div class="card-body">List Daftar Barang Asset</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="user_mutasibarang.php">Lihat Detail</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">List Pengajuan Peminjaman</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="user_peminjaman.php">Lihat Detail</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-primary text-white mb-4">
+                                <div class="card-body">Update Berita</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="user_berita.php">Lihat Detail</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
