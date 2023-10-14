@@ -227,6 +227,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
                                     } else if ($jumlahrusak > 0) {
                                         echo '<span class="badge text-bg-warning">Barang rusak/kurang lengkap</span>';
+                                    } else if ($jumlahrusak + $jumlahbaik < $jumlahkembali) {
+                                        echo '<span class="badge text-bg-warning">Barang tidak lengkap</span>';
                                     } else {
                                         echo '<span class="badge text-bg-success">Sudah kembali</span>';
                                     }

@@ -141,7 +141,7 @@ if (isset($_POST['kembali'])) {
         $rowStokBarang = mysqli_fetch_assoc($resultStokBarang);
 
         if (!$rowStokBarang) {
-            die(var_dump("Barang dengan kode $kodebarang tidak ditemukan."));
+            echo "Barang dengan kode $kodebarang tidak ditemukan.";
             return;
         }
 
@@ -159,7 +159,7 @@ if (isset($_POST['kembali'])) {
         $resultUpdateStok = mysqli_query($conn, $queryUpdateStok);
 
         if (!$resultUpdateStok) {
-            die(var_dump("Gagal mengurangi stok barang."));
+            echo "Gagal mengurangi stok barang.";
             return;
         }
     }
@@ -170,11 +170,11 @@ if (isset($_POST['kembali'])) {
                                       namabarang = '$namabarang', 
                                       kodebarang = '$kodebarang', 
                                       jumlahpinjam = '$jumlah', 
-                                      jumlahkembali = '$jumlahbaik', 
+                                      jumlahkembali = '$jumlah', 
                                       jumlahrusak = '$jumlahrusak', 
                                       lokasi_kembali = '$lokasikembali',
                                       keterangan='$keterangan',
-                                      isApproved = '3', 
+                                      isApproved = '3',  
                                       status = '$status' 
                                   WHERE kodetransaksi = '$kodepinjam'");
     if ($addtotable) {
@@ -190,3 +190,5 @@ if (isset($_POST['kembali'])) {
     };
     return;
 }
+
+//menambah barang kembali diatas dan 

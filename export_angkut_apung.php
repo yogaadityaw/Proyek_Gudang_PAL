@@ -22,7 +22,7 @@ require 'controller/koneksi.php';
 <body>
 
     <div class="container">
-        <h2 class="mt-4 text-center">DAFTAR FASILITAS ALAT ANGKAT, ANGKUT dan APUNG DIVISI HARKAN</h2>
+        <h2 class="mt-4 text-allgin-center">DAFTAR FASILITAS ALAT ANGKAT, ANGKUT dan APUNG DIVISI HARKAN</h2>
 
         <div class="data-tables datatable-dark">
             <br>

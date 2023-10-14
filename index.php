@@ -4,6 +4,7 @@ session_start();
 // cek login
 if (isset($_POST['login'])) {
     $nip = $_POST['nip'];
+    $nama = $_POST['nama'];
     $password = $_POST['password'];
     $errorOccurred = false;
 
@@ -18,22 +19,26 @@ if (isset($_POST['login'])) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "admin";
                     $_SESSION['nip'] = $nip;
+                    $_SESSION['nama'] = $nama;
                     header('location: dashboard.php');
                     exit();
                 } else if ($role == 2) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "user";
-                    $_SESSION['nip'] = $nip;
+                    $_SESSION['nip'] = $nip; // menyimpan nip dalam sesi
+                    $_SESSION['nama'] = $nama;
                     header('location: user/user_dashboard.php');
                 } else if ($role == 3) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "atasan";
                     $_SESSION['nip'] = $nip;
+                    $_SESSION['nama'] = $nama;
                     header('location: atasan/atasan_dashboard.php');
                 } else if ($role == 4) {
                     $_SESSION['log'] = 'True';
                     $_SESSION['role'] = "peminjam";
                     $_SESSION['nip'] = $nip;
+                    $_SESSION['nama'] = $nama;
                     header('location: peminjam/peminjam_dashboard.php');
                 } else {
                     $loginError = "User tidak tersedia.";
@@ -111,6 +116,11 @@ if (!$conn) {
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputNIP">NIP</label>
                                             <input class="form-control py-4" name="nip" id="inputNIP" type="number" placeholder="NIP" />
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputNIP">Nama</label>
+                                            <input class="form-control py-4" name="nama" id="inputNama" type="text" placeholder="Nama" />
 
                                         </div>
                                         <div class="form-group">

@@ -39,7 +39,7 @@
                                 <a class="nav-link" href="user_transaksional.php">Form Peminjaman Barang</a>
                                 <a class="nav-link" href="user_transaksional_kembali.php">Form Pengembalian Barang</a>
                                 <a class="nav-link" href="user_mutasibarang.php">List Daftar Mutasi Barang</a>
-                                
+
                             </nav>
                         </div>
                         <a class="nav-link" href="user_peminjaman.php">
@@ -51,13 +51,17 @@
                             Update Berita
                         </a>
                     </div>
-                    </div>
-                        
-                    </div>
                 </div>
-            </nav>
+                <div class="text-center mt-3 text-white">
+                    <!-- Menampilkan NIP dan Nama Pegawai dari Sesi -->
+                    <label>Nama Pengguna : </label>
+                    <p><?php echo $_SESSION['nama']; ?></p>
+                </div>
         </div>
     </div>
+    </nav>
+</div>
+</div>
 </div>
 
 <script>

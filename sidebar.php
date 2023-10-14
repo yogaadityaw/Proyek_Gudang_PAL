@@ -1,5 +1,3 @@
-
-
 <div class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -7,14 +5,16 @@
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -56,7 +56,7 @@
                                 <a class="nav-link" href="transaksional.php">Form Peminjaman Barang</a>
                                 <a class="nav-link" href="transaksional_kembali.php">Form Pengembalian Barang</a>
                                 <a class="nav-link" href="mutasibarang.php">List Daftar Mutasi Barang</a>
-                                
+
                             </nav>
                         </div>
                         <a class="nav-link" href="peminjaman.php">
@@ -67,7 +67,14 @@
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
                             Update Berita
                         </a>
+
                     </div>
+
+                </div>
+                <div class="text-center mt-3 text-white">
+                    <!-- Menampilkan NIP dan Nama Pegawai dari Sesi -->
+                    <label>Nama Pengguna : </label>
+                    <p><?php echo $_SESSION['nama']; ?></p>
                 </div>
             </nav>
         </div>
