@@ -7,7 +7,6 @@ checkRole("peminjam", '../middleware/auth_prohibit.php');
 
 
 
-
 $query = "SELECT * FROM keluar_masuk_barang";
 
 if (isset($_GET['cari'])) {
@@ -220,6 +219,8 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                         echo '<span class="badge text-bg-warning text-light">Menunggu Approval</span>';
                                     } else if ($isApproved == 3) {
                                         echo '<span class="badge text-bg-success text-light">Barang Sudah Kembali</span>';
+                                    } else if ($jumlahrusak > 0) {
+                                        echo '<span class="badge text-bg-warning">Sudah Kembali(Barang rusak/kurang lengkap)</span>';
                                     } else {
                                         echo '<span class="badge text-bg-primary text-light">Disetujui/Barang Dipinjam</span>';
                                     }
@@ -230,8 +231,11 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                             ?>
                         </tbody>
                     </table>
-                    <!-- untuk query menampilkan tabel -->
-
+                    <!-- menampilkan pagination -->
+                   
+                </div>
+            </div>
+        
     </main>
 
 

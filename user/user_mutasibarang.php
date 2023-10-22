@@ -223,7 +223,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
                                     } else if ($jumlahrusak > 0) {
-                                        echo '<span class="badge text-bg-warning">Barang rusak/kurang lengkap</span>';
+                                        echo '<span class="badge text-bg-warning">Sudah Kembali(Barang rusak/kurang lengkap)</span>';
                                     } else {
                                         echo '<span class="badge text-bg-success">Sudah kembali</span>';
                                     }

@@ -171,6 +171,7 @@ if (isset($_POST['kembali'])) {
                                       kodebarang = '$kodebarang', 
                                       jumlahpinjam = '$jumlah', 
                                       jumlahkembali = '$jumlah', 
+                                      jumlahbaik = '$jumlahbaik',
                                       jumlahrusak = '$jumlahrusak', 
                                       lokasi_kembali = '$lokasikembali',
                                       keterangan='$keterangan',

@@ -116,6 +116,7 @@ class Validation extends ValidationAbstract
     // }
     public static function validateMutasi($jenisbarang, $namabarang, $kodebarang, $noseri, $lokasipinjam, $tanggalpengajuan, $jumlah, $idtransaksi)
     {
+        $error_message = "";
         if ($_SESSION['role'] == "admin") {
             require '../Proyek_Gudang_PAL/controller/koneksi.php';
         } else {
@@ -153,7 +154,7 @@ class Validation extends ValidationAbstract
             $queryStokBarang = "SELECT baik FROM komunikasi WHERE noseri = '$kodebarang'";
             $resultStokBarang = mysqli_query($conn, $queryStokBarang);
             $rowStokBarang = mysqli_fetch_assoc($resultStokBarang);
-            $barangBaik = $rowStokBarang['baik'];
+            $barangBaik = $rowStokBarang['jumlah'];
             $barangBaik = (int) trim($barangBaik);
             if ($barangBaik <= 0) {
                 $is_valid = false;
@@ -163,7 +164,7 @@ class Validation extends ValidationAbstract
             $queryStokBarang = "SELECT baik FROM barang_angkut_apung WHERE kodebarang = '$kodebarang'";
             $resultStokBarang = mysqli_query($conn, $queryStokBarang);
             $rowStokBarang = mysqli_fetch_assoc($resultStokBarang);
-            $barangBaik = $rowStokBarang['baik'];
+            $barangBaik = $rowStokBarang['jumlah'];
             $barangBaik = (int) trim($barangBaik);
             if ($barangBaik <= 0) {
                 $is_valid = false;

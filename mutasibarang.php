@@ -177,6 +177,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     $kodebarang = $data['kodebarang'];
                                     $jumlahpinjam = $data['jumlahpinjam'];
                                     $jumlahkembali = $data['jumlahkembali'];
+                                    $jumlahbaik = $data['jumlahbaik'];
                                     $jumlahrusak = $data['jumlahrusak'];
                                     $lokasi = $data['lokasi'];
                                     $lokasikembali = $data['lokasi_kembali'];
@@ -226,9 +227,7 @@ $searchTerm = isset($_GET['cari']) ? $_GET['cari'] : '';
                                     if ($tanggalkembali === $tanggalKembaliNull) {
                                         echo '<span class="badge text-bg-danger">Belum kembali</span>';
                                     } else if ($jumlahrusak > 0) {
-                                        echo '<span class="badge text-bg-warning">Barang rusak/kurang lengkap</span>';
-                                    } else if ($jumlahrusak + $jumlahbaik < $jumlahkembali) {
-                                        echo '<span class="badge text-bg-warning">Barang tidak lengkap</span>';
+                                        echo '<span class="badge text-bg-warning">Sudah Kembali(Barang rusak/kurang lengkap)</span>';
                                     } else {
                                         echo '<span class="badge text-bg-success">Sudah kembali</span>';
                                     }
